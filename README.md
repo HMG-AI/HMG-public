@@ -1,16 +1,16 @@
-# HMG Public Workspace
+# HMG Public
 
-This local directory is the working copy for the HMG public umbrella repository.
+This repository is the public AGPLv3 umbrella for HMG's open protocol and community ecosystem.
 
 GitHub remote: https://github.com/monkseekee-max/HMG-public.git
 
 License: AGPLv3
 
-Source of truth:
+Source of truth and local workspaces:
 
 - Private monorepo: `/home/seekee/Documents/Programming/HMG`
 - Public staging bundle inside private monorepo: `/home/seekee/Documents/Programming/HMG/public`
-- Export workspace: `/home/seekee/Documents/Programming/HMG-public`
+- Public umbrella checkout: `/home/seekee/Documents/Programming/HMG-public`
 - Website checkout: `/home/seekee/Documents/Programming/HMG-website`
 - Website GitHub remote: `https://github.com/monkseekee-max/HMG-website.git` (private)
 
