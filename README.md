@@ -2,12 +2,15 @@
 
 This local directory is the staging workspace for exported public HMG repositories.
 
+GitHub remote: https://github.com/monkseekee-max/HMG-public.git
+
 Source of truth:
 
 - Private monorepo: `/home/seekee/Documents/Programming/HMG`
 - Public staging bundle inside private monorepo: `/home/seekee/Documents/Programming/HMG/public`
 - Export workspace: `/home/seekee/Documents/Programming/HMG-public`
 - Website checkout: `/home/seekee/Documents/Programming/HMG-website`
+- Website GitHub remote: `https://github.com/monkseekee-max/HMG-website.git`
 
 Rules:
 
