@@ -1,38 +1,39 @@
-# HMG Public
+# HMG Public Artifacts
 
-This repository is the public AGPLv3 umbrella for HMG's open protocol and community ecosystem.
+Open protocol, SDK, documentation, and certification artifacts for the
+HMG (Holographic Memory Graph) agent memory system.
 
-GitHub remote: https://github.com/monkseekee-max/HMG-public.git
+## Directory Layout
 
-License: AGPLv3
+```text
+spec/              — Normative specification: atom lifecycle, correction/governance, scope, recall views
+protocol/          — Wire-safe Rust DTO types (hmg-protocol crate)
+sdk-ts/            — TypeScript SDK
+sdk-python/        — Python SDK
+mcp/               — MCP tool schema definitions
+examples/          — Integration quickstarts with synthetic data
+docs/              — Public documentation
+certification/     — Conformance test suite for HMG Compatible / HMG Certified
+openapi/           — Sanitized OpenAPI specification
+pi-agent/          — Pi coding agent package (@hmg_ai/pi-agent)
+```
 
-Source of truth and local workspaces:
+## Quick Start
 
-- Private monorepo: `/home/seekee/Documents/Programming/HMG`
-- Public staging bundle inside private monorepo: `/home/seekee/Documents/Programming/HMG/public`
-- Public umbrella checkout: `/home/seekee/Documents/Programming/HMG-public`
-- Website checkout: `/home/seekee/Documents/Programming/HMG-website`
-- Website GitHub remote: `https://github.com/monkseekee-max/HMG-website.git` (private)
+```bash
+# Install HMG Community Edition
+curl -L https://get.hmg.ai | sh
 
-Rules:
+# Start memory service
+hmg daemon start
 
-- Do not copy private crates or internal ADRs here by hand.
-- Generate or synchronize repositories here through the public export pipeline.
-- Every exported repository must pass `scripts/check-public-export-boundary.sh` from the private monorepo before it is pushed.
-- Keep high-value engine, eval, connector, enterprise, policy-pack, vault, and operational material out of this workspace.
+# Integrate with your agent
+hmg init --agent cursor
+```
 
-Initial promotion bundle:
+## License
 
-- `hmg-spec/`
-- `hmg-protocol/`
-- `hmg-mcp/` schema and documentation only
-- `hmg-examples/` with synthetic examples
-- `hmg-certification/` conformance skeleton
-- brand/profile README and legal/support docs
+All content in this repository is licensed under [Apache-2.0](LICENSE),
+except where otherwise noted.
 
-Later additions:
-
-- `hmg-sdk-python/`
-- `hmg-sdk-js/`
-- `hmg-cli/`
-- `hmg-community-runtime/` after minimal runtime design and commercial licensing path are reviewed
+HMG is a product of [HMG AI](https://hmg.ai).
