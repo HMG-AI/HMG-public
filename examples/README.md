@@ -26,7 +26,7 @@ hmg daemon start
 ## Python
 
 ```bash
-pip install hmg
+pip install hmg-sdk
 python quickstart.py
 ```
 

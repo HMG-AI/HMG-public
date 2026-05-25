@@ -105,7 +105,7 @@ Community Edition is genuinely useful for daily work — full correction/governa
 ### Python
 
 ```bash
-pip install hmg
+pip install hmg-sdk
 ```
 
 ```python

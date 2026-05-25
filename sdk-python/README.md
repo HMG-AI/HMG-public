@@ -11,7 +11,7 @@ Python SDK for the HMG agent memory system.
 ## Install
 
 ```bash
-pip install hmg
+pip install hmg-sdk
 ```
 
 ## Quick Start
