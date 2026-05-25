@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/version-0.9.2-blue.svg" alt="Version">
-  <img src="https://img.shields.io/badge/license-Apache--2.0-green.svg" alt="License">
+  <img src="https://img.shields.io/badge/license-Apache--2.0%20%7C%20Community-green.svg" alt="License">
   <img src="https://img.shields.io/badge/rust-1.85%2B-orange.svg" alt="Rust">
   <img src="https://img.shields.io/badge/platform-Linux%20%7C%20macOS-lightgrey.svg" alt="Platform">
 </p>
@@ -13,192 +13,152 @@
 </p>
 
 <p align="center">
-  <a href="#quick-start">Quick Start</a> ·
-  <a href="#features">Features</a> ·
-  <a href="#editions">Editions</a> ·
-  <a href="docs/getting-started.md">Docs</a> ·
-  <a href="#sdks">SDKs</a> ·
-  <a href="#community">Community</a>
+  <a href="https://hmg-ai.github.io/HMG-public/">🌐 多语言站点 / Site</a> ·
+  <a href="https://github.com/HMG-AI/HMG-public/releases">📦 Releases</a> ·
+  <a href="docs/getting-started.md">📖 Docs</a> ·
+  <a href="#quick-start">🚀 Quick Start</a> ·
+  <a href="#sdks">SDKs</a>
 </p>
 
 ---
 
+## Quick Start
+
+```bash
+# Install (auto-detects OS and CPU)
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+
+# Initialize
+hmg init -g
+
+# Start daemon
+hmg daemon start
+
+# Store your first memory
+curl -s -X POST http://127.0.0.1:3000/api/memorize \
+  -H 'Content-Type: application/json' \
+  -d '{"content": "My first HMG memory!"}'
+```
+
+## 🌐 Multilingual Site
+
+**[hmg-ai.github.io/HMG-public](https://hmg-ai.github.io/HMG-public/)** — bilingual (中文/English) with one-click toggle.
+
+## 📦 Community Edition Releases
+
+Prebuilt binaries for 4 platforms, published via [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases):
+
+| Platform | Download |
+|----------|----------|
+| Linux x86_64 | `hmg-{version}-x86_64-unknown-linux-gnu.tar.gz` |
+| Linux ARM64 | `hmg-{version}-aarch64-unknown-linux-gnu.tar.gz` |
+| macOS Intel | `hmg-{version}-x86_64-apple-darwin.tar.gz` |
+| macOS Apple Silicon | `hmg-{version}-aarch64-apple-darwin.tar.gz` |
+
+Or use the one-command installer:
+```bash
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+```
+
 ## Why HMG?
 
-AI agents forget everything between sessions. They make the same mistakes, re-learn the same preferences, and lose critical context at every restart.
-
-**HMG fixes this.** It gives agents durable, queryable, governable long-term memory:
+AI agents forget everything between sessions. HMG gives agents durable, queryable, governable long-term memory:
 
 - **Memorize** decisions, root causes, constraints, and validation outcomes
 - **Recall** the right context at the right time with branch-aware scope
 - **Correct** memories when they go stale — full correction history retained
 - **Govern** sensitive knowledge — quarantine, seal, or derive lessons
 
-Unlike vector databases or simple key-value stores, HMG models memory as a **typed graph** with polarity, epistemic state, exposure governance, and correction lineage. This isn't just storage — it's knowledge management designed for agents.
-
-## Quick Start
-
-```bash
-# Install (Linux / macOS)
-curl -L https://funcode.xin/HMG/install.sh | sh
-
-# Start the memory service
-hmg daemon start
-
-# Your agent can now use memory
-hmg init --agent cursor     # Cursor
-hmg init --agent pi         # pi (Codex fork)
-hmg init --agent claude     # Claude Code
-```
-
-That's it. Your agent now has durable, cross-session memory. No database to set up, no cloud account needed.
-
-### First memory (manual test)
-
-```bash
-# Store a decision
-hmg memorize "We use PostgreSQL for the main database" --source "architecture-review"
-
-# Recall it later
-hmg recall "database choice"
-# → [0.92] We use PostgreSQL for the main database (architecture-review, 2026-05-25)
-
-# Correct when it changes
-hmg correct <atom-id> --action replace --content "We migrated to CockroachDB for horizontal scale"
-```
-
 ## Features
 
-| Feature | What it does |
-|---|---|
-| 🧠 **Typed Memory Atoms** | Store decisions, facts, observations with polarity and epistemic state |
-| 🔄 **Correction History** | Append-only corrections with full lineage — never lose why something changed |
-| 🛡️ **Governance** | Quarantine sensitive data, seal secrets, derive lessons from incidents |
-| 🌿 **Branch-Aware Scope** | Memory scoped to workspace → repository → branch — coding agents get the right context |
-| 📋 **Agent Tool Output Contract** | Structured YAML/JSON output designed for agent consumption, not humans |
-| 🔧 **8 MCP Tools** | `memory_memorize`, `memory_recall`, `memory_correct`, `memory_govern`, and more |
-| 🌍 **15 Locales** | TUI and output localization: English, Chinese, Japanese, Korean, French, German, Spanish, etc. |
-| 🔌 **7 Agent Integrations** | Cursor, pi, Claude Code, Codex, Windsurf, Aider, Continue — one-command setup |
-| 📜 **Open Protocol** | Wire-safe DTO types, OpenAPI spec, and certification suite — build your own implementation |
+| Feature | Description |
+|---------|-------------|
+| One-Shot Recall | One MCP call for complete session context |
+| Branch-Aware Scope | tenant → workspace → repository → branch |
+| Governance Control Plane | Quarantine, seal, tombstone, derive lessons |
+| Local-First | Fjall embedded storage, zero dependencies |
+| 8 MCP Tools | memorize, recall, correct, govern, history, handoff, agent_brief, stats |
+| Open Protocol | hmg-protocol (Apache-2.0) standalone crate |
 
 ## Editions
 
-| Feature | Community | Developer | Enterprise |
+| | Community (Free) | Developer ($12/mo) | Enterprise |
 |---|---|---|---|
-| **Price** | Free | $99/year (local) / $19/month (cloud) | Custom |
-| **Memory atoms** | 50,000 | Unlimited | Unlimited |
-| **Search** | Keyword | One-Shot Recall (semantic) | One-Shot Recall (semantic) |
-| **Consolidation** | — | Automated | Automated + configurable |
-| **Domain Packs** | — | software-engineering | All packs |
-| **Agents per instance** | 5 | Unlimited | Unlimited |
-| **Instances per org** | 5 | Unlimited | Unlimited |
-| **SSO / RBAC** | — | — | ✅ SAML/OIDC/SCIM |
-| **Audit export** | — | — | ✅ |
-| **SLA + support** | Community (GitHub) | Email | Dedicated |
+| Memory atoms | 50,000 | Unlimited | Unlimited |
+| Agents / instance | 5 | Unlimited | Unlimited |
+| MCP tools | 8 core | 8 + observation | All |
+| One-Shot Recall | — | ✓ | ✓ |
+| Vector search | — | ✓ | ✓ |
+| SSO / RBAC | — | — | ✓ |
+| Domain packs | — | software-engineering | All |
 
-Community Edition is genuinely useful for daily work — full correction/governance lifecycle, keyword search, all 8 MCP tools, all agent integrations. No time bombs, no feature removal.
-
-👉 **Pricing details:** https://funcode.xin/HMG/#pricing
+Single binary, runtime edition detection. Upgrade with `hmg license apply`.
 
 ## SDKs
 
 ### Python
-
 ```bash
 pip install hmg-sdk
 ```
-
 ```python
-from hmg import HMGClient
-
-client = HMGClient(base_url="http://localhost:8080")
-client.memorize("We chose PostgreSQL for the main database", source="agent")
-result = client.recall("database choice")
-for atom in result.atoms:
-    print(f"[{atom.score:.2f}] {atom.text}")
+import hmg
+client = hmg.HmgClient()
+client.memorize("key decision: use Rust for perf")
 ```
 
-📖 **Full docs:** [`sdk-python/`](sdk-python/)
-
 ### TypeScript
-
 ```bash
 npm install @hmg_ai/sdk-ts
 ```
-
 ```typescript
-import { HMGClient } from "@hmg_ai/sdk-ts";
-
-const client = new HMGClient({ baseUrl: "http://localhost:8080" });
-await client.memorize({ content: "API uses JWT tokens with 24h expiry" });
-const result = await client.recall({ query: "authentication approach" });
+import { HmgClient } from "@hmg_ai/sdk-ts";
+const client = new HmgClient();
+await client.memorize({ content: "decision noted" });
 ```
-
-📖 **Full docs:** [`sdk-ts/`](sdk-ts/)
-
-## Protocol & Specification
-
-HMG's wire protocol is open and versioned:
-
-| Artifact | Description |
-|---|---|
-| [`spec/README.md`](spec/README.md) | Normative specification — atom lifecycle, correction, governance, scope, recall views |
-| [`protocol/`](protocol/) | Wire-safe Rust DTO types (`hmg-protocol` crate) |
-| [`openapi/hmg-server.yaml`](openapi/hmg-server.yaml) | HTTP API specification (Community Edition surface) |
-| [`mcp/schemas/tools.json`](mcp/schemas/tools.json) | MCP tool JSON schemas |
-| [`certification/`](certification/) | Conformance test suite — claim "HMG Compatible" |
-
-### Implementing the protocol
-
-Anyone may implement the HMG Protocol. Third-party implementations that pass the conformance suite may claim **"HMG Compatible"**. Only approved implementations may use **"HMG Certified"**.
-
-```bash
-# Run conformance tests against your implementation
-cd certification && cargo test
-```
-
-📖 **Trademark policy:** [`docs/trademark-policy.md`](docs/trademark-policy.md)
 
 ## Documentation
 
 | Document | Description |
-|---|---|
+|----------|-------------|
 | [Getting Started](docs/getting-started.md) | Install → first memory in 5 minutes |
 | [Concepts](docs/concepts.md) | Memory atoms, correction, governance, scope |
-| [Architecture](docs/architecture.md) | System overview (high-level, no internals) |
-| [API Reference](docs/api-reference.md) | All MCP tools and HTTP endpoints |
-| [Correction & Governance](docs/correction-governance.md) | Deep dive into the correction/governance lifecycle |
-| [Upgrade Guide](docs/upgrade.md) | Upgrading from Community to Developer/Enterprise |
+| [Architecture](docs/architecture.md) | High-level system overview |
+| [API Reference](docs/api-reference.md) | MCP tools and HTTP endpoints |
 | [FAQ](docs/faq.md) | Common questions |
-| [Security](docs/security.md) | Security model and vulnerability reporting |
-| [Changelog](docs/changelog.md) | Version history |
-| [Trademark Policy](docs/trademark-policy.md) | Brand and logo usage |
+| [Upgrade Guide](docs/upgrade.md) | Upgrading to Developer/Enterprise |
+
+## Repository Structure
+
+```
+├── site/              # Multilingual static site (GitHub Pages)
+├── scripts/
+│   └── install.sh     # One-command installer
+├── docs/              # Documentation (Markdown)
+├── mcp/schemas/       # MCP tool definitions
+├── openapi/           # OpenAPI (Community Edition surface)
+├── protocol/          # hmg-protocol crate (Apache-2.0)
+├── sdk-python/        # Python SDK
+├── sdk-ts/            # TypeScript SDK
+├── certification/     # Conformance tests
+├── examples/          # Quickstart examples
+└── pi-agent/          # pi (Codex) integration
+```
 
 ## Community
 
-- **Bug reports:** [GitHub Issues](https://github.com/HMG-AI/HMG-public/issues)
-- **Feature requests:** [GitHub Discussions → Ideas](https://github.com/HMG-AI/HMG-public/discussions)
-- **Questions:** [GitHub Discussions → Q&A](https://github.com/HMG-AI/HMG-public/discussions)
-- **Security vulnerabilities:** See [`SECURITY.md`](SECURITY.md)
-
-Please read our [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
+- **Issues**: [github.com/HMG-AI/HMG-public/issues](https://github.com/HMG-AI/HMG-public/issues)
+- **Discussions**: [github.com/HMG-AI/HMG-public/discussions](https://github.com/HMG-AI/HMG-public/discussions)
+- **Security**: [github.com/HMG-AI/HMG-public/security](https://github.com/HMG-AI/HMG-public/security)
 
 ## License
 
-This repository contains artifacts under **two licenses**:
-
-| Artifact | License |
-|---|---|
-| Protocol, SDK, MCP schemas, OpenAPI, examples, certification, docs | **[Apache-2.0](LICENSE)** |
-| HMG Community Edition binary | **[Custom free-use license](LICENSE-COMMUNITY)** |
-
-HMG is a product of 武汉凡尘合创科技有限公司 (Wuhan Fanchen Hechuang Technology Co., Ltd.).
+- **Protocol & SDK artifacts**: [Apache-2.0](LICENSE)
+- **Community Edition binary**: [LICENSE-COMMUNITY](LICENSE-COMMUNITY) (free use, no redistribution)
 
 ---
 
 <p align="center">
-  <a href="https://funcode.xin/HMG/">Website</a> ·
-  <a href="https://github.com/HMG-AI/HMG/releases">Downloads</a> ·
-  <a href="https://funcode.xin/HMG/#pricing">Pricing</a> ·
-  <a href="mailto:monkseekee@gmail.com">Contact</a>
+  <a href="https://hmg-ai.github.io/HMG-public/">🌐 Site</a> ·
+  <a href="https://funcode.xin/HMG/">🏠 Website</a> ·
+  <a href="https://github.com/HMG-AI/HMG-public/releases">📦 Releases</a>
 </p>

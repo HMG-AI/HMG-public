@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HMG Docs</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+  <style>
+    :root { --bg: #0a0a0a; --bg2: #141414; --bg3: #1e1e1e; --text: #e5e5e5; --text2: #a3a3a3; --accent: #3b82f6; --border: #262626; --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.7; }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: 'JetBrains Mono', monospace; background: var(--bg3); padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.9em; }
+    pre { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1em; overflow-x: auto; font-family: monospace; font-size: 0.85em; line-height: 1.5; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5em; }
+    nav { background: var(--bg2); border-bottom: 1px solid var(--border); }
+    nav .container { display: flex; align-items: center; height: 48px; gap: 1.5em; }
+    nav .brand { font-weight: 700; color: var(--text); }
+    nav .brand span { color: var(--accent); }
+    nav a { color: var(--text2); font-size: 0.85em; }
+    .layout { display: flex; gap: 2em; padding-top: 2em; }
+    .sidebar { width: 200px; flex-shrink: 0; }
+    .sidebar h4 { font-size: 0.85em; color: var(--text2); margin-bottom: 0.5em; text-transform: uppercase; letter-spacing: 0.05em; }
+    .sidebar ul { list-style: none; }
+    .sidebar li { padding: 0.2em 0; }
+    .sidebar a { color: var(--text2); font-size: 0.85em; }
+    .sidebar a:hover { color: var(--text); }
+    .sidebar a.active { color: var(--accent); }
+    .content { flex: 1; min-width: 0; }
+    .content h1 { font-size: 1.8em; margin-bottom: 0.5em; }
+    .content h2 { font-size: 1.4em; margin-top: 1.5em; margin-bottom: 0.5em; }
+    .content p { margin: 0.5em 0; }
+    .content ul, .content ol { margin: 0.5em 0 0.5em 1.5em; }
+    .content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .content th, .content td { border: 1px solid var(--border); padding: 0.5em 0.8em; text-align: left; font-size: 0.9em; }
+    .content th { background: var(--bg3); }
+    .content blockquote { border-left: 3px solid var(--accent); padding-left: 1em; color: var(--text2); margin: 1em 0; }
+    @media (max-width: 720px) { .sidebar { display: none; } .layout { padding-top: 1em; } }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <a href="../" class="brand"><span>HMG</span> Docs</a>
+    <a href="../">← <span id="back-home">Back</span></a>
+  </div>
+</nav>
+<div class="container">
+  <div class="layout">
+    <div class="sidebar">
+      <h4>Getting Started</h4>
+      <ul>
+        <li><a href="?page=getting-started" id="nav-getting-started">Getting Started</a></li>
+        <li><a href="?page=concepts" id="nav-concepts">Concepts</a></li>
+        <li><a href="?page=architecture" id="nav-architecture">Architecture</a></li>
+        <li><a href="?page=faq" id="nav-faq">FAQ</a></li>
+      </ul>
+      <h4 style="margin-top: 1em;">Reference</h4>
+      <ul>
+        <li><a href="?page=api-reference" id="nav-api-reference">API Reference</a></li>
+        <li><a href="?page=correction-governance" id="nav-correction-governance">Correction & Governance</a></li>
+        <li><a href="?page=upgrade" id="nav-upgrade">Upgrade Guide</a></li>
+        <li><a href="?page=security" id="nav-security">Security</a></li>
+      </ul>
+      <h4 style="margin-top: 1em;">Legal</h4>
+      <ul>
+        <li><a href="?page=trademark-policy" id="nav-trademark-policy">Trademark Policy</a></li>
+      </ul>
+    </div>
+    <div class="content" id="doc-content">
+      <p>Loading...</p>
+    </div>
+  </div>
+</div>
+<script>
+const BASE = 'https://raw.githubusercontent.com/HMG-AI/HMG-public/main/docs/';
+
+async function loadDoc(page) {
+  if (!page) page = 'getting-started';
+  const url = BASE + page + '.md';
+  try {
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error(resp.status);
+    const md = await resp.text();
+    document.getElementById('doc-content').innerHTML = renderMd(md);
+    document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+    const nav = document.getElementById('nav-' + page);
+    if (nav) nav.classList.add('active');
+    window.history.replaceState({}, '', '?page=' + page);
+  } catch (e) {
+    document.getElementById('doc-content').innerHTML =
+      '<h1>Document not found</h1><p>Could not load <code>' + page + '.md</code>. <a href="https://github.com/HMG-AI/HMG-public/tree/main/docs">View on GitHub</a></p>';
+  }
+}
+
+function renderMd(md) {
+  let html = md
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/^\> (.+)$/gm, '<blockquote>$1</blockquote>')
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/^(\d+)\. (.+)$/gm, '<li>$2</li>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/\n{2,}/g, '</p><p>')
+    .replace(/\n/g, '<br>');
+  return '<p>' + html + '</p>';
+}
+
+const params = new URLSearchParams(window.location.search);
+loadDoc(params.get('page'));
+</script>
+</body>
+</html>
