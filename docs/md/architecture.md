@@ -2,6 +2,56 @@
 
 This document provides a high-level overview of how HMG works. It describes the system at a conceptual level — no proprietary implementation details.
 
+## Visual Tour — TUI
+
+HMG includes a built-in terminal UI (TUI) for browsing, searching, and managing your memory store.
+
+Launch it with:
+
+```bash
+hmg tui
+```
+
+![HMG TUI — Dashboard](../img/tui-dashboard.png)
+
+The Dashboard shows atom count, index status, daemon health, and recommended next actions.
+
+### Doctor Screen
+
+Check all integrations and system readiness:
+
+![HMG TUI — Doctor](../img/tui-doctor.png)
+
+### Recall Screen
+
+Search your memory and view projected results:
+
+![HMG TUI — Recall](../img/tui-recall.png)
+
+### Timeline Screen
+
+Browse memory events chronologically:
+
+![HMG TUI — Timeline](../img/tui-timeline.png)
+
+### Integrations Screen
+
+See which agents are detected and configured:
+
+![HMG TUI — Integrations](../img/tui-integrations.png)
+
+### Store Screen
+
+Monitor daemon status, storage paths, and snapshot versions:
+
+![HMG TUI — Store](../img/tui-daemon_store.png)
+
+### Settings Screen
+
+Configure language (15 locales) and theme:
+
+![HMG TUI — Settings](../img/tui-settings.png)
+
 ## System Overview
 
 ```
@@ -44,8 +94,9 @@ HMG provides three access surfaces:
 | **MCP** | Model Context Protocol | Agent integration (primary) |
 | **HTTP API** | REST + JSON | SDK integration, custom tools |
 | **CLI** | Terminal (`hmg` command) | Administration, debugging, scripting |
+| **TUI** | Interactive terminal (`hmg tui`) | Visual browsing and management |
 
-All three surfaces expose the same capabilities — store memories, recall, correct, and govern.
+All four surfaces expose the same capabilities — store memories, recall, correct, and govern.
 
 ### Memory Engine
 
@@ -83,6 +134,8 @@ Agent → "Remember this: ..." → HMG
   → Return atom ID + acknowledgment
 ```
 
+![Agent calling memory_memorize](../img/agent-memorize.png)
+
 ### Recall
 
 ```
@@ -96,6 +149,8 @@ Agent → "What about database?" → HMG
   → Return structured result + diagnostics
 ```
 
+![Agent calling memory_recall](../img/agent-recall.png)
+
 ### Correct
 
 ```
@@ -107,6 +162,8 @@ Agent → "That's wrong, it's actually ..." → HMG
   → Return correction confirmation
 ```
 
+![Agent calling memory_correct](../img/agent-correct.png)
+
 ### Govern
 
 ```
@@ -117,6 +174,8 @@ Admin → "Seal this sensitive memory" → HMG
   → Persist governance record
   → Original content becomes irretrievable (sealed)
 ```
+
+![Agent calling memory_govern](../img/agent-govern.png)
 
 ## Storage
 

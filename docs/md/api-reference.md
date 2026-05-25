@@ -15,7 +15,7 @@ Store durable information.
 {
   "content": "Text to memorize",
   "source": "optional-source-label",
-  "modality": "text",  // text | code | dialogue | observation
+  "modality": "text",
   "context": {
     "tenant_id": "tenant-acme",
     "workspace": "platform",
@@ -30,11 +30,13 @@ Response:
 ```json
 {
   "success": true,
-  "added_atom_count": 2,
+  "added_atom_count": 1,
   "added_atoms": ["01KSEFSC29QX8RQ78N3110ATC9"],
-  "snapshot_version": 905
+  "snapshot_version": 8
 }
 ```
+
+![Agent calling memory_memorize](../img/agent-memorize.png)
 
 ### `memory_recall`
 
@@ -53,6 +55,8 @@ Response profiles: `compact` (default), `summary`, `full`, `debug`.
 
 Output formats: `yaml` (default), `markdown`, `json`.
 
+![Agent calling memory_recall](../img/agent-recall.png)
+
 ### `memory_correct`
 
 Correct, negate, confirm, demote, or replace an atom.
@@ -68,6 +72,8 @@ Correct, negate, confirm, demote, or replace an atom.
 
 Actions: `negate`, `confirm_actual`, `confirm_necessary`, `demote`, `replace`.
 
+![Agent calling memory_correct](../img/agent-correct.png)
+
 ### `memory_govern`
 
 Apply governance: quarantine, seal, tombstone, or derive a lesson.
@@ -81,6 +87,8 @@ Apply governance: quarantine, seal, tombstone, or derive a lesson.
 ```
 
 Actions: `quarantine`, `seal`, `tombstone`, `derive_lesson`.
+
+![Agent calling memory_govern](../img/agent-govern.png)
 
 ### `memory_history`
 
@@ -114,6 +122,8 @@ Get a compact, branch-aware brief at task start.
 }
 ```
 
+![Agent calling memory_agent_brief](../img/agent-brief.png)
+
 ### `memory_stats`
 
 Get graph and index statistics.
@@ -121,6 +131,8 @@ Get graph and index statistics.
 ```json
 {}
 ```
+
+![Agent calling memory_stats](../img/agent-stats.png)
 
 ## HTTP API
 
@@ -177,7 +189,7 @@ All responses follow a consistent structure:
 {
   "success": true,
   "snapshot_version": 905,
-  ...
+  "..."
 }
 ```
 

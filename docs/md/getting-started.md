@@ -28,6 +28,8 @@ hmg --version
 # hmg 0.9.2-community
 ```
 
+![hmg --version output](../img/cli-version.png)
+
 ## Start the Memory Service
 
 ```bash
@@ -36,6 +38,8 @@ hmg daemon start
 
 The daemon starts a local MCP server at `~/.local/share/hmg/stores/default` by default.
 No data leaves your machine.
+
+![hmg daemon status](../img/cli-daemon.png)
 
 ## Connect Your Agent
 
@@ -51,6 +55,8 @@ hmg init --agent cursor
 ```bash
 hmg init --agent codex
 ```
+
+![hmg init output](../img/cli-init.png)
 
 ### Pi
 
@@ -72,6 +78,24 @@ HMG exposes a standard MCP server over stdio. Configure your client to run:
   }
 }
 ```
+
+## Verify Your Setup
+
+```bash
+hmg doctor
+```
+
+`hmg doctor` checks all integrations, daemon status, and MCP readiness:
+
+![hmg doctor output](../img/cli-doctor.png)
+
+## Detect Available Agents
+
+```bash
+hmg integrations detect
+```
+
+![hmg integrations detect](../img/cli-integrations.png)
 
 ## First Memory
 
@@ -97,6 +121,20 @@ Use any MCP tool to store and retrieve memories:
 }
 ```
 
+![Agent calling memory_memorize](../img/agent-memorize.png)
+
+![Agent calling memory_recall](../img/agent-recall.png)
+
+## Edition and License
+
+Check your current edition and feature limits:
+
+```bash
+hmg license status
+```
+
+![hmg license status](../img/cli-license.png)
+
 ## What's Available in Community Edition
 
 | Feature | Available |
@@ -116,7 +154,7 @@ Use any MCP tool to store and retrieve memories:
 ## Next Steps
 
 - [Concepts](concepts.md) — understand memory atoms, correction, governance, scope
-- [Architecture](architecture.md) — how HMG works at a high level
+- [Architecture](architecture.md) — how HMG works, plus TUI visual tour
 - [API Reference](api-reference.md) — all MCP tools and HTTP endpoints
 - [Correction and Governance](correction-governance.md)
 - [FAQ](faq.md)

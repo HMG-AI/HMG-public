@@ -77,6 +77,9 @@
     .content th,.content td{border:1px solid var(--border);padding:.5em .8em;text-align:left}
     .content th{background:var(--bg3);color:var(--text2);font-weight:600}
     .content blockquote{border-left:3px solid var(--accent);padding:.5em 1em;margin:1em 0;color:var(--text2);background:var(--bg2);border-radius:0 var(--radius) var(--radius) 0}
+    .content .doc-img{width:100%;border-radius:var(--radius);border:1px solid var(--border);margin:.8em 0;box-shadow:var(--shadow)}
+    .content figure{margin:1.2em 0;padding:0}
+    .content figcaption{font-size:.82em;color:var(--text3);text-align:center;margin-top:.4em}
     .content hr{border:none;border-top:1px solid var(--border);margin:2em 0}
     .content strong{font-weight:600}
     .content code{color:var(--accent2)}
@@ -365,6 +368,11 @@ function mdToHtml(md) {
     const hMatch = line.match(/^(#{1,4})\s+(.+)$/);
     if (hMatch) { closeList(); html+=`<h${hMatch[1].length}>${inlineMd(hMatch[2])}</h${hMatch[1].length}>`; continue; }
     if (line.startsWith('> ')) { closeList(); html+='<blockquote>'+inlineMd(line.slice(2))+'</blockquote>'; continue; }
+    // Image: ![alt](url)
+    const imgMatch = line.match(/^!?\[([^\]]*)\]\(([^)]+)\)\s*$/);
+    if (imgMatch) { closeList(); html+=`<figure><img class="doc-img" src="${imgMatch[2]}" alt="${escHtml(imgMatch[1])}" loading="lazy"><figcaption>${escHtml(imgMatch[1])}</figcaption></figure>`; continue; }
+    // Inline images: ![alt](url) within text
+    line = line.replace(/!?\[([^\]]*)\]\(([^)]+)\)/g, (m,alt,url)=>`<img class="doc-img" src="${url}" alt="${escHtml(alt)}" loading="lazy" style="max-width:100%">`);
     if (/^---+$/.test(line.trim())) { closeList(); html+='<hr>'; continue; }
     const ulMatch = line.match(/^[-*]\s+(.+)$/);
     if (ulMatch) { if (!inList||listType!=='ul'){closeList();html+='<ul>';inList=true;listType='ul';} html+='<li>'+inlineMd(ulMatch[1])+'</li>'; continue; }
