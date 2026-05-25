@@ -59,7 +59,7 @@ Original atom (positive)
 | `demote` | Lowers the epistemic status (e.g., confirmed → deprecated) |
 | `replace` | Creates a new atom with updated content, supersedes the old one |
 
-![Agent calling memory_correct (replace)](img/agent-correct.png)
+![Agent calling memory_correct (replace)](../img/agent-correct.png)
 
 ## Governance Flow
 
@@ -82,7 +82,7 @@ any → derive_lesson (replace payload with safe summary)
 | `tombstone` | quarantined → tombstoned | Delete from recall |
 | `derive_lesson` | any → lesson | Extract safe lesson, remove sensitive payload |
 
-![Agent calling memory_govern (quarantine)](img/agent-govern.png)
+![Agent calling memory_govern (quarantine)](../img/agent-govern.png)
 
 ## Snapshot History
 
