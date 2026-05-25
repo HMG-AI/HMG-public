@@ -21,7 +21,7 @@
   <link rel="alternate" hreflang="pt-BR" href="https://hmg-ai.github.io/HMG-public/?lang=pt-BR">
   <link rel="alternate" hreflang="ru" href="https://hmg-ai.github.io/HMG-public/?lang=ru">
   <link rel="alternate" hreflang="x-default" href="https://hmg-ai.github.io/HMG-public/">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%233b82f6'/><stop offset='100%25' stop-color='%238b5cf6'/></linearGradient></defs><circle cx='16' cy='16' r='15' fill='url(%23g)'/><path d='M16 8c-1.5 0-2.8.7-3.5 1.8S11.2 12.3 11.2 14c0 2.2 1.1 3.7 2.2 4.8V21h5.2v-2.2c1.1-1.1 2.2-2.6 2.2-4.8 0-1.7-.4-3.2-1.1-4.2S17.5 8 16 8z' fill='white'/></svg>">
   <style>
     :root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--bg4:#222;--text:#f0f0f0;--text2:#999;--text3:#666;--accent:#3b82f6;--accent2:#60a5fa;--accent3:#93c5fd;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--purple:#8b5cf6;--border:#262626;--border2:#333;--mono:'SF Mono','JetBrains Mono','Fira Code',monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.4)}
     [data-theme="light"]{--bg:#ffffff;--bg2:#f5f5f7;--bg3:#e8e8ed;--bg4:#d8d8dd;--text:#1d1d1f;--text2:#6e6e73;--text3:#86868b;--accent:#0066cc;--accent2:#0071e3;--accent3:#003d7a;--green:#28a745;--red:#d73a49;--amber:#e36209;--purple:#6f42c1;--border:#d2d2d7;--border2:#b0b0b5;--shadow:0 4px 24px rgba(0,0,0,.08)}
@@ -186,7 +186,7 @@
 
 <nav>
   <div class="container">
-    <a href="." class="brand"><span class="logo">🧠</span> HMG</a>
+    <a href="." class="brand"><svg class="logo-icon" viewBox="0 0 32 32"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs><circle cx="16" cy="16" r="15" fill="url(#lg)"/><path d="M16 7c-1.8 0-3.2.9-4.1 2.2S10.5 12.2 10.5 14c0 2.7 1.4 4.5 2.7 5.8V22.5h5.6v-2.7c1.3-1.3 2.7-3.1 2.7-5.8 0-1.8-.6-3.5-1.4-4.8S17.8 7 16 7zm-1.8 16.5h3.6v1.2c0 .7-.5 1.3-1.2 1.3h-1.2c-.7 0-1.2-.6-1.2-1.3v-1.2z" fill="white"/></svg> HMG</a>
     <div class="nav-links" id="navLinks">
       <a href="#features" data-i18n="nav_features">Features</a>
       <a href="#quickstart" data-i18n="nav_quickstart">Quick Start</a>
@@ -195,15 +195,15 @@
       <a href="https://github.com/HMG-AI/HMG-public">GitHub</a>
     </div>
     <div style="display:flex;align-items:center;gap:.6em">
-      <button class="lang-btn" onclick="toggleThemeSite()" id="themeBtn" title="Toggle theme" style="background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:.3em .5em;border-radius:6px;cursor:pointer;font-size:.9em">🌙</button>
+      <button class="lang-btn" onclick="toggleThemeSite()" id="themeBtn" title="Toggle theme" style="background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:.3em .5em;border-radius:6px;cursor:pointer;font-size:.9em;line-height:1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
       <div class="lang-picker">
         <button class="lang-btn" onclick="toggleLangMenu()" id="langBtn">
-          <span id="langLabel">🌐 EN</span>
+          <span id="langLabel">EN</span>
           <span class="arrow">▼</span>
         </button>
         <div class="lang-dropdown" id="langDropdown"></div>
       </div>
-      <button class="mobile-toggle" onclick="toggleMobileMenu()">☰</button>
+      <button class="mobile-toggle" onclick="toggleMobileMenu()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
     </div>
   </div>
 </nav>
@@ -229,7 +229,7 @@
     </div>
     <div class="badges">
       <span class="badge">Apache-2.0 Protocol</span>
-      <span class="badge">Rust 🦀</span>
+      <span class="badge">Rust</span>
       <span class="badge">Linux · macOS</span>
       <span class="badge">MCP Compatible</span>
       <span class="badge">10 Languages</span>
@@ -252,19 +252,19 @@
       <div class="section-divider"></div>
     </div>
     <div class="feature-grid">
-      <div class="feature-item"><div class="ficon">💾</div><div>
+      <div class="feature-item"><div class="ficon"><svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg></div><div>
         <h4 data-i18n="why_f1t">Memorize</h4>
         <p data-i18n="why_f1d">Decisions, root causes, constraints — persisted as typed graph atoms with polarity, epistemic state, and governance tags</p>
       </div></div>
-      <div class="feature-item"><div class="ficon">🔍</div><div>
+      <div class="feature-item"><div class="ficon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div>
         <h4 data-i18n="why_f2t">Recall</h4>
         <p data-i18n="why_f2d">Semantic + keyword hybrid retrieval, graph diffusion projection, branch-aware scope — the right context at the right time</p>
       </div></div>
-      <div class="feature-item"><div class="ficon">✏️</div><div>
+      <div class="feature-item"><div class="ficon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div><div>
         <h4 data-i18n="why_f3t">Correct</h4>
         <p data-i18n="why_f3d">Full correction when memories go stale — negate, confirm, demote, or replace. All correction history permanently retained</p>
       </div></div>
-      <div class="feature-item"><div class="ficon">🔒</div><div>
+      <div class="feature-item"><div class="ficon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div>
         <h4 data-i18n="why_f4t">Govern</h4>
         <p data-i18n="why_f4d">Sensitive knowledge governance — quarantine, seal, or derive lessons. Control what gets remembered and what gets forgotten</p>
       </div></div>
@@ -279,12 +279,12 @@
       <div class="section-divider"></div>
     </div>
     <div class="grid grid-3">
-      <div class="card"><div class="icon">🧠</div><h3 data-i18n="feat_1t">One-Shot Recall</h3><p data-i18n="feat_1d">One MCP call for complete context: current status, prior decisions, unresolved risks, next steps.</p></div>
-      <div class="card"><div class="icon">🔀</div><h3 data-i18n="feat_2t">Branch-Aware Scope</h3><p data-i18n="feat_2d">tenant → workspace → repository → branch. Memories isolated per branch, traceable on merge.</p></div>
-      <div class="card"><div class="icon">🛡️</div><h3 data-i18n="feat_3t">Governance Control Plane</h3><p data-i18n="feat_3d">Quarantine, seal, tombstone, derive lessons. Policy tags and audit context throughout.</p></div>
-      <div class="card"><div class="icon">⚡</div><h3 data-i18n="feat_4t">Local-First</h3><p data-i18n="feat_4d">Fjall embedded storage, zero external dependencies. Data stays local, works offline.</p></div>
-      <div class="card"><div class="icon">🔌</div><h3 data-i18n="feat_5t">8 MCP Tools</h3><p data-i18n="feat_5d">memorize, recall, correct, govern, history, handoff, agent_brief, stats. Plug and play.</p></div>
-      <div class="card"><div class="icon">📐</div><h3 data-i18n="feat_6t">Open Protocol</h3><p data-i18n="feat_6d">hmg-protocol (Apache-2.0) standalone crate defines types and serialization for all memory operations.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5V12h3a3 3 0 0 1 3 3v1.5a2.5 2.5 0 0 1-2.5 2.5H17v2H7v-2H6.5A2.5 2.5 0 0 1 4 16.5V15a3 3 0 0 1 3-3h3V9.5A4 4 0 0 1 8 6a4 4 0 0 1 4-4z" fill="currentColor" stroke="none"/></svg><h3 data-i18n="feat_1t">One-Shot Recall</h3><p data-i18n="feat_1d">One MCP call for complete context: current status, prior decisions, unresolved risks, next steps.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg><h3 data-i18n="feat_2t">Branch-Aware Scope</h3><p data-i18n="feat_2d">tenant → workspace → repository → branch. Memories isolated per branch, traceable on merge.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3 data-i18n="feat_3t">Governance Control Plane</h3><p data-i18n="feat_3d">Quarantine, seal, tombstone, derive lessons. Policy tags and audit context throughout.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor" stroke="none"/></svg><h3 data-i18n="feat_4t">Local-First</h3><p data-i18n="feat_4d">Fjall embedded storage, zero external dependencies. Data stays local, works offline.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M18 16l4-4-4-4"/><path d="M6 8l-4 4 4 4"/><path d="M14.5 4l-5 16"/></svg><h3 data-i18n="feat_5t">8 MCP Tools</h3><p data-i18n="feat_5d">memorize, recall, correct, govern, history, handoff, agent_brief, stats. Plug and play.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><h3 data-i18n="feat_6t">Open Protocol</h3><p data-i18n="feat_6d">hmg-protocol (Apache-2.0) standalone crate defines types and serialization for all memory operations.</p></div>
     </div>
   </section>
 
@@ -309,7 +309,7 @@
         <div class="tab-panel active" id="tab-cli">
           <pre><code><span style="color:var(--green)">$</span> curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 <span style="color:var(--text2)">  Installing HMG v0.9.2 for x86_64-unknown-linux-gnu...</span>
-<span style="color:var(--green)">  ✅ HMG v0.9.2 installed to ~/.local/bin</span>
+<span style="color:var(--green)">  <svg style="width:14px;height:14px;vertical-align:middle;margin-right:.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>HMG v0.9.2 installed to ~/.local/bin</span>
 
 <span style="color:var(--green)">$</span> hmg init -g
 <span style="color:var(--green)">$</span> hmg daemon start
@@ -418,7 +418,7 @@
     </div>
     <div class="grid grid-2">
       <div class="card">
-        <h3>🐍 Python <code>hmg-sdk</code></h3>
+        <h3><svg style="width:18px;height:18px;vertical-align:middle;margin-right:.3em" viewBox="0 0 24 24"><defs><linearGradient id="pyg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#306998"/><stop offset="100%" stop-color="#FFD43B"/></linearGradient></defs><path d="M12 2C8 2 8 4 8 4v3h4v1H6s-3-.2-3 4 2.6 4.2 2.6 4.2H8v-2s-.1-2.6 2.6-2.6h4.5s2.5 0 2.5-2.5V5s.4-3-5.6-3zm-2 1.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z" fill="#306998" stroke="none"/><path d="M12 22c4 0 4-2 4-2v-3h-4v-1h6s3 .2 3-4-2.6-4.2-2.6-4.2H16v2s.1 2.6-2.6 2.6H9s-2.5 0-2.5 2.5V19s-.4 3 5.5 3zm2-1.5a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5z" fill="#FFD43B" stroke="none"/></svg>Python <code>hmg-sdk</code></h3>
         <pre><code>pip install hmg-sdk
 
 import hmg
@@ -426,7 +426,7 @@ client = hmg.HmgClient()
 client.memorize("key decision: use Rust")</code></pre>
       </div>
       <div class="card">
-        <h3>🟦 TypeScript <code>@hmg_ai/sdk-ts</code></h3>
+        <h3><svg style="width:18px;height:18px;vertical-align:middle;margin-right:.3em" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#3178c6" stroke="none"/><path d="M15.2 16.8v2.1c.4.2.9.4 1.4.5.6.1 1.2.2 1.8.2.6 0 1.2-.1 1.7-.2.5-.2.9-.4 1.3-.7.4-.3.6-.7.8-1.1.2-.4.3-1 .3-1.5 0-.4 0-.7-.1-1-.1-.3-.2-.6-.4-.8-.2-.2-.4-.5-.6-.7-.2-.2-.5-.4-.9-.6-.3-.2-.6-.3-1-.5-.3-.1-.5-.2-.8-.3-.2-.1-.4-.2-.6-.3-.2-.1-.3-.2-.4-.3-.1-.1-.2-.3-.2-.4 0-.1 0-.3.1-.4.1-.1.2-.2.3-.3.2-.1.3-.1.5-.2s.4-.1.7-.1c.4 0 .8 0 1.1.1.3.1.6.2.9.3.3.1.5.3.7.4v-2c-.4-.1-.7-.2-1.1-.3-.4-.1-.9-.1-1.4-.1-.6 0-1.1.1-1.6.2s-.9.3-1.2.6c-.3.3-.6.6-.8 1-.2.4-.3.8-.3 1.3 0 .7.2 1.2.6 1.7.4.5 1 .8 1.7 1.1.3.1.6.2.8.3.3.1.5.2.7.3.2.1.3.3.4.4.1.2.2.3.2.5s-.1.4-.2.5c-.1.2-.2.3-.4.3-.2.1-.4.2-.6.2-.3.1-.5.1-.8.1-.5 0-1-.1-1.4-.2-.4-.1-.8-.3-1.1-.6zM10.5 8H8v11h2.5V8z" fill="white" stroke="none"/></svg>TypeScript <code>@hmg_ai/sdk-ts</code></h3>
         <pre><code>npm install @hmg_ai/sdk-ts
 
 import { HmgClient } from "@hmg_ai/sdk-ts";
@@ -444,9 +444,9 @@ await client.memorize({content: "noted"});</code></pre>
       <div class="section-divider"></div>
     </div>
     <div class="grid grid-3">
-      <div class="card"><h3>📄 <span data-i18n="comm_1t">Open Protocol</span></h3><p data-i18n="comm_1d"><code>hmg-protocol</code> (Apache-2.0) defines types and serialization for memory atoms, corrections, governance, and scope.</p></div>
-      <div class="card"><h3>🤝 <span data-i18n="comm_2t">Contributing</span></h3><p data-i18n="comm_2d">Contributions welcome! Read CONTRIBUTING.md, submit a PR or Issue.</p></div>
-      <div class="card"><h3>🔒 <span data-i18n="comm_3t">Security</span></h3><p data-i18n="comm_3d">Found a vulnerability? Disclose privately via GitHub Security Advisories. 48-hour response commitment.</p></div>
+      <div class="card"><h3><svg style="width:18px;height:18px;vertical-align:middle;margin-right:.3em" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> <span data-i18n="comm_1t">Open Protocol</span></h3><p data-i18n="comm_1d"><code>hmg-protocol</code> (Apache-2.0) defines types and serialization for memory atoms, corrections, governance, and scope.</p></div>
+      <div class="card"><h3><svg style="width:18px;height:18px;vertical-align:middle;margin-right:.3em" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> <span data-i18n="comm_2t">Contributing</span></h3><p data-i18n="comm_2d">Contributions welcome! Read CONTRIBUTING.md, submit a PR or Issue.</p></div>
+      <div class="card"><h3><svg style="width:18px;height:18px;vertical-align:middle;margin-right:.3em" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <span data-i18n="comm_3t">Security</span></h3><p data-i18n="comm_3d">Found a vulnerability? Disclose privately via GitHub Security Advisories. 48-hour response commitment.</p></div>
     </div>
   </section>
 </div>
@@ -499,16 +499,16 @@ await client.memorize({content: "noted"});</code></pre>
 // en, zh-CN, zh-TW, ja, ko, fr, de, es, pt-BR, ru
 // ═══════════════════════════════════════════════════════════
 const LANGS = {
-  'en':    {name:'English',       flag:'🇺🇸', lc:'en'},
-  'zh-CN': {name:'简体中文',      flag:'🇨🇳', lc:'zh-CN'},
-  'zh-TW': {name:'繁體中文',      flag:'🇹🇼', lc:'zh-TW'},
-  'ja':    {name:'日本語',        flag:'🇯🇵', lc:'ja'},
-  'ko':    {name:'한국어',        flag:'🇰🇷', lc:'ko'},
-  'fr':    {name:'Français',      flag:'🇫🇷', lc:'fr'},
-  'de':    {name:'Deutsch',       flag:'🇩🇪', lc:'de'},
-  'es':    {name:'Español',       flag:'🇪🇸', lc:'es'},
-  'pt-BR': {name:'Português (BR)',flag:'🇧🇷', lc:'pt-BR'},
-  'ru':    {name:'Русский',       flag:'🇷🇺', lc:'ru'},
+  'en':    {name:'English',       lc:'en'},
+  'zh-CN': {name:'简体中文',      lc:'zh-CN'},
+  'zh-TW': {name:'繁體中文',      lc:'zh-TW'},
+  'ja':    {name:'日本語',        lc:'ja'},
+  'ko':    {name:'한국어',        lc:'ko'},
+  'fr':    {name:'Français',      lc:'fr'},
+  'de':    {name:'Deutsch',       lc:'de'},
+  'es':    {name:'Español',       lc:'es'},
+  'pt-BR': {name:'Português (BR)',lc:'pt-BR'},
+  'ru':    {name:'Русский',       lc:'ru'},
 };
 
 // ─── Translations ───
@@ -914,7 +914,7 @@ function applyLang() {
     if (dict[k]) el.innerHTML = dict[k];
   });
   document.documentElement.lang = LANGS[lang]?.lc || 'en';
-  document.getElementById('langLabel').textContent = LANGS[lang]?.flag + ' ' + (LANGS[lang]?.name || 'EN');
+  document.getElementById('langLabel').textContent = LANGS[lang]?.name || 'EN';
   localStorage.setItem('hmg-lang', lang);
   // Update URL param without reload
   const url = new URL(location.href);
@@ -928,7 +928,7 @@ function buildLangMenu() {
   for (const [code, info] of Object.entries(LANGS)) {
     const a = document.createElement('a');
     a.href = '#';
-    a.textContent = info.flag + ' ' + info.name;
+    a.textContent = info.name;
     if (code === lang) a.className = 'current';
     a.onclick = (e) => { e.preventDefault(); lang = code; applyLang(); closeLangMenu(); };
     dd.appendChild(a);
@@ -960,7 +960,7 @@ function copyInstall() {
   const cmd = document.getElementById('installCmd').textContent;
   navigator.clipboard.writeText(cmd).then(() => {
     const btn = document.querySelector('.copy-btn');
-    btn.textContent = '✓';
+    btn.innerHTML = '<svg style="width:14px;height:14px;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
     btn.classList.add('copied');
     setTimeout(() => { btn.textContent = T[lang]?.copy || 'Copy'; btn.classList.remove('copied'); }, 2000);
   });
@@ -968,7 +968,7 @@ function copyInstall() {
 
 // Init
 function getSiteTheme(){const s=localStorage.getItem('hmg-theme');if(s)return s;return window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark'}
-function applySiteTheme(){const t=getSiteTheme();document.documentElement.setAttribute('data-theme',t);document.getElementById('themeBtn').textContent=t==='light'?'☀️':'🌙'}
+function applySiteTheme(){const t=getSiteTheme();document.documentElement.setAttribute('data-theme',t);const btn=document.getElementById('themeBtn');btn.innerHTML=t==='light'?'<svg class="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'}
 function toggleThemeSite(){const c=getSiteTheme();localStorage.setItem('hmg-theme',c==='dark'?'light':'dark');applySiteTheme()}
 applySiteTheme();
 buildLangMenu();
