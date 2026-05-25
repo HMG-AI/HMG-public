@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question
+    url: https://github.com/HMG-AI/HMG-public/discussions/categories/q-a
+    about: Ask questions about HMG usage, configuration, or integration
+  - name: Idea
+    url: https://github.com/HMG-AI/HMG-public/discussions/categories/ideas
+    about: Share ideas for HMG improvements or new features
+  - name: Show & Tell
+    url: https://github.com/HMG-AI/HMG-public/discussions/categories/show-and-tell
+    about: Show off what you built with HMG

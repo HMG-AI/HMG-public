@@ -1,0 +1,92 @@
+[
+  {
+    "id": "01KSD4ZQFXV4G3W7FY7H9KH2V9",
+    "content": "We chose PostgreSQL for the main database because of JSON support",
+    "polarity": "positive",
+    "epistemic": "actual",
+    "modality": "text",
+    "category": "decision",
+    "source": "agent",
+    "created_at": "2026-05-24T12:00:00Z",
+    "scope": {
+      "tenant_id": "demo-tenant",
+      "path": [
+        {"kind": "workspace", "id": "platform"},
+        {"kind": "repository", "id": "demo-app"},
+        {"kind": "branch", "id": "main"}
+      ]
+    }
+  },
+  {
+    "id": "01KSD4ZQFXV4G3W7FY7H9KH2VA0",
+    "content": "API uses JWT tokens with 24h expiry, refresh tokens with 7d expiry",
+    "polarity": "positive",
+    "epistemic": "actual",
+    "modality": "code",
+    "category": "decision",
+    "source": "agent",
+    "created_at": "2026-05-24T12:05:00Z",
+    "scope": {
+      "tenant_id": "demo-tenant",
+      "path": [
+        {"kind": "workspace", "id": "platform"},
+        {"kind": "repository", "id": "demo-app"},
+        {"kind": "branch", "id": "main"}
+      ]
+    }
+  },
+  {
+    "id": "01KSD4ZQFXV4G3W7FY7H9KH2VA1",
+    "content": "Bug #42: Race condition in concurrent write path, fixed with mutex in v0.8.1",
+    "polarity": "positive",
+    "epistemic": "actual",
+    "modality": "text",
+    "category": "error",
+    "source": "agent",
+    "created_at": "2026-05-24T12:10:00Z",
+    "scope": {
+      "tenant_id": "demo-tenant",
+      "path": [
+        {"kind": "workspace", "id": "platform"},
+        {"kind": "repository", "id": "demo-app"},
+        {"kind": "branch", "id": "bugfix/42-race-condition"}
+      ]
+    }
+  },
+  {
+    "id": "01KSD4ZQFXV4G3W7FY7H9KH2VA2",
+    "content": "Deprecated: Using MD5 for content hashing. Migrated to BLAKE3 in v0.9.0",
+    "polarity": "negative",
+    "epistemic": "actual",
+    "modality": "code",
+    "category": "decision",
+    "source": "agent",
+    "created_at": "2026-05-24T12:15:00Z",
+    "scope": {
+      "tenant_id": "demo-tenant",
+      "path": [
+        {"kind": "workspace", "id": "platform"},
+        {"kind": "repository", "id": "demo-app"},
+        {"kind": "branch", "id": "main"}
+      ]
+    }
+  },
+  {
+    "id": "01KSD4ZQFXV4G3W7FY7H9KH2VA3",
+    "content": "Deployment uses blue-green strategy with 5-minute health check window",
+    "polarity": "positive",
+    "epistemic": "actual",
+    "modality": "text",
+    "category": "decision",
+    "source": "agent",
+    "created_at": "2026-05-24T12:20:00Z",
+    "scope": {
+      "tenant_id": "demo-tenant",
+      "path": [
+        {"kind": "workspace", "id": "platform"},
+        {"kind": "repository", "id": "demo-app"},
+        {"kind": "branch", "id": "main"}
+      ]
+    }
+  }
+]

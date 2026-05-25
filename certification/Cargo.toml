@@ -1,0 +1,13 @@
+[package]
+name = "hmg-certification"
+version = "0.9.2"
+edition = "2021"
+license = "Apache-2.0"
+description = "Conformance test suite for HMG-compatible implementations"
+repository = "https://github.com/HMG-AI/HMG-public"
+
+[workspace]
+
+[dependencies]
+hmg-protocol = { path = "../protocol" }
+serde_json = "1"

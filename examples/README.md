@@ -1,48 +1,85 @@
 # HMG Examples
 
-Integration quickstarts and synthetic data for HMG.
+Integration quickstarts and synthetic data for HMG Community Edition.
 
-## Quickstart
+## Quickstarts
 
-### TypeScript
+| Language | File | Description |
+|---|---|---|
+| Python | [`quickstart.py`](quickstart.py) | Memorize, recall, correct, govern via Python SDK |
+| TypeScript | [`quickstart.ts`](quickstart.ts) | Memorize, recall, correct, govern via TypeScript SDK |
+| MCP (raw) | See [API Reference](../docs/api-reference.md) | Direct MCP tool calls |
+| HTTP (curl) | See [API Reference](../docs/api-reference.md) | REST API examples |
 
-```typescript
-import { HMGClient } from '@hmg_ai/sdk-ts';
+## Prerequisites
 
-const client = new HMGClient({ baseUrl: 'http://localhost:8080' });
+Start a local HMG daemon:
 
-// Store a memory
-await client.memorize({
-  content: 'We chose PostgreSQL for the main database because of JSON support',
-  context: { repository: 'my-app', branch: 'main' },
-});
+```bash
+# Install HMG
+curl -L https://funcode.xin/HMG/install.sh | sh
 
-// Recall memories
-const result = await client.recall({ query: 'database choice' });
-console.log(result.atoms);
+# Start the daemon
+hmg daemon start
 ```
 
-### Python
+## Python
+
+```bash
+pip install hmg
+python quickstart.py
+```
 
 ```python
 from hmg import HMGClient
 
 client = HMGClient(base_url="http://localhost:8080")
 
-# Store a memory
+# Store a decision
 client.memorize(
-    content="API uses JWT tokens with 24h expiry",
-    repository="my-api",
-    branch="main",
+    content="We chose PostgreSQL for the main database",
+    source="architecture-review",
 )
 
 # Recall memories
-result = client.recall(query="authentication approach")
+result = client.recall(query="database choice")
 for atom in result.atoms:
-    print(atom.content)
+    print(f"[{atom.score:.2f}] {atom.text}")
+```
+
+## TypeScript
+
+```bash
+npm install @hmg_ai/sdk-ts
+npx ts-node quickstart.ts
+```
+
+```typescript
+import { HMGClient } from "@hmg_ai/sdk-ts";
+
+const client = new HMGClient({ baseUrl: "http://localhost:8080" });
+
+await client.memorize({
+  content: "API uses JWT tokens with 24h expiry",
+  domain_pack_id: "software-engineering",
+});
+
+const result = await client.recall({ query: "authentication approach" });
+for (const atom of result.atoms) {
+  console.log(atom.text);
+}
 ```
 
 ## Synthetic Fixtures
 
-The `synthetic-fixtures/` directory contains sample data for testing
-integrations. No real user data is included.
+The [`synthetic-fixtures/`](synthetic-fixtures/) directory contains sample atom data for testing integrations. No real user data is included — all fixtures are synthetic.
+
+## More Resources
+
+- [Getting Started](../docs/getting-started.md) — full setup guide
+- [API Reference](../docs/api-reference.md) — all tools and endpoints
+- [Concepts](../docs/concepts.md) — memory atoms, correction, governance
+
+## License
+
+Apache-2.0

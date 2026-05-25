@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HMG MCP Tool Definitions",
+  "description": "MCP (Model Context Protocol) tool schemas for HMG agent memory operations. Community Edition surface.",
+  "tools": [
+    {
+      "name": "memory_memorize",
+      "description": "Store a new memory atom with content, source, modality, and optional context.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["content"],
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The memory content to store."
+          },
+          "source": {
+            "type": "string",
+            "description": "Optional source attribution (e.g., 'agent', 'user', 'system')."
+          },
+          "modality": {
+            "type": "string",
+            "enum": ["text", "code", "dialogue", "observation"],
+            "default": "text",
+            "description": "The modality of the memory content."
+          },
+          "context": {
+            "$ref": "#/$defs/MemoryContextInput"
+          },
+          "domain_pack_id": {
+            "type": "string",
+            "description": "Domain pack for context interpretation (e.g., 'software-engineering')."
+          }
+        }
+      },
+      "outputDescription": "Returns a memorize acknowledgment with created atom IDs."
+    },
+    {
+      "name": "memory_recall",
+      "description": "Recall relevant memories based on a query. Returns ranked atoms with relevance scores.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["query"],
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The search query for memory recall."
+          },
+          "max_results": {
+            "type": "integer",
+            "default": 20,
+            "description": "Maximum number of results to return."
+          },
+          "include_negated": {
+            "type": "boolean",
+            "default": false,
+            "description": "Include negated (corrected-to-false) atoms."
+          },
+          "context": {
+            "$ref": "#/$defs/MemoryContextInput"
+          },
+          "domain_pack_id": {
+            "type": "string",
+            "description": "Domain pack for context interpretation."
+          },
+          "output_format": {
+            "type": "string",
+            "enum": ["compact_yaml", "json", "markdown", "summary"],
+            "default": "compact_yaml",
+            "description": "Output format for the recall response."
+          }
+        }
+      },
+      "outputDescription": "Returns recalled atoms ranked by relevance, with optional narrative."
+    },
+    {
+      "name": "memory_correct",
+      "description": "Correct an existing memory atom. Supports negate, confirm, demote, and replace actions.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["target_atom", "action", "reason"],
+        "properties": {
+          "target_atom": {
+            "type": "string",
+            "description": "The atom ULID to correct."
+          },
+          "action": {
+            "type": "string",
+            "enum": ["negate", "confirm_actual", "confirm_necessary", "demote", "replace"],
+            "description": "The correction action to apply."
+          },
+          "reason": {
+            "type": "string",
+            "description": "Reason for the correction."
+          },
+          "new_content": {
+            "type": "string",
+            "description": "Replacement content (required when action is 'replace')."
+          },
+          "context": {
+            "$ref": "#/$defs/MemoryContextInput"
+          }
+        }
+      },
+      "outputDescription": "Returns correction result with optional replacement atom ID."
+    },
+    {
+      "name": "memory_govern",
+      "description": "Apply governance actions to sensitive, unsafe, or stale memory atoms.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["target_atom", "action", "reason"],
+        "properties": {
+          "target_atom": {
+            "type": "string",
+            "description": "The atom ULID to govern."
+          },
+          "action": {
+            "type": "string",
+            "enum": ["quarantine", "seal", "tombstone", "derive_lesson"],
+            "description": "The governance action to apply."
+          },
+          "reason": {
+            "type": "string",
+            "description": "Reason for the governance action."
+          },
+          "actor": {
+            "type": "string",
+            "description": "Actor label performing the governance."
+          },
+          "lesson_content": {
+            "type": "string",
+            "description": "Optional safe lesson content (for derive_lesson)."
+          },
+          "destroy_payload": {
+            "type": "boolean",
+            "description": "Destroy tombstoned payload content."
+          }
+        }
+      },
+      "outputDescription": "Returns governance result with optional lesson atom ID."
+    },
+    {
+      "name": "memory_history",
+      "description": "Inspect correction, governance, and relationship history for a memory atom.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["atom_id"],
+        "properties": {
+          "atom_id": {
+            "type": "string",
+            "description": "The atom ULID to inspect."
+          }
+        }
+      },
+      "outputDescription": "Returns atom history with polarity, epistemic, and exposure transitions."
+    },
+    {
+      "name": "memory_handoff",
+      "description": "Write a durable cross-session handoff summary for future agent sessions.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["summary"],
+        "properties": {
+          "summary": {
+            "type": "string",
+            "description": "Handoff summary: what changed, why, validation, risks, next steps."
+          },
+          "source": {
+            "type": "string",
+            "description": "Optional source attribution."
+          },
+          "context": {
+            "$ref": "#/$defs/MemoryContextInput"
+          }
+        }
+      },
+      "outputDescription": "Returns handoff confirmation with stored atom count."
+    },
+    {
+      "name": "memory_agent_brief",
+      "description": "Get a compact session-start context brief from branch-aware memory.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Task or question shaping the brief."
+          },
+          "max_results": {
+            "type": "integer",
+            "description": "Maximum memories to include."
+          },
+          "output_format": {
+            "type": "string",
+            "enum": ["compact_yaml", "yaml", "full"],
+            "default": "compact_yaml",
+            "description": "Brief output format."
+          },
+          "context": {
+            "$ref": "#/$defs/MemoryContextInput"
+          }
+        }
+      },
+      "outputDescription": "Returns compact agent-readable brief with decisions, risks, and next steps."
+    },
+    {
+      "name": "memory_stats",
+      "description": "Get HMG memory graph statistics (atom count, edge count, snapshot version).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "outputDescription": "Returns current graph statistics."
+    }
+  ],
+  "$defs": {
+    "MemoryContextInput": {
+      "type": "object",
+      "description": "Unified context for memory operations.",
+      "properties": {
+        "tenant_id": {
+          "type": "string",
+          "description": "Tenant identifier."
+        },
+        "workspace": {
+          "type": "string",
+          "description": "Workspace within the tenant."
+        },
+        "repository": {
+          "type": "string",
+          "description": "Repository context."
+        },
+        "branch": {
+          "type": "string",
+          "description": "Branch context."
+        },
+        "task_id": {
+          "type": "string",
+          "description": "Optional task context."
+        },
+        "actor_id": {
+          "type": "string",
+          "description": "Actor performing the operation."
+        },
+        "domain_pack_id": {
+          "type": "string",
+          "description": "Domain pack for context interpretation."
+        }
+      }
+    }
+  }
+}
