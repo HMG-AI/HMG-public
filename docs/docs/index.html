@@ -220,7 +220,7 @@ applyTheme();
 function applyDocLang() {
   const ui = UI[lang] || UI.en;
   document.querySelectorAll('[data-t]').forEach(el => { const k = el.getAttribute('data-t'); if (ui[k]) el.textContent = ui[k]; });
-  document.getElementById('docLangBtn').textContent = titles[lang] || titles.en;
+  document.getElementById('docLangBtn').textContent = LANGS[lang] || LANGS.en;
   document.getElementById('searchInput').placeholder = ui.search_placeholder;
   // Update sidebar links with translated titles
   for (const [page, titles] of Object.entries(PAGES)) {
