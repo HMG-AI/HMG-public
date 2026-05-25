@@ -24,6 +24,8 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
   <style>
     :root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--bg4:#222;--text:#f0f0f0;--text2:#999;--text3:#666;--accent:#3b82f6;--accent2:#60a5fa;--accent3:#93c5fd;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--purple:#8b5cf6;--border:#262626;--border2:#333;--mono:'SF Mono','JetBrains Mono','Fira Code',monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.4)}
+    [data-theme="light"]{--bg:#ffffff;--bg2:#f5f5f7;--bg3:#e8e8ed;--bg4:#d8d8dd;--text:#1d1d1f;--text2:#6e6e73;--text3:#86868b;--accent:#0066cc;--accent2:#0071e3;--accent3:#003d7a;--green:#28a745;--red:#d73a49;--amber:#e36209;--purple:#6f42c1;--border:#d2d2d7;--border2:#b0b0b5;--shadow:0 4px 24px rgba(0,0,0,.08)}
+    @media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#ffffff;--bg2:#f5f5f7;--bg3:#e8e8ed;--bg4:#d8d8dd;--text:#1d1d1f;--text2:#6e6e73;--text3:#86868b;--accent:#0066cc;--accent2:#0071e3;--accent3:#003d7a;--green:#28a745;--red:#d73a49;--amber:#e36209;--purple:#6f42c1;--border:#d2d2d7;--border2:#b0b0b5;--shadow:0 4px 24px rgba(0,0,0,.08)}}
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}
@@ -193,6 +195,7 @@
       <a href="https://github.com/HMG-AI/HMG-public">GitHub</a>
     </div>
     <div style="display:flex;align-items:center;gap:.6em">
+      <button class="lang-btn" onclick="toggleThemeSite()" id="themeBtn" title="Toggle theme" style="background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:.3em .5em;border-radius:6px;cursor:pointer;font-size:.9em">🌙</button>
       <div class="lang-picker">
         <button class="lang-btn" onclick="toggleLangMenu()" id="langBtn">
           <span id="langLabel">🌐 EN</span>
@@ -964,6 +967,10 @@ function copyInstall() {
 }
 
 // Init
+function getSiteTheme(){const s=localStorage.getItem('hmg-theme');if(s)return s;return window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark'}
+function applySiteTheme(){const t=getSiteTheme();document.documentElement.setAttribute('data-theme',t);document.getElementById('themeBtn').textContent=t==='light'?'☀️':'🌙'}
+function toggleThemeSite(){const c=getSiteTheme();localStorage.setItem('hmg-theme',c==='dark'?'light':'dark');applySiteTheme()}
+applySiteTheme();
 buildLangMenu();
 applyLang();
 </script>

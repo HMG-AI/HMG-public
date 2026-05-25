@@ -4,10 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HMG — Documentation</title>
-  <meta name="description" content="HMG documentation — getting started, concepts, API reference, and more.">
+  <meta name="description" content="HMG documentation — getting started, concepts, API reference, FAQ.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
   <style>
-    :root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--text:#f0f0f0;--text2:#999;--text3:#666;--accent:#3b82f6;--accent2:#60a5fa;--green:#22c55e;--border:#262626;--border2:#333;--mono:'SF Mono','JetBrains Mono',monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--radius:10px}
+    /* ─── Dark (default) ─── */
+    :root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--bg4:#222;--text:#f0f0f0;--text2:#999;--text3:#666;--accent:#3b82f6;--accent2:#60a5fa;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--border:#262626;--border2:#333;--mono:'SF Mono','JetBrains Mono','Fira Code',monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.4)}
+    /* ─── Light ─── */
+    [data-theme="light"]{--bg:#ffffff;--bg2:#f5f5f7;--bg3:#e8e8ed;--bg4:#ddd;--text:#1d1d1f;--text2:#6e6e73;--text3:#86868b;--accent:#0066cc;--accent2:#0071e3;--green:#28a745;--red:#d73a49;--amber:#e36209;--border:#d2d2d7;--border2:#bbb;--shadow:0 4px 24px rgba(0,0,0,.1)}
+    @media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#ffffff;--bg2:#f5f5f7;--bg3:#e8e8ed;--bg4:#ddd;--text:#1d1d1f;--text2:#6e6e73;--text3:#86868b;--accent:#0066cc;--accent2:#0071e3;--green:#28a745;--red:#d73a49;--amber:#e36209;--border:#d2d2d7;--border2:#bbb;--shadow:0 4px 24px rgba(0,0,0,.1)}}
+
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}
@@ -19,25 +24,43 @@
     .container{max-width:1160px;margin:0 auto;padding:0 1.5em}
 
     /* Nav */
-    nav{background:rgba(10,10,10,.9);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;backdrop-filter:blur(16px)}
-    nav .container{display:flex;align-items:center;height:50px;gap:1.5em}
+    nav{background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+    nav .container{display:flex;align-items:center;height:50px;gap:1.2em}
     .brand{font-weight:800;font-size:1.05em;color:var(--text)}
     .brand span{color:var(--accent)}
     nav .sep{color:var(--text3);font-size:.8em}
     nav .page-title{color:var(--text2);font-size:.9em}
-    .nav-right{margin-left:auto;display:flex;align-items:center;gap:.8em}
-    .nav-right a{color:var(--text2);font-size:.82em}
-    .lang-sm{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:.2em .5em;border-radius:4px;cursor:pointer;font-size:.8em;font-family:var(--sans)}
+    .nav-right{margin-left:auto;display:flex;align-items:center;gap:.6em}
+    .nav-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:.25em .5em;border-radius:6px;cursor:pointer;font-size:.8em;font-family:var(--sans);transition:all .15s}
+    .nav-btn:hover{border-color:var(--accent);color:var(--text)}
 
     /* Layout */
     .layout{display:flex;gap:2.5em;padding-top:1.5em;padding-bottom:4em}
-    .sidebar{width:220px;flex-shrink:0;position:sticky;top:66px;max-height:calc(100vh - 80px);overflow-y:auto}
+    .sidebar{width:240px;flex-shrink:0;position:sticky;top:66px;max-height:calc(100vh - 80px);overflow-y:auto;padding-bottom:1em}
     .sidebar::-webkit-scrollbar{width:4px}
     .sidebar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+    /* Search */
+    .search-box{position:relative;margin-bottom:1.2em}
+    .search-input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:.5em .8em .5em 2em;color:var(--text);font-size:.84em;font-family:var(--sans);outline:none;transition:border-color .15s}
+    .search-input:focus{border-color:var(--accent)}
+    .search-input::placeholder{color:var(--text3)}
+    .search-icon{position:absolute;left:.7em;top:50%;transform:translateY(-50%);color:var(--text3);font-size:.85em;pointer-events:none}
+    .search-shortcut{position:absolute;right:.5em;top:50%;transform:translateY(-50%);background:var(--bg3);border:1px solid var(--border);padding:0 .4em;border-radius:3px;font-size:.7em;color:var(--text3);pointer-events:none}
+    .search-results{position:absolute;top:100%;left:0;right:0;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);max-height:360px;overflow-y:auto;z-index:100;display:none;box-shadow:var(--shadow)}
+    .search-results.open{display:block}
+    .search-results .sr-item{padding:.5em .8em;cursor:pointer;border-bottom:1px solid var(--border)}
+    .search-results .sr-item:last-child{border-bottom:none}
+    .search-results .sr-item:hover{background:var(--bg3)}
+    .sr-page{font-size:.82em;font-weight:600;color:var(--accent2)}
+    .sr-line{font-size:.78em;color:var(--text2);margin-top:.15em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .sr-line mark{background:var(--amber);color:var(--bg);border-radius:2px;padding:0 .1em}
+    .sr-empty{padding:1em;text-align:center;color:var(--text3);font-size:.85em}
+
     .sidebar h4{font-size:.78em;color:var(--text3);margin-bottom:.5em;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
     .sidebar ul{list-style:none;margin-bottom:1.5em}
-    .sidebar li{padding:.2em 0}
-    .sidebar a{color:var(--text2);font-size:.84em;display:block;padding:.2em .5em;border-radius:4px}
+    .sidebar li{padding:.15em 0}
+    .sidebar a{color:var(--text2);font-size:.84em;display:block;padding:.25em .5em;border-radius:4px}
     .sidebar a:hover{color:var(--text);background:var(--bg3);text-decoration:none}
     .sidebar a.active{color:var(--accent2);background:var(--bg3);font-weight:500}
 
@@ -46,24 +69,22 @@
     .content h1{font-size:1.8em;margin-bottom:.5em;font-weight:700;letter-spacing:-.02em}
     .content h2{font-size:1.35em;margin-top:2em;margin-bottom:.5em;font-weight:600;padding-bottom:.3em;border-bottom:1px solid var(--border)}
     .content h3{font-size:1.1em;margin-top:1.5em;margin-bottom:.4em;font-weight:600}
-    .content p{margin:.6em 0;color:var(--text)}
+    .content p{margin:.6em 0}
     .content ul,.content ol{margin:.5em 0 .5em 1.5em}
-    .content li{margin:.2em 0;color:var(--text)}
+    .content li{margin:.2em 0}
     .content li::marker{color:var(--text2)}
     .content table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.88em}
     .content th,.content td{border:1px solid var(--border);padding:.5em .8em;text-align:left}
     .content th{background:var(--bg3);color:var(--text2);font-weight:600}
     .content blockquote{border-left:3px solid var(--accent);padding:.5em 1em;margin:1em 0;color:var(--text2);background:var(--bg2);border-radius:0 var(--radius) var(--radius) 0}
     .content hr{border:none;border-top:1px solid var(--border);margin:2em 0}
-    .content strong{color:var(--text);font-weight:600}
+    .content strong{font-weight:600}
     .content code{color:var(--accent2)}
 
-    /* Breadcrumb */
     .breadcrumb{font-size:.82em;color:var(--text3);margin-bottom:1.5em}
     .breadcrumb a{color:var(--text3)}
     .breadcrumb a:hover{color:var(--accent2)}
 
-    /* TOC */
     .toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1em 1.2em;margin-bottom:2em}
     .toc h5{font-size:.82em;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5em}
     .toc ul{list-style:none;margin:0;padding:0}
@@ -71,15 +92,18 @@
     .toc a{color:var(--text2);font-size:.84em}
     .toc a:hover{color:var(--accent2);text-decoration:none}
 
-    /* Loading */
     .loading{text-align:center;padding:3em;color:var(--text3)}
-    .loading .spinner{display:inline-block;width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+    .spinner{display:inline-block;width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
 
-    /* Responsive */
+    /* Lang notice */
+    .lang-notice{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:.6em 1em;margin-bottom:1.5em;font-size:.84em;color:var(--text2);display:flex;justify-content:space-between;align-items:center}
+    .lang-notice a{font-size:.84em}
+
     @media(max-width:768px){
       .sidebar{display:none}
       .layout{gap:0;padding-top:1em}
+      .search-shortcut{display:none}
     }
   </style>
 </head>
@@ -91,8 +115,9 @@
     <span class="sep">/</span>
     <span class="page-title" id="pageTitle">Documentation</span>
     <div class="nav-right">
-      <a href="https://github.com/HMG-AI/HMG-public/tree/main/docs/md">Source</a>
-      <button class="lang-sm" onclick="toggleDocLang()" id="docLangBtn">🌐 EN</button>
+      <a href="https://github.com/HMG-AI/HMG-public/tree/main/docs/md" style="font-size:.82em">Source</a>
+      <button class="nav-btn" onclick="toggleDocLang()" id="docLangBtn">🌐 EN</button>
+      <button class="nav-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle theme">🌙</button>
     </div>
   </div>
 </nav>
@@ -100,6 +125,12 @@
 <div class="container">
   <div class="layout">
     <div class="sidebar" id="sidebar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input class="search-input" id="searchInput" type="text" placeholder="Search docs…" autocomplete="off">
+        <span class="search-shortcut">/</span>
+        <div class="search-results" id="searchResults"></div>
+      </div>
       <h4 data-t="sb_start">Getting Started</h4>
       <ul>
         <li><a href="?page=getting-started" id="nav-getting-started">Getting Started</a></li>
@@ -126,225 +157,300 @@
 </div>
 
 <script>
-// Fetch path fixed — docs/md/ is the correct location
+// ═══════════════════════════════════════════════════════════════
+// HMG Doc Viewer — Multi-lang + Full-text Search + Dark/Light
+// ═══════════════════════════════════════════════════════════════
 const MD_BASE = 'https://raw.githubusercontent.com/HMG-AI/HMG-public/main/docs/md/';
 
-// Page metadata
 const PAGES = {
-  'getting-started': {en:'Getting Started','zh-CN':'快速开始','zh-TW':'快速開始',ja:'クイックスタート',ko:'빠른 시작',fr:'Démarrage rapide',de:'Schnellstart',es:'Inicio rápido','pt-BR':'Início rápido',ru:'Быстрый старт'},
-  'concepts': {en:'Concepts','zh-CN':'概念','zh-TW':'概念',ja:'コンセプト',ko:'개념',fr:'Concepts',de:'Konzepte',es:'Conceptos','pt-BR':'Conceitos',ru:'Концепции'},
-  'architecture': {en:'Architecture','zh-CN':'架构','zh-TW':'架構',ja:'アーキテクチャ',ko:'아키텍처',fr:'Architecture',de:'Architektur',es:'Arquitectura','pt-BR':'Arquitetura',ru:'Архитектура'},
-  'api-reference': {en:'API Reference','zh-CN':'API 参考','zh-TW':'API 參考',ja:'APIリファレンス',ko:'API 참조',fr:'Référence API',de:'API-Referenz',es:'Referencia API','pt-BR':'Referência API',ru:'Справочник API'},
-  'correction-governance': {en:'Correction & Governance','zh-CN':'修正与治理','zh-TW':'修正與治理',ja:'修正＆ガバナンス',ko:'수정 & 거버넌스',fr:'Correction & Gouvernance',de:'Korrektur & Governance',es:'Corrección y Gobernanza','pt-BR':'Correção e Governança',ru:'Исправление и Управление'},
-  'upgrade': {en:'Upgrade Guide','zh-CN':'升级指南','zh-TW':'升級指南',ja:'アップグレードガイド',ko:'업그레이드 가이드',fr:'Guide de mise à niveau',de:'Upgrade-Leitfaden',es:'Guía de actualización','pt-BR':'Guia de atualização',ru:'Руководство по обновлению'},
-  'security': {en:'Security','zh-CN':'安全','zh-TW':'安全',ja:'セキュリティ',ko:'보안',fr:'Sécurité',de:'Sicherheit',es:'Seguridad','pt-BR':'Segurança',ru:'Безопасность'},
-  'faq': {en:'FAQ','zh-CN':'常见问题','zh-TW':'常見問題',ja:'FAQ',ko:'FAQ',fr:'FAQ',de:'FAQ',es:'FAQ','pt-BR':'FAQ',ru:'FAQ'},
-  'trademark-policy': {en:'Trademark Policy','zh-CN':'商标政策','zh-TW':'商標政策',ja:'トレードマークポリシー',ko:'상표 정책',fr:'Politique de marque',de:'Markenrichtlinie',es:'Política de marca','pt-BR':'Política de marca',ru:'Политика товарных знаков'},
+  'getting-started':       {en:'Getting Started',         'zh-CN':'快速开始',       'zh-TW':'快速開始',         ja:'クイックスタート',       ko:'빠른 시작',     fr:'Démarrage rapide',    de:'Schnellstart',         es:'Inicio rápido',         'pt-BR':'Início rápido',      ru:'Быстрый старт'},
+  'concepts':              {en:'Concepts',                'zh-CN':'概念',           'zh-TW':'概念',             ja:'コンセプト',             ko:'개념',          fr:'Concepts',            de:'Konzepte',             es:'Conceptos',             'pt-BR':'Conceitos',          ru:'Концепции'},
+  'architecture':          {en:'Architecture',            'zh-CN':'架构',           'zh-TW':'架構',             ja:'アーキテクチャ',         ko:'아키텍처',       fr:'Architecture',        de:'Architektur',          es:'Arquitectura',          'pt-BR':'Arquitetura',        ru:'Архитектура'},
+  'api-reference':         {en:'API Reference',           'zh-CN':'API 参考',       'zh-TW':'API 參考',         ja:'APIリファレンス',        ko:'API 참조',       fr:'Référence API',       de:'API-Referenz',         es:'Referencia API',        'pt-BR':'Referência API',     ru:'Справочник API'},
+  'correction-governance': {en:'Correction & Governance', 'zh-CN':'修正与治理',     'zh-TW':'修正與治理',       ja:'修正＆ガバナンス',       ko:'수정 & 거버넌스',fr:'Correction & Gouv.',   de:'Korrektur & Governance',es:'Corrección y Gobernanza','pt-BR':'Correção e Governança',ru:'Исправление и Управление'},
+  'upgrade':               {en:'Upgrade Guide',           'zh-CN':'升级指南',       'zh-TW':'升級指南',         ja:'アップグレードガイド',   ko:'업그레이드 가이드',fr:'Guide de mise à niv.',de:'Upgrade-Leitfaden',     es:'Guía de actualización', 'pt-BR':'Guia de atualização', ru:'Руководство по обновлению'},
+  'security':              {en:'Security',                'zh-CN':'安全',           'zh-TW':'安全',             ja:'セキュリティ',           ko:'보안',           fr:'Sécurité',            de:'Sicherheit',           es:'Seguridad',             'pt-BR':'Segurança',          ru:'Безопасность'},
+  'faq':                   {en:'FAQ',                     'zh-CN':'常见问题',       'zh-TW':'常見問題',         ja:'FAQ',                    ko:'FAQ',            fr:'FAQ',                 de:'FAQ',                  es:'FAQ',                   'pt-BR':'FAQ',                ru:'FAQ'},
+  'trademark-policy':      {en:'Trademark Policy',        'zh-CN':'商标政策',       'zh-TW':'商標政策',         ja:'トレードマーク',         ko:'상표 정책',      fr:'Politique de marque', de:'Markenrichtlinie',      es:'Política de marca',     'pt-BR':'Política de marca',  ru:'Политика товарных знаков'},
 };
 
 const UI = {
-  en:{loading:'Loading documentation…',sb_start:'Getting Started',sb_ref:'Reference',sb_legal:'Legal',notfound:'Document not found',view_source:'View on GitHub'},
-  'zh-CN':{loading:'正在加载文档…',sb_start:'入门',sb_ref:'参考',sb_legal:'法律',notfound:'文档未找到',view_source:'在 GitHub 上查看'},
-  'zh-TW':{loading:'正在載入文件…',sb_start:'入門',sb_ref:'參考',sb_legal:'法律',notfound:'文件未找到',view_source:'在 GitHub 上檢視'},
-  ja:{loading:'ドキュメントを読み込み中…',sb_start:'入門',sb_ref:'リファレンス',sb_legal:'法務',notfound:'ドキュメントが見つかりません',view_source:'GitHubで表示'},
-  ko:{loading:'문서 로딩 중…',sb_start:'시작하기',sb_ref:'참조',sb_legal:'법적 고지',notfound:'문서를 찾을 수 없습니다',view_source:'GitHub에서 보기'},
-  fr:{loading:'Chargement de la documentation…',sb_start:'Démarrage',sb_ref:'Référence',sb_legal:'Juridique',notfound:'Document non trouvé',view_source:'Voir sur GitHub'},
-  de:{loading:'Dokumentation wird geladen…',sb_start:'Einstieg',sb_ref:'Referenz',sb_legal:'Rechtliches',notfound:'Dokument nicht gefunden',view_source:'Auf GitHub ansehen'},
-  es:{loading:'Cargando documentación…',sb_start:'Inicio',sb_ref:'Referencia',sb_legal:'Legal',notfound:'Documento no encontrado',view_source:'Ver en GitHub'},
-  'pt-BR':{loading:'Carregando documentação…',sb_start:'Início',sb_ref:'Referência',sb_legal:'Legal',notfound:'Documento não encontrado',view_source:'Ver no GitHub'},
-  ru:{loading:'Загрузка документации…',sb_start:'Начало',sb_ref:'Справочник',sb_legal:'Правовая информация',notfound:'Документ не найден',view_source:'Смотреть на GitHub'},
+  en:{loading:'Loading documentation…',sb_start:'Getting Started',sb_ref:'Reference',sb_legal:'Legal',notfound:'Document not found',view_source:'View source on GitHub',search_placeholder:'Search docs…',no_results:'No results found',lang_notice:'This document is also available in',lang_notice_en:'Viewing in English'},
+  'zh-CN':{loading:'正在加载文档…',sb_start:'入门',sb_ref:'参考',sb_legal:'法律',notfound:'文档未找到',view_source:'在 GitHub 上查看源文件',search_placeholder:'搜索文档…',no_results:'未找到结果',lang_notice:'本文档也有以下语言版本',lang_notice_en:'正在查看英文版'},
+  'zh-TW':{loading:'正在載入文件…',sb_start:'入門',sb_ref:'參考',sb_legal:'法律',notfound:'文件未找到',view_source:'在 GitHub 上檢視原始碼',search_placeholder:'搜尋文件…',no_results:'未找到結果',lang_notice:'本文也有以下語言版本',lang_notice_en:'正在檢視英文版'},
+  ja:{loading:'ドキュメントを読み込み中…',sb_start:'入門',sb_ref:'リファレンス',sb_legal:'法務',notfound:'ドキュメントが見つかりません',view_source:'GitHubでソースを表示',search_placeholder:'ドキュメント検索…',no_results:'結果が見つかりません',lang_notice:'このドキュメントは以下の言語でも利用可能です',lang_notice_en:'英語版を表示中'},
+  ko:{loading:'문서 로딩 중…',sb_start:'시작하기',sb_ref:'참조',sb_legal:'법적 고지',notfound:'문서를 찾을 수 없습니다',view_source:'GitHub에서 소스 보기',search_placeholder:'문서 검색…',no_results:'결과 없음',lang_notice:'이 문서는 다음 언어로도 제공됩니다',lang_notice_en:'영어 버전 보기 중'},
+  fr:{loading:'Chargement…',sb_start:'Démarrage',sb_ref:'Référence',sb_legal:'Juridique',notfound:'Document non trouvé',view_source:'Voir la source sur GitHub',search_placeholder:'Rechercher…',no_results:'Aucun résultat',lang_notice:'Ce document est aussi disponible en',lang_notice_en:'Version anglaise'},
+  de:{loading:'Laden…',sb_start:'Einstieg',sb_ref:'Referenz',sb_legal:'Rechtliches',notfound:'Dokument nicht gefunden',view_source:'Quellcode auf GitHub',search_placeholder:'Suchen…',no_results:'Keine Ergebnisse',lang_notice:'Dieses Dokument ist auch verfügbar auf',lang_notice_en:'Englische Version'},
+  es:{loading:'Cargando…',sb_start:'Inicio',sb_ref:'Referencia',sb_legal:'Legal',notfound:'Documento no encontrado',view_source:'Ver fuente en GitHub',search_placeholder:'Buscar…',no_results:'Sin resultados',lang_notice:'Este documento también está disponible en',lang_notice_en:'Versión en inglés'},
+  'pt-BR':{loading:'Carregando…',sb_start:'Início',sb_ref:'Referência',sb_legal:'Legal',notfound:'Documento não encontrado',view_source:'Ver fonte no GitHub',search_placeholder:'Buscar…',no_results:'Sem resultados',lang_notice:'Este documento também está disponível em',lang_notice_en:'Versão em inglês'},
+  ru:{loading:'Загрузка…',sb_start:'Начало',sb_ref:'Справочник',sb_legal:'Правовая информация',notfound:'Документ не найден',view_source:'Исходный код на GitHub',search_placeholder:'Поиск…',no_results:'Ничего не найдено',lang_notice:'Этот документ также доступен на',lang_notice_en:'Английская версия'},
 };
 
-const LANGS = {
-  'en':'🇺🇸 EN','zh-CN':'🇨🇳 中文','zh-TW':'🇹🇼 繁體','ja':'🇯🇵 日本語','ko':'🇰🇷 한국어',
-  'fr':'🇫🇷 Français','de':'🇩🇪 Deutsch','es':'🇪🇸 Español','pt-BR':'🇧🇷 PT','ru':'🇷🇺 Русский'
-};
+const LANGS = {'en':'🇺🇸 EN','zh-CN':'🇨🇳 中文','zh-TW':'🇹🇼 繁體','ja':'🇯🇵 日本語','ko':'🇰🇷 한국어','fr':'🇫🇷 FR','de':'🇩🇪 DE','es':'🇪🇸 ES','pt-BR':'🇧🇷 PT','ru':'🇷🇺 RU'};
+const LANG_ORDER = ['en','zh-CN','zh-TW','ja','ko','fr','de','es','pt-BR','ru'];
 
 let lang = localStorage.getItem('hmg-lang') || 'en';
 if (!UI[lang]) lang = 'en';
 
+// ─── Theme ───
+function getTheme() {
+  const stored = localStorage.getItem('hmg-theme');
+  if (stored) return stored;
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+}
+function applyTheme() {
+  const t = getTheme();
+  document.documentElement.setAttribute('data-theme', t);
+  document.getElementById('themeBtn').textContent = t === 'light' ? '☀️' : '🌙';
+}
+function toggleTheme() {
+  const cur = getTheme();
+  localStorage.setItem('hmg-theme', cur === 'dark' ? 'light' : 'dark');
+  applyTheme();
+}
+applyTheme();
+
+// ─── Language ───
 function applyDocLang() {
   const ui = UI[lang] || UI.en;
-  document.querySelectorAll('[data-t]').forEach(el => {
-    const k = el.getAttribute('data-t');
-    if (ui[k]) el.textContent = ui[k];
-  });
+  document.querySelectorAll('[data-t]').forEach(el => { const k = el.getAttribute('data-t'); if (ui[k]) el.textContent = ui[k]; });
   document.getElementById('docLangBtn').textContent = LANGS[lang] || '🌐 EN';
+  document.getElementById('searchInput').placeholder = ui.search_placeholder;
+  // Update sidebar links with translated titles
+  for (const [page, titles] of Object.entries(PAGES)) {
+    const el = document.getElementById('nav-' + page);
+    if (el) el.textContent = titles[lang] || titles.en;
+  }
 }
-
-const LANG_ORDER = ['en','zh-CN','zh-TW','ja','ko','fr','de','es','pt-BR','ru'];
 function toggleDocLang() {
   const idx = LANG_ORDER.indexOf(lang);
   lang = LANG_ORDER[(idx + 1) % LANG_ORDER.length];
   localStorage.setItem('hmg-lang', lang);
   applyDocLang();
-  // Reload current doc to update sidebar labels
   const params = new URLSearchParams(location.search);
   loadDoc(params.get('page'));
 }
 
-// Markdown → HTML (proper parser)
-function mdToHtml(md) {
-  // Escape HTML entities (but preserve intentional tags)
-  let lines = md.split('\n');
-  let html = '';
-  let inCode = false;
-  let inTable = false;
-  let inList = false;
-  let listType = '';
+// ─── Full-text Search ───
+const searchIndex = {};   // page → raw markdown text
+let searchReady = false;
 
-  function closeList() {
-    if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
-  }
-  function closeTable() {
-    if (inTable) { html += '</tbody></table>'; inTable = false; }
-  }
-
-  for (let i = 0; i < lines.length; i++) {
-    let line = lines[i];
-
-    // Code blocks
-    if (line.startsWith('```')) {
-      closeList(); closeTable();
-      if (inCode) { html += '</code></pre>'; inCode = false; }
-      else { html += '<pre><code>'; inCode = true; }
-      continue;
+async function buildSearchIndex() {
+  const base = MD_BASE;
+  for (const page of Object.keys(PAGES)) {
+    // Fetch English (canonical) + user's language if different
+    const urls = [base + page + '.md'];
+    if (lang !== 'en') urls.push(base + lang + '/' + page + '.md');
+    for (const url of urls) {
+      try {
+        const resp = await fetch(url);
+        if (!resp.ok) continue;
+        const text = await resp.text();
+        if (!searchIndex[page]) searchIndex[page] = [];
+        searchIndex[page].push({lang: url.includes('/' + lang + '/') ? lang : 'en', text});
+      } catch(e) {}
     }
-    if (inCode) { html += escHtml(line) + '\n'; continue; }
+  }
+  searchReady = true;
+}
 
-    // Tables
-    if (line.includes('|') && line.trim().startsWith('|')) {
-      closeList();
-      const cells = line.split('|').filter(c => c.trim() !== '');
-      if (cells.every(c => /^[\s:-]+$/.test(c))) continue; // separator row
-      if (!inTable) { html += '<table><thead><tr>'; inTable = true;
-        cells.forEach(c => html += '<th>' + inlineMd(c.trim()) + '</th>');
-        html += '</tr></thead><tbody>';
-      } else {
-        html += '<tr>';
-        cells.forEach(c => html += '<td>' + inlineMd(c.trim()) + '</td>');
-        html += '</tr>';
+function doSearch(query) {
+  if (!query || query.length < 2) return [];
+  const q = query.toLowerCase();
+  const results = [];
+  for (const [page, docs] of Object.entries(searchIndex)) {
+    let bestMatches = [];
+    let bestLang = 'en';
+    for (const doc of docs) {
+      const lines = doc.text.split('\n');
+      const matches = [];
+      for (let i = 0; i < lines.length; i++) {
+        const l = lines[i].trim();
+        if (l && l.toLowerCase().includes(q)) {
+          matches.push({lineNum: i, text: l});
+        }
       }
-      continue;
-    } else { closeTable(); }
-
-    // Headers
-    const hMatch = line.match(/^(#{1,4})\s+(.+)$/);
-    if (hMatch) {
-      closeList();
-      const lvl = hMatch[1].length;
-      html += `<h${lvl}>${inlineMd(hMatch[2])}</h${lvl}>`;
-      continue;
+      // Prefer user's language matches
+      if (doc.lang === lang && matches.length > 0) { bestMatches = matches; bestLang = lang; break; }
+      if (matches.length > bestMatches.length) { bestMatches = matches; bestLang = doc.lang; }
     }
-
-    // Blockquote
-    if (line.startsWith('> ')) {
-      closeList();
-      html += '<blockquote>' + inlineMd(line.slice(2)) + '</blockquote>';
-      continue;
+    if (bestMatches.length > 0) {
+      results.push({page, title: PAGES[page]?.[lang] || PAGES[page]?.en || page, lang: bestLang, matches: bestMatches.slice(0, 5)});
     }
-
-    // Horizontal rule
-    if (/^---+$/.test(line.trim())) {
-      closeList();
-      html += '<hr>';
-      continue;
-    }
-
-    // Unordered list
-    const ulMatch = line.match(/^[-*]\s+(.+)$/);
-    if (ulMatch) {
-      if (!inList || listType !== 'ul') { closeList(); html += '<ul>'; inList = true; listType = 'ul'; }
-      html += '<li>' + inlineMd(ulMatch[1]) + '</li>';
-      continue;
-    }
-
-    // Ordered list
-    const olMatch = line.match(/^\d+\.\s+(.+)$/);
-    if (olMatch) {
-      if (!inList || listType !== 'ol') { closeList(); html += '<ol>'; inList = true; listType = 'ol'; }
-      html += '<li>' + inlineMd(olMatch[1]) + '</li>';
-      continue;
-    }
-
-    // Empty line
-    if (line.trim() === '') { closeList(); continue; }
-
-    // Paragraph
-    closeList();
-    html += '<p>' + inlineMd(line) + '</p>';
   }
-  closeList(); closeTable();
-  if (inCode) html += '</code></pre>';
-  return html;
+  return results.sort((a, b) => b.matches.length - a.matches.length).slice(0, 8);
 }
 
-function escHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+function highlightQuery(text, query) {
+  const q = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return text.replace(new RegExp('(' + q + ')', 'gi'), '<mark>$1</mark>');
 }
 
+function showSearchResults(query) {
+  const el = document.getElementById('searchResults');
+  if (!query || query.length < 2) { el.classList.remove('open'); return; }
+  const results = doSearch(query);
+  const ui = UI[lang] || UI.en;
+  if (results.length === 0) {
+    el.innerHTML = '<div class="sr-empty">' + ui.no_results + '</div>';
+  } else {
+    el.innerHTML = results.map(r => {
+      const lines = r.matches.map(m =>
+        '<div class="sr-line">' + highlightQuery(escHtml(m.text).substring(0, 120), query) + '</div>'
+      ).join('');
+      return '<div class="sr-item" onclick="loadDoc(\'' + r.page + '\');closeSearch()">' +
+        '<div class="sr-page">' + escHtml(r.title) + '</div>' + lines + '</div>';
+    }).join('');
+  }
+  el.classList.add('open');
+}
+
+function closeSearch() {
+  document.getElementById('searchResults').classList.remove('open');
+}
+
+// Keyboard shortcut: / to focus search, Esc to close
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT') {
+    e.preventDefault();
+    document.getElementById('searchInput').focus();
+  }
+  if (e.key === 'Escape') { closeSearch(); document.getElementById('searchInput').blur(); }
+});
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  showSearchResults(e.target.value.trim());
+});
+document.getElementById('searchInput').addEventListener('focus', e => {
+  if (e.target.value.trim().length >= 2) showSearchResults(e.target.value.trim());
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('.search-box')) closeSearch();
+});
+
+// ─── Markdown → HTML ───
+function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function inlineMd(s) {
-  return s
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
+  return s.replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/\*([^*]+)\*/g, '<em>$1</em>')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
 }
 
+function mdToHtml(md) {
+  let lines = md.split('\n');
+  let html = '', inCode = false, inTable = false, inList = false, listType = '';
+  function closeList() { if (inList) { html += listType==='ul'?'</ul>':'</ol>'; inList=false; } }
+  function closeTable() { if (inTable) { html+='</tbody></table>'; inTable=false; } }
+
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i];
+    if (line.startsWith('```')) {
+      closeList(); closeTable();
+      if (inCode) { html+='</code></pre>'; inCode=false; } else { html+='<pre><code>'; inCode=true; }
+      continue;
+    }
+    if (inCode) { html+=escHtml(line)+'\n'; continue; }
+    if (line.includes('|') && line.trim().startsWith('|')) {
+      closeList();
+      const cells = line.split('|').filter(c=>c.trim()!=='');
+      if (cells.every(c=>/^[\s:-]+$/.test(c))) continue;
+      if (!inTable) { html+='<table><thead><tr>'; inTable=true; cells.forEach(c=>html+='<th>'+inlineMd(c.trim())+'</th>'); html+='</tr></thead><tbody>'; }
+      else { html+='<tr>'; cells.forEach(c=>html+='<td>'+inlineMd(c.trim())+'</td>'); html+='</tr>'; }
+      continue;
+    } else { closeTable(); }
+    const hMatch = line.match(/^(#{1,4})\s+(.+)$/);
+    if (hMatch) { closeList(); html+=`<h${hMatch[1].length}>${inlineMd(hMatch[2])}</h${hMatch[1].length}>`; continue; }
+    if (line.startsWith('> ')) { closeList(); html+='<blockquote>'+inlineMd(line.slice(2))+'</blockquote>'; continue; }
+    if (/^---+$/.test(line.trim())) { closeList(); html+='<hr>'; continue; }
+    const ulMatch = line.match(/^[-*]\s+(.+)$/);
+    if (ulMatch) { if (!inList||listType!=='ul'){closeList();html+='<ul>';inList=true;listType='ul';} html+='<li>'+inlineMd(ulMatch[1])+'</li>'; continue; }
+    const olMatch = line.match(/^\d+\.\s+(.+)$/);
+    if (olMatch) { if (!inList||listType!=='ol'){closeList();html+='<ol>';inList=true;listType='ol';} html+='<li>'+inlineMd(olMatch[1])+'</li>'; continue; }
+    if (line.trim()==='') { closeList(); continue; }
+    closeList(); html+='<p>'+inlineMd(line)+'</p>';
+  }
+  closeList(); closeTable();
+  if (inCode) html+='</code></pre>';
+  return html;
+}
+
+// ─── Load Doc ───
+let currentDoc = null;
+
 async function loadDoc(page) {
   if (!page) page = 'getting-started';
+  currentDoc = page;
   const content = document.getElementById('doc-content');
+  const ui = UI[lang] || UI.en;
 
-  // Update sidebar active state
-  document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
-  const nav = document.getElementById('nav-' + page);
+  // Update sidebar
+  document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('active'));
+  const nav = document.getElementById('nav-'+page);
   if (nav) nav.classList.add('active');
 
-  // Update page title
-  const pageInfo = PAGES[page] || {};
-  const title = pageInfo[lang] || pageInfo.en || page;
+  // Update title
+  const title = PAGES[page]?.[lang] || PAGES[page]?.en || page;
   document.getElementById('pageTitle').textContent = title;
   document.title = title + ' — HMG Docs';
 
-  const url = MD_BASE + page + '.md';
-  try {
-    const resp = await fetch(url);
-    if (!resp.ok) throw new Error(resp.status);
-    const md = await resp.text();
-
-    // Build TOC from headers
-    let tocHtml = '';
-    const headers = md.match(/^#{2,3}\s+.+$/gm) || [];
-    if (headers.length > 2) {
-      tocHtml = '<div class="toc"><h5>' + (UI[lang]?.sb_ref || 'Contents') + '</h5><ul>';
-      headers.forEach(h => {
-        const lvl = h.match(/^(#+)/)[1].length;
-        const text = h.replace(/^#+\s+/, '');
-        const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-        if (lvl === 2) {
-          tocHtml += `<li><a href="#${id}">${inlineMd(text)}</a></li>`;
-        }
-      });
-      tocHtml += '</ul></div>';
-    }
-
-    let html = mdToHtml(md);
-    // Add IDs to h2/h3 for anchor links
-    html = html.replace(/<h([23])>(.*?)<\/h\1>/g, (m, lvl, text) => {
-      const id = text.replace(/<[^>]+>/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-      return `<h${lvl} id="${id}">${text}</h${lvl}>`;
-    });
-
-    content.innerHTML = '<div class="breadcrumb"><a href="../">HMG</a> / <a href="docs/">Docs</a> / ' + escHtml(title) + '</div>' + tocHtml + html;
-    window.history.replaceState({}, '', '?page=' + page);
-  } catch (e) {
-    const ui = UI[lang] || UI.en;
-    content.innerHTML = `<h1>${ui.notfound}</h1><p>Could not load <code>${escHtml(page)}.md</code>.</p><p><a href="https://github.com/HMG-AI/HMG-public/tree/main/docs/md/${escHtml(page)}.md">${ui.view_source}</a></p>`;
+  // Try user's language first, then English
+  let md = null;
+  let usedLang = 'en';
+  if (lang !== 'en') {
+    try {
+      const resp = await fetch(MD_BASE + lang + '/' + page + '.md');
+      if (resp.ok) { md = await resp.text(); usedLang = lang; }
+    } catch(e) {}
   }
+  if (!md) {
+    try {
+      const resp = await fetch(MD_BASE + page + '.md');
+      if (resp.ok) { md = await resp.text(); usedLang = 'en'; }
+    } catch(e) {}
+  }
+
+  if (!md) {
+    content.innerHTML = `<h1>${ui.notfound}</h1><p>Could not load <code>${escHtml(page)}</code>.</p><p><a href="https://github.com/HMG-AI/HMG-public/tree/main/docs/md/${escHtml(page)}.md">${ui.view_source}</a></p>`;
+    return;
+  }
+
+  // Build TOC
+  const headers = md.match(/^#{2,3}\s+.+$/gm) || [];
+  let tocHtml = '';
+  if (headers.length > 2) {
+    tocHtml = '<div class="toc"><h5>Contents</h5><ul>';
+    headers.forEach(h => {
+      if (h.startsWith('## ')) {
+        const text = h.replace(/^#+\s+/,'');
+        const id = text.replace(/[^a-zA-Z0-9\u4e00-\u9fff\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]+/g,'-').toLowerCase().replace(/^-|-$/g,'');
+        tocHtml += `<li><a href="#${id}">${inlineMd(text)}</a></li>`;
+      }
+    });
+    tocHtml += '</ul></div>';
+  }
+
+  let html = mdToHtml(md);
+  html = html.replace(/<h([23])>(.*?)<\/h\1>/g, (m,lvl,text) => {
+    const id = text.replace(/<[^>]+>/g,'').replace(/[^a-zA-Z0-9\u4e00-\u9fff\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]+/g,'-').toLowerCase().replace(/^-|-$/g,'');
+    return `<h${lvl} id="${id}">${text}</h${lvl}>`;
+  });
+
+  // Language notice
+  let notice = '';
+  if (usedLang === 'en' && lang !== 'en') {
+    notice = `<div class="lang-notice"><span>${ui.lang_notice_en}</span><a href="https://github.com/HMG-AI/HMG-public/tree/main/docs/md/${lang}/${page}.md">${ui.view_source}</a></div>`;
+  }
+
+  content.innerHTML = '<div class="breadcrumb"><a href="../">HMG</a> / <a href="./">Docs</a> / ' + escHtml(title) + '</div>' + notice + tocHtml + html;
+  window.history.replaceState({}, '', '?page=' + page);
+  window.scrollTo(0, 0);
 }
 
-// Init
+// ─── Init ───
 applyDocLang();
+buildSearchIndex(); // async, non-blocking
 const params = new URLSearchParams(location.search);
 loadDoc(params.get('page'));
 </script>
