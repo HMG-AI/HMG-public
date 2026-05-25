@@ -1,118 +1,351 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HMG Docs</title>
+  <title>HMG — Documentation</title>
+  <meta name="description" content="HMG documentation — getting started, concepts, API reference, and more.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
   <style>
-    :root { --bg: #0a0a0a; --bg2: #141414; --bg3: #1e1e1e; --text: #e5e5e5; --text2: #a3a3a3; --accent: #3b82f6; --border: #262626; --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.7; }
-    a { color: #60a5fa; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    code { font-family: 'JetBrains Mono', monospace; background: var(--bg3); padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.9em; }
-    pre { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1em; overflow-x: auto; font-family: monospace; font-size: 0.85em; line-height: 1.5; }
-    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5em; }
-    nav { background: var(--bg2); border-bottom: 1px solid var(--border); }
-    nav .container { display: flex; align-items: center; height: 48px; gap: 1.5em; }
-    nav .brand { font-weight: 700; color: var(--text); }
-    nav .brand span { color: var(--accent); }
-    nav a { color: var(--text2); font-size: 0.85em; }
-    .layout { display: flex; gap: 2em; padding-top: 2em; }
-    .sidebar { width: 200px; flex-shrink: 0; }
-    .sidebar h4 { font-size: 0.85em; color: var(--text2); margin-bottom: 0.5em; text-transform: uppercase; letter-spacing: 0.05em; }
-    .sidebar ul { list-style: none; }
-    .sidebar li { padding: 0.2em 0; }
-    .sidebar a { color: var(--text2); font-size: 0.85em; }
-    .sidebar a:hover { color: var(--text); }
-    .sidebar a.active { color: var(--accent); }
-    .content { flex: 1; min-width: 0; }
-    .content h1 { font-size: 1.8em; margin-bottom: 0.5em; }
-    .content h2 { font-size: 1.4em; margin-top: 1.5em; margin-bottom: 0.5em; }
-    .content p { margin: 0.5em 0; }
-    .content ul, .content ol { margin: 0.5em 0 0.5em 1.5em; }
-    .content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
-    .content th, .content td { border: 1px solid var(--border); padding: 0.5em 0.8em; text-align: left; font-size: 0.9em; }
-    .content th { background: var(--bg3); }
-    .content blockquote { border-left: 3px solid var(--accent); padding-left: 1em; color: var(--text2); margin: 1em 0; }
-    @media (max-width: 720px) { .sidebar { display: none; } .layout { padding-top: 1em; } }
+    :root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--text:#f0f0f0;--text2:#999;--text3:#666;--accent:#3b82f6;--accent2:#60a5fa;--green:#22c55e;--border:#262626;--border2:#333;--mono:'SF Mono','JetBrains Mono',monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--radius:10px}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:var(--accent2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    code{font-family:var(--mono);background:var(--bg3);padding:.15em .4em;border-radius:4px;font-size:.88em}
+    pre{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1em;overflow-x:auto;font-family:var(--mono);font-size:.84em;line-height:1.6;white-space:pre;word-break:normal}
+    pre code{background:none;padding:0;font-size:1em}
+    .container{max-width:1160px;margin:0 auto;padding:0 1.5em}
+
+    /* Nav */
+    nav{background:rgba(10,10,10,.9);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;backdrop-filter:blur(16px)}
+    nav .container{display:flex;align-items:center;height:50px;gap:1.5em}
+    .brand{font-weight:800;font-size:1.05em;color:var(--text)}
+    .brand span{color:var(--accent)}
+    nav .sep{color:var(--text3);font-size:.8em}
+    nav .page-title{color:var(--text2);font-size:.9em}
+    .nav-right{margin-left:auto;display:flex;align-items:center;gap:.8em}
+    .nav-right a{color:var(--text2);font-size:.82em}
+    .lang-sm{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:.2em .5em;border-radius:4px;cursor:pointer;font-size:.8em;font-family:var(--sans)}
+
+    /* Layout */
+    .layout{display:flex;gap:2.5em;padding-top:1.5em;padding-bottom:4em}
+    .sidebar{width:220px;flex-shrink:0;position:sticky;top:66px;max-height:calc(100vh - 80px);overflow-y:auto}
+    .sidebar::-webkit-scrollbar{width:4px}
+    .sidebar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+    .sidebar h4{font-size:.78em;color:var(--text3);margin-bottom:.5em;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+    .sidebar ul{list-style:none;margin-bottom:1.5em}
+    .sidebar li{padding:.2em 0}
+    .sidebar a{color:var(--text2);font-size:.84em;display:block;padding:.2em .5em;border-radius:4px}
+    .sidebar a:hover{color:var(--text);background:var(--bg3);text-decoration:none}
+    .sidebar a.active{color:var(--accent2);background:var(--bg3);font-weight:500}
+
+    /* Content */
+    .content{flex:1;min-width:0;max-width:740px}
+    .content h1{font-size:1.8em;margin-bottom:.5em;font-weight:700;letter-spacing:-.02em}
+    .content h2{font-size:1.35em;margin-top:2em;margin-bottom:.5em;font-weight:600;padding-bottom:.3em;border-bottom:1px solid var(--border)}
+    .content h3{font-size:1.1em;margin-top:1.5em;margin-bottom:.4em;font-weight:600}
+    .content p{margin:.6em 0;color:var(--text)}
+    .content ul,.content ol{margin:.5em 0 .5em 1.5em}
+    .content li{margin:.2em 0;color:var(--text)}
+    .content li::marker{color:var(--text2)}
+    .content table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.88em}
+    .content th,.content td{border:1px solid var(--border);padding:.5em .8em;text-align:left}
+    .content th{background:var(--bg3);color:var(--text2);font-weight:600}
+    .content blockquote{border-left:3px solid var(--accent);padding:.5em 1em;margin:1em 0;color:var(--text2);background:var(--bg2);border-radius:0 var(--radius) var(--radius) 0}
+    .content hr{border:none;border-top:1px solid var(--border);margin:2em 0}
+    .content strong{color:var(--text);font-weight:600}
+    .content code{color:var(--accent2)}
+
+    /* Breadcrumb */
+    .breadcrumb{font-size:.82em;color:var(--text3);margin-bottom:1.5em}
+    .breadcrumb a{color:var(--text3)}
+    .breadcrumb a:hover{color:var(--accent2)}
+
+    /* TOC */
+    .toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1em 1.2em;margin-bottom:2em}
+    .toc h5{font-size:.82em;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5em}
+    .toc ul{list-style:none;margin:0;padding:0}
+    .toc li{padding:.15em 0}
+    .toc a{color:var(--text2);font-size:.84em}
+    .toc a:hover{color:var(--accent2);text-decoration:none}
+
+    /* Loading */
+    .loading{text-align:center;padding:3em;color:var(--text3)}
+    .loading .spinner{display:inline-block;width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* Responsive */
+    @media(max-width:768px){
+      .sidebar{display:none}
+      .layout{gap:0;padding-top:1em}
+    }
   </style>
 </head>
 <body>
+
 <nav>
   <div class="container">
     <a href="../" class="brand"><span>HMG</span> Docs</a>
-    <a href="../">← <span id="back-home">Back</span></a>
+    <span class="sep">/</span>
+    <span class="page-title" id="pageTitle">Documentation</span>
+    <div class="nav-right">
+      <a href="https://github.com/HMG-AI/HMG-public/tree/main/docs/md">Source</a>
+      <button class="lang-sm" onclick="toggleDocLang()" id="docLangBtn">🌐 EN</button>
+    </div>
   </div>
 </nav>
+
 <div class="container">
   <div class="layout">
-    <div class="sidebar">
-      <h4>Getting Started</h4>
+    <div class="sidebar" id="sidebar">
+      <h4 data-t="sb_start">Getting Started</h4>
       <ul>
         <li><a href="?page=getting-started" id="nav-getting-started">Getting Started</a></li>
         <li><a href="?page=concepts" id="nav-concepts">Concepts</a></li>
         <li><a href="?page=architecture" id="nav-architecture">Architecture</a></li>
         <li><a href="?page=faq" id="nav-faq">FAQ</a></li>
       </ul>
-      <h4 style="margin-top: 1em;">Reference</h4>
+      <h4 data-t="sb_ref">Reference</h4>
       <ul>
         <li><a href="?page=api-reference" id="nav-api-reference">API Reference</a></li>
         <li><a href="?page=correction-governance" id="nav-correction-governance">Correction & Governance</a></li>
         <li><a href="?page=upgrade" id="nav-upgrade">Upgrade Guide</a></li>
         <li><a href="?page=security" id="nav-security">Security</a></li>
       </ul>
-      <h4 style="margin-top: 1em;">Legal</h4>
+      <h4 data-t="sb_legal">Legal</h4>
       <ul>
         <li><a href="?page=trademark-policy" id="nav-trademark-policy">Trademark Policy</a></li>
       </ul>
     </div>
     <div class="content" id="doc-content">
-      <p>Loading...</p>
+      <div class="loading"><div class="spinner"></div><p style="margin-top:1em" data-t="loading">Loading documentation…</p></div>
     </div>
   </div>
 </div>
+
 <script>
-const BASE = 'https://raw.githubusercontent.com/HMG-AI/HMG-public/main/docs/md/md/';
+// Fetch path fixed — docs/md/ is the correct location
+const MD_BASE = 'https://raw.githubusercontent.com/HMG-AI/HMG-public/main/docs/md/';
+
+// Page metadata
+const PAGES = {
+  'getting-started': {en:'Getting Started','zh-CN':'快速开始','zh-TW':'快速開始',ja:'クイックスタート',ko:'빠른 시작',fr:'Démarrage rapide',de:'Schnellstart',es:'Inicio rápido','pt-BR':'Início rápido',ru:'Быстрый старт'},
+  'concepts': {en:'Concepts','zh-CN':'概念','zh-TW':'概念',ja:'コンセプト',ko:'개념',fr:'Concepts',de:'Konzepte',es:'Conceptos','pt-BR':'Conceitos',ru:'Концепции'},
+  'architecture': {en:'Architecture','zh-CN':'架构','zh-TW':'架構',ja:'アーキテクチャ',ko:'아키텍처',fr:'Architecture',de:'Architektur',es:'Arquitectura','pt-BR':'Arquitetura',ru:'Архитектура'},
+  'api-reference': {en:'API Reference','zh-CN':'API 参考','zh-TW':'API 參考',ja:'APIリファレンス',ko:'API 참조',fr:'Référence API',de:'API-Referenz',es:'Referencia API','pt-BR':'Referência API',ru:'Справочник API'},
+  'correction-governance': {en:'Correction & Governance','zh-CN':'修正与治理','zh-TW':'修正與治理',ja:'修正＆ガバナンス',ko:'수정 & 거버넌스',fr:'Correction & Gouvernance',de:'Korrektur & Governance',es:'Corrección y Gobernanza','pt-BR':'Correção e Governança',ru:'Исправление и Управление'},
+  'upgrade': {en:'Upgrade Guide','zh-CN':'升级指南','zh-TW':'升級指南',ja:'アップグレードガイド',ko:'업그레이드 가이드',fr:'Guide de mise à niveau',de:'Upgrade-Leitfaden',es:'Guía de actualización','pt-BR':'Guia de atualização',ru:'Руководство по обновлению'},
+  'security': {en:'Security','zh-CN':'安全','zh-TW':'安全',ja:'セキュリティ',ko:'보안',fr:'Sécurité',de:'Sicherheit',es:'Seguridad','pt-BR':'Segurança',ru:'Безопасность'},
+  'faq': {en:'FAQ','zh-CN':'常见问题','zh-TW':'常見問題',ja:'FAQ',ko:'FAQ',fr:'FAQ',de:'FAQ',es:'FAQ','pt-BR':'FAQ',ru:'FAQ'},
+  'trademark-policy': {en:'Trademark Policy','zh-CN':'商标政策','zh-TW':'商標政策',ja:'トレードマークポリシー',ko:'상표 정책',fr:'Politique de marque',de:'Markenrichtlinie',es:'Política de marca','pt-BR':'Política de marca',ru:'Политика товарных знаков'},
+};
+
+const UI = {
+  en:{loading:'Loading documentation…',sb_start:'Getting Started',sb_ref:'Reference',sb_legal:'Legal',notfound:'Document not found',view_source:'View on GitHub'},
+  'zh-CN':{loading:'正在加载文档…',sb_start:'入门',sb_ref:'参考',sb_legal:'法律',notfound:'文档未找到',view_source:'在 GitHub 上查看'},
+  'zh-TW':{loading:'正在載入文件…',sb_start:'入門',sb_ref:'參考',sb_legal:'法律',notfound:'文件未找到',view_source:'在 GitHub 上檢視'},
+  ja:{loading:'ドキュメントを読み込み中…',sb_start:'入門',sb_ref:'リファレンス',sb_legal:'法務',notfound:'ドキュメントが見つかりません',view_source:'GitHubで表示'},
+  ko:{loading:'문서 로딩 중…',sb_start:'시작하기',sb_ref:'참조',sb_legal:'법적 고지',notfound:'문서를 찾을 수 없습니다',view_source:'GitHub에서 보기'},
+  fr:{loading:'Chargement de la documentation…',sb_start:'Démarrage',sb_ref:'Référence',sb_legal:'Juridique',notfound:'Document non trouvé',view_source:'Voir sur GitHub'},
+  de:{loading:'Dokumentation wird geladen…',sb_start:'Einstieg',sb_ref:'Referenz',sb_legal:'Rechtliches',notfound:'Dokument nicht gefunden',view_source:'Auf GitHub ansehen'},
+  es:{loading:'Cargando documentación…',sb_start:'Inicio',sb_ref:'Referencia',sb_legal:'Legal',notfound:'Documento no encontrado',view_source:'Ver en GitHub'},
+  'pt-BR':{loading:'Carregando documentação…',sb_start:'Início',sb_ref:'Referência',sb_legal:'Legal',notfound:'Documento não encontrado',view_source:'Ver no GitHub'},
+  ru:{loading:'Загрузка документации…',sb_start:'Начало',sb_ref:'Справочник',sb_legal:'Правовая информация',notfound:'Документ не найден',view_source:'Смотреть на GitHub'},
+};
+
+const LANGS = {
+  'en':'🇺🇸 EN','zh-CN':'🇨🇳 中文','zh-TW':'🇹🇼 繁體','ja':'🇯🇵 日本語','ko':'🇰🇷 한국어',
+  'fr':'🇫🇷 Français','de':'🇩🇪 Deutsch','es':'🇪🇸 Español','pt-BR':'🇧🇷 PT','ru':'🇷🇺 Русский'
+};
+
+let lang = localStorage.getItem('hmg-lang') || 'en';
+if (!UI[lang]) lang = 'en';
+
+function applyDocLang() {
+  const ui = UI[lang] || UI.en;
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const k = el.getAttribute('data-t');
+    if (ui[k]) el.textContent = ui[k];
+  });
+  document.getElementById('docLangBtn').textContent = LANGS[lang] || '🌐 EN';
+}
+
+const LANG_ORDER = ['en','zh-CN','zh-TW','ja','ko','fr','de','es','pt-BR','ru'];
+function toggleDocLang() {
+  const idx = LANG_ORDER.indexOf(lang);
+  lang = LANG_ORDER[(idx + 1) % LANG_ORDER.length];
+  localStorage.setItem('hmg-lang', lang);
+  applyDocLang();
+  // Reload current doc to update sidebar labels
+  const params = new URLSearchParams(location.search);
+  loadDoc(params.get('page'));
+}
+
+// Markdown → HTML (proper parser)
+function mdToHtml(md) {
+  // Escape HTML entities (but preserve intentional tags)
+  let lines = md.split('\n');
+  let html = '';
+  let inCode = false;
+  let inTable = false;
+  let inList = false;
+  let listType = '';
+
+  function closeList() {
+    if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
+  }
+  function closeTable() {
+    if (inTable) { html += '</tbody></table>'; inTable = false; }
+  }
+
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i];
+
+    // Code blocks
+    if (line.startsWith('```')) {
+      closeList(); closeTable();
+      if (inCode) { html += '</code></pre>'; inCode = false; }
+      else { html += '<pre><code>'; inCode = true; }
+      continue;
+    }
+    if (inCode) { html += escHtml(line) + '\n'; continue; }
+
+    // Tables
+    if (line.includes('|') && line.trim().startsWith('|')) {
+      closeList();
+      const cells = line.split('|').filter(c => c.trim() !== '');
+      if (cells.every(c => /^[\s:-]+$/.test(c))) continue; // separator row
+      if (!inTable) { html += '<table><thead><tr>'; inTable = true;
+        cells.forEach(c => html += '<th>' + inlineMd(c.trim()) + '</th>');
+        html += '</tr></thead><tbody>';
+      } else {
+        html += '<tr>';
+        cells.forEach(c => html += '<td>' + inlineMd(c.trim()) + '</td>');
+        html += '</tr>';
+      }
+      continue;
+    } else { closeTable(); }
+
+    // Headers
+    const hMatch = line.match(/^(#{1,4})\s+(.+)$/);
+    if (hMatch) {
+      closeList();
+      const lvl = hMatch[1].length;
+      html += `<h${lvl}>${inlineMd(hMatch[2])}</h${lvl}>`;
+      continue;
+    }
+
+    // Blockquote
+    if (line.startsWith('> ')) {
+      closeList();
+      html += '<blockquote>' + inlineMd(line.slice(2)) + '</blockquote>';
+      continue;
+    }
+
+    // Horizontal rule
+    if (/^---+$/.test(line.trim())) {
+      closeList();
+      html += '<hr>';
+      continue;
+    }
+
+    // Unordered list
+    const ulMatch = line.match(/^[-*]\s+(.+)$/);
+    if (ulMatch) {
+      if (!inList || listType !== 'ul') { closeList(); html += '<ul>'; inList = true; listType = 'ul'; }
+      html += '<li>' + inlineMd(ulMatch[1]) + '</li>';
+      continue;
+    }
+
+    // Ordered list
+    const olMatch = line.match(/^\d+\.\s+(.+)$/);
+    if (olMatch) {
+      if (!inList || listType !== 'ol') { closeList(); html += '<ol>'; inList = true; listType = 'ol'; }
+      html += '<li>' + inlineMd(olMatch[1]) + '</li>';
+      continue;
+    }
+
+    // Empty line
+    if (line.trim() === '') { closeList(); continue; }
+
+    // Paragraph
+    closeList();
+    html += '<p>' + inlineMd(line) + '</p>';
+  }
+  closeList(); closeTable();
+  if (inCode) html += '</code></pre>';
+  return html;
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function inlineMd(s) {
+  return s
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+}
 
 async function loadDoc(page) {
   if (!page) page = 'getting-started';
-  const url = BASE + page + '.md';
+  const content = document.getElementById('doc-content');
+
+  // Update sidebar active state
+  document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+  const nav = document.getElementById('nav-' + page);
+  if (nav) nav.classList.add('active');
+
+  // Update page title
+  const pageInfo = PAGES[page] || {};
+  const title = pageInfo[lang] || pageInfo.en || page;
+  document.getElementById('pageTitle').textContent = title;
+  document.title = title + ' — HMG Docs';
+
+  const url = MD_BASE + page + '.md';
   try {
     const resp = await fetch(url);
     if (!resp.ok) throw new Error(resp.status);
     const md = await resp.text();
-    document.getElementById('doc-content').innerHTML = renderMd(md);
-    document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
-    const nav = document.getElementById('nav-' + page);
-    if (nav) nav.classList.add('active');
+
+    // Build TOC from headers
+    let tocHtml = '';
+    const headers = md.match(/^#{2,3}\s+.+$/gm) || [];
+    if (headers.length > 2) {
+      tocHtml = '<div class="toc"><h5>' + (UI[lang]?.sb_ref || 'Contents') + '</h5><ul>';
+      headers.forEach(h => {
+        const lvl = h.match(/^(#+)/)[1].length;
+        const text = h.replace(/^#+\s+/, '');
+        const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        if (lvl === 2) {
+          tocHtml += `<li><a href="#${id}">${inlineMd(text)}</a></li>`;
+        }
+      });
+      tocHtml += '</ul></div>';
+    }
+
+    let html = mdToHtml(md);
+    // Add IDs to h2/h3 for anchor links
+    html = html.replace(/<h([23])>(.*?)<\/h\1>/g, (m, lvl, text) => {
+      const id = text.replace(/<[^>]+>/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      return `<h${lvl} id="${id}">${text}</h${lvl}>`;
+    });
+
+    content.innerHTML = '<div class="breadcrumb"><a href="../">HMG</a> / <a href="docs/">Docs</a> / ' + escHtml(title) + '</div>' + tocHtml + html;
     window.history.replaceState({}, '', '?page=' + page);
   } catch (e) {
-    document.getElementById('doc-content').innerHTML =
-      '<h1>Document not found</h1><p>Could not load <code>' + page + '.md</code>. <a href="https://github.com/HMG-AI/HMG-public/tree/main/docs">View on GitHub</a></p>';
+    const ui = UI[lang] || UI.en;
+    content.innerHTML = `<h1>${ui.notfound}</h1><p>Could not load <code>${escHtml(page)}.md</code>.</p><p><a href="https://github.com/HMG-AI/HMG-public/tree/main/docs/md/${escHtml(page)}.md">${ui.view_source}</a></p>`;
   }
 }
 
-function renderMd(md) {
-  let html = md
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-    .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>')
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-    .replace(/^\> (.+)$/gm, '<blockquote>$1</blockquote>')
-    .replace(/^- (.+)$/gm, '<li>$1</li>')
-    .replace(/^(\d+)\. (.+)$/gm, '<li>$2</li>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-    .replace(/\n{2,}/g, '</p><p>')
-    .replace(/\n/g, '<br>');
-  return '<p>' + html + '</p>';
-}
-
-const params = new URLSearchParams(window.location.search);
+// Init
+applyDocLang();
+const params = new URLSearchParams(location.search);
 loadDoc(params.get('page'));
 </script>
 </body>
