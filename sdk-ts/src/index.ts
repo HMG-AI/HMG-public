@@ -235,7 +235,7 @@ export interface AgentBriefResponse {
  * ```typescript
  * import { HMGClient } from "@hmg_ai/sdk-ts";
  *
- * const client = new HMGClient({ baseUrl: "http://localhost:8080" });
+ * const client = new HMGClient({ baseUrl: "http://localhost:3000" });
  *
  * await client.memorize({
  *   content: "We chose PostgreSQL for the main database",
@@ -253,7 +253,7 @@ export class HMGClient {
   private apiKey: string | undefined;
 
   constructor(options: { baseUrl?: string; apiKey?: string } = {}) {
-    this.baseUrl = (options.baseUrl ?? "http://localhost:8080").replace(/\/+$/, "");
+    this.baseUrl = (options.baseUrl ?? "http://localhost:3000").replace(/\/+$/, "");
     this.apiKey = options.apiKey;
   }
 

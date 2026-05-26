@@ -19,7 +19,7 @@ pip install hmg-sdk
 ```python
 from hmg import HMGClient
 
-client = HMGClient(base_url="http://localhost:8080")
+client = HMGClient(base_url="http://localhost:3000")
 
 # Store a decision
 client.memorize(

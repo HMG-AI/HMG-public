@@ -19,7 +19,7 @@ npm install @hmg_ai/sdk-ts
 ```typescript
 import { HMGClient } from "@hmg_ai/sdk-ts";
 
-const client = new HMGClient({ baseUrl: "http://localhost:8080" });
+const client = new HMGClient({ baseUrl: "http://localhost:3000" });
 
 // Store a decision
 await client.memorize({
@@ -59,7 +59,7 @@ await client.correct(atom.id, {
 
 ```typescript
 interface HMGClientOptions {
-  baseUrl?: string;  // default: http://localhost:8080
+  baseUrl?: string;  // default: http://localhost:3000
   apiKey?: string;   // for Enterprise
 }
 

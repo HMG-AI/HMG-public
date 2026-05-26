@@ -57,7 +57,7 @@ npx ts-node quickstart.ts
 ```typescript
 import { HMGClient } from "@hmg_ai/sdk-ts";
 
-const client = new HMGClient({ baseUrl: "http://localhost:8080" });
+const client = new HMGClient({ baseUrl: "http://localhost:3000" });
 
 await client.memorize({
   content: "API uses JWT tokens with 24h expiry",

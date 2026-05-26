@@ -228,7 +228,7 @@ Cela signifie :
                ▼
 ┌─────────────────────────────────┐
 │      Processus HMG               │
-│   (lié à localhost:8080)         │
+│   (lié à localhost:3000)         │
 │                                  │
 │   Données mémoire : accès user   │
 │   Pas de connexions sortantes (CE)│

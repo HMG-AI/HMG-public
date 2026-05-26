@@ -290,14 +290,14 @@ class HMGClient:
     """HTTP client for the HMG memory service.
 
     Usage:
-        client = HMGClient(base_url="http://localhost:8080")
+        client = HMGClient(base_url="http://localhost:3000")
         client.memorize(content="We chose PostgreSQL for the main database")
         result = client.recall(query="database choice")
         for atom in result.atoms:
             print(atom.content)
     """
 
-    def __init__(self, base_url: str = "http://localhost:8080", api_key: str | None = None):
+    def __init__(self, base_url: str = "http://localhost:3000", api_key: str | None = None):
         self.base_url = base_url.rstrip("/")
         self.api_key = api_key
 

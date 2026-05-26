@@ -228,7 +228,7 @@ This means:
                ▼
 ┌─────────────────────────────────┐
 │         HMG Process              │
-│   (binds to localhost:8080)      │
+│   (binds to localhost:3000)      │
 │                                  │
 │   Memory data: user-only access  │
 │   No outbound connections (CE)   │
