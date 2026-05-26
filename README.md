@@ -1,5 +1,7 @@
 <p align="center">
-  <video src="docs/img/logovideo.mp4" autoplay loop muted playsinline width="360" style="border-radius:12px;"></video>
+  <a href="https://hmg-ai.github.io/HMG-public/">
+    <img src="docs/img/logovideo.mp4" width="360" style="border-radius:12px;" />
+  </a>
 </p>
 
 <p align="center">
