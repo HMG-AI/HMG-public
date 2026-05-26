@@ -9,13 +9,13 @@
 #
 # Download sources (tried in order):
 #   1. GitHub Releases (default, canonical)
-#   2. Official website mirror (github.com/HMG-AI)
+#   2. Official website mirror (hmg2ai.com)
 # ─────────────────────────────────────────────────────────────────────────────
 set -eu
 
 HMG_REPO="HMG-AI/HMG-public"
 HMG_GITHUB="https://github.com/${HMG_REPO}"
-WEBSITE_BASE="https://github.com/HMG-AI/HMG/releases/latest/download"
+WEBSITE_BASE="https://hmg2ai.com/releases/latest/download"
 BIN_DIR="${HMG_INSTALL_DIR:-$HOME/.local/bin}"
 TMP_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t hmg-install)"
 REQUESTED_VERSION=""
@@ -101,11 +101,14 @@ install_from_url() {
     return 1
   fi
 
+  # Find binaries (may be in a subdirectory from tar packaging)
   for bin in hmg hmg-server hmg-hook-worker; do
-    if [ ! -f "$pkg_dir/$bin" ]; then
+    found="$(find "$pkg_dir" -name "$bin" -type f | head -1)"
+    if [ -z "$found" ]; then
       log "  Package missing binary: $bin"
       return 1
     fi
+    mv "$found" "$pkg_dir/$bin"
   done
 
   if [ "$DRY_RUN" = true ]; then
@@ -136,13 +139,20 @@ do_install() {
     return 0
   fi
 
-  # Source 2: Official website mirror
+  # Source 2: Official website mirror (hmg2ai.com)
   local web_url="${WEBSITE_BASE}/${archive}"
   if install_from_url "$web_url" "$archive"; then
     return 0
   fi
 
-  err "Download failed from all sources. Check your network or specify a different version."
+  err "Download failed from all sources.
+
+Platform $target may not yet have a prebuilt binary.
+Currently available: Linux x86_64.
+Other platforms (Linux ARM64, macOS) are coming soon via CI.
+
+Build from source: https://github.com/HMG-AI/HMG-public
+Request a platform: https://github.com/HMG-AI/HMG-public/issues"
 }
 
 # ── Main ───────────────────────────────────────────────────────────────────
@@ -162,7 +172,7 @@ main() {
   log "  hmg daemon start     # Start background daemon"
   log ""
   log "Documentation: https://hmg-ai.github.io/HMG-public/"
-  log "Website:       https://github.com/HMG-AI/HMG/"
+  log "Website:       https://hmg2ai.com/"
   log "GitHub:        ${HMG_GITHUB}"
 }
 
