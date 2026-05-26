@@ -202,10 +202,10 @@ HMG バイナリ
   ├── ライセンスキーなし → Community Edition
   │     └── キーワード検索、50K アトム、5 エージェント、基本機能
   │
-  ├── HMG_LICENSE_KEY=hmg-dev-... → Developer Edition
+  ├── HMG_LICENSE_KEY=<your-key> → Developer Edition
   │     └── One-Shot Recall、自動統合、ドメインパック、無制限
   │
-  ├── HMG_LICENSE_KEY=hmg-ent-... → Enterprise Edition
+  ├── HMG_LICENSE_KEY=<your-key> → Enterprise Edition
   │     └── 全機能、SSO、RBAC、マルチテナント、監査
   │
   └── HMG_CLOUD_TOKEN → クラウド接続

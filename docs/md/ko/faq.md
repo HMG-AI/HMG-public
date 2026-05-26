@@ -98,7 +98,7 @@ HMG는 기억을 덮어쓰지 않습니다. 수정은 새 원자를 생성하고
 ### Developer로 업그레이드하려면？
 
 ```bash
-hmg license apply hmg-dev-xxxxx
+hmg license apply <your-key>
 hmg daemon restart
 ```
 

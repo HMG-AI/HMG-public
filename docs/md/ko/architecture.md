@@ -202,10 +202,10 @@ HMG 바이너리
   ├── 라이선스 키 없음 → Community Edition
   │     └── 키워드 검색, 50K 원자, 5 에이전트, 기본 기능
   │
-  ├── HMG_LICENSE_KEY=hmg-dev-... → Developer Edition
+  ├── HMG_LICENSE_KEY=<your-key> → Developer Edition
   │     └── One-Shot Recall, 자동 통합, 도메인 팩, 무제한
   │
-  ├── HMG_LICENSE_KEY=hmg-ent-... → Enterprise Edition
+  ├── HMG_LICENSE_KEY=<your-key> → Enterprise Edition
   │     └── 모든 기능, SSO, RBAC, 멀티테넌트, 감사
   │
   └── HMG_CLOUD_TOKEN → 클라우드 연결

@@ -19,14 +19,14 @@ cp -r ~/.local/share/hmg ~/.local/share/hmg.bak-v0.8
 
 ### Community → Developer
 ```bash
-hmg license apply hmg-dev-xxxxx
+hmg license apply <your-key>
 hmg daemon restart
 ```
 Sofort freigeschaltet: Unbegrenzte Atome, semantische Suche, One-Shot Recall, Domain Packs.
 
 ### Developer → Enterprise
 ```bash
-hmg license apply hmg-ent-xxxxx
+hmg license apply <your-key>
 hmg daemon restart
 ```
 Sofort freigeschaltet: SSO, RBAC, Multi-Tenant, Audit-Export.

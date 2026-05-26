@@ -43,7 +43,7 @@ Vector databases store and retrieve embeddings. HMG manages knowledge lifecycle.
 ### How do I install HMG?
 
 ```bash
-curl -L https://funcode.xin/HMG/install.sh | sh
+curl -L https://hmg2ai.com/install.sh | sh
 ```
 
 Or download from [GitHub Releases](https://github.com/HMG-AI/HMG/releases).
@@ -108,7 +108,7 @@ Community Edition supports 50,000 memory atoms. This is approximately:
 
 When approaching the limit, HMG shows a warning. At the limit, new memories replace lowest-certainty existing ones (intelligent rotation, no data loss).
 
-To get unlimited storage: [Upgrade to Developer](https://funcode.xin/HMG/#pricing)
+To get unlimited storage: [Upgrade to Developer](https://hmg2ai.com/#pricing)
 
 ### How does branch-aware scope work?
 
@@ -177,7 +177,7 @@ No time limits, no feature removal, no ads.
 Set a license key:
 
 ```bash
-export HMG_LICENSE_KEY=hmg-dev-...
+export HMG_LICENSE_KEY=<your-key>
 hmg daemon restart
 ```
 
@@ -190,10 +190,10 @@ Yes, through an OEM agreement. Community Edition explicitly prohibits embedding 
 - Branding rights ("Powered by HMG")
 - Priority support
 
-Contact: monkseekee@gmail.com
+Contact: security@hmg2ai.com
 
 ## More questions?
 
 - 💬 [GitHub Discussions](https://github.com/HMG-AI/HMG-public/discussions)
-- 📧 monkseekee@gmail.com
-- 🌐 https://funcode.xin/HMG/
+- 📧 security@hmg2ai.com
+- 🌐 https://hmg2ai.com/

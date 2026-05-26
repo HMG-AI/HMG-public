@@ -202,10 +202,10 @@ Binaire HMG
   ├── Pas de clé de licence → Community Edition
   │     └── Recherche par mots-clés, 50K atomes, 5 agents, fonctionnalités de base
   │
-  ├── HMG_LICENSE_KEY=hmg-dev-... → Developer Edition
+  ├── HMG_LICENSE_KEY=<your-key> → Developer Edition
   │     └── One-Shot Recall, consolidation auto, Domain Packs, illimité
   │
-  ├── HMG_LICENSE_KEY=hmg-ent-... → Enterprise Edition
+  ├── HMG_LICENSE_KEY=<your-key> → Enterprise Edition
   │     └── Toutes les fonctionnalités, SSO, RBAC, multi-tenant, audit
   │
   └── HMG_CLOUD_TOKEN → Connecté au cloud

@@ -98,7 +98,7 @@ Oui. L'édition Community supporte la recherche par mots-clés. L'édition Devel
 ### Comment passer à Developer ?
 
 ```bash
-hmg license apply hmg-dev-xxxxx
+hmg license apply <your-key>
 hmg daemon restart
 ```
 

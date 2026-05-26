@@ -202,10 +202,10 @@ HMG 二進位
   ├── 無 license key → Community Edition
   │     └── 關鍵詞搜尋，50K 原子，5 個 agent，基礎功能
   │
-  ├── HMG_LICENSE_KEY=hmg-dev-... → Developer Edition
+  ├── HMG_LICENSE_KEY=<your-key> → Developer Edition
   │     └── One-Shot Recall，自動整理，Domain Packs，無限量
   │
-  ├── HMG_LICENSE_KEY=hmg-ent-... → Enterprise Edition
+  ├── HMG_LICENSE_KEY=<your-key> → Enterprise Edition
   │     └── 全部功能，SSO，RBAC，多租戶，審計
   │
   └── HMG_CLOUD_TOKEN → 雲連接

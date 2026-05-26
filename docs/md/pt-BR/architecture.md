@@ -29,8 +29,8 @@ Cursor, pi, Claude Code, Codex, Windsurf, Aider, Continue — todos ✅
 ## Edições
 Binário único. Edição determinada pela chave de licença:
 - Sem licença → Community (50K átomos, 5 agentes)
-- `hmg-dev-...` → Developer (ilimitado, One-Shot Recall)
-- `hmg-ent-...` → Enterprise (SSO, RBAC, multi-tenant)
+- `<key>` → Developer (ilimitado, One-Shot Recall)
+- `<key>` → Enterprise (SSO, RBAC, multi-tenant)
 
 ## Segurança
 Community: zero conexões de rede de saída. Vinculado ao localhost. Permissões de apenas usuário.

@@ -46,4 +46,4 @@ Seules les implémentations passant le processus de certification officiel peuve
 
 ## Contact
 
-Contact : [monkseekee@gmail.com](mailto:monkseekee@gmail.com)
+Contact : [security@hmg2ai.com](mailto:security@hmg2ai.com)

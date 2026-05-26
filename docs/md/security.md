@@ -10,7 +10,7 @@ For the full security policy and vulnerability reporting, see [`SECURITY.md`](..
 | **Network** | Community Edition: zero outbound connections, no telemetry |
 | **Binding** | Binds to `localhost:8080` by default |
 | **Storage** | `~/.local/share/hmg/` with user-only permissions |
-| **Vulnerability reporting** | monkseekee@gmail.com |
+| **Vulnerability reporting** | security@hmg2ai.com |
 
 ## Memory governance for sensitive data
 

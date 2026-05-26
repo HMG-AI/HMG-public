@@ -80,7 +80,7 @@ AI agents forget everything between sessions. HMG gives agents durable, queryabl
 | One-Shot Recall | One MCP call for complete session context |
 | Branch-Aware Scope | tenant → workspace → repository → branch |
 | Governance Control Plane | Quarantine, seal, tombstone, derive lessons |
-| Local-First | Fjall embedded storage, zero dependencies |
+| Local-First | Embedded storage, zero dependencies |
 | 8 MCP Tools | memorize, recall, correct, govern, history, handoff, agent_brief, stats |
 | Open Protocol | hmg-protocol (Apache-2.0) standalone crate |
 
@@ -163,6 +163,6 @@ await client.memorize({ content: "decision noted" });
 
 <p align="center">
   <a href="https://hmg-ai.github.io/HMG-public/">🌐 Site</a> ·
-  <a href="https://funcode.xin/HMG/">🏠 Website</a> ·
+  <a href="https://hmg2ai.com/">🏠 Website</a> ·
   <a href="https://github.com/HMG-AI/HMG-public/releases">📦 Releases</a>
 </p>

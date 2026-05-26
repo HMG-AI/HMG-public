@@ -21,4 +21,4 @@
 ### «HMG Certified»: Только после официального процесса сертификации
 
 ## Контакты
-[monkseekee@gmail.com](mailto:monkseekee@gmail.com)
+[security@hmg2ai.com](mailto:security@hmg2ai.com)

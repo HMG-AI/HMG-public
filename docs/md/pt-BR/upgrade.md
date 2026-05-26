@@ -9,11 +9,11 @@ hmg daemon restart
 ## Trocar edição
 ### Community → Developer
 ```bash
-hmg license apply hmg-dev-xxxxx && hmg daemon restart
+hmg license apply <your-key> && hmg daemon restart
 ```
 ### Developer → Enterprise
 ```bash
-hmg license apply hmg-ent-xxxxx && hmg daemon restart
+hmg license apply <your-key> && hmg daemon restart
 ```
 ### Enterprise → Community
 ```bash

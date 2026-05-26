@@ -30,7 +30,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Edition features
 
 - **Community Edition**: Keyword search, 50K atoms, 5 agents, 5 instances, full correction/governance lifecycle, all 8 MCP tools, 7 agent integrations, 15 locales
-- **Developer Edition**: One-Shot Recall Engine, automated consolidation, software-engineering Domain Pack, unlimited atoms and agents
+- **Developer Edition**: Advanced recall engine, automated knowledge maintenance, software-engineering Domain Pack, unlimited atoms and agents
 - **Enterprise Edition**: All Domain Packs, SSO/SAML/OIDC, RBAC, audit export, enterprise connectors, multi-tenant
 
 ## [0.6.2] — 2026-05-17

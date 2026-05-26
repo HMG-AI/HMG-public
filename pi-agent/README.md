@@ -31,7 +31,6 @@ The extension reads local HMG binaries and storage from the environment, with sa
 - `HMG_CLI` defaults to `hmg`
 - `HMG_SERVER` defaults to `hmg-server`
 - `HMG_PI_DATA_DIR` overrides storage; otherwise `HMG_DATA_DIR` or the platform default `~/.local/share/hmg/stores/default` is used
-- `HMG_PROVIDER_BACKEND` defaults to `local` for spawned MCP calls
 
 ## Tool Output
 

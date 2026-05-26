@@ -459,16 +459,16 @@ HMG ships as a single binary with three editions gated at runtime:
 
 ```bash
 # Environment variable
-export HMG_LICENSE_KEY=hmg-dev-xxxx-xxxx-xxxx
+export HMG_LICENSE_KEY=<your-license-key>
 
 # Config file
-echo "hmg-dev-xxxx-xxxx-xxxx" > ~/.config/hmg/license.key
+echo "<your-license-key>" > ~/.config/hmg/license.key
 
 # Cloud token
 export HMG_CLOUD_TOKEN=your-cloud-token
 ```
 
-No key → Community. `hmg-dev-*` → Developer. `hmg-ent-*` → Enterprise.
+No key → Community. `Developer key` → Developer. `Enterprise key` → Enterprise.
 `HMG_CLOUD_TOKEN` → Enterprise.
 
 ---

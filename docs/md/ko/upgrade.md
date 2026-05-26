@@ -49,7 +49,7 @@ HMG는 단일 바이너리를 사용합니다. 에디션은 라이선스 키로 
 ### Community → Developer
 
 ```bash
-hmg license apply hmg-dev-xxxxx
+hmg license apply <your-key>
 hmg daemon restart
 ```
 
@@ -58,7 +58,7 @@ hmg daemon restart
 ### Developer → Enterprise
 
 ```bash
-hmg license apply hmg-ent-xxxxx
+hmg license apply <your-key>
 hmg daemon restart
 ```
 

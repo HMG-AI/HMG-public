@@ -9,13 +9,13 @@
 #
 # Download sources (tried in order):
 #   1. GitHub Releases (default, canonical)
-#   2. Official website mirror (funcode.xin)
+#   2. Official website mirror (github.com/HMG-AI)
 # ─────────────────────────────────────────────────────────────────────────────
 set -eu
 
 HMG_REPO="HMG-AI/HMG-public"
 HMG_GITHUB="https://github.com/${HMG_REPO}"
-WEBSITE_BASE="https://funcode.xin/HMG/releases/latest/download"
+WEBSITE_BASE="https://github.com/HMG-AI/HMG/releases/latest/download"
 BIN_DIR="${HMG_INSTALL_DIR:-$HOME/.local/bin}"
 TMP_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t hmg-install)"
 REQUESTED_VERSION=""
@@ -162,7 +162,7 @@ main() {
   log "  hmg daemon start     # Start background daemon"
   log ""
   log "Documentation: https://hmg-ai.github.io/HMG-public/"
-  log "Website:       https://funcode.xin/HMG/"
+  log "Website:       https://github.com/HMG-AI/HMG/"
   log "GitHub:        ${HMG_GITHUB}"
 }
 

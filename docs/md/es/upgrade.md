@@ -18,12 +18,12 @@ cp -r ~/.local/share/hmg ~/.local/share/hmg.bak-v0.8
 
 ### Community → Developer
 ```bash
-hmg license apply hmg-dev-xxxxx && hmg daemon restart
+hmg license apply <your-key> && hmg daemon restart
 ```
 
 ### Developer → Enterprise
 ```bash
-hmg license apply hmg-ent-xxxxx && hmg daemon restart
+hmg license apply <your-key> && hmg daemon restart
 ```
 
 ### Enterprise → Community

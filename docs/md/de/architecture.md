@@ -123,8 +123,8 @@ Keine Daten verlassen die Maschine in Community und Developer Local.
 HMG ist eine einzelne Binärdatei. Die aktive Edition wird beim Start bestimmt:
 
 - Kein Lizenzschlüssel → Community (50K Atome, 5 Agenten)
-- `HMG_LICENSE_KEY=hmg-dev-...` → Developer (unbegrenzt, One-Shot Recall)
-- `HMG_LICENSE_KEY=hmg-ent-...` → Enterprise (SSO, RBAC, Multi-Tenant)
+- `HMG_LICENSE_KEY=<your-key>` → Developer (unbegrenzt, One-Shot Recall)
+- `HMG_LICENSE_KEY=<your-key>` → Enterprise (SSO, RBAC, Multi-Tenant)
 
 Upgrade ist sofort: `export HMG_LICENSE_KEY=...` und Neustart.
 

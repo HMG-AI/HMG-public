@@ -29,8 +29,8 @@ Cursor, pi, Claude Code, Codex, Windsurf, Aider, Continue — все ✅
 ## Архитектура выпусков
 Единый бинарный файл. Выпуск определяется лицензионным ключом:
 - Без ключа → Community (50K атомов, 5 агентов)
-- `hmg-dev-...` → Developer (безлимит, One-Shot Recall)
-- `hmg-ent-...` → Enterprise (SSO, RBAC, мульти-тенант)
+- `<key>` → Developer (безлимит, One-Shot Recall)
+- `<key>` → Enterprise (SSO, RBAC, мульти-тенант)
 
 ## Границы безопасности
 Community: нуль исходящих сетевых соединений. Привязан к localhost. Права доступа только пользователя.

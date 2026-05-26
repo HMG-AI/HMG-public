@@ -46,4 +46,4 @@
 
 ## 联系方式
 
-联系：[monkseekee@gmail.com](mailto:monkseekee@gmail.com)
+联系：[security@hmg2ai.com](mailto:security@hmg2ai.com)

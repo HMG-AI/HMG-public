@@ -46,4 +46,4 @@
 
 ## お問い合わせ
 
-連絡先：[monkseekee@gmail.com](mailto:monkseekee@gmail.com)
+連絡先：[security@hmg2ai.com](mailto:security@hmg2ai.com)

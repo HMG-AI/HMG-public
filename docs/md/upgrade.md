@@ -26,20 +26,20 @@ reinstallation or data migration — you enter a license key and restart.
 
 ### 1. Obtain a License Key
 
-- **Developer Local**: Purchase at [HMG pricing page](https://funcode.xin/HMG/pricing)
+- **Developer Local**: Purchase at [HMG pricing page](https://hmg2ai.com/pricing)
 - **Developer Cloud**: Sign up for a cloud subscription
-- **Enterprise**: Contact [monkseekee@gmail.com](mailto:monkseekee@gmail.com)
+- **Enterprise**: Contact [security@hmg2ai.com](mailto:security@hmg2ai.com)
 
 ### 2. Apply the Key
 
 ```bash
 # Option A: Environment variable
-export HMG_LICENSE_KEY=hmg-dev-xxxx-xxxx-xxxx
+export HMG_LICENSE_KEY=<your-license-key>
 hmg daemon restart
 
 # Option B: License file
 mkdir -p ~/.config/hmg
-echo "hmg-dev-xxxx-xxxx-xxxx" > ~/.config/hmg/license.key
+echo "<your-license-key>" > ~/.config/hmg/license.key
 hmg daemon restart
 
 # Option C: Cloud token

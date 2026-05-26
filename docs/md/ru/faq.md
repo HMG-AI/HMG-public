@@ -23,7 +23,7 @@ curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install
 | One-Shot Recall | ❌ | ✅ | ✅ |
 | SSO/RBAC | ❌ | ❌ | ✅ |
 
-Обновление: `hmg license apply hmg-dev-xxxxx && hmg daemon restart`
+Обновление: `hmg license apply <your-key> && hmg daemon restart`
 
 ## Устранение неполадок
 - Агент не находит HMG: `hmg doctor`

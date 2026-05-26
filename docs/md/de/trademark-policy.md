@@ -34,4 +34,4 @@ Nur nach Bestehen der HMG-Konformitätstest-Suite (`hmg-certification`).
 Nur nach dem offiziellen HMG-Zertifizierungsprozess.
 
 ## Kontakt
-[monkseekee@gmail.com](mailto:monkseekee@gmail.com)
+[security@hmg2ai.com](mailto:security@hmg2ai.com)

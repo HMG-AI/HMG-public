@@ -52,4 +52,4 @@ the **"HMG Certified"** mark. Certification requires:
 
 ## Questions
 
-Contact: [monkseekee@gmail.com](mailto:monkseekee@gmail.com)
+Contact: [security@hmg2ai.com](mailto:security@hmg2ai.com)

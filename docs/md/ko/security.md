@@ -2,7 +2,7 @@
 
 ## Data Storage
 
-HMG stores all data locally using the Fjall embedded storage engine. No data is sent to any external service or cloud.
+HMG stores all data locally using the embedded storage engine. No data is sent to any external service or cloud.
 
 - No telemetry
 - No analytics

@@ -49,7 +49,7 @@ HMG utilise un binaire unique. L'édition est déterminée par la clé de licenc
 ### Community → Developer
 
 ```bash
-hmg license apply hmg-dev-xxxxx
+hmg license apply <your-key>
 hmg daemon restart
 ```
 
@@ -58,7 +58,7 @@ Débloque immédiatement : atomes illimités, recherche sémantique, One-Shot Re
 ### Developer → Enterprise
 
 ```bash
-hmg license apply hmg-ent-xxxxx
+hmg license apply <your-key>
 hmg daemon restart
 ```
 

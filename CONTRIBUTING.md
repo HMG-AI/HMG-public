@@ -18,7 +18,7 @@ We accept contributions to:
 | **MCP schemas** | Schema fixes, new tool proposals |
 
 We do **not** accept contributions to:
-- Engine internals (One-Shot Recall, consolidation, ranking, fusion)
+- Engine internals (recall engine, knowledge maintenance, ranking)
 - Domain pack tuning (classification rules, extraction profiles)
 - Evaluation datasets or benchmark fixtures
 - Enterprise features (SSO, RBAC, audit)
@@ -73,7 +73,7 @@ Please use [GitHub Issues](https://github.com/HMG-AI/HMG-public/issues) and incl
 
 **Do not report security vulnerabilities in public GitHub issues.**
 
-Instead, email **monkseekee@gmail.com** with:
+Instead, email **security@hmg2ai.com** with:
 - Description of the vulnerability
 - Steps to reproduce
 - Potential impact
@@ -115,7 +115,7 @@ mypy hmg/
 
 - 💬 [GitHub Discussions](https://github.com/HMG-AI/HMG-public/discussions) — questions, ideas, show & tell
 - 🐛 [GitHub Issues](https://github.com/HMG-AI/HMG-public/issues) — bugs and feature requests
-- 📧 monkseekee@gmail.com — security and private inquiries
+- 📧 security@hmg2ai.com — security and private inquiries
 
 ## License
 

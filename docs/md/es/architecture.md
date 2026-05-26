@@ -50,8 +50,8 @@ Ningún dato sale de la máquina en Community y Developer Local.
 Un solo binario. La edición se determina al iniciar:
 
 - Sin licencia → Community (50K átomos, 5 agentes)
-- `hmg-dev-...` → Developer (ilimitado, One-Shot Recall)
-- `hmg-ent-...` → Enterprise (SSO, RBAC, multi-tenant)
+- `<key>` → Developer (ilimitado, One-Shot Recall)
+- `<key>` → Enterprise (SSO, RBAC, multi-tenant)
 
 ## Límites de seguridad
 

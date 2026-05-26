@@ -53,7 +53,7 @@ Schutz sensibler Erinnerungen: Quarantäne, Versiegelung, Tombstone, Lektion abl
 
 ### Upgrade zu Developer?
 ```bash
-hmg license apply hmg-dev-xxxxx
+hmg license apply <your-key>
 hmg daemon restart
 ```
 

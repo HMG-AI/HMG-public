@@ -8,7 +8,7 @@
 ## Install
 
 ```bash
-curl -L https://funcode.xin/HMG/install.sh | sh
+curl -L https://hmg2ai.com/install.sh | sh
 ```
 
 Or download directly from [GitHub Releases](https://github.com/HMG-AI/HMG/releases):

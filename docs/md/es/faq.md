@@ -40,7 +40,7 @@ Conectar agente: `hmg init --agent cursor|codex|pi|windsurf|aider`
 | One-Shot Recall | ❌ | ✅ | ✅ |
 | SSO / RBAC | ❌ | ❌ | ✅ |
 
-Upgrade: `hmg license apply hmg-dev-xxxxx && hmg daemon restart`
+Upgrade: `hmg license apply <your-key> && hmg daemon restart`
 
 ## Resolución de problemas
 

@@ -46,4 +46,4 @@
 
 ## 문의
 
-연락처：[monkseekee@gmail.com](mailto:monkseekee@gmail.com)
+연락처：[security@hmg2ai.com](mailto:security@hmg2ai.com)
