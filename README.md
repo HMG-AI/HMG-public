@@ -1,4 +1,8 @@
 <p align="center">
+  <video src="docs/img/logovideo.mp4" autoplay loop muted playsinline width="360" style="border-radius:12px;"></video>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/version-0.9.2-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/license-Apache--2.0%20%7C%20Community-green.svg" alt="License">
   <img src="https://img.shields.io/badge/rust-1.85%2B-orange.svg" alt="Rust">
