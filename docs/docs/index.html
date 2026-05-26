@@ -193,8 +193,26 @@ const UI = {
 const LANGS = {'en':'EN','zh-CN':'中文','zh-TW':'繁體','ja':'日本語','ko':'한국어','fr':'FR','de':'DE','es':'ES','pt-BR':'PT','ru':'RU'};
 const LANG_ORDER = ['en','zh-CN','zh-TW','ja','ko','fr','de','es','pt-BR','ru'];
 
-let lang = localStorage.getItem('hmg-lang') || 'en';
-if (!UI[lang]) lang = 'en';
+function detectDocLang() {
+  const url = new URL(location.href);
+  const urlLang = url.searchParams.get('lang');
+  if (urlLang && UI[urlLang]) return urlLang;
+  const stored = localStorage.getItem('hmg-lang');
+  if (stored && UI[stored]) return stored;
+  const nav = (navigator.language || 'en').toLowerCase();
+  if (nav.startsWith('zh-tw') || nav.startsWith('zh-hant')) return 'zh-TW';
+  if (nav.startsWith('zh')) return 'zh-CN';
+  if (nav.startsWith('ja')) return 'ja';
+  if (nav.startsWith('ko')) return 'ko';
+  if (nav.startsWith('fr')) return 'fr';
+  if (nav.startsWith('de')) return 'de';
+  if (nav.startsWith('es')) return 'es';
+  if (nav.startsWith('pt')) return 'pt-BR';
+  if (nav.startsWith('ru')) return 'ru';
+  return 'en';
+}
+
+let lang = detectDocLang();
 
 // ─── Theme ───
 function getTheme() {
@@ -227,11 +245,15 @@ function applyDocLang() {
     const el = document.getElementById('nav-' + page);
     if (el) el.textContent = titles[lang] || titles.en;
   }
+  // Update URL lang param without reload
+  localStorage.setItem('hmg-lang', lang);
+  const url = new URL(location.href);
+  url.searchParams.set('lang', lang);
+  history.replaceState({}, '', url);
 }
 function toggleDocLang() {
   const idx = LANG_ORDER.indexOf(lang);
   lang = LANG_ORDER[(idx + 1) % LANG_ORDER.length];
-  localStorage.setItem('hmg-lang', lang);
   applyDocLang();
   const params = new URLSearchParams(location.search);
   loadDoc(params.get('page'));
@@ -452,7 +474,10 @@ async function loadDoc(page) {
   }
 
   content.innerHTML = '<div class="breadcrumb"><a href="../">HMG</a> / <a href="./">Docs</a> / ' + escHtml(title) + '</div>' + notice + tocHtml + html;
-  window.history.replaceState({}, '', '?page=' + page);
+  const stateUrl = new URL(location.href);
+  stateUrl.searchParams.set('page', page);
+  stateUrl.searchParams.set('lang', lang);
+  window.history.replaceState({}, '', stateUrl);
   window.scrollTo(0, 0);
 }
 
