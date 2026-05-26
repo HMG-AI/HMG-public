@@ -11,6 +11,19 @@
 curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 ```
 
+### Windows (PowerShell)
+
+```powershell
+irm https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1 | iex
+```
+
+### WSL (Windows Subsystem for Linux)
+
+```bash
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+```
+
+
 Или скачайте напрямую с [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases)：
 
 ```bash

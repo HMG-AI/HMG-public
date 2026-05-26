@@ -25,6 +25,8 @@ jobs:
             os: macos-latest
           - target: aarch64-apple-darwin
             os: macos-latest
+          - target: x86_64-pc-windows-msvc
+            os: windows-latest
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -48,6 +50,25 @@ jobs:
 
       - name: Run tests
         run: cargo test -p hmg-protocol -p hmg-certification --target ${{ matrix.target }}
+
+      # Windows uses .zip, others use .tar.gz
+      # - name: Package binaries (Unix)
+      #   if: runner.os != 'Windows'
+      #   run: |
+      #     mkdir -p hmg-${{ inputs.version }}-${{ matrix.target }}
+      #     cp target/${{ matrix.target }}/release/hmg hmg-${{ inputs.version }}-${{ matrix.target }}/
+      #     cp target/${{ matrix.target }}/release/hmg-server hmg-${{ inputs.version }}-${{ matrix.target }}/
+      #     cp target/${{ matrix.target }}/release/hmg-hook-worker hmg-${{ inputs.version }}-${{ matrix.target }}/
+      #     tar -czf hmg-${{ inputs.version }}-${{ matrix.target }}.tar.gz hmg-${{ inputs.version }}-${{ matrix.target }}
+      #
+      # - name: Package binaries (Windows)
+      #   if: runner.os == 'Windows'
+      #   run: |
+      #     mkdir hmg-${{ inputs.version }}-${{ matrix.target }}
+      #     cp target/${{ matrix.target }}/release/hmg.exe hmg-${{ inputs.version }}-${{ matrix.target }}/
+      #     cp target/${{ matrix.target }}/release/hmg-server.exe hmg-${{ inputs.version }}-${{ matrix.target }}/
+      #     cp target/${{ matrix.target }}/release/hmg-hook-worker.exe hmg-${{ inputs.version }}-${{ matrix.target }}/
+      #     Compress-Archive -Path hmg-${{ inputs.version }}-${{ matrix.target }} -DestinationPath hmg-${{ inputs.version }}-${{ matrix.target }}.zip
 
       # NOTE: To build the actual hmg/hmg-server binaries, this workflow
       # needs to run from the private repository where the full engine

@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/version-0.9.2-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/license-Apache--2.0%20%7C%20Community-green.svg" alt="License">
   <img src="https://img.shields.io/badge/rust-1.85%2B-orange.svg" alt="Rust">
-  <img src="https://img.shields.io/badge/platform-Linux%20%7C%20macOS-lightgrey.svg" alt="Platform">
+  <img src="https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey.svg" alt="Platform">
 </p>
 
 <h1 align="center">HMG — Agent Memory That Actually Works</h1>
@@ -35,9 +35,20 @@ curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install
 
 ### macOS
 ```bash
-# Binary coming soon — build from source or star/watch the repo for updates
 curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 # Note: macOS binaries are in CI pipeline. Linux x86_64 is available now.
+```
+
+### Windows (PowerShell)
+```powershell
+irm https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1 | iex
+# Note: Windows binaries are in CI pipeline. Linux x86_64 is available now.
+```
+
+### WSL (Windows Subsystem for Linux)
+```bash
+# Works with Linux x86_64 binary today
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 ```
 
 ### First Run (all platforms)
@@ -69,10 +80,15 @@ hmg doctor
 | Linux ARM64 | 🔜 CI pipeline |
 | macOS Intel | 🔜 CI pipeline |
 | macOS Apple Silicon | 🔜 CI pipeline |
+| Windows x86_64 | 🔜 CI pipeline |
 
 One-command installer (auto-detects platform):
 ```bash
+# Linux / macOS
 curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+
+# Windows (PowerShell)
+irm https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1 | iex
 ```
 
 ## Why HMG?

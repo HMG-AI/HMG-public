@@ -149,7 +149,10 @@ do_install() {
 
 Platform $target may not yet have a prebuilt binary.
 Currently available: Linux x86_64.
-Other platforms (Linux ARM64, macOS) are coming soon via CI.
+Other platforms (Linux ARM64, macOS, Windows) are coming soon via CI.
+
+Windows users: use install.ps1 instead:
+  irm https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1 | iex
 
 Build from source: https://github.com/HMG-AI/HMG-public
 Request a platform: https://github.com/HMG-AI/HMG-public/issues"

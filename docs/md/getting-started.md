@@ -7,7 +7,19 @@
 
 ## Install
 
+### Linux / macOS
 ```bash
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+```
+
+### Windows (PowerShell)
+```powershell
+irm https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1 | iex
+```
+
+### WSL (Windows Subsystem for Linux)
+```bash
+# Works with Linux x86_64 binary today
 curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 ```
 
@@ -16,9 +28,6 @@ Or download directly from [GitHub Releases](https://github.com/HMG-AI/HMG-public
 ```bash
 # Linux x86_64 (available now)
 curl -L https://github.com/HMG-AI/HMG-public/releases/latest/download/hmg-0.9.2-x86_64-unknown-linux-gnu.tar.gz | tar -xzf - -C ~/.local/bin/
-
-# macOS Apple Silicon (coming soon)
-# curl -L https://github.com/HMG-AI/HMG-public/releases/latest/download/hmg-0.9.2-aarch64-apple-darwin.tar.gz | tar -xzf - -C ~/.local/bin/
 ```
 
 ## Verify
