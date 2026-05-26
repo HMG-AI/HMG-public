@@ -9,7 +9,7 @@ info:
     Advanced endpoints (observation, vault, hooks, panorama, noise feedback)
     are available in Developer and Enterprise editions.
 servers:
-  - url: http://localhost:8080
+  - url: http://localhost:3000
 components:
   securitySchemes:
     ApiKeyAuth:

@@ -14,7 +14,7 @@ import {
   type GovernanceAction,
 } from "../sdk-ts/src/index";
 
-const client = new HMGClient({ baseUrl: "http://localhost:8080" });
+const client = new HMGClient({ baseUrl: "http://localhost:3000" });
 
 async function main(): Promise<void> {
   // Define scope for a coding agent session

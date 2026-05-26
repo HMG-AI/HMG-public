@@ -19,7 +19,7 @@
 <p align="center">
   <a href="https://hmg-ai.github.io/HMG-public/">🌐 多语言站点 / Site</a> ·
   <a href="https://github.com/HMG-AI/HMG-public/releases">📦 Releases</a> ·
-  <a href="docs/getting-started.md">📖 Docs</a> ·
+  <a href="docs/md/getting-started.md">📖 Docs</a> ·
   <a href="#quick-start">🚀 Quick Start</a> ·
   <a href="#sdks">SDKs</a>
 </p>
@@ -28,38 +28,49 @@
 
 ## Quick Start
 
+### Linux
 ```bash
-# Install (auto-detects OS and CPU)
 curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+```
 
-# Initialize
+### macOS
+```bash
+# Binary coming soon — build from source or star/watch the repo for updates
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+# Note: macOS binaries are in CI pipeline. Linux x86_64 is available now.
+```
+
+### First Run (all platforms)
+```bash
+# Initialize + install agent adapters
 hmg init -g
 
-# Start daemon
+# Start memory service
 hmg daemon start
 
 # Store your first memory
 curl -s -X POST http://127.0.0.1:3000/api/memorize \
   -H 'Content-Type: application/json' \
   -d '{"content": "My first HMG memory!"}'
+
+# Verify
+hmg doctor
 ```
 
 ## 🌐 Multilingual Site
 
 **[hmg-ai.github.io/HMG-public](https://hmg-ai.github.io/HMG-public/)** — bilingual (中文/English) with one-click toggle.
 
-## 📦 Community Edition Releases
+## 📦 Platform Support
 
-Prebuilt binaries for 4 platforms, published via [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases):
+| Platform | Status |
+|----------|--------|
+| Linux x86_64 (glibc 2.31+) | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
+| Linux ARM64 | 🔜 CI pipeline |
+| macOS Intel | 🔜 CI pipeline |
+| macOS Apple Silicon | 🔜 CI pipeline |
 
-| Platform | Download |
-|----------|----------|
-| Linux x86_64 | `hmg-{version}-x86_64-unknown-linux-gnu.tar.gz` |
-| Linux ARM64 | `hmg-{version}-aarch64-unknown-linux-gnu.tar.gz` |
-| macOS Intel | `hmg-{version}-x86_64-apple-darwin.tar.gz` |
-| macOS Apple Silicon | `hmg-{version}-aarch64-apple-darwin.tar.gz` |
-
-Or use the one-command installer:
+One-command installer (auto-detects platform):
 ```bash
 curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 ```
@@ -77,7 +88,7 @@ AI agents forget everything between sessions. HMG gives agents durable, queryabl
 
 | Feature | Description |
 |---------|-------------|
-| One-Shot Recall | One MCP call for complete session context |
+| Advanced Recall | One MCP call for complete session context |
 | Branch-Aware Scope | tenant → workspace → repository → branch |
 | Governance Control Plane | Quarantine, seal, tombstone, derive lessons |
 | Local-First | Embedded storage, zero dependencies |
@@ -91,7 +102,7 @@ AI agents forget everything between sessions. HMG gives agents durable, queryabl
 | Memory atoms | 50,000 | Unlimited | Unlimited |
 | Agents / instance | 5 | Unlimited | Unlimited |
 | MCP tools | 8 core | 8 + observation | All |
-| One-Shot Recall | — | ✓ | ✓ |
+| Advanced Recall | — | ✓ | ✓ |
 | Vector search | — | ✓ | ✓ |
 | SSO / RBAC | — | — | ✓ |
 | Domain packs | — | software-engineering | All |
@@ -124,20 +135,22 @@ await client.memorize({ content: "decision noted" });
 
 | Document | Description |
 |----------|-------------|
-| [Getting Started](docs/getting-started.md) | Install → first memory in 5 minutes |
-| [Concepts](docs/concepts.md) | Memory atoms, correction, governance, scope |
-| [Architecture](docs/architecture.md) | High-level system overview |
-| [API Reference](docs/api-reference.md) | MCP tools and HTTP endpoints |
-| [FAQ](docs/faq.md) | Common questions |
-| [Upgrade Guide](docs/upgrade.md) | Upgrading to Developer/Enterprise |
+| [Getting Started](docs/md/getting-started.md) | Install → first memory in 5 minutes |
+| [Concepts](docs/md/concepts.md) | Memory atoms, correction, governance, scope |
+| [Architecture](docs/md/architecture.md) | High-level system overview |
+| [API Reference](docs/md/api-reference.md) | MCP tools and HTTP endpoints |
+| [FAQ](docs/md/faq.md) | Common questions |
+| [Upgrade Guide](docs/md/upgrade.md) | Upgrading to Developer/Enterprise |
 
 ## Repository Structure
 
 ```
-├── site/              # Multilingual static site (GitHub Pages)
+├── docs/              # GitHub Pages site + documentation
+│   ├── index.html     # Multilingual landing page
+│   ├── img/           # Screenshots and assets
+│   └── md/            # Documentation (Markdown, 11 languages)
 ├── scripts/
 │   └── install.sh     # One-command installer
-├── docs/              # Documentation (Markdown)
 ├── mcp/schemas/       # MCP tool definitions
 ├── openapi/           # OpenAPI (Community Edition surface)
 ├── protocol/          # hmg-protocol crate (Apache-2.0)

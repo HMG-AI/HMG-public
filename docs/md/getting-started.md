@@ -8,17 +8,17 @@
 ## Install
 
 ```bash
-curl -L https://hmg2ai.com/install.sh | sh
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 ```
 
-Or download directly from [GitHub Releases](https://github.com/HMG-AI/HMG/releases):
+Or download directly from [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases):
 
 ```bash
-# Linux x86_64
-curl -L https://github.com/HMG-AI/HMG/releases/latest/download/hmg-latest-x86_64-unknown-linux-gnu.tar.gz | tar -xzf - -C /usr/local/bin/
+# Linux x86_64 (available now)
+curl -L https://github.com/HMG-AI/HMG-public/releases/latest/download/hmg-0.9.2-x86_64-unknown-linux-gnu.tar.gz | tar -xzf - -C ~/.local/bin/
 
-# macOS Apple Silicon
-curl -L https://github.com/HMG-AI/HMG/releases/latest/download/hmg-latest-aarch64-apple-darwin.tar.gz | tar -xzf - -C /usr/local/bin/
+# macOS Apple Silicon (coming soon)
+# curl -L https://github.com/HMG-AI/HMG-public/releases/latest/download/hmg-0.9.2-aarch64-apple-darwin.tar.gz | tar -xzf - -C ~/.local/bin/
 ```
 
 ## Verify
