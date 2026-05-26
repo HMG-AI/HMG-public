@@ -1,7 +1,5 @@
 <p align="center">
-  <a href="https://hmg-ai.github.io/HMG-public/">
-    <img src="docs/img/logovideo.mp4" width="360" style="border-radius:12px;" />
-  </a>
+  <img src="docs/img/logovideo.gif" alt="HMG Logo" width="360" style="border-radius:12px;" />
 </p>
 
 <p align="center">
