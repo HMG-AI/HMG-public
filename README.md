@@ -125,6 +125,20 @@ AI agents forget everything between sessions. HMG gives agents durable, queryabl
 
 Single binary, runtime edition detection. Upgrade with `hmg license apply`.
 
+## Agent Adapters
+
+HMG works with **any** MCP-capable agent. Built-in adapters:
+
+| Agent | Install Command |
+|-------|---------------|
+| pi (Codex) | `hmg init --agent pi` |
+| Cursor | `hmg init --agent cursor` |
+| Claude Code | `hmg init --agent claude` |
+| Codex CLI | `hmg init --agent codex` |
+| Generic MCP | `hmg init --agent generic-mcp` |
+
+Building for a new agent? See [`examples/agent-adapter/`](examples/agent-adapter/) for templates and guides.
+
 ## SDKs
 
 ### Python

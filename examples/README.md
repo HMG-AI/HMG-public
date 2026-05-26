@@ -33,7 +33,7 @@ python quickstart.py
 ```python
 from hmg import HMGClient
 
-client = HMGClient(base_url="http://localhost:8080")
+client = HMGClient(base_url="http://localhost:3000")
 
 # Store a decision
 client.memorize(
@@ -73,6 +73,16 @@ for (const atom of result.atoms) {
 ## Synthetic Fixtures
 
 The [`synthetic-fixtures/`](synthetic-fixtures/) directory contains sample atom data for testing integrations. No real user data is included — all fixtures are synthetic.
+
+## Agent Adapters
+
+[`agent-adapter/`](agent-adapter/) contains integration templates for connecting third-party AI agents to HMG. Each adapter is pure configuration — no HMG binary changes needed.
+
+| Agent | Directory |
+|-------|-----------|
+| Hermes (example) | [`agent-adapter/hermes/`](agent-adapter/hermes/) |
+
+To add your own agent, see the [Agent Adapter Development Guide](agent-adapter/README.md).
 
 ## More Resources
 

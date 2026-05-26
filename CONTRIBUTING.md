@@ -12,6 +12,7 @@ We accept contributions to:
 |---|---|
 | **Protocol** | New wire types, schema fixes, spec clarifications |
 | **SDKs** | Bug fixes, new language SDKs, API surface improvements |
+| **Agent Adapters** | Integration configs and prompts for new AI agents |
 | **Documentation** | Typos, new guides, translations, clarifications |
 | **Examples** | New integration examples, platform-specific guides |
 | **Certification** | New conformance tests, test infrastructure |
@@ -22,6 +23,18 @@ We do **not** accept contributions to:
 - Domain pack tuning (classification rules, extraction profiles)
 - Evaluation datasets or benchmark fixtures
 - Enterprise features (SSO, RBAC, audit)
+
+### Agent Adapter Contributions
+
+To add support for a new AI agent (e.g., Hermes, Aider, Continue.dev):
+
+1. Create `examples/agent-adapter/your-agent/` with:
+   - `README.md` — setup instructions for that agent
+   - MCP config template (JSON)
+   - System prompt fragment (Markdown)
+   - Example session (Markdown)
+2. Follow the existing [Hermes adapter](examples/agent-adapter/hermes/) as a template.
+3. Your adapter is **purely configuration** — no HMG binary changes needed.
 
 ## Contribution Workflow
 
