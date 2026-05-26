@@ -17,17 +17,17 @@ curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install
 irm https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1 | iex
 ```
 
-### WSL (Windows Subsystem for Linux)
-```bash
-# Works with Linux x86_64 binary today
-curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
-```
-
 Or download directly from [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases):
 
 ```bash
-# Linux x86_64 (available now)
+# Linux x86_64
 curl -L https://github.com/HMG-AI/HMG-public/releases/latest/download/hmg-0.9.2-x86_64-unknown-linux-gnu.tar.gz | tar -xzf - -C ~/.local/bin/
+
+# macOS Apple Silicon
+curl -L https://github.com/HMG-AI/HMG-public/releases/latest/download/hmg-0.9.2-aarch64-apple-darwin.tar.gz | tar -xzf - -C ~/.local/bin/
+
+# Windows x86_64
+# Download from https://github.com/HMG-AI/HMG-public/releases/latest
 ```
 
 ## Verify

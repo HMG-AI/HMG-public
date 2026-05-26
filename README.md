@@ -36,19 +36,11 @@ curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install
 ### macOS
 ```bash
 curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
-# Note: macOS binaries are in CI pipeline. Linux x86_64 is available now.
 ```
 
 ### Windows (PowerShell)
 ```powershell
 irm https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1 | iex
-# Note: Windows binaries are in CI pipeline. Linux x86_64 is available now.
-```
-
-### WSL (Windows Subsystem for Linux)
-```bash
-# Works with Linux x86_64 binary today
-curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 ```
 
 ### First Run (all platforms)
@@ -77,10 +69,10 @@ hmg doctor
 | Platform | Status |
 |----------|--------|
 | Linux x86_64 (glibc 2.31+) | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
-| Linux ARM64 | 🔜 CI pipeline |
-| macOS Intel | 🔜 CI pipeline |
-| macOS Apple Silicon | 🔜 CI pipeline |
-| Windows x86_64 | 🔜 CI pipeline |
+| Linux ARM64 | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
+| macOS Intel | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
+| macOS Apple Silicon | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
+| Windows x86_64 | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
 
 One-command installer (auto-detects platform):
 ```bash

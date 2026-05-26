@@ -148,8 +148,7 @@ do_install() {
   err "Download failed from all sources.
 
 Platform $target may not yet have a prebuilt binary.
-Currently available: Linux x86_64.
-Other platforms (Linux ARM64, macOS, Windows) are coming soon via CI.
+Currently available: Linux x64/ARM64, macOS Intel/Apple Silicon, Windows x64.
 
 Windows users: use install.ps1 instead:
   irm https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1 | iex
