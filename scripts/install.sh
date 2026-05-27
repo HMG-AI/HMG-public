@@ -157,6 +157,46 @@ Build from source: https://github.com/HMG-AI/HMG-public
 Request a platform: https://github.com/HMG-AI/HMG-public/issues"
 }
 
+# ── Persist PATH in shell config ──────────────────────────────────────────
+persist_path_if_needed() {
+  # Check if BIN_DIR is already in persistent PATH (login profile)
+  # by checking common shell config files
+  local already_persisted=false
+  local rc_file=""
+
+  # Determine which rc file to use
+  if [ -n "${ZSH_VERSION:-}" ]; then
+    rc_file="$HOME/.zshrc"
+  elif [ -n "${BASH_VERSION:-}" ]; then
+    # Prefer .bashrc for interactive, .profile for login
+    if [ -f "$HOME/.bashrc" ]; then
+      rc_file="$HOME/.bashrc"
+    else
+      rc_file="$HOME/.profile"
+    fi
+  else
+    rc_file="$HOME/.profile"
+  fi
+
+  # Check if already in the rc file
+  if [ -f "$rc_file" ] && grep -qF "$BIN_DIR" "$rc_file" 2>/dev/null; then
+    already_persisted=true
+  fi
+
+  # Also check .profile as fallback for all shells
+  if [ -f "$HOME/.profile" ] && grep -qF "$BIN_DIR" "$HOME/.profile" 2>/dev/null; then
+    already_persisted=true
+  fi
+
+  if [ "$already_persisted" = true ]; then
+    return 0
+  fi
+
+  # Add export line to the rc file
+  log "  Adding $BIN_DIR to $rc_file"
+  printf '\n# HMG\nexport PATH="%s:$PATH"\n' "$BIN_DIR" >> "$rc_file"
+}
+
 # ── Main ───────────────────────────────────────────────────────────────────
 main() {
   resolve_version
@@ -167,6 +207,9 @@ main() {
     *"${BIN_DIR}"*) ;;
     *) export PATH="${BIN_DIR}:${PATH}" ;;
   esac
+
+  # Persist PATH in user shell config if not already there
+  persist_path_if_needed
 
   log ""
   log "✅ HMG v${VERSION} installed to ${BIN_DIR}"
