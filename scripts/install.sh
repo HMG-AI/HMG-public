@@ -162,20 +162,40 @@ main() {
   resolve_version
   do_install
 
+  # Ensure hmg is on PATH for this script and the user
+  case ":${PATH}:" in
+    *"${BIN_DIR}"*) ;;
+    *) export PATH="${BIN_DIR}:${PATH}" ;;
+  esac
+
   log ""
   log "✅ HMG v${VERSION} installed to ${BIN_DIR}"
+
+  # Auto-run hmg init -g
   log ""
-  log "If hmg is not found, add to PATH:"
-  log "  export PATH=\"${BIN_DIR}:\$PATH\""
+  log "Running hmg init -g..."
+  if command -v hmg >/dev/null 2>&1; then
+    if hmg init -g; then
+      log "✅ hmg init -g completed."
+    else
+      log "⚠ hmg init -g exited with error (non-fatal). Run manually: hmg init -g"
+    fi
+  else
+    log "⚠ hmg not on PATH yet. Run manually after adding to PATH:"
+    log "  export PATH=\"${BIN_DIR}:\$PATH\""
+    log "  hmg init -g"
+  fi
+
   log ""
-  log "Next steps:"
-  log "  hmg init -g          # Install AGENTS.md + agent adapters"
+  log "Quick commands:"
   log "  hmg doctor           # Check system readiness"
   log "  hmg daemon start     # Start background daemon"
+  log "  hmg tui              # Open terminal UI"
   log ""
-  log "Documentation: https://hmg-ai.github.io/HMG-public/"
-  log "Website:       https://hmg2ai.com/"
-  log "GitHub:        ${HMG_GITHUB}"
+  log "Update: hmg update"
+  log "Docs:   https://hmg-ai.github.io/HMG-public/"
+  log "Web:    https://hmg2ai.com/"
+  log "GitHub: ${HMG_GITHUB}"
 }
 
 main

@@ -58,18 +58,22 @@ function Add-Hmg-To-Path {
       $UserPath.TrimEnd([char[]]@(';')) + ";" + $NormalizedBinDir
     }
     [Environment]::SetEnvironmentVariable("Path", $NewUserPath, "User")
-    Log "Added HMG bin directory to your user PATH."
+    Log "  Added to user PATH (persistent)."
   } else {
-    Log "HMG bin directory is already in your user PATH."
+    Log "  Already in user PATH."
   }
 
+  # Always ensure the current process PATH has the bin dir
+  # This is critical — without it hmg init -g in the same script will fail
   if (-not (Path-Contains $env:Path $NormalizedBinDir)) {
     $env:Path = if ([string]::IsNullOrWhiteSpace($env:Path)) {
       $NormalizedBinDir
     } else {
       $env:Path.TrimEnd([char[]]@(';')) + ";" + $NormalizedBinDir
     }
-    Log "Added HMG bin directory to this PowerShell process PATH."
+    Log "  Added to current process PATH."
+  } else {
+    Log "  Already in current process PATH."
   }
 }
 
@@ -201,8 +205,8 @@ exit 1
     $LogPath
   ) | Out-Null
 
-  Log "HMG binaries are currently in use, so the update will finish in the background after this command exits."
-  Log "Deferred update log: $LogPath"
+  Log "  Binaries are in use — update will finish in the background."
+  Log "  Deferred update log: $LogPath"
   return $true
 }
 
@@ -212,7 +216,7 @@ function Install-Hmg-Binaries([string] $SourceDir, [string] $TargetDir, [string[
     return $true
   }
 
-  Log "Could not replace HMG binaries immediately: $script:LastBinaryCopyError"
+  Log "  Could not replace HMG binaries immediately: $script:LastBinaryCopyError"
   return Schedule-Deferred-Binary-Install $SourceDir $TargetDir $Bins
 }
 
@@ -226,25 +230,25 @@ function Install-From-Release-Url([string] $Asset, [string] $BaseUrl) {
   }
   New-Item -ItemType Directory -Force $PackageDir | Out-Null
 
-  Log "Trying HMG release: $Url"
+  Log "  Trying: $Url"
   try {
     Download-File $Url $ArchivePath
   } catch {
-    Log "Release unavailable or download failed: $Url"
+    Log "  Download failed: $Url"
     return $false
   }
 
   try {
     Expand-Archive -Path $ArchivePath -DestinationPath $PackageDir -Force
   } catch {
-    Log "Downloaded release is not a valid zip package: $Url"
+    Log "  Invalid zip package: $Url"
     return $false
   }
 
   $RequiredBins = @("hmg.exe", "hmg-server.exe", "hmg-hook-worker.exe")
   foreach ($Bin in $RequiredBins) {
     if (-not (Test-Path (Join-Path $PackageDir $Bin))) {
-      Log "Release package is missing required binary: $Bin"
+      Log "  Missing binary: $Bin"
       return $false
     }
   }
@@ -266,7 +270,7 @@ function Resolve-Latest-Version {
 function Install-From-Release {
   $Target = Target-Triple
   if (-not $Target) {
-    Log "Unsupported Windows architecture for prebuilt install: $env:PROCESSOR_ARCHITECTURE"
+    Log "Unsupported Windows architecture: $env:PROCESSOR_ARCHITECTURE"
     Supported-Targets
     return $false
   }
@@ -281,7 +285,7 @@ function Install-From-Release {
   }
   $Assets += "hmg-$Target.zip"
 
-  Log "Detected platform: Windows/$env:PROCESSOR_ARCHITECTURE -> $Target"
+  Log "Platform: Windows/$env:PROCESSOR_ARCHITECTURE ($Target)"
 
   foreach ($Asset in $Assets) {
     foreach ($BaseUrl in @($PublicReleaseBaseUrl, $OfficialReleaseBaseUrl, $MirrorBaseUrl)) {
@@ -296,28 +300,72 @@ function Install-From-Release {
   return $false
 }
 
+# ═══════════════════════════════════════════════════════════════
+# Main
+# ═══════════════════════════════════════════════════════════════
+
 try {
+  Log ""
+  Log "╔══════════════════════════════════════╗"
+  Log "║       HMG Installer for Windows      ║"
+  Log "╚══════════════════════════════════════╝"
+  Log ""
+
+  # ── Step 1: Download & install binaries ──────────────────
+  Log "[1/3] Downloading HMG..."
   New-Item -ItemType Directory -Force $TempDir | Out-Null
   if (-not (Install-From-Release)) {
-    throw "HMG install failed: no release mirror package is available for this platform."
+    throw "HMG install failed: no release package is available for this platform."
+  }
+  Log "  Binaries installed."
+
+  # ── Step 2: Configure PATH ───────────────────────────────
+  Log ""
+  Log "[2/3] Configuring PATH..."
+  Add-Hmg-To-Path
+
+  # Verify hmg is reachable right now via the installed path
+  $HmgExe = Join-Path $BinDir "hmg.exe"
+  if (-not (Test-Path $HmgExe)) {
+    Log "  WARNING: hmg.exe not found at $HmgExe"
+  }
+
+  # ── Step 3: Run hmg init -g ──────────────────────────────
+  Log ""
+  Log "[3/3] Initializing HMG (hmg init -g)..."
+  try {
+    # Use the full path to avoid any PATH resolution issues
+    $InitOutput = & $HmgExe init -g 2>&1
+    $InitExit = $LASTEXITCODE
+    if ($InitExit -eq 0) {
+      Log "  hmg init -g completed successfully."
+      # Show init output (may contain agent adapter info)
+      $InitOutput | ForEach-Object { Log "  $_" }
+    } else {
+      Log "  hmg init -g exited with code $InitExit (non-fatal)."
+      $InitOutput | ForEach-Object { Log "  $_" }
+    }
+  } catch {
+    Log "  hmg init -g failed: $($_.Exception.Message)"
+    Log "  You can run it manually later: hmg init -g"
   }
 
   Log ""
-  Add-Hmg-To-Path
+  Log "╔══════════════════════════════════════╗"
+  Log "║          Installation complete!       ║"
+  Log "╚══════════════════════════════════════╝"
   Log ""
-  Log "HMG installed to:"
-  Log "  $BinDir"
+  Log "  Install dir: $BinDir"
   Log ""
-  Log "If this PowerShell window still cannot find hmg, refresh this window with:"
-  Log "  `$env:Path += ';$BinDir'"
+  Log "  Quick commands:"
+  Log "    hmg doctor           # Check system readiness"
+  Log "    hmg daemon start     # Start background daemon"
+  Log "    hmg tui              # Open terminal UI"
   Log ""
-  Log "Next steps:"
-  Log "  hmg init -g"
-  Log "  hmg doctor"
-  Log "  hmg daemon start"
+  Log "  Update later:"
+  Log "    hmg update"
   Log ""
-  Log "Update later with:"
-  Log "  hmg update"
+  Log "  Note: Open a new terminal for PATH to take effect in all windows."
 } finally {
   if (Test-Path $TempDir) {
     Remove-Item -Recurse -Force $TempDir
