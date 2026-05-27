@@ -252,6 +252,17 @@ function Install-From-Release-Url([string] $Asset, [string] $BaseUrl) {
   return Install-Hmg-Binaries $PackageDir $BinDir $RequiredBins
 }
 
+function Resolve-Latest-Version {
+  try {
+    $ApiUrl = "https://api.github.com/repos/HMG-AI/HMG-public/releases/latest"
+    $Resp = Invoke-RestMethod -Uri $ApiUrl -UseBasicParsing -TimeoutSec 10
+    if ($Resp.tag_name -match '^v?(.+)$') {
+      return $Matches[1]
+    }
+  } catch {}
+  return $null
+}
+
 function Install-From-Release {
   $Target = Target-Triple
   if (-not $Target) {
@@ -260,12 +271,23 @@ function Install-From-Release {
     return $false
   }
 
-  $Asset = "hmg-$Target.zip"
+  $Version = Resolve-Latest-Version
+
+  # Try versioned name first (e.g. hmg-0.9.2-x86_64-pc-windows-msvc.zip)
+  # then fall back to unversioned (e.g. hmg-x86_64-pc-windows-msvc.zip)
+  $Assets = @()
+  if ($Version) {
+    $Assets += "hmg-$Version-$Target.zip"
+  }
+  $Assets += "hmg-$Target.zip"
+
   Log "Detected platform: Windows/$env:PROCESSOR_ARCHITECTURE -> $Target"
 
-  foreach ($BaseUrl in @($PublicReleaseBaseUrl, $OfficialReleaseBaseUrl, $MirrorBaseUrl)) {
-    if ($BaseUrl -and (Install-From-Release-Url $Asset $BaseUrl)) {
-      return $true
+  foreach ($Asset in $Assets) {
+    foreach ($BaseUrl in @($PublicReleaseBaseUrl, $OfficialReleaseBaseUrl, $MirrorBaseUrl)) {
+      if ($BaseUrl -and (Install-From-Release-Url $Asset $BaseUrl)) {
+        return $true
+      }
     }
   }
 
