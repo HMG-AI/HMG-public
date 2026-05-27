@@ -73,6 +73,7 @@ hmg doctor
 | macOS Intel | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
 | macOS Apple Silicon | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
 | Windows x86_64 | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
+| Windows ARM64 | 🔜 CI pipeline |
 
 One-command installer (auto-detects platform):
 ```bash
