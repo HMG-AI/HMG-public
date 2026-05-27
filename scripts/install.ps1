@@ -76,7 +76,7 @@ function Add-Hmg-To-Path {
 function Target-Triple {
   $Arch = if ($env:PROCESSOR_ARCHITEW6432) { $env:PROCESSOR_ARCHITEW6432 } else { $env:PROCESSOR_ARCHITECTURE }
   switch ($Arch.ToUpperInvariant()) {
-    "AMD64" { return "x86_64-pc-windows-gnu" }
+    "AMD64" { return "x86_64-pc-windows-msvc" }
     "ARM64" { return "aarch64-pc-windows-msvc" }
     default { return "" }
   }
@@ -84,7 +84,7 @@ function Target-Triple {
 
 function Supported-Targets {
   Log "Supported Windows prebuilt packages:"
-  Log "  hmg-x86_64-pc-windows-gnu.zip"
+  Log "  hmg-x86_64-pc-windows-msvc.zip"
   Log "  hmg-aarch64-pc-windows-msvc.zip"
 }
 
