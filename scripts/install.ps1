@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+﻿$ErrorActionPreference = "Stop"
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 $ReleaseBaseUrl = if ($env:HMG_RELEASE_BASE_URL) { $env:HMG_RELEASE_BASE_URL } else { "" }
@@ -64,7 +64,7 @@ function Add-Hmg-To-Path {
   }
 
   # Always ensure the current process PATH has the bin dir
-  # This is critical — without it hmg init -g in the same script will fail
+  # This is critical -- without it hmg init -g in the same script will fail
   if (-not (Path-Contains $env:Path $NormalizedBinDir)) {
     $env:Path = if ([string]::IsNullOrWhiteSpace($env:Path)) {
       $NormalizedBinDir
@@ -215,7 +215,7 @@ exit 1
     $LogPath
   ) | Out-Null
 
-  Log "  Binaries are in use — update will finish in the background."
+  Log "  Binaries are in use -- update will finish in the background."
   Log "  Deferred update log: $LogPath"
   return $true
 }
@@ -314,18 +314,18 @@ function Install-From-Release {
   return $false
 }
 
-# ═══════════════════════════════════════════════════════════════
+# ----------------------------------------------------------------
 # Main
-# ═══════════════════════════════════════════════════════════════
+# ----------------------------------------------------------------
 
 try {
   Log ""
-  Log "╔══════════════════════════════════════╗"
-  Log "║       HMG Installer for Windows      ║"
-  Log "╚══════════════════════════════════════╝"
+  Log "========================================"
+  Log "       HMG Installer for Windows      "
+  Log "========================================"
   Log ""
 
-  # ── Step 1: Download & install binaries ──────────────────
+  # -- Step 1: Download & install binaries ------------------
   Log "[1/3] Downloading HMG..."
   New-Item -ItemType Directory -Force $TempDir | Out-Null
   if (-not (Install-From-Release)) {
@@ -333,7 +333,7 @@ try {
   }
   Log "  Binaries installed."
 
-  # ── Step 2: Configure PATH ───────────────────────────────
+  # -- Step 2: Configure PATH -------------------------------
   Log ""
   Log "[2/3] Configuring PATH..."
   Add-Hmg-To-Path
@@ -344,7 +344,7 @@ try {
     Log "  WARNING: hmg.exe not found at $HmgExe"
   }
 
-  # ── Step 3: Run hmg init -g ──────────────────────────────
+  # -- Step 3: Run hmg init -g ------------------------------
   Log ""
   Log "[3/3] Initializing HMG (hmg init -g)..."
   try {
@@ -365,9 +365,9 @@ try {
   }
 
   Log ""
-  Log "╔══════════════════════════════════════╗"
-  Log "║          Installation complete!       ║"
-  Log "╚══════════════════════════════════════╝"
+  Log "========================================"
+  Log "          Installation complete!       "
+  Log "========================================"
   Log ""
   Log "  Install dir: $BinDir"
   Log ""
