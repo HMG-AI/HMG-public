@@ -30,17 +30,17 @@
 
 ### Linux
 ```bash
-curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 ```
 
 ### macOS
 ```bash
-curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 ```
 
 ### Windows (PowerShell)
 ```powershell
-irm https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.ps1 | iex
+powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; iex ((New-Object Net.WebClient).DownloadString('https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1'))"
 ```
 
 ### First Run (all platforms)
@@ -78,10 +78,10 @@ hmg doctor
 One-command installer (auto-detects platform):
 ```bash
 # Linux / macOS
-curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 
 # Windows (PowerShell)
-irm https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.ps1 | iex
+powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; iex ((New-Object Net.WebClient).DownloadString('https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1'))"
 ```
 
 ## Why HMG?

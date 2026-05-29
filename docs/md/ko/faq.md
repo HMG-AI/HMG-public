@@ -31,7 +31,7 @@ HMG（Holographic Memory Graph）는 AI 에이전트를 위한 영구 기억 시
 ### 설치 방법은？
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 ```
 
 자세한 내용은 [빠른 시작](getting-started.md)을 참조하세요.

@@ -8,7 +8,7 @@ Ce document explique comment mettre à niveau HMG et changer d'édition.
 
 ```bash
 # Télécharger la dernière version
-curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 
 # Redémarrer le daemon
 hmg daemon restart

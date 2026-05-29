@@ -8,7 +8,7 @@
 
 ```bash
 # 최신 버전 다운로드
-curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 
 # 데몬 재시작
 hmg daemon restart

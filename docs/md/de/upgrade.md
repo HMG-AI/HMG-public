@@ -4,7 +4,7 @@
 
 ### Von v0.9.x
 ```bash
-curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
+curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 hmg daemon restart
 hmg --version
 ```
