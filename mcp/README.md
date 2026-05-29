@@ -26,7 +26,7 @@ MCP (Model Context Protocol) tool definitions for HMG memory operations.
 
 ```bash
 # Install HMG
-curl -L https://hmg2ai.com/install.sh | sh
+curl -L https://funcode.xin/HMG/install.sh | sh
 
 # Start the daemon
 hmg daemon start

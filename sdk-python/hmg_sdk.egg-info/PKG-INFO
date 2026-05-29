@@ -1,7 +1,21 @@
+Metadata-Version: 2.4
+Name: hmg-sdk
+Version: 0.9.2
+Summary: HMG Agent Memory SDK — Community Edition
+License-Expression: Apache-2.0
+Project-URL: Repository, https://github.com/HMG-AI/HMG-public
+Keywords: hmg,memory,agent,protocol,ai
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+
 # hmg
 
 <p>
-  <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-0.9.2-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/license-Apache--2.0-green.svg" alt="License">
   <img src="https://img.shields.io/badge/python-3.9%2B-blue.svg" alt="Python">
 </p>
@@ -11,7 +25,7 @@ Python SDK for the HMG agent memory system.
 ## Install
 
 ```bash
-pip install hmg-sdk
+pip install hmg
 ```
 
 ## Quick Start

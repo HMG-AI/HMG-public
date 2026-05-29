@@ -1,7 +1,7 @@
 # @hmg_ai/sdk-ts
 
 <p>
-  <img src="https://img.shields.io/badge/version-0.9.2-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/license-Apache--2.0-green.svg" alt="License">
   <img src="https://img.shields.io/badge/platform-Node.js%2018%2B-blue.svg" alt="Platform">
 </p>
@@ -19,7 +19,7 @@ npm install @hmg_ai/sdk-ts
 ```typescript
 import { HMGClient } from "@hmg_ai/sdk-ts";
 
-const client = new HMGClient({ baseUrl: "http://localhost:3000" });
+const client = new HMGClient({ baseUrl: "http://localhost:8080" });
 
 // Store a decision
 await client.memorize({
@@ -59,7 +59,7 @@ await client.correct(atom.id, {
 
 ```typescript
 interface HMGClientOptions {
-  baseUrl?: string;  // default: http://localhost:3000
+  baseUrl?: string;  // default: http://localhost:8080
   apiKey?: string;   // for Enterprise
 }
 

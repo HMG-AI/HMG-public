@@ -1,12 +1,14 @@
-//! Protocol wire tests — ensure export/protocol types have correct serialization.
+//! Protocol sync tests — ensure export/protocol types match internal crates.
 //!
-//! These tests verify that all public DTO types round-trip through JSON
-//! and that all enum variants are covered.
+//! These tests verify that the public DTO types in export/protocol/ stay
+//! in sync with the internal types in crates/hmg-core/ and crates/hmg-llm/.
 //!
-//! Run: cargo test -p hmg-protocol
+//! Run: cargo test -p hmg-protocol protocol_sync
 
-// These tests verify wire shapes and enum variants by round-tripping
-// through JSON serialization.
+// NOTE: These tests run inside the export/protocol crate which is standalone.
+// They work by re-declaring the expected wire shapes and checking enum variants
+// match. For deep field-level sync, the monorepo CI runs a separate check that
+// imports both hmg-protocol and hmg-core.
 
 /// All CorrectionAction variants must be representable as wire strings.
 #[test]

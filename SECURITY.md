@@ -37,7 +37,7 @@ We take security seriously. If you discover a vulnerability in HMG, please repor
 
 ### How to report
 
-**Email:** security@hmg2ai.com
+**Email:** monkseekee@gmail.com
 
 Please include:
 1. **Description** of the vulnerability
@@ -91,6 +91,6 @@ HMG stores data in `~/.local/share/hmg/stores/default/` by default. Ensure this 
 
 ## Contact
 
-- **Security email:** security@hmg2ai.com
-- **General inquiries:** security@hmg2ai.com
-- **Website:** https://hmg2ai.com/
+- **Security email:** monkseekee@gmail.com
+- **General inquiries:** monkseekee@gmail.com
+- **Website:** https://funcode.xin/HMG/

@@ -201,6 +201,9 @@ async function callHmgTool(toolName: string, args: Record<string, unknown>, sign
     const child = spawn(HMG_SERVER, [HMG_DATA_DIR], {
       env: {
         ...process.env,
+        HMG_PROVIDER_BACKEND: process.env.HMG_PROVIDER_BACKEND ?? "local",
+        HMG_USE_LOCAL_DAEMON: process.env.HMG_USE_LOCAL_DAEMON ?? "1",
+        HMG_CONSOLIDATION_SCHEDULER: process.env.HMG_CONSOLIDATION_SCHEDULER ?? "embedded",
       },
       stdio: ["pipe", "pipe", "pipe"],
     });

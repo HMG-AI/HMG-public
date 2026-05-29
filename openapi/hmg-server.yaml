@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: HMG Server API
-  version: 0.9.2
+  version: 1.0.0
   description: >
     Public HTTP contract for HMG agent memory operations.
     This is the Community Edition surface — memorize, recall, correct,
@@ -9,7 +9,7 @@ info:
     Advanced endpoints (observation, vault, hooks, panorama, noise feedback)
     are available in Developer and Enterprise editions.
 servers:
-  - url: http://localhost:3000
+  - url: http://localhost:8080
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -62,6 +62,32 @@ components:
         type: string
       description: Comma-separated policy tags granting read access to tagged records.
 paths:
+  /api/capabilities:
+    get:
+      summary: Return current edition, features, and limits
+      operationId: getCapabilities
+      responses:
+        "200":
+          description: Edition capabilities and feature flags
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  edition:
+                    type: string
+                    enum: [community, developer, enterprise]
+                  features:
+                    type: object
+                    additionalProperties:
+                      type: boolean
+                  limits:
+                    type: object
+                    additionalProperties: true
+                  domain_packs:
+                    type: array
+                    items:
+                      type: string
   /api/stats:
     get:
       summary: Read engine statistics

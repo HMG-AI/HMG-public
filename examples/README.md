@@ -17,7 +17,7 @@ Start a local HMG daemon:
 
 ```bash
 # Install HMG
-curl -L https://hmg2ai.com/install.sh | sh
+curl -L https://funcode.xin/HMG/install.sh | sh
 
 # Start the daemon
 hmg daemon start
@@ -33,7 +33,7 @@ python quickstart.py
 ```python
 from hmg import HMGClient
 
-client = HMGClient(base_url="http://localhost:3000")
+client = HMGClient(base_url="http://localhost:8080")
 
 # Store a decision
 client.memorize(
@@ -57,7 +57,7 @@ npx ts-node quickstart.ts
 ```typescript
 import { HMGClient } from "@hmg_ai/sdk-ts";
 
-const client = new HMGClient({ baseUrl: "http://localhost:3000" });
+const client = new HMGClient({ baseUrl: "http://localhost:8080" });
 
 await client.memorize({
   content: "API uses JWT tokens with 24h expiry",
@@ -73,16 +73,6 @@ for (const atom of result.atoms) {
 ## Synthetic Fixtures
 
 The [`synthetic-fixtures/`](synthetic-fixtures/) directory contains sample atom data for testing integrations. No real user data is included — all fixtures are synthetic.
-
-## Agent Adapters
-
-[`agent-adapter/`](agent-adapter/) contains integration templates for connecting third-party AI agents to HMG. Each adapter is pure configuration — no HMG binary changes needed.
-
-| Agent | Directory |
-|-------|-----------|
-| Hermes (example) | [`agent-adapter/hermes/`](agent-adapter/hermes/) |
-
-To add your own agent, see the [Agent Adapter Development Guide](agent-adapter/README.md).
 
 ## More Resources
 

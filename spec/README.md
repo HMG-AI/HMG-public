@@ -4,7 +4,7 @@ This document is the authoritative reference for HMG concepts, data types,
 lifecycle semantics, and wire protocol. Implementations that conform to this
 specification may claim "HMG Compatible."
 
-**Version:** 1.0 (corresponds to HMG v0.9.2)
+**Version:** 1.0 (corresponds to HMG v1.0.0)
 
 ---
 
@@ -459,16 +459,16 @@ HMG ships as a single binary with three editions gated at runtime:
 
 ```bash
 # Environment variable
-export HMG_LICENSE_KEY=<your-license-key>
+export HMG_LICENSE_KEY=hmg-dev-xxxx-xxxx-xxxx
 
 # Config file
-echo "<your-license-key>" > ~/.config/hmg/license.key
+echo "hmg-dev-xxxx-xxxx-xxxx" > ~/.config/hmg/license.key
 
 # Cloud token
 export HMG_CLOUD_TOKEN=your-cloud-token
 ```
 
-No key → Community. `Developer key` → Developer. `Enterprise key` → Enterprise.
+No key → Community. `hmg-dev-*` → Developer. `hmg-ent-*` → Enterprise.
 `HMG_CLOUD_TOKEN` → Enterprise.
 
 ---

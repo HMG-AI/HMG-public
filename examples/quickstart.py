@@ -12,7 +12,7 @@ from hmg import (
     GovernanceAction,
 )
 
-client = HMGClient(base_url="http://localhost:3000")
+client = HMGClient(base_url="http://localhost:8080")
 
 
 def main() -> None:
