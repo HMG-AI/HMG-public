@@ -121,7 +121,7 @@ MCP 도구를 사용하여 메모리를 저장하고 검색：
 | MCP 프로토콜 | ✅ 전체 |
 | HTTP API | ✅ 전체 |
 | 에이전트 통합 | ✅ 모든 어댑터 |
-| One-Shot Recall 엔진 | ❌ Developer/Enterprise |
+| One-Shot Recall | ✅ Full (P1-P9) |
 | 자동 통합 | ❌ Developer/Enterprise |
 | 도메인 팩 | ❌ Developer/Enterprise |
 | 시맨틱 (벡터) 검색 | ❌ Developer/Enterprise |

@@ -121,7 +121,7 @@ Verwenden Sie ein beliebiges MCP-Tool zum Speichern und Abrufen：
 | MCP-Protokoll | ✅ Vollständig |
 | HTTP-API | ✅ Vollständig |
 | Agenten-Integration | ✅ Alle Adapter |
-| One-Shot Recall Engine | ❌ Developer/Enterprise |
+| One-Shot Recall | ✅ Full (P1-P9) |
 | Automatische Konsolidierung | ❌ Developer/Enterprise |
 | Domain-Packs | ❌ Developer/Enterprise |
 | Semantische (Vektor-)Suche | ❌ Developer/Enterprise |

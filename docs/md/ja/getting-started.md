@@ -121,7 +121,7 @@ MCP ツールを使用してメモリを保存・取得：
 | MCP プロトコル | ✅ 完全 |
 | HTTP API | ✅ 完全 |
 | エージェント統合 | ✅ 全アダプタ |
-| One-Shot Recall エンジン | ❌ Developer/Enterprise |
+| One-Shot Recall | ✅ Full (P1-P9) |
 | 自動統合 | ❌ Developer/Enterprise |
 | ドメインパック | ❌ Developer/Enterprise |
 | セマンティック（ベクトル）検索 | ❌ Developer/Enterprise |

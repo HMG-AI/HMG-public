@@ -121,7 +121,7 @@ Utilisez n'importe quel outil MCP pour stocker et récupérer des mémoires：
 | Protocole MCP | ✅ Complet |
 | API HTTP | ✅ Complet |
 | Intégration agent | ✅ Tous les adaptateurs |
-| Moteur One-Shot Recall | ❌ Developer/Enterprise |
+| One-Shot Recall | ✅ Full (P1-P9) |
 | Consolidation automatique | ❌ Developer/Enterprise |
 | Packs de domaine | ❌ Developer/Enterprise |
 | Recherche sémantique (vectorielle) | ❌ Developer/Enterprise |
