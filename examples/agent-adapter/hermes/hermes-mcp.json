@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "hmg": {
+      "command": "hmg-server",
+      "args": ["~/.local/share/hmg/stores/default"],
+      "env": {}
+    }
+  }
+}
