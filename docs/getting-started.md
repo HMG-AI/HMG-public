@@ -140,16 +140,19 @@ hmg license status
 | Feature | Available |
 |---|---|
 | Memory storage (memorize) | ✅ |
-| Memory retrieval (recall) | ✅ Basic keyword search |
+| Memory retrieval (recall) | ✅ One-Shot Recall Engine (P1-P9) |
 | Correction lifecycle | ✅ Full |
 | Governance lifecycle | ✅ Full |
 | MCP protocol | ✅ Full |
 | HTTP API | ✅ Full |
 | Agent integration | ✅ All adapters |
-| One-Shot Recall Engine | ❌ Developer/Enterprise |
+| Semantic (vector) search | ✅ |
+| One-Shot Recall Engine | ✅ Full (P1-P9) |
 | Automated consolidation | ❌ Developer/Enterprise |
 | Domain Packs | ❌ Developer/Enterprise |
-| Semantic (vector) search | ❌ Developer/Enterprise |
+
+**Quantitative limits** drive upgrading: 50,000 atoms, 5 agents, 5 instances.
+No features are removed — Community Edition is genuinely useful.
 
 ## Next Steps
 

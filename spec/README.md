@@ -443,12 +443,12 @@ HMG ships as a single binary with three editions gated at runtime:
 | Feature | Community | Developer | Enterprise |
 |---|---|---|---|
 | Memorize | ✅ | ✅ | ✅ |
-| Recall | Basic keyword | One-Shot Engine | One-Shot + Domain |
+| Recall | One-Shot Engine (P1-P9) | One-Shot Engine | One-Shot + Domain |
 | Correction | ✅ Full | ✅ Full | ✅ Full |
 | Governance | ✅ Full | ✅ Full | ✅ + Policy Packs |
 | MCP Protocol | ✅ Full | ✅ Full | ✅ Full |
 | Agent Integration | ✅ All adapters | ✅ All adapters | ✅ All adapters |
-| Semantic Search | ❌ | ✅ | ✅ |
+| Semantic Search | ✅ | ✅ | ✅ |
 | Consolidation | Manual only | Automated | Automated + Policies |
 | Domain Packs | None | software-engineering | + customer-service, compliance |
 | Max Atoms | 50,000 | Unlimited | Unlimited |

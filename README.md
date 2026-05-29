@@ -87,7 +87,7 @@ hmg correct <atom-id> --action replace --content "We migrated to CockroachDB for
 |---|---|---|---|
 | **Price** | Free | $99/year (local) / $19/month (cloud) | Custom |
 | **Memory atoms** | 50,000 | Unlimited | Unlimited |
-| **Search** | Keyword | One-Shot Recall (semantic) | One-Shot Recall (semantic) |
+| **Search** | One-Shot Recall | One-Shot Recall | One-Shot + Domain |
 | **Consolidation** | — | Automated | Automated + configurable |
 | **Domain Packs** | — | software-engineering | All packs |
 | **Agents per instance** | 5 | Unlimited | Unlimited |
@@ -96,7 +96,7 @@ hmg correct <atom-id> --action replace --content "We migrated to CockroachDB for
 | **Audit export** | — | — | ✅ |
 | **SLA + support** | Community (GitHub) | Email | Dedicated |
 
-Community Edition is genuinely useful for daily work — full correction/governance lifecycle, keyword search, all 8 MCP tools, all agent integrations. No time bombs, no feature removal.
+Community Edition is genuinely useful for daily work — full One-Shot Recall Engine (P1-P9), full correction/governance lifecycle, semantic search, all 8 MCP tools, all agent integrations. Quantitative caps (50K atoms, 5 instances) drive upgrading. No time bombs, no feature removal.
 
 👉 **Pricing details:** https://funcode.xin/HMG/#pricing
 

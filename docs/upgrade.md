@@ -9,8 +9,8 @@ reinstallation or data migration — you enter a license key and restart.
 |---|---|---|---|
 | Price | Free | $99/yr or $19/mo | Annual contract |
 | Memory storage | ✅ | ✅ | ✅ |
-| Memory recall | Basic keyword | **One-Shot Recall Engine** | One-Shot + Domain Packs |
-| Semantic (vector) search | ❌ | ✅ | ✅ |
+| Memory recall | One-Shot Recall (P1-P9) | **One-Shot Recall** | One-Shot + Domain Packs |
+| Semantic (vector) search | ✅ | ✅ | ✅ |
 | Correction / Governance | ✅ | ✅ | ✅ |
 | MCP / HTTP protocol | ✅ | ✅ | ✅ |
 | Agent integration | ✅ | ✅ | ✅ |
@@ -68,7 +68,7 @@ If a license expires or becomes invalid:
 - No data is lost
 - Advanced features become unavailable
 - Existing memory remains fully accessible
-- A 7-day offline grace period applies for cloud licenses
+- Community Edition includes full One-Shot Recall, so core value is preserved
 
 ## Data Compatibility
 

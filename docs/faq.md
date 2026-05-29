@@ -166,11 +166,14 @@ No time limits, no feature removal, no ads.
 
 ### What do I get with Developer Edition?
 
-- **One-Shot Recall Engine**: Complete answers in a single tool call
-- **Semantic search**: Vector-based similarity, not just keyword matching
+All Community features **plus**:
+- **Unlimited** atoms, agents, and instances
 - **Automated consolidation**: Background knowledge maintenance
 - **Domain Packs**: Software engineering domain intelligence
-- **Unlimited** atoms, agents, and instances
+- **Consolidation policies**: Configurable retention and promotion
+
+Community Edition already includes One-Shot Recall Engine (P1-P9) and semantic search.
+Developer removes quantitative limits and adds automated knowledge management.
 
 ### How do I upgrade?
 

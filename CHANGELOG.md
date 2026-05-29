@@ -6,6 +6,21 @@ For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG/re
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.0.0] — 2026-05-28
+
+### Added
+
+- **Three-tier edition model** — Community (free), Developer, Enterprise with quantitative caps
+- **License system** — ed25519 asymmetric signatures, machine fingerprint binding, pure local verification
+- **Community Edition elevation** — full One-Shot Recall Engine (P1-P9) and canonical ingest for all editions
+- **Security hardening** — AES-256-GCM storage encryption, injection detection, RBAC hardening, SSRF protection
+- **Binary hardening** — stripped ELF, LTO, XOR tier obfuscation, no debug symbols
+
+### Changed
+
+- Community Edition now includes full One-Shot Recall (P1-P9). Quantitative caps (50K atoms, 5 instances) drive conversion.
+- Updated spec §14 (Edition Boundary) to reflect Community elevation.
+
 ## [0.9.2] — 2026-05-24
 
 ### Added
@@ -15,8 +30,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - **Normative specification** — 14 chapters covering atom lifecycle, correction, governance, scope, recall views, and edition boundary ([spec/README.md](spec/README.md))
 - **Wire-safe protocol types** — Rust crate `hmg-protocol` with `AtomView`, `Polarity`, `EpistemicStatus`, `ExposureState`, `CorrectionAction`, `GovernanceAction`, `ScopeRef`, `MemoryContextView`, `RecallResponse`, `MemorizeAck`, `HandoffSummary`, `AgentBrief` ([protocol/](protocol/))
 - **TypeScript SDK** — `@hmg_ai/sdk-ts` with full Community Edition API surface ([sdk-ts/](sdk-ts/))
-- **Python SDK** — `hmg` with full Community Edition API surface ([sdk-python/](sdk-python/))
-- **MCP tool schemas** — 8 tools: `memory_memorize`, `memory_recall`, `memory_correct`, `memory_govern`, `memory_handoff`, `memory_memorize`, `memory_agent_brief`, `memory_history` ([mcp/schemas/tools.json](mcp/schemas/tools.json))
+- **Python SDK** — `hmg` with full Community Edition API surface ([sdk-python/](sdk-python/)
+- **MCP tool schemas** — 8 tools: `memory_memorize`, `memory_recall`, `memory_correct`, `memory_govern`, `memory_handoff`, `memory_agent_brief`, `memory_history` ([mcp/schemas/tools.json](mcp/schemas/tools.json))
 - **Conformance test suite** — 10 tests for HMG Compatible certification ([certification/](certification/))
 - **OpenAPI specification** — Community Edition HTTP API surface ([openapi/hmg-server.yaml](openapi/hmg-server.yaml))
 - **Pi agent package** — `@hmg_ai/pi-agent` for pi/Codex integration ([pi-agent/](pi-agent/))
@@ -26,12 +41,6 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - **License** — Apache-2.0 for protocol artifacts; custom free-use license for binary
 - **Trademark policy** — brand and logo usage guidelines
 - **Multi-platform binary** — Linux x86_64, Linux ARM64, macOS Intel, macOS Apple Silicon
-
-### Edition features
-
-- **Community Edition**: Keyword search, 50K atoms, 5 agents, 5 instances, full correction/governance lifecycle, all 8 MCP tools, 7 agent integrations, 15 locales
-- **Developer Edition**: One-Shot Recall Engine, automated consolidation, software-engineering Domain Pack, unlimited atoms and agents
-- **Enterprise Edition**: All Domain Packs, SSO/SAML/OIDC, RBAC, audit export, enterprise connectors, multi-tenant
 
 ## [0.6.2] — 2026-05-17
 
@@ -51,8 +60,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 | Version | Date | Highlights |
 |---|---|---|
+| 1.0.0 | 2026-05-28 | Three-tier editions, Community elevation, security hardening, license system |
 | 0.9.2 | 2026-05-24 | Agent Tool Output Contract v2, Mechanical Adoption Protocol, full spec, SDKs, certification |
 | 0.6.2 | 2026-05-17 | Initial public protocol and SDK artifacts |
 
+[1.0.0]: https://github.com/HMG-AI/HMG/releases/tag/v1.0.0
 [0.9.2]: https://github.com/HMG-AI/HMG/releases/tag/v0.9.2
 [0.6.2]: https://github.com/HMG-AI/HMG/releases/tag/v0.6.2

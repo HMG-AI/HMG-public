@@ -103,7 +103,7 @@ All four surfaces expose the same capabilities — store memories, recall, corre
 The core of HMG. It manages:
 
 - **Graph model**: Atoms connected by typed edges (Supersedes, DerivesFrom, RelatesTo, etc.)
-- **Indexes**: Keyword search, temporal ordering, categorical grouping, and (in Developer+) semantic search
+- **Indexes**: Keyword search, temporal ordering, categorical grouping, and semantic search
 - **Storage**: Persistent local storage with snapshot history
 
 ### Agent Integration
@@ -200,7 +200,7 @@ HMG is a single binary that contains all code for all editions. The active editi
 HMG Binary
   │
   ├── No license key → Community Edition
-  │     └── Keyword search, 50K atoms, 5 agents, basic features
+  │     └── One-Shot Recall, 50K atoms, 5 agents, quantitative caps
   │
   ├── HMG_LICENSE_KEY=hmg-dev-... → Developer Edition
   │     └── One-Shot Recall, consolidation, Domain Packs, unlimited
