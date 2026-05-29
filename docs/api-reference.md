@@ -36,7 +36,6 @@ Response:
 }
 ```
 
-![Agent calling memory_memorize](../img/agent-memorize.png)
 
 ### `memory_recall`
 
@@ -55,7 +54,6 @@ Response profiles: `compact` (default), `summary`, `full`, `debug`.
 
 Output formats: `yaml` (default), `markdown`, `json`.
 
-![Agent calling memory_recall](../img/agent-recall.png)
 
 ### `memory_correct`
 
@@ -72,7 +70,6 @@ Correct, negate, confirm, demote, or replace an atom.
 
 Actions: `negate`, `confirm_actual`, `confirm_necessary`, `demote`, `replace`.
 
-![Agent calling memory_correct](../img/agent-correct.png)
 
 ### `memory_govern`
 
@@ -88,7 +85,6 @@ Apply governance: quarantine, seal, tombstone, or derive a lesson.
 
 Actions: `quarantine`, `seal`, `tombstone`, `derive_lesson`.
 
-![Agent calling memory_govern](../img/agent-govern.png)
 
 ### `memory_history`
 
@@ -122,7 +118,6 @@ Get a compact, branch-aware brief at task start.
 }
 ```
 
-![Agent calling memory_agent_brief](../img/agent-brief.png)
 
 ### `memory_stats`
 
@@ -132,7 +127,6 @@ Get graph and index statistics.
 {}
 ```
 
-![Agent calling memory_stats](../img/agent-stats.png)
 
 ## HTTP API
 

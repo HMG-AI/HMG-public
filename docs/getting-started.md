@@ -28,7 +28,6 @@ hmg --version
 # hmg 1.0.0-community
 ```
 
-![hmg --version output](../img/cli-version.png)
 
 ## Start the Memory Service
 
@@ -39,7 +38,6 @@ hmg daemon start
 The daemon starts a local MCP server at `~/.local/share/hmg/stores/default` by default.
 No data leaves your machine.
 
-![hmg daemon status](../img/cli-daemon.png)
 
 ## Connect Your Agent
 
@@ -56,7 +54,6 @@ hmg init --agent cursor
 hmg init --agent codex
 ```
 
-![hmg init output](../img/cli-init.png)
 
 ### Pi
 
@@ -87,7 +84,6 @@ hmg doctor
 
 `hmg doctor` checks all integrations, daemon status, and MCP readiness:
 
-![hmg doctor output](../img/cli-doctor.png)
 
 ## Detect Available Agents
 
@@ -95,7 +91,6 @@ hmg doctor
 hmg integrations detect
 ```
 
-![hmg integrations detect](../img/cli-integrations.png)
 
 ## First Memory
 
@@ -121,9 +116,7 @@ Use any MCP tool to store and retrieve memories:
 }
 ```
 
-![Agent calling memory_memorize](../img/agent-memorize.png)
 
-![Agent calling memory_recall](../img/agent-recall.png)
 
 ## Edition and License
 
@@ -133,7 +126,6 @@ Check your current edition and feature limits:
 hmg license status
 ```
 
-![hmg license status](../img/cli-license.png)
 
 ## What's Available in Community Edition
 
