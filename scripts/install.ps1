@@ -86,9 +86,19 @@ function Target-Triple {
   }
 }
 
+function Target-Triple-GNU {
+  $Arch = if ($env:PROCESSOR_ARCHITEW6432) { $env:PROCESSOR_ARCHITEW6432 } else { $env:PROCESSOR_ARCHITECTURE }
+  switch ($Arch.ToUpperInvariant()) {
+    "AMD64" { return "x86_64-pc-windows-gnu" }
+    "ARM64" { return "aarch64-pc-windows-gnu" }
+    default { return "" }
+  }
+}
+
 function Supported-Targets {
   Log "Supported Windows prebuilt packages:"
   Log "  hmg-x86_64-pc-windows-msvc.zip"
+  Log "  hmg-x86_64-pc-windows-gnu.zip"
   Log "  hmg-aarch64-pc-windows-msvc.zip"
 }
 
@@ -268,34 +278,38 @@ function Resolve-Latest-Version {
 }
 
 function Install-From-Release {
-  $Target = Target-Triple
-  if (-not $Target) {
+  $Version = Resolve-Latest-Version
+
+  # Try MSVC first (preferred), then fall back to GNU toolchain
+  $Targets = @(Target-Triple, (Target-Triple-GNU)) | Where-Object { $_ -ne "" } | Select-Object -Unique
+
+  if ($Targets.Count -eq 0) {
     Log "Unsupported Windows architecture: $env:PROCESSOR_ARCHITECTURE"
     Supported-Targets
     return $false
   }
 
-  $Version = Resolve-Latest-Version
+  foreach ($Target in $Targets) {
+    Log "Platform: Windows/$env:PROCESSOR_ARCHITECTURE ($Target)"
 
-  # Try versioned name first (e.g. hmg-0.9.2-x86_64-pc-windows-msvc.zip)
-  # then fall back to unversioned (e.g. hmg-x86_64-pc-windows-msvc.zip)
-  $Assets = @()
-  if ($Version) {
-    $Assets += "hmg-$Version-$Target.zip"
-  }
-  $Assets += "hmg-$Target.zip"
+    # Try versioned name first (e.g. hmg-1.0.0-x86_64-pc-windows-gnu.zip)
+    # then fall back to unversioned (e.g. hmg-x86_64-pc-windows-gnu.zip)
+    $Assets = @()
+    if ($Version) {
+      $Assets += "hmg-$Version-$Target.zip"
+    }
+    $Assets += "hmg-$Target.zip"
 
-  Log "Platform: Windows/$env:PROCESSOR_ARCHITECTURE ($Target)"
-
-  foreach ($Asset in $Assets) {
-    foreach ($BaseUrl in @($PublicReleaseBaseUrl, $OfficialReleaseBaseUrl, $MirrorBaseUrl)) {
-      if ($BaseUrl -and (Install-From-Release-Url $Asset $BaseUrl)) {
-        return $true
+    foreach ($Asset in $Assets) {
+      foreach ($BaseUrl in @($PublicReleaseBaseUrl, $OfficialReleaseBaseUrl, $MirrorBaseUrl)) {
+        if ($BaseUrl -and (Install-From-Release-Url $Asset $BaseUrl)) {
+          return $true
+        }
       }
     }
   }
 
-  Log "No prebuilt HMG release package found for $Target."
+  Log "No prebuilt HMG release package found for any supported target."
   Supported-Targets
   return $false
 }
