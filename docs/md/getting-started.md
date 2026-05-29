@@ -9,12 +9,12 @@
 
 ### Linux / macOS
 ```bash
-curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
 ```
 
 ### Windows (PowerShell)
 ```powershell
-irm https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1 | iex
+irm https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.ps1 | iex
 ```
 
 Or download directly from [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases):

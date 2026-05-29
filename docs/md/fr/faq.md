@@ -31,7 +31,7 @@ Voir [Sécurité](security.md).
 ### Comment installer ?
 
 ```bash
-curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
 ```
 
 Voir [Démarrage rapide](getting-started.md).

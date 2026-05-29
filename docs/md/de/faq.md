@@ -18,7 +18,7 @@ Linux (x86_64, ARM64), macOS (Intel, Apple Silicon), Windows (via WSL).
 
 ### Wie installieren?
 ```bash
-curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
 ```
 
 ### Agent verbinden?

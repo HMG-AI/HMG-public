@@ -12,7 +12,7 @@ Linux, macOS, Windows (WSL).
 
 ## Установка
 ```bash
-curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
 ```
 
 ## Выпуски

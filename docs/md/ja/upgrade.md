@@ -8,7 +8,7 @@
 
 ```bash
 # 最新版をダウンロード
-curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
 
 # デーモンを再起動
 hmg daemon restart

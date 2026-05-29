@@ -61,7 +61,7 @@ Community Edition 不包含：
 ### 如何安装？
 
 ```bash
-curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
 ```
 
 安装脚本自动检测你的操作系统和 CPU 架构。

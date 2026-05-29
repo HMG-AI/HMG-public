@@ -8,7 +8,7 @@
 
 ```bash
 # 下載最新版本
-curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/HMG-AI/HMG-public/main/scripts/install.sh | sh
 
 # 重啟守護程式
 hmg daemon restart
