@@ -191,9 +191,11 @@
   <div class="container">
     <a href="." class="brand"><svg class="logo-icon" viewBox="0 0 32 32"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs><circle cx="16" cy="16" r="15" fill="url(#lg)"/><path d="M16 7c-1.8 0-3.2.9-4.1 2.2S10.5 12.2 10.5 14c0 2.7 1.4 4.5 2.7 5.8V22.5h5.6v-2.7c1.3-1.3 2.7-3.1 2.7-5.8 0-1.8-.6-3.5-1.4-4.8S17.8 7 16 7zm-1.8 16.5h3.6v1.2c0 .7-.5 1.3-1.2 1.3h-1.2c-.7 0-1.2-.6-1.2-1.3v-1.2z" fill="white"/></svg> HMG</a>
     <div class="nav-links" id="navLinks">
-      <a href="#features" data-i18n="nav_features">Features</a>
       <a href="#quickstart" data-i18n="nav_quickstart">Quick Start</a>
       <a href="#editions" data-i18n="nav_editions">Editions</a>
+      <a href="#memory-loop" data-i18n="nav_loop">Memory Loop</a>
+      <a href="#workflows" data-i18n="nav_workflows">Workflows</a>
+      <a href="#troubleshooting" data-i18n="nav_ts">Troubleshooting</a>
       <a href="https://github.com/HMG-AI/HMG-public/tree/main/docs/md" data-i18n="nav_docs">Docs</a>
       <a href="https://github.com/HMG-AI/HMG-public">GitHub</a>
     </div>
@@ -223,7 +225,7 @@
   <!-- ═══ Hero ═══ -->
   <div class="hero">
     <div class="eyebrow">
-      <span>v0.9.2</span>
+      <span>v1.0.0</span>
       <span data-i18n="hero_tag1">First Public Release</span>
       <span data-i18n="hero_tag2">Community Free</span>
     </div>
@@ -249,7 +251,7 @@
   <!-- ═══ Stats ═══ -->
   <div class="stat-grid">
     <div class="stat"><div class="num">8</div><div class="label" data-i18n="stat_tools">MCP Tools</div></div>
-    <div class="stat"><div class="num">50K</div><div class="label" data-i18n="stat_atoms">Free Atoms</div></div>
+    <div class="stat"><div class="num">100K</div><div class="label" data-i18n="stat_atoms">Free Atoms</div></div>
     <div class="stat"><div class="num">4</div><div class="label" data-i18n="stat_platforms">Platforms</div></div>
     <div class="stat"><div class="num">10</div><div class="label" data-i18n="stat_langs">Languages</div></div>
   </div>
@@ -318,8 +320,8 @@
         </div>
         <div class="tab-panel active" id="tab-cli">
           <pre><code><span style="color:var(--green)">$</span> curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
-<span style="color:var(--text2)">  Installing HMG v0.9.2 for x86_64-unknown-linux-gnu...</span>
-<span style="color:var(--green)">  <svg style="width:14px;height:14px;vertical-align:middle;margin-right:.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>HMG v0.9.2 installed to ~/.local/bin</span>
+<span style="color:var(--text2)">  Installing HMG v1.0.0 for x86_64-unknown-linux-gnu...</span>
+<span style="color:var(--green)">  <svg style="width:14px;height:14px;vertical-align:middle;margin-right:.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>HMG v1.0.0 installed to ~/.local/bin</span>
 
 <span style="color:var(--green)">$</span> hmg init -g
 <span style="color:var(--green)">$</span> hmg daemon start
@@ -327,7 +329,7 @@
 
 <span style="color:var(--green)">$</span> hmg license status
 <span style="color:var(--text2)">  Edition: Community (free)
-  Atoms: 50,000 limit | Used: 0</span></code></pre>
+  Atoms: 100,000 limit | Used: 0</span></code></pre>
         </div>
         <div class="tab-panel" id="tab-api">
           <pre><code><span style="color:var(--text2)"># Store a decision</span>
@@ -372,21 +374,21 @@
         <div class="price" data-i18n="ed_free">Free</div>
         <div class="price-note" data-i18n="ed_free_note">Personal use, no license key needed</div>
         <ul>
-          <li data-i18n="ed_c1">50,000 memory atoms</li>
+          <li data-i18n="ed_c1">100,000 memory atoms</li>
           <li data-i18n="ed_c2">5 agents / instance</li>
           <li data-i18n="ed_c3">8 MCP tools</li>
           <li data-i18n="ed_c4">Correction + Governance</li>
           <li data-i18n="ed_c5">Open protocol (Apache-2.0)</li>
           <li data-i18n="ed_c6">TUI dashboard</li>
-          <li class="no" data-i18n="ed_c7">One-Shot Recall</li>
-          <li class="no" data-i18n="ed_c8">Observation capture</li>
-          <li class="no" data-i18n="ed_c9">Vector semantic search</li>
+          <li data-i18n="ed_c7">One-Shot Recall</li>
+          <li data-i18n="ed_c8">Observation capture</li>
+          <li data-i18n="ed_c9">Vector semantic search</li>
         </ul>
       </div>
       <div class="edition-card popular">
         <span class="popular-badge" data-i18n="ed_popular">Popular</span>
         <h4>Developer</h4>
-        <div class="price">$12<span data-i18n="ed_mo">/mo</span></div>
+        <div class="price">$19<span data-i18n="ed_mo">/mo</span></div>
         <div class="price-note" data-i18n="ed_dev_note">Professional coding agents</div>
         <ul>
           <li data-i18n="ed_d1">Unlimited atoms</li>
@@ -417,6 +419,227 @@
       </div>
     </div>
     <p class="edition-footer" data-i18n="ed_note">All editions share the same binary. Activate Developer/Enterprise with <code>hmg license apply &lt;key&gt;</code></p>
+  </section>
+
+  <!-- ═══ Agent Memory Loop ═══ -->
+  <section id="memory-loop">
+    <div class="section-header">
+      <h2 data-i18n="loop_title">Agent Memory Loop</h2>
+      <p class="section-sub" data-i18n="loop_sub">Every session becomes context for the next. Decisions persist. Corrections leave history. Governance controls what gets remembered.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="demo-window">
+      <div class="demo-titlebar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="title" data-i18n="loop_flow_title">Memory Lifecycle</span>
+      </div>
+      <div class="demo-body">
+        <pre><code>capture → canonicalize → recall → correct → govern → consolidate → brief next session
+
+<span style="color:var(--green)"># Session 1: Store a decision</span>
+memory_memorize(content="Decision: use Rust for performance-critical paths")
+
+<span style="color:var(--accent2)"># Session 2: Agent wakes up with full context</span>
+memory_agent_brief(domain_pack_id="software-engineering")
+  → scope: tenant/platform/repo/main
+  → decisions: "use Rust for perf paths"
+  → risks: "WASM integration not yet validated"
+  → next_steps: "benchmark Rust vs Go paths"
+
+<span style="color:var(--amber)"># Session 3: Correct stale knowledge</span>
+memory_correct(target_atom="01ABC...", action="replace",
+  new_content="Use Rust + WASM for cross-platform perf")
+
+<span style="color:var(--red)"># Session 4: Govern sensitive data</span>
+memory_govern(target_atom="01DEF...", action="seal",
+  reason="contains internal API endpoint")</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Workflows ═══ -->
+  <section id="workflows">
+    <div class="section-header">
+      <h2 data-i18n="wf_title">Core Workflows</h2>
+      <p class="section-sub" data-i18n="wf_sub">Four workflows that show why HMG is not a vector database.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- Workflow 1: Task Brief -->
+    <div class="grid grid-2" style="margin-bottom:2em">
+      <div class="card">
+        <h3 data-i18n="wf1_title">1. Task Brief — Wake Up With Context</h3>
+        <p data-i18n="wf1_desc">Before writing a single line of code, the agent retrieves decisions, risks, and constraints from prior sessions.</p>
+        <div class="tab-bar">
+          <button class="tab-btn active" onclick="switchTab(this,'wf1-cli')">MCP</button>
+          <button class="tab-btn" onclick="switchTab(this,'wf1-http')">HTTP</button>
+          <button class="tab-btn" onclick="switchTab(this,'wf1-cli2')">CLI</button>
+        </div>
+        <div class="tab-panel active" id="wf1-cli">
+          <pre><code>memory_agent_brief(
+  domain_pack_id="software-engineering",
+  brief_format="compact_yaml",
+  language="en"
+)</code></pre>
+        </div>
+        <div class="tab-panel" id="wf1-http">
+          <pre><code>POST /api/agent-brief
+Content-Type: application/json
+
+{"domain_pack_id": "software-engineering",
+ "brief_format": "compact_yaml"}</code></pre>
+        </div>
+        <div class="tab-panel" id="wf1-cli2">
+          <pre><code>hmg brief --domain software-engineering</code></pre>
+        </div>
+      </div>
+      <div class="card">
+        <h3 data-i18n="wf1_out_title">Output (compact YAML)</h3>
+        <pre><code>hmg_brief_v2:
+  scope: "tenant/platform/repo/main"
+  engine: one_shot_recall
+  answer: |
+    Sprint 3 completed with RBAC v2.
+    Key decision: use Redis for session cache.
+    Rejected: JWT-only (no revocation).
+  sources:
+    - "01KSC7J75FVQHC5TCHGA1JQRWS"
+  related: []
+  gaps: []
+  validate_hint: "Query-directed recall"</code></pre>
+      </div>
+    </div>
+
+    <!-- Workflow 2: Decision Trace -->
+    <div class="card" style="margin-bottom:2em">
+      <h3 data-i18n="wf2_title">2. Decision Trace — Never Re-argue Settled Questions</h3>
+      <p data-i18n="wf2_desc">Store decisions with rationale. Next session, the agent knows why choices were made and what was rejected.</p>
+      <pre><code><span style="color:var(--green)"># Store a decision with rationale</span>
+memory_memorize(
+  content="Decision: use PostgreSQL 16 over MongoDB for ACID compliance",
+  source="ADR-014",
+  modality="text"
+)
+
+<span style="color:var(--accent2)"># Later: recall the decision and its context</span>
+memory_recall(query="Why did we choose PostgreSQL?")
+  → "Decision: use PostgreSQL 16 over MongoDB for ACID compliance"
+  → source: ADR-014
+  → related: ["data integrity requirements", "transaction guarantees"]</code></pre>
+    </div>
+
+    <!-- Workflow 3: Correction -->
+    <div class="grid grid-2" style="margin-bottom:2em">
+      <div class="card">
+        <h3 data-i18n="wf3_title">3. Correct Stale Memory — Fix Wrong Answers</h3>
+        <p data-i18n="wf3_desc">When a memory is wrong or outdated, replace it. The old version is retained in correction history. Normal recall returns the new canonical answer.</p>
+        <pre><code><span style="color:var(--red)"># Old (incorrect) memory:</span>
+"API runs on port 8080"
+
+<span style="color:var(--green)"># Replace with correct value:</span>
+memory_correct(
+  target_atom="01PORT...",
+  action="replace",
+  new_content="API runs on port 3000",
+  reason="changed in config.rs v0.9.2"
+)
+
+<span style="color:var(--accent2)"># Subsequent recall returns:</span>
+memory_recall(query="what port does the API use?")
+  → "API runs on port 3000" <span style="color:var(--text3)"># canonical</span></code></pre>
+      </div>
+      <div class="card">
+        <h3 data-i18n="wf3_hist_title">Correction History</h3>
+        <pre><code>memory_history(atom_id="01PORT...")
+
+  <span style="color:var(--text3)"># Returns full lineage:</span>
+  v1: "API runs on port 8080"        <span style="color:var(--text3)"># original</span>
+  v2: "API runs on port 3000"       <span style="color:var(--green)"># canonical ✓</span>
+  correction_reason: "changed in config.rs"
+  correction_timestamp: 2026-05-29T...
+  superseded: v1 → v2</code></pre>
+      </div>
+    </div>
+
+    <!-- Workflow 4: Governance -->
+    <div class="card" style="margin-bottom:2em">
+      <h3 data-i18n="wf4_title">4. Govern Sensitive Memory — Control What Gets Remembered</h3>
+      <p data-i18n="wf4_desc">Seal, quarantine, tombstone, or derive lessons. Governed memories are invisible in normal recall but retained for audit.</p>
+      <div class="grid grid-3" style="margin-top:1em">
+        <div style="padding:1em;border:1px solid var(--border);border-radius:var(--radius)">
+          <strong style="color:var(--amber)">seal</strong><br><span data-i18n="wf4_seal" style="font-size:.88em;color:var(--text2)">Hide content but keep metadata. Normal recall skips it. Audit can still see it.</span>
+        </div>
+        <div style="padding:1em;border:1px solid var(--border);border-radius:var(--radius)">
+          <strong style="color:var(--red)">tombstone</strong><br><span data-i18n="wf4_tomb" style="font-size:.88em;color:var(--text2)">Mark as deleted. Payload destroyed or retained based on policy.</span>
+        </div>
+        <div style="padding:1em;border:1px solid var(--border);border-radius:var(--radius)">
+          <strong style="color:var(--green)">derive_lesson</strong><br><span data-i18n="wf4_lesson" style="font-size:.88em;color:var(--text2)">Extract a safe lesson from sensitive content. Original sealed.</span>
+        </div>
+      </div>
+      <pre style="margin-top:1em"><code>memory_govern(
+  target_atom="01SENS...",
+  action="derive_lesson",
+  reason="contains customer PII",
+  lesson_content="Customer data must be encrypted at rest (derived from incident 2026-05-28)"
+)
+
+<span style="color:var(--accent2)"># Normal recall: invisible</span>
+memory_recall(query="customer incident")
+  → <span style="color:var(--text3)"># (no governed results returned)</span>
+
+<span style="color:var(--amber)"># Audit recall: lesson visible</span>
+memory_recall(query="customer incident", mode="audit")
+  → "Customer data must be encrypted at rest"</code></pre>
+    </div>
+  </section>
+
+  <!-- ═══ Troubleshooting ═══ -->
+  <section id="troubleshooting">
+    <div class="section-header">
+      <h2 data-i18n="ts_title">Troubleshooting</h2>
+      <p class="section-sub" data-i18n="ts_sub">Common issues and how to fix them.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3 data-i18n="ts_d_title">Daemon Issues</h3>
+        <ul style="list-style:none;padding:0;font-size:.88em">
+          <li style="padding:.4em 0;border-bottom:1px solid var(--border)" data-i18n="ts_d1"><strong>Port conflict:</strong> <code>hmg daemon stop && hmg daemon start --port 3001</code></li>
+          <li style="padding:.4em 0;border-bottom:1px solid var(--border)" data-i18n="ts_d2"><strong>Permission denied:</strong> Check <code>~/.local/share/hmg/</code> ownership</li>
+          <li style="padding:.4em 0;border-bottom:1px solid var(--border)" data-i18n="ts_d3"><strong>Not starting:</strong> Run <code>hmg doctor</code> for diagnostics</li>
+          <li style="padding:.4em 0" data-i18n="ts_d4"><strong>Stale lock:</strong> Remove <code>~/.local/share/hmg/stores/default/.lock</code></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 data-i18n="ts_m_title">MCP Connection</h3>
+        <ul style="list-style:none;padding:0;font-size:.88em">
+          <li style="padding:.4em 0;border-bottom:1px solid var(--border)" data-i18n="ts_m1"><strong>Tool not found:</strong> Verify <code>hmg --mcp</code> runs in terminal</li>
+          <li style="padding:.4em 0;border-bottom:1px solid var(--border)" data-i18n="ts_m2"><strong>Timeout:</strong> Increase <code>startup_timeout_sec</code> in MCP config</li>
+          <li style="padding:.4em 0;border-bottom:1px solid var(--border)" data-i18n="ts_m3"><strong>Agent can't connect:</strong> Check daemon is running: <code>hmg daemon status</code></li>
+          <li style="padding:.4em 0" data-i18n="ts_m4"><strong>Wrong edition:</strong> <code>hmg license status</code> shows active edition</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 data-i18n="ts_l_title">License & Edition</h3>
+        <ul style="list-style:none;padding:0;font-size:.88em">
+          <li style="padding:.4em 0;border-bottom:1px solid var(--border)" data-i18n="ts_l1"><strong>Apply license:</strong> <code>hmg license apply &lt;key&gt;</code></li>
+          <li style="padding:.4em 0;border-bottom:1px solid var(--border)" data-i18n="ts_l2"><strong>Check status:</strong> <code>hmg license status</code></li>
+          <li style="padding:.4em 0" data-i18n="ts_l3"><strong>Store location:</strong> <code>~/.local/share/hmg/stores/</code></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 data-i18n="ts_h_title">hmg doctor</h3>
+        <p data-i18n="ts_h_desc" style="font-size:.88em;color:var(--text2)">Run <code>hmg doctor</code> to check: edition, store path, daemon, MCP readiness, agent adapters, and disk usage.</p>
+        <pre><code>$ hmg doctor
+  Edition: Community
+  Store: ~/.local/share/hmg/stores/default
+  Daemon: running on :3000
+  MCP: ready
+  Agents: pi, cursor
+  Disk: 12MB / 100K atom limit
+  ✅ All checks passed</code></pre>
+      </div>
+    </div>
   </section>
 
   <!-- ═══ SDKs ═══ -->
@@ -524,7 +747,7 @@ const LANGS = {
 // ─── Translations ───
 const T = {
 en: {
-  nav_features:'Features',nav_quickstart:'Quick Start',nav_editions:'Editions',nav_docs:'Docs',
+  nav_quickstart:'Quick Start',nav_editions:'Editions',nav_loop:'Memory Loop',nav_workflows:'Workflows',nav_ts:'Troubleshooting',nav_docs:'Docs',
   hero_tag1:'First Public Release',hero_tag2:'Community Free',
   hero_title:'Agent Memory<br>That Actually Works',
   hero_subtitle:'Holographic Memory Graph — a long-term memory kernel for AI agents.<br>Store decisions, trace corrections, govern knowledge. One call, complete context.',
@@ -547,7 +770,7 @@ en: {
   ed_title:'Editions',ed_sub:'Single binary, runtime edition detection. No reinstall needed.',
   ed_free:'Free',ed_free_note:'Personal use, no license key needed',ed_mo:'/mo',
   ed_popular:'Popular',ed_dev_note:'Professional coding agents',ed_ent_note:'Teams & organizations',ed_contact:'Contact Us',
-  ed_c1:'50,000 memory atoms',ed_c2:'5 agents / instance',ed_c3:'8 MCP tools',ed_c4:'Correction + Governance',ed_c5:'Open protocol (Apache-2.0)',ed_c6:'TUI dashboard',ed_c7:'One-Shot Recall',ed_c8:'Observation capture',ed_c9:'Vector semantic search',
+  ed_c1:'100,000 memory atoms',ed_c2:'5 agents / instance',ed_c3:'8 MCP tools',ed_c4:'Correction + Governance',ed_c5:'Open protocol (Apache-2.0)',ed_c6:'TUI dashboard',ed_c7:'One-Shot Recall',ed_c8:'Observation capture',ed_c9:'Vector semantic search',
   ed_d1:'Unlimited atoms',ed_d2:'Unlimited agents',ed_d3:'All Community features',ed_d4:'One-Shot Recall',ed_d5:'Observation capture & promotion',ed_d6:'Vector semantic search',ed_d7:'Automated consolidation',ed_d8:'Software engineering domain pack',ed_d9:'SSO / RBAC',
   ed_e1:'Unlimited everything',ed_e2:'All Developer features',ed_e3:'SSO / RBAC',ed_e4:'Audit export',ed_e5:'All domain packs',ed_e6:'API key management',ed_e7:'Priority support',ed_e8:'Custom domain packs',
   ed_note:'All editions share the same binary. Activate Developer/Enterprise with <code>hmg license apply &lt;key&gt;</code>',
@@ -559,9 +782,19 @@ en: {
   foot_f:'Features',foot_e:'Editions',foot_w:'Official Website',
   foot_d1:'Getting Started',foot_d2:'Concepts',foot_d3:'API Reference',foot_d4:'FAQ',
   foot_contrib:'Contributing',foot_sec:'Security',foot_tm:'Trademark',
+  loop_title:'Agent Memory Loop',loop_sub:'Every session becomes context for the next. Decisions persist. Corrections leave history. Governance controls what gets remembered.',loop_flow_title:'Memory Lifecycle',
+  wf_title:'Core Workflows',wf_sub:'Four workflows that show why HMG is not a vector database.',
+  wf1_title:'1. Task Brief — Wake Up With Context',wf1_desc:'Before writing a single line of code, the agent retrieves decisions, risks, and constraints from prior sessions.',wf1_out_title:'Output (compact YAML)',
+  wf2_title:'2. Decision Trace — Never Re-argue Settled Questions',wf2_desc:'Store decisions with rationale. Next session, the agent knows why choices were made and what was rejected.',
+  wf3_title:'3. Correct Stale Memory — Fix Wrong Answers',wf3_desc:'When a memory is wrong or outdated, replace it. The old version is retained in correction history.',wf3_hist_title:'Correction History',
+  wf4_title:'4. Govern Sensitive Memory — Control What Gets Remembered',wf4_desc:'Seal, quarantine, tombstone, or derive lessons. Governed memories are invisible in normal recall but retained for audit.',wf4_seal:'Hide content but keep metadata. Normal recall skips it.',wf4_tomb:'Mark as deleted. Payload destroyed or retained based on policy.',wf4_lesson:'Extract a safe lesson from sensitive content. Original sealed.',
+  ts_title:'Troubleshooting',ts_sub:'Common issues and how to fix them.',ts_d_title:'Daemon Issues',ts_d1:'<strong>Port conflict:</strong> <code>hmg daemon stop && hmg daemon start --port 3001</code>',ts_d2:'<strong>Permission denied:</strong> Check <code>~/.local/share/hmg/</code> ownership',ts_d3:'<strong>Not starting:</strong> Run <code>hmg doctor</code> for diagnostics',ts_d4:'<strong>Stale lock:</strong> Remove lock file from store directory',
+  ts_m_title:'MCP Connection',ts_m1:'<strong>Tool not found:</strong> Verify <code>hmg --mcp</code> runs in terminal',ts_m2:'<strong>Timeout:</strong> Increase startup_timeout_sec in MCP config',ts_m3:'<strong>Can't connect:</strong> Check daemon is running: <code>hmg daemon status</code>',ts_m4:'<strong>Wrong edition:</strong> <code>hmg license status</code> shows active edition',
+  ts_l_title:'License & Edition',ts_l1:'<strong>Apply license:</strong> <code>hmg license apply &lt;key&gt;</code>',ts_l2:'<strong>Check status:</strong> <code>hmg license status</code>',ts_l3:'<strong>Store location:</strong> <code>~/.local/share/hmg/stores/</code>',
+  ts_h_title:'hmg doctor',ts_h_desc:'Run <code>hmg doctor</code> to check: edition, store path, daemon, MCP readiness, agent adapters, and disk usage.',
 },
 'zh-CN': {
-  nav_features:'功能',nav_quickstart:'快速开始',nav_editions:'版本',nav_docs:'文档',
+  nav_quickstart:'快速开始',nav_editions:'版本',nav_loop:'记忆循环',nav_workflows:'工作流',nav_ts:'故障排除',nav_docs:'文档',
   hero_tag1:'首个公开发布',hero_tag2:'Community 免费',
   hero_title:'Agent 记忆<br>真正能用',
   hero_subtitle:'Holographic Memory Graph — AI Agent 的长期记忆内核。<br>存储决策、追溯修正、治理知识。一个调用，完整上下文。',
@@ -584,7 +817,7 @@ en: {
   ed_title:'版本对比',ed_sub:'单一二进制，运行时版本检测。无需重装。',
   ed_free:'免费',ed_free_note:'个人使用，无需 license',ed_mo:'/月',
   ed_popular:'热门',ed_dev_note:'专业编码 Agent',ed_ent_note:'团队与组织',ed_contact:'联系我们',
-  ed_c1:'50,000 记忆原子',ed_c2:'5 Agent / 实例',ed_c3:'8 个 MCP 工具',ed_c4:'修正 + 治理',ed_c5:'开放协议 (Apache-2.0)',ed_c6:'TUI 可视化面板',ed_c7:'One-Shot Recall',ed_c8:'观察捕获',ed_c9:'向量语义搜索',
+  ed_c1:'100,000 记忆原子',ed_c2:'5 Agent / 实例',ed_c3:'8 个 MCP 工具',ed_c4:'修正 + 治理',ed_c5:'开放协议 (Apache-2.0)',ed_c6:'TUI 可视化面板',ed_c7:'One-Shot Recall',ed_c8:'观察捕获',ed_c9:'向量语义搜索',
   ed_d1:'无限记忆原子',ed_d2:'无限 Agent',ed_d3:'所有 Community 功能',ed_d4:'One-Shot Recall',ed_d5:'观察捕获与自动提升',ed_d6:'向量语义搜索',ed_d7:'Consolidation 自动化',ed_d8:'软件工程域包',ed_d9:'SSO / RBAC',
   ed_e1:'无限一切',ed_e2:'所有 Developer 功能',ed_e3:'SSO / RBAC',ed_e4:'审计导出',ed_e5:'全部域包',ed_e6:'API 密钥管理',ed_e7:'优先支持',ed_e8:'自定义域包',
   ed_note:'所有版本共享同一二进制文件。通过 <code>hmg license apply &lt;key&gt;</code> 激活 Developer/Enterprise',
@@ -596,9 +829,19 @@ en: {
   foot_f:'功能',foot_e:'版本',foot_w:'官方网站',
   foot_d1:'快速开始',foot_d2:'概念',foot_d3:'API 参考',foot_d4:'常见问题',
   foot_contrib:'贡献',foot_sec:'安全',foot_tm:'商标',
+  loop_title:'Agent 记忆循环',loop_sub:'每次会话都成为下次的上下文。决策持久化，修正留历史，治理管控记忆。',loop_flow_title:'记忆生命周期',
+  wf_title:'核心工作流',wf_sub:'四个工作流展示为什么 HMG 不是向量数据库。',
+  wf1_title:'1. 任务简报 — 带着上下文醒来',wf1_desc:'在写第一行代码之前，agent 就能获取之前会话的决策、风险和约束。',wf1_out_title:'输出 (compact YAML)',
+  wf2_title:'2. 决策追溯 — 不再重复争论已定的问题',wf2_desc:'存储决策及理由。下次会话，agent 知道为什么做了这些选择以及拒绝了什么。',
+  wf3_title:'3. 纠正过期记忆 — 修复错误答案',wf3_desc:'当记忆错误或过期时，替换它。旧版本保留在修正历史中。',wf3_hist_title:'修正历史',
+  wf4_title:'4. 治理敏感记忆 — 控制什么被记住',wf4_desc:'封存、隔离、墓碑或提取教训。被治理的记忆在普通召回中不可见但保留审计。',wf4_seal:'隐藏内容但保留元数据。普通召回跳过它。',wf4_tomb:'标记为已删除。载荷根据策略销毁或保留。',wf4_lesson:'从敏感内容中提取安全教训。原始内容封存。',
+  ts_title:'故障排除',ts_sub:'常见问题及解决方案。',ts_d_title:'守护进程问题',ts_d1:'<strong>端口冲突：</strong> <code>hmg daemon stop && hmg daemon start --port 3001</code>',ts_d2:'<strong>权限拒绝：</strong> 检查 <code>~/.local/share/hmg/</code> 目录权限',ts_d3:'<strong>无法启动：</strong> 运行 <code>hmg doctor</code> 诊断',ts_d4:'<strong>锁文件残留：</strong> 删除存储目录中的锁文件',
+  ts_m_title:'MCP 连接',ts_m1:'<strong>工具未找到：</strong> 验证 <code>hmg --mcp</code> 能在终端运行',ts_m2:'<strong>超时：</strong> 增加 MCP 配置中的 startup_timeout_sec',ts_m3:'<strong>无法连接：</strong> 检查 daemon 是否运行：<code>hmg daemon status</code>',ts_m4:'<strong>版本不对：</strong> <code>hmg license status</code> 查看当前版本',
+  ts_l_title:'许可证与版本',ts_l1:'<strong>应用许可证：</strong> <code>hmg license apply &lt;key&gt;</code>',ts_l2:'<strong>查看状态：</strong> <code>hmg license status</code>',ts_l3:'<strong>存储位置：</strong> <code>~/.local/share/hmg/stores/</code>',
+  ts_h_title:'hmg doctor',ts_h_desc:'运行 <code>hmg doctor</code> 检查：版本、存储路径、daemon、MCP 就绪、agent 适配器和磁盘使用。',
 },
 'zh-TW': {
-  nav_features:'功能',nav_quickstart:'快速開始',nav_editions:'版本',nav_docs:'文件',
+  nav_quickstart:'快速開始',nav_editions:'版本',nav_loop:'記憶循環',nav_workflows:'工作流',nav_ts:'故障排除',nav_docs:'文件',
   hero_tag1:'首次公開發佈',hero_tag2:'Community 免費',
   hero_title:'Agent 記憶<br>真正能用',
   hero_subtitle:'Holographic Memory Graph — AI Agent 的長期記憶核心。<br>儲存決策、追溯修正、治理知識。一個呼叫，完整上下文。',
@@ -621,7 +864,7 @@ en: {
   ed_title:'版本對比',ed_sub:'單一二進位，執行時版本偵測。無需重灌。',
   ed_free:'免費',ed_free_note:'個人使用，無需 license',ed_mo:'/月',
   ed_popular:'熱門',ed_dev_note:'專業編碼 Agent',ed_ent_note:'團隊與組織',ed_contact:'聯繫我們',
-  ed_c1:'50,000 記憶原子',ed_c2:'5 Agent / 實例',ed_c3:'8 個 MCP 工具',ed_c4:'修正 + 治理',ed_c5:'開放協議 (Apache-2.0)',ed_c6:'TUI 視覺化面板',ed_c7:'One-Shot Recall',ed_c8:'觀察捕獲',ed_c9:'向量語義搜尋',
+  ed_c1:'100,000 記憶原子',ed_c2:'5 Agent / 實例',ed_c3:'8 個 MCP 工具',ed_c4:'修正 + 治理',ed_c5:'開放協議 (Apache-2.0)',ed_c6:'TUI 視覺化面板',ed_c7:'One-Shot Recall',ed_c8:'觀察捕獲',ed_c9:'向量語義搜尋',
   ed_d1:'無限記憶原子',ed_d2:'無限 Agent',ed_d3:'所有 Community 功能',ed_d4:'One-Shot Recall',ed_d5:'觀察捕獲與自動提升',ed_d6:'向量語義搜尋',ed_d7:'Consolidation 自動化',ed_d8:'軟體工程域包',ed_d9:'SSO / RBAC',
   ed_e1:'無限一切',ed_e2:'所有 Developer 功能',ed_e3:'SSO / RBAC',ed_e4:'稽核匯出',ed_e5:'全部域包',ed_e6:'API 金鑰管理',ed_e7:'優先支援',ed_e8:'自訂域包',
   ed_note:'所有版本共享同一二進位檔案。透過 <code>hmg license apply &lt;key&gt;</code> 啟用 Developer/Enterprise',
@@ -633,9 +876,10 @@ en: {
   foot_f:'功能',foot_e:'版本',foot_w:'官方網站',
   foot_d1:'快速開始',foot_d2:'概念',foot_d3:'API 參考',foot_d4:'常見問題',
   foot_contrib:'貢獻',foot_sec:'安全',foot_tm:'商標',
+  loop_title:'Agent 記憶循環',loop_sub:'每次會話都成為下次的上下文。',loop_flow_title:'記憶生命週期',wf_title:'核心工作流',wf_sub:'四個工作流展示為什麼 HMG 不是向量資料庫。',wf1_title:'1. 任務簡報',wf1_desc:'在寫第一行代碼之前，agent 就能獲取之前的決策、風險和約束。',wf1_out_title:'輸出',wf2_title:'2. 決策追溯',wf2_desc:'存儲決策及理由。',wf3_title:'3. 糾正過期記憶',wf3_desc:'當記憶錯誤或過期時，替換它。',wf3_hist_title:'修正歷史',wf4_title:'4. 治理敏感記憶',wf4_desc:'封存、隔離、墓碑或提取教訓。',wf4_seal:'隱藏內容但保留元數據。',wf4_tomb:'標記為已刪除。',wf4_lesson:'從敏感內容中提取安全教訓。',ts_title:'故障排除',ts_sub:'常見問題及解決方案。',ts_d_title:'守護進程問題',ts_d1:'端口衝突',ts_d2:'權限拒絕',ts_d3:'無法啟動',ts_d4:'鎖文件殘留',ts_m_title:'MCP 連接',ts_m1:'工具未找到',ts_m2:'超時',ts_m3:'無法連接',ts_m4:'版本不對',ts_l_title:'許可證與版本',ts_l1:'應用許可證',ts_l2:'查看狀態',ts_l3:'存儲位置',ts_h_title:'hmg doctor',ts_h_desc:'運行 hmg doctor 檢查系統狀態。',
 },
 ja: {
-  nav_features:'機能',nav_quickstart:'クイックスタート',nav_editions:'エディション',nav_docs:'ドキュメント',
+  nav_quickstart:'クイックスタート',nav_editions:'エディション',nav_loop:'メモリループ',nav_workflows:'ワークフロー',nav_ts:'トラブルシューティング',nav_docs:'ドキュメント',
   hero_tag1:'初公開リリース',hero_tag2:'Community 無料',
   hero_title:'エージェントメモリ<br>本当に使えるもの',
   hero_subtitle:'Holographic Memory Graph — AI エージェントの長期メモリカーネル。<br>意思決定の保存、修正の追跡、知識のガバナンス。1回のコールで完全なコンテキスト。',
@@ -658,7 +902,7 @@ ja: {
   ed_title:'エディション',ed_sub:'単一バイナリ、ランタイムエディション検出。再インストール不要。',
   ed_free:'無料',ed_free_note:'個人利用、ライセンスキー不要',ed_mo:'/月',
   ed_popular:'人気',ed_dev_note:'プロフェッショナルコーディングエージェント',ed_ent_note:'チーム＆組織',ed_contact:'お問い合わせ',
-  ed_c1:'50,000 メモリアトム',ed_c2:'5エージェント/インスタンス',ed_c3:'8つのMCPツール',ed_c4:'修正 + ガバナンス',ed_c5:'オープンプロトコル (Apache-2.0)',ed_c6:'TUIダッシュボード',ed_c7:'One-Shot Recall',ed_c8:'観察キャプチャ',ed_c9:'ベクトル意味検索',
+  ed_c1:'100,000 メモリアトム',ed_c2:'5エージェント/インスタンス',ed_c3:'8つのMCPツール',ed_c4:'修正 + ガバナンス',ed_c5:'オープンプロトコル (Apache-2.0)',ed_c6:'TUIダッシュボード',ed_c7:'One-Shot Recall',ed_c8:'観察キャプチャ',ed_c9:'ベクトル意味検索',
   ed_d1:'無制限アトム',ed_d2:'無制限エージェント',ed_d3:'全Community機能',ed_d4:'One-Shot Recall',ed_d5:'観察キャプチャ＆プロモーション',ed_d6:'ベクトル意味検索',ed_d7:'自動統合',ed_d8:'ソフトウェア工学ドメインパック',ed_d9:'SSO / RBAC',
   ed_e1:'全て無制限',ed_e2:'全Developer機能',ed_e3:'SSO / RBAC',ed_e4:'監査エクスポート',ed_e5:'全ドメインパック',ed_e6:'APIキー管理',ed_e7:'優先サポート',ed_e8:'カスタムドメインパック',
   ed_note:'全エディションが同じバイナリを共有。<code>hmg license apply &lt;key&gt;</code> で Developer/Enterprise を有効化',
@@ -670,9 +914,11 @@ ja: {
   foot_f:'機能',foot_e:'エディション',foot_w:'公式サイト',
   foot_d1:'クイックスタート',foot_d2:'コンセプト',foot_d3:'APIリファレンス',foot_d4:'FAQ',
   foot_contrib:'コントリビューション',foot_sec:'セキュリティ',foot_tm:'トレードマーク',
+  loop_title:'メモリループ',loop_sub:'すべてのセッションが次のコンテキストになります。',loop_flow_title:'メモリライフサイクル',wf_title:'コアワークフロー',wf_sub:'HMGがベクトルDBではないことを示す4つのワークフロー。',wf1_title:'1. タスクブリーフ',wf1_desc:'コードを書く前に、前回の決定事項を取得します。',wf1_out_title:'出力',wf2_title:'2. 決定トレース',wf2_desc:'決定とその理由を保存。',wf3_title:'3. 古い記憶の修正',wf3_desc:'記憶が間違っている場合、置換。',wf3_hist_title:'修正履歴',wf4_title:'4. 機密記憶のガバナンス',wf4_desc:'封印、検疫、廃棄、または教訓の抽出。',wf4_seal:'コンテンツを非表示。',wf4_tomb:'削除としてマーク。',wf4_lesson:'安全な教訓を抽出。',ts_title:'トラブルシューティング',ts_sub:'一般的な問題と解決方法。',ts_d_title:'デーモン問題',ts_d1:'ポート競合',ts_d2:'権限エラー',ts_d3:'起動しない',ts_d4:'ロックファイル残留',ts_m_title:'MCP接続',ts_m1:'ツールが見つからない',ts_m2:'タイムアウト',ts_m3:'接続できない',ts_m4:'エディション違い',ts_l_title:'ライセンス',ts_l1:'ライセンス適用',ts_l2:'ステータス確認',ts_l3:'ストア場所',ts_h_title:'hmg doctor',ts_h_desc:'hmg doctor でシステム状態をチェック。',
+  loop_title:'メモリループ',loop_sub:'すべてのセッションが次のコンテキストになります。',loop_flow_title:'メモリライフサイクル',wf_title:'コアワークフロー',wf_sub:'HMGがベクトルDBではないことを示す4つのワークフロー。',wf1_title:'1. タスクブリーフ',wf1_desc:'コードを書く前に、エージェントが前回のセッションから決定事項を取得します。',wf1_out_title:'出力 (compact YAML)',wf2_title:'2. 決定トレース',wf2_desc:'決定とその理由を保存。次回セッションで選択の背景を理解。',wf3_title:'3. 古い記憶の修正',wf3_desc:'記憶が間違っている場合、置換。古いバージョンは修正履歴に保持。',wf3_hist_title:'修正履歴',wf4_title:'4. 機密記憶のガバナンス',wf4_desc:'封印、検疫、廃棄、または教訓の抽出。',wf4_seal:'コンテンツを非表示、メタデータは保持。',wf4_tomb:'削除としてマーク。',wf4_lesson:'機密コンテンツから安全な教訓を抽出。',ts_title:'トラブルシューティング',ts_sub:'一般的な問題と解決方法。',ts_d_title:'デーモン問題',ts_d1:'ポート競合',ts_d2:'権限エラー',ts_d3:'起動しない',ts_d4:'ロックファイル残留',ts_m_title:'MCP接続',ts_m1:'ツールが見つからない',ts_m2:'タイムアウト',ts_m3:'接続できない',ts_m4:'エディション違い',ts_l_title:'ライセンスとエディション',ts_l1:'ライセンス適用',ts_l2:'ステータス確認',ts_l3:'ストア場所',ts_h_title:'hmg doctor',ts_h_desc:'hmg doctor でシステム状態をチェック。',
 },
 ko: {
-  nav_features:'기능',nav_quickstart:'빠른 시작',nav_editions:'에디션',nav_docs:'문서',
+  nav_quickstart:'빠른 시작',nav_editions:'에디션',nav_loop:'메모리 루프',nav_workflows:'워크플로',nav_ts:'문제 해결',nav_docs:'문서',
   hero_tag1:'첫 공개 릴리스',hero_tag2:'Community 무료',
   hero_title:'에이전트 메모리<br>실제로 작동하는',
   hero_subtitle:'Holographic Memory Graph — AI 에이전트의 장기 메모리 커널.<br>의사결정 저장, 수정 추적, 지식 거버넌스. 한 번의 호출로 완전한 컨텍스트.',
@@ -695,7 +941,7 @@ ko: {
   ed_title:'에디션',ed_sub:'단일 바이너리, 런타임 에디션 감지. 재설치 불필요.',
   ed_free:'무료',ed_free_note:'개인 사용, 라이선스 키 불필요',ed_mo:'/월',
   ed_popular:'인기',ed_dev_note:'전문 코딩 에이전트',ed_ent_note:'팀 & 조직',ed_contact:'문의',
-  ed_c1:'50,000 메모리 원자',ed_c2:'5 에이전트/인스턴스',ed_c3:'8 MCP 도구',ed_c4:'수정 + 거버넌스',ed_c5:'오픈 프로토콜 (Apache-2.0)',ed_c6:'TUI 대시보드',ed_c7:'One-Shot Recall',ed_c8:'관찰 캡처',ed_c9:'벡터 시맨틱 검색',
+  ed_c1:'100,000 메모리 원자',ed_c2:'5 에이전트/인스턴스',ed_c3:'8 MCP 도구',ed_c4:'수정 + 거버넌스',ed_c5:'오픈 프로토콜 (Apache-2.0)',ed_c6:'TUI 대시보드',ed_c7:'One-Shot Recall',ed_c8:'관찰 캡처',ed_c9:'벡터 시맨틱 검색',
   ed_d1:'무제한 원자',ed_d2:'무제한 에이전트',ed_d3:'모든 Community 기능',ed_d4:'One-Shot Recall',ed_d5:'관찰 캡처 & 프로모션',ed_d6:'벡터 시맨틱 검색',ed_d7:'자동 통합',ed_d8:'소프트웨어 엔지니어링 도메인 팩',ed_d9:'SSO / RBAC',
   ed_e1:'모든 것 무제한',ed_e2:'모든 Developer 기능',ed_e3:'SSO / RBAC',ed_e4:'감사 내보내기',ed_e5:'모든 도메인 팩',ed_e6:'API 키 관리',ed_e7:'우선 지원',ed_e8:'커스텀 도메인 팩',
   ed_note:'모든 에디션이 동일한 바이너리를 공유합니다. <code>hmg license apply &lt;key&gt;</code>로 Developer/Enterprise 활성화',
@@ -707,9 +953,11 @@ ko: {
   foot_f:'기능',foot_e:'에디션',foot_w:'공식 웹사이트',
   foot_d1:'빠른 시작',foot_d2:'개념',foot_d3:'API 참조',foot_d4:'FAQ',
   foot_contrib:'기여',foot_sec:'보안',foot_tm:'상표',
+  loop_title:'메모리 루프',loop_sub:'모든 세션이 다음 세션의 컨텍스트가 됩니다.',loop_flow_title:'메모리 라이프사이클',wf_title:'핵심 워크플로',wf_sub:'4개의 워크플로.',wf1_title:'1. 태스크 브리프',wf1_desc:'이전 세션의 결정, 위험, 제약을 검색합니다.',wf1_out_title:'출력',wf2_title:'2. 결정 추적',wf2_desc:'결정과 이유를 저장합니다.',wf3_title:'3. 오래된 메모리 수정',wf3_desc:'메모리가 잘못되었을 때 교체합니다.',wf3_hist_title:'수정 이력',wf4_title:'4. 민감 메모리 거버넌스',wf4_desc:'봉인, 격리, 폐기 또는 교훈 도출.',wf4_seal:'콘텐츠 숨김.',wf4_tomb:'삭제로 표시.',wf4_lesson:'안전한 교훈 추출.',ts_title:'문제 해결',ts_sub:'일반적인 문제와 해결 방법.',ts_d_title:'데몬 문제',ts_d1:'포트 충돌',ts_d2:'권한 거부',ts_d3:'시작 안됨',ts_d4:'잠금 파일 잔류',ts_m_title:'MCP 연결',ts_m1:'도구 없음',ts_m2:'타임아웃',ts_m3:'연결 불가',ts_m4:'에디션 불일치',ts_l_title:'라이선스',ts_l1:'라이선스 적용',ts_l2:'상태 확인',ts_l3:'스토어 위치',ts_h_title:'hmg doctor',ts_h_desc:'hmg doctor로 시스템 상태 확인.',
+  loop_title:'메모리 루프',loop_sub:'모든 세션이 다음 세션의 컨텍스트가 됩니다.',loop_flow_title:'메모리 라이프사이클',wf_title:'핵심 워크플로',wf_sub:'HMG가 벡터 DB가 아닌 이유를 보여주는 4개의 워크플로.',wf1_title:'1. 태스크 브리프',wf1_desc:'코드를 작성하기 전에 이전 세션의 결정, 위험, 제약을 검색합니다.',wf1_out_title:'출력 (compact YAML)',wf2_title:'2. 결정 추적',wf2_desc:'결정과 이유를 저장합니다.',wf3_title:'3. 오래된 메모리 수정',wf3_desc:'메모리가 잘못되었을 때 교체합니다.',wf3_hist_title:'수정 이력',wf4_title:'4. 민감 메모리 거버넌스',wf4_desc:'봉인, 격리, 폐기 또는 교훈 도출.',wf4_seal:'콘텐츠 숨김, 메타데이터 유지.',wf4_tomb:'삭제로 표시.',wf4_lesson:'민감 콘텐츠에서 안전한 교훈 추출.',ts_title:'문제 해결',ts_sub:'일반적인 문제와 해결 방법.',ts_d_title:'데몬 문제',ts_d1:'포트 충돌',ts_d2:'권한 거부',ts_d3:'시작 안됨',ts_d4:'잠금 파일 잔류',ts_m_title:'MCP 연결',ts_m1:'도구 없음',ts_m2:'타임아웃',ts_m3:'연결 불가',ts_m4:'에디션 불일치',ts_l_title:'라이선스 foot_tm:'상표', 에디션',ts_l1:'라이선스 적용',ts_l2:'상태 확인',ts_l3:'스토어 위치',ts_h_title:'hmg doctor',ts_h_desc:'hmg doctor로 시스템 상태 확인.',
 },
 fr: {
-  nav_features:'Fonctionnalités',nav_quickstart:'Démarrage rapide',nav_editions:'Éditions',nav_docs:'Docs',
+  nav_quickstart:'Démarrage rapide',nav_editions:'Éditions',nav_loop:'Boucle mémoire',nav_workflows:'Workflows',nav_ts:'Dépannage',nav_docs:'Docs',
   hero_tag1:'Première version publique',hero_tag2:'Community gratuit',
   hero_title:'Mémoire pour agents<br>qui fonctionne vraiment',
   hero_subtitle:'Holographic Memory Graph — un noyau de mémoire à long terme pour les agents IA.<br>Stockez les décisions, tracez les corrections, gouvernez les connaissances.',
@@ -732,7 +980,7 @@ fr: {
   ed_title:'Éditions',ed_sub:'Binaire unique, détection d\'édition au runtime. Pas de réinstallation.',
   ed_free:'Gratuit',ed_free_note:'Usage personnel, pas de clé',ed_mo:'/mois',
   ed_popular:'Populaire',ed_dev_note:'Agents de codage professionnels',ed_ent_note:'Équipes & organisations',ed_contact:'Nous contacter',
-  ed_c1:'50 000 atomes mémoire',ed_c2:'5 agents / instance',ed_c3:'8 outils MCP',ed_c4:'Correction + Gouvernance',ed_c5:'Protocole ouvert (Apache-2.0)',ed_c6:'Tableau de bord TUI',ed_c7:'One-Shot Recall',ed_c8:'Capture d\'observation',ed_c9:'Recherche sémantique vectorielle',
+  ed_c1:'100 000 atomes mémoire',ed_c2:'5 agents / instance',ed_c3:'8 outils MCP',ed_c4:'Correction + Gouvernance',ed_c5:'Protocole ouvert (Apache-2.0)',ed_c6:'Tableau de bord TUI',ed_c7:'One-Shot Recall',ed_c8:'Capture d\'observation',ed_c9:'Recherche sémantique vectorielle',
   ed_d1:'Atomes illimités',ed_d2:'Agents illimités',ed_d3:'Toutes les fonctionnalités Community',ed_d4:'One-Shot Recall',ed_d5:'Capture & promotion d\'observation',ed_d6:'Recherche sémantique vectorielle',ed_d7:'Consolidation automatisée',ed_d8:'Pack domaine génie logiciel',ed_d9:'SSO / RBAC',
   ed_e1:'Tout illimité',ed_e2:'Toutes les fonctionnalités Developer',ed_e3:'SSO / RBAC',ed_e4:'Export d\'audit',ed_e5:'Tous les packs de domaine',ed_e6:'Gestion des clés API',ed_e7:'Support prioritaire',ed_e8:'Packs de domaine personnalisés',
   ed_note:'Toutes les éditions partagent le même binaire. Activez Developer/Enterprise avec <code>hmg license apply &lt;key&gt;</code>',
@@ -744,9 +992,10 @@ fr: {
   foot_f:'Fonctionnalités',foot_e:'Éditions',foot_w:'Site officiel',
   foot_d1:'Démarrage rapide',foot_d2:'Concepts',foot_d3:'Référence API',foot_d4:'FAQ',
   foot_contrib:'Contribuer',foot_sec:'Sécurité',foot_tm:'Marque',
+  loop_title:'Boucle mémoire',loop_sub:'Chaque session devient le contexte de la suivante.',loop_flow_title:'Cycle de vie mémoire',wf_title:'Workflows principaux',wf_sub:'Quatre workflows qui montrent pourquoi HMG n'est pas une base vectorielle.',wf1_title:'1. Brief de tâche',wf1_desc:'Avant d'écrire du code, l'agent récupère les décisions précédentes.',wf1_out_title:'Sortie',wf2_title:'2. Trace de décision',wf2_desc:'Stockez les décisions avec leurs raisons.',wf3_title:'3. Corriger la mémoire obsolète',wf3_desc:'Remplacez les mémoires incorrectes. L'historique est conservé.',wf3_hist_title:'Historique de correction',wf4_title:'4. Gouverner la mémoire sensible',wf4_desc:'Scellez, mettez en quarantaine, ou extrayez des leçons.',wf4_seal:'Masquer le contenu, garder les métadonnées.',wf4_tomb:'Marquer comme supprimé.',wf4_lesson:'Extraire une leçon sûre.',ts_title:'Dépannage',ts_sub:'Problèmes courants et solutions.',ts_d_title:'Problèmes de daemon',ts_d1:'Conflit de port',ts_d2:'Permission refusée',ts_d3:'Ne démarre pas',ts_d4:'Fichier verrou résiduel',ts_m_title:'Connexion MCP',ts_m1:'Outil introuvable',ts_m2:'Délai expiré',ts_m3:'Connexion impossible',ts_m4:'Mauvaise édition',ts_l_title:'Licence',ts_l1:'Appliquer la licence',ts_l2:'Vérifier le statut',ts_l3:'Emplacement du stockage',ts_h_title:'hmg doctor',ts_h_desc:'Exécutez hmg doctor pour diagnostiquer.',
 },
 de: {
-  nav_features:'Funktionen',nav_quickstart:'Schnellstart',nav_editions:'Editionen',nav_docs:'Doku',
+  nav_quickstart:'Schnellstart',nav_editions:'Editionen',nav_loop:'Speicher-Schleife',nav_workflows:'Workflows',nav_ts:'Fehlerbehebung',nav_docs:'Doku',
   hero_tag1:'Erstes öffentliches Release',hero_tag2:'Community gratis',
   hero_title:'Agenten-Speicher<br>der wirklich funktioniert',
   hero_subtitle:'Holographic Memory Graph — ein Langzeit-Speicher-Kernel für KI-Agenten.<br>Entscheidungen speichern, Korrekturen verfolgen, Wissen steuern.',
@@ -769,7 +1018,7 @@ de: {
   ed_title:'Editionen',ed_sub:'Ein Binary, Runtime-Editionserkennung. Keine Neuinstallation nötig.',
   ed_free:'Kostenlos',ed_free_note:'Persönliche Nutzung, kein Lizenzschlüssel',ed_mo:'/Monat',
   ed_popular:'Beliebt',ed_dev_note:'Professionelle Coding-Agenten',ed_ent_note:'Teams & Organisationen',ed_contact:'Kontakt',
-  ed_c1:'50.000 Speicher-Atome',ed_c2:'5 Agenten / Instanz',ed_c3:'8 MCP-Tools',ed_c4:'Korrektur + Governance',ed_c5:'Offenes Protokoll (Apache-2.0)',ed_c6:'TUI-Dashboard',ed_c7:'One-Shot Recall',ed_c8:'Beobachtungserfassung',ed_c9:'Vektor-semantische Suche',
+  ed_c1:'100.000 Speicher-Atome',ed_c2:'5 Agenten / Instanz',ed_c3:'8 MCP-Tools',ed_c4:'Korrektur + Governance',ed_c5:'Offenes Protokoll (Apache-2.0)',ed_c6:'TUI-Dashboard',ed_c7:'One-Shot Recall',ed_c8:'Beobachtungserfassung',ed_c9:'Vektor-semantische Suche',
   ed_d1:'Unbegrenzte Atome',ed_d2:'Unbegrenzte Agenten',ed_d3:'Alle Community-Funktionen',ed_d4:'One-Shot Recall',ed_d5:'Beobachtungserfassung & Promotion',ed_d6:'Vektor-semantische Suche',ed_d7:'Automatische Konsolidierung',ed_d8:'Software-Engineering Domain Pack',ed_d9:'SSO / RBAC',
   ed_e1:'Alles unbegrenzt',ed_e2:'Alle Developer-Funktionen',ed_e3:'SSO / RBAC',ed_e4:'Audit-Export',ed_e5:'Alle Domain Packs',ed_e6:'API-Schlüsselverwaltung',ed_e7:'Prioritäts-Support',ed_e8:'Benutzerdefinierte Domain Packs',
   ed_note:'Alle Editionen nutzen dasselbe Binary. Developer/Enterprise aktivieren mit <code>hmg license apply &lt;key&gt;</code>',
@@ -781,9 +1030,10 @@ de: {
   foot_f:'Funktionen',foot_e:'Editionen',foot_w:'Offizielle Website',
   foot_d1:'Schnellstart',foot_d2:'Konzepte',foot_d3:'API-Referenz',foot_d4:'FAQ',
   foot_contrib:'Beitragen',foot_sec:'Sicherheit',foot_tm:'Markenzeichen',
+  loop_title:'Speicher-Schleife',loop_sub:'Jede Session wird zum Kontext der nächsten.',loop_flow_title:'Speicher-Lebenszyklus',wf_title:'Kern-Workflows',wf_sub:'Vier Workflows die zeigen warum HMG keine Vektor-DB ist.',wf1_title:'1. Task-Briefing',wf1_desc:'Vor dem Codieren ruft der Agent vorherige Entscheidungen ab.',wf1_out_title:'Ausgabe',wf2_title:'2. Entscheidungs-Trace',wf2_desc:'Entscheidungen mit Begründung speichern.',wf3_title:'3. Veralteten Speicher korrigieren',wf3_desc:'Falsche Erinnerungen ersetzen. Historie bleibt erhalten.',wf3_hist_title:'Korrektur-Historie',wf4_title:'4. Sensiblen Speicher steuern',wf4_desc:'Versiegeln, quarantänen oder Lehren ziehen.',wf4_seal:'Inhalt verbergen, Metadaten behalten.',wf4_tomb:'Als gelöscht markieren.',wf4_lesson:'Sichere Lehre extrahieren.',ts_title:'Fehlerbehebung',ts_sub:'Häufige Probleme und Lösungen.',ts_d_title:'Daemon-Probleme',ts_d1:'Port-Konflikt',ts_d2:'Berechtigung verweigert',ts_d3:'Startet nicht',ts_d4:'Veraltete Lock-Datei',ts_m_title:'MCP-Verbindung',ts_m1:'Tool nicht gefunden',ts_m2:'Timeout',ts_m3:'Verbindung fehlgeschlagen',ts_m4:'Falsche Edition',ts_l_title:'Lizenz',ts_l1:'Lizenz anwenden',ts_l2:'Status prüfen',ts_l3:'Speicherort',ts_h_title:'hmg doctor',ts_h_desc:'hmg doctor zur Diagnose ausführen.',
 },
 es: {
-  nav_features:'Características',nav_quickstart:'Inicio rápido',nav_editions:'Ediciones',nav_docs:'Docs',
+  nav_quickstart:'Inicio rápido',nav_editions:'Ediciones',nav_loop:'Bucle de memoria',nav_workflows:'Flujos de trabajo',nav_ts:'Solución de problemas',nav_docs:'Docs',
   hero_tag1:'Primer lanzamiento público',hero_tag2:'Community gratis',
   hero_title:'Memoria para agentes<br>que realmente funciona',
   hero_subtitle:'Holographic Memory Graph — un núcleo de memoria a largo plazo para agentes de IA.<br>Almacena decisiones, rastrea correcciones, gobierna el conocimiento.',
@@ -806,7 +1056,7 @@ es: {
   ed_title:'Ediciones',ed_sub:'Un solo binario, detección de edición en runtime. Sin reinstalación.',
   ed_free:'Gratis',ed_free_note:'Uso personal, sin clave de licencia',ed_mo:'/mes',
   ed_popular:'Popular',ed_dev_note:'Agentes de código profesionales',ed_ent_note:'Equipos y organizaciones',ed_contact:'Contacto',
-  ed_c1:'50.000 átomos de memoria',ed_c2:'5 agentes / instancia',ed_c3:'8 herramientas MCP',ed_c4:'Corrección + Gobernanza',ed_c5:'Protocolo abierto (Apache-2.0)',ed_c6:'Panel TUI',ed_c7:'One-Shot Recall',ed_c8:'Captura de observación',ed_c9:'Búsqueda semántica vectorial',
+  ed_c1:'100.000 átomos de memoria',ed_c2:'5 agentes / instancia',ed_c3:'8 herramientas MCP',ed_c4:'Corrección + Gobernanza',ed_c5:'Protocolo abierto (Apache-2.0)',ed_c6:'Panel TUI',ed_c7:'One-Shot Recall',ed_c8:'Captura de observación',ed_c9:'Búsqueda semántica vectorial',
   ed_d1:'Átomos ilimitados',ed_d2:'Agentes ilimitados',ed_d3:'Todas las funciones Community',ed_d4:'One-Shot Recall',ed_d5:'Captura y promoción de observación',ed_d6:'Búsqueda semántica vectorial',ed_d7:'Consolidación automatizada',ed_d8:'Paquete de dominio ingeniería de software',ed_d9:'SSO / RBAC',
   ed_e1:'Todo ilimitado',ed_e2:'Todas las funciones Developer',ed_e3:'SSO / RBAC',ed_e4:'Exportación de auditoría',ed_e5:'Todos los paquetes de dominio',ed_e6:'Gestión de claves API',ed_e7:'Soporte prioritario',ed_e8:'Paquetes de dominio personalizados',
   ed_note:'Todas las ediciones comparten el mismo binario. Activa Developer/Enterprise con <code>hmg license apply &lt;key&gt;</code>',
@@ -818,9 +1068,11 @@ es: {
   foot_f:'Características',foot_e:'Ediciones',foot_w:'Sitio oficial',
   foot_d1:'Inicio rápido',foot_d2:'Conceptos',foot_d3:'Referencia API',foot_d4:'FAQ',
   foot_contrib:'Contribuir',foot_sec:'Seguridad',foot_tm:'Marca registrada',
+  loop_title:'Loop de memória',loop_sub:'Cada sessão se torna contexto para a próxima.',loop_flow_title:'Ciclo de vida da memória',wf_title:'Fluxos principais',wf_sub:'Quatro fluxos que mostram por que HMG não é um banco vetorial.',wf1_title:'1. Brief de tarefa',wf1_desc:'Antes de codificar, o agente recupera decisões anteriores.',wf1_out_title:'Saída',wf2_title:'2. Traço de decisão',wf2_desc:'Armazene decisões com suas razões.',wf3_title:'3. Corrigir memória obsoleta',wf3_desc:'Substitua memórias incorretas. O histórico é mantido.',wf3_hist_title:'Histórico de correção',wf4_title:'4. Governar memória sensível',wf4_desc:'Selar, quarentena, ou extrair lições.',wf4_seal:'Ocultar conteúdo, manter metadados.',wf4_tomb:'Marcar como excluído.',wf4_lesson:'Extrair lição segura.',ts_title:'Solução de problemas',ts_sub:'Problemas comuns e soluções.',ts_d_title:'Problemas de daemon',ts_d1:'Conflito de porta',ts_d2:'Permissão negada',ts_d3:'Não inicia',ts_d4:'Arquivo lock residual',ts_m_title:'Conexão MCP',ts_m1:'Ferramenta não encontrada',ts_m2:'Timeout',ts_m3:'Sem conexão',ts_m4:'Edição incorreta',ts_l_title:'Licença',ts_l1:'Aplicar licença',ts_l2:'Verificar status',ts_l3:'Local de armazenamento',ts_h_title:'hmg doctor',ts_h_desc:'Execute hmg doctor para diagnóstico.',
+  loop_title:'Bucle de memoria',loop_sub:'Cada sesión se convierte en contexto para la siguiente.',loop_flow_title:'Ciclo de vida de memoria',wf_title:'Flujos principales',wf_sub:'Cuatro flujos que muestran por qué HMG no es una base vectorial.',wf1_title:'1. Brief de tarea',wf1_desc:'Antes de codificar, el agente recupera decisiones previas.',wf1_out_title:'Salida',wf2_title:'2. Traza de decisión',wf2_desc:'Almacene decisiones con sus razones.',wf3_title:'3. Corregir memoria obsoleta',wf3_desc:'Reemplace memorias incorrectas. El historial se conserva.',wf3_hist_title:'Historial de corrección',wf4_title:'4. Gobernar memoria sensible',wf4_desc:'Sellar, cuarentena, o extraer lecciones.',wf4_seal:'Ocultar contenido, mantener metadatos.',wf4_tomb:'Marcar como eliminado.',wf4_lesson:'Extraer lección segura.',ts_title:'Solución de problemas',ts_sub:'Problemas comunes y soluciones.',ts_d_title:'Problemas de daemon',ts_d1:'Conflicto de puerto',ts_d2:'Permiso denegado',ts_d3:'No inicia',ts_d4:'Archivo lock residual',ts_m_title:'Conexión MCP',ts_m1:'Herramienta no encontrada',ts_m2:'Timeout',ts_m3:'No conecta',ts_m4:'Edición incorrecta',ts_l_title:'Licencia',ts_l1:'Aplicar licencia',ts_l2:'Verificar estado',ts_l3:'Ubicación de almacenamiento',ts_h_title:'hmg doctor',ts_h_desc:'Ejecute hmg doctor para diagnóstico.',
 },
 'pt-BR': {
-  nav_features:'Recursos',nav_quickstart:'Início rápido',nav_editions:'Edições',nav_docs:'Docs',
+  nav_quickstart:'Início rápido',nav_editions:'Edições',nav_loop:'Loop de memória',nav_workflows:'Fluxos de trabalho',nav_ts:'Solução de problemas',nav_docs:'Docs',
   hero_tag1:'Primeiro lançamento público',hero_tag2:'Community grátis',
   hero_title:'Memória para agentes<br>que realmente funciona',
   hero_subtitle:'Holographic Memory Graph — um kernel de memória de longo prazo para agentes de IA.<br>Armazene decisões, rastreie correções, governe o conhecimento.',
@@ -843,7 +1095,7 @@ es: {
   ed_title:'Edições',ed_sub:'Binário único, detecção de edição em runtime. Sem reinstalação.',
   ed_free:'Grátis',ed_free_note:'Uso pessoal, sem chave de licença',ed_mo:'/mês',
   ed_popular:'Popular',ed_dev_note:'Agentes de código profissionais',ed_ent_note:'Equipes e organizações',ed_contact:'Contato',
-  ed_c1:'50.000 átomos de memória',ed_c2:'5 agentes / instância',ed_c3:'8 ferramentas MCP',ed_c4:'Correção + Governança',ed_c5:'Protocolo aberto (Apache-2.0)',ed_c6:'Painel TUI',ed_c7:'One-Shot Recall',ed_c8:'Captura de observação',ed_c9:'Busca semântica vetorial',
+  ed_c1:'100.000 átomos de memória',ed_c2:'5 agentes / instância',ed_c3:'8 ferramentas MCP',ed_c4:'Correção + Governança',ed_c5:'Protocolo aberto (Apache-2.0)',ed_c6:'Painel TUI',ed_c7:'One-Shot Recall',ed_c8:'Captura de observação',ed_c9:'Busca semântica vetorial',
   ed_d1:'Átomos ilimitados',ed_d2:'Agentes ilimitados',ed_d3:'Todos os recursos Community',ed_d4:'One-Shot Recall',ed_d5:'Captura e promoção de observação',ed_d6:'Busca semântica vetorial',ed_d7:'Consolidação automatizada',ed_d8:'Pacote de domínio engenharia de software',ed_d9:'SSO / RBAC',
   ed_e1:'Tudo ilimitado',ed_e2:'Todos os recursos Developer',ed_e3:'SSO / RBAC',ed_e4:'Exportação de auditoria',ed_e5:'Todos os pacotes de domínio',ed_e6:'Gerenciamento de chaves API',ed_e7:'Suporte prioritário',ed_e8:'Pacotes de domínio personalizados',
   ed_note:'Todas as edições compartilham o mesmo binário. Ative Developer/Enterprise com <code>hmg license apply &lt;key&gt;</code>',
@@ -855,9 +1107,11 @@ es: {
   foot_f:'Recursos',foot_e:'Edições',foot_w:'Site oficial',
   foot_d1:'Início rápido',foot_d2:'Conceitos',foot_d3:'Referência API',foot_d4:'FAQ',
   foot_contrib:'Contribuir',foot_sec:'Segurança',foot_tm:'Marca registrada',
+  loop_title:'Loop de memória',loop_sub:'Cada sessão se torna contexto para a próxima.',loop_flow_title:'Ciclo de vida da memória',wf_title:'Fluxos principais',wf_sub:'Quatro fluxos que mostram por que HMG não é um banco vetorial.',wf1_title:'1. Brief de tarefa',wf1_desc:'Antes de codificar, o agente recupera decisões anteriores.',wf1_out_title:'Saída',wf2_title:'2. Traço de decisão',wf2_desc:'Armazene decisões com suas razões.',wf3_title:'3. Corrigir memória obsoleta',wf3_desc:'Substitua memórias incorretas. O histórico é mantido.',wf3_hist_title:'Histórico de correção',wf4_title:'4. Governar memória sensível',wf4_desc:'Selar, quarentena, ou extrair lições.',wf4_seal:'Ocultar conteúdo, manter metadados.',wf4_tomb:'Marcar como excluído.',wf4_lesson:'Extrair lição segura.',ts_title:'Solução de problemas',ts_sub:'Problemas comuns e soluções.',ts_d_title:'Problemas de daemon',ts_d1:'Conflito de porta',ts_d2:'Permissão negada',ts_d3:'Não inicia',ts_d4:'Arquivo lock residual',ts_m_title:'Conexão MCP',ts_m1:'Ferramenta não encontrada',ts_m2:'Timeout',ts_m3:'Sem conexão',ts_m4:'Edição incorreta',ts_l_title:'Licença',ts_l1:'Aplicar licença',ts_l2:'Verificar status',ts_l3:'Local de armazenamento',ts_h_title:'hmg doctor',ts_h_desc:'Execute hmg doctor para diagnóstico.',
+  loop_title:'Bucle de memoria',loop_sub:'Cada sesión se convierte en contexto para la siguiente.',loop_flow_title:'Ciclo de vida de memoria',wf_title:'Flujos principales',wf_sub:'Cuatro flujos que muestran por qué HMG no es una base vectorial.',wf1_title:'1. Brief de tarea',wf1_desc:'Antes de codificar, el agente recupera decisiones previas.',wf1_out_title:'Salida',wf2_title:'2. Traza de decisión',wf2_desc:'Almacene decisiones con sus razones.',wf3_title:'3. Corregir memoria obsoleta',wf3_desc:'Reemplace memorias incorrectas. El historial se conserva.',wf3_hist_title:'Historial de corrección',wf4_title:'4. Gobernar memoria sensible',wf4_desc:'Sellar, cuarentena, o extraer lecciones.',wf4_seal:'Ocultar contenido, mantener metadatos.',wf4_tomb:'Marcar como eliminado.',wf4_lesson:'Extraer lección segura.',ts_title:'Solución de problemas',ts_sub:'Problemas comunes y soluciones.',ts_d_title:'Problemas de daemon',ts_d1:'Conflicto de puerto',ts_d2:'Permiso denegado',ts_d3:'No inicia',ts_d4:'Archivo lock residual',ts_m_title:'Conexión MCP',ts_m1:'Herramienta no encontrada',ts_m2:'Timeout',ts_m3:'No conecta',ts_m4:'Edición incorrecta',ts_l_title:'Licencia',ts_l1:'Aplicar licencia',ts_l2:'Verificar estado',ts_l3:'Ubicación de almacenamiento',ts_h_title:'hmg doctor',ts_h_desc:'Ejecute hmg doctor para diagnóstico.',
 },
 ru: {
-  nav_features:'Возможности',nav_quickstart:'Быстрый старт',nav_editions:'Редакции',nav_docs:'Документация',
+  nav_quickstart:'Быстрый старт',nav_editions:'Редакции',nav_loop:'Цикл памяти',nav_workflows:'Рабочие процессы',nav_ts:'Устранение неполадок',nav_docs:'Документация',
   hero_tag1:'Первый публичный релиз',hero_tag2:'Community бесплатно',
   hero_title:'Память агентов<br>которая реально работает',
   hero_subtitle:'Holographic Memory Graph — ядро долговременной памяти для ИИ-агентов.<br>Храните решения, отслеживайте исправления, управляйте знаниями.',
@@ -880,7 +1134,7 @@ ru: {
   ed_title:'Редакции',ed_sub:'Единый бинарник, определение редакции во время выполнения. Переустановка не нужна.',
   ed_free:'Бесплатно',ed_free_note:'Личное использование, без ключа',ed_mo:'/мес',
   ed_popular:'Популярная',ed_dev_note:'Профессиональные агенты кодинга',ed_ent_note:'Команды и организации',ed_contact:'Связаться',
-  ed_c1:'50 000 атомов памяти',ed_c2:'5 агентов / инстанс',ed_c3:'8 инструментов MCP',ed_c4:'Исправление + Управление',ed_c5:'Открытый протокол (Apache-2.0)',ed_c6:'Панель TUI',ed_c7:'One-Shot Recall',ed_c8:'Захват наблюдений',ed_c9:'Векторный семантический поиск',
+  ed_c1:'100 000 атомов памяти',ed_c2:'5 агентов / инстанс',ed_c3:'8 инструментов MCP',ed_c4:'Исправление + Управление',ed_c5:'Открытый протокол (Apache-2.0)',ed_c6:'Панель TUI',ed_c7:'One-Shot Recall',ed_c8:'Захват наблюдений',ed_c9:'Векторный семантический поиск',
   ed_d1:'Безлимитные атомы',ed_d2:'Безлимитные агенты',ed_d3:'Все функции Community',ed_d4:'One-Shot Recall',ed_d5:'Захват и продвижение наблюдений',ed_d6:'Векторный семантический поиск',ed_d7:'Автоматическая консолидация',ed_d8:'Пакет домена программной инженерии',ed_d9:'SSO / RBAC',
   ed_e1:'Всё безлимитно',ed_e2:'Все функции Developer',ed_e3:'SSO / RBAC',ed_e4:'Экспорт аудита',ed_e5:'Все доменные пакеты',ed_e6:'Управление API-ключами',ed_e7:'Приоритетная поддержка',ed_e8:'Кастомные доменные пакеты',
   ed_note:'Все редакции используют один бинарник. Активируйте Developer/Enterprise через <code>hmg license apply &lt;key&gt;</code>',
@@ -892,6 +1146,7 @@ ru: {
   foot_f:'Возможности',foot_e:'Редакции',foot_w:'Официальный сайт',
   foot_d1:'Быстрый старт',foot_d2:'Концепции',foot_d3:'Справочник API',foot_d4:'FAQ',
   foot_contrib:'Вклад',foot_sec:'Безопасность',foot_tm:'Товарный знак',
+  loop_title:'Цикл памяти',loop_sub:'Каждая сессия становится контекстом для следующей.',loop_flow_title:'Жизненный цикл памяти',wf_title:'Основные рабочие процессы',wf_sub:'Четыре процесса, показывающих, почему HMG — не векторная БД.',wf1_title:'1. Брифинг задачи',wf1_desc:'Перед написанием кода агент извлекает предыдущие решения.',wf1_out_title:'Вывод',wf2_title:'2. Трассировка решений',wf2_desc:'Сохраняйте решения с обоснованиями.',wf3_title:'3. Исправление устаревшей памяти',wf3_desc:'Замените неверные воспоминания. История сохраняется.',wf3_hist_title:'История исправлений',wf4_title:'4. Управление конфиденциальной памятью',wf4_desc:'Запечатывание, карантин, извлечение уроков.',wf4_seal:'Скрыть содержимое, сохранить метаданные.',wf4_tomb:'Пометить как удалённое.',wf4_lesson:'Извлечь безопасный урок.',ts_title:'Устранение неполадок',ts_sub:'Типичные проблемы и решения.',ts_d_title:'Проблемы демона',ts_d1:'Конфликт портов',ts_d2:'Отказ в доступе',ts_d3:'Не запускается',ts_d4:'Остаточный lock-файл',ts_m_title:'Подключение MCP',ts_m1:'Инструмент не найден',ts_m2:'Таймаут',ts_m3:'Нет подключения',ts_m4:'Неверная редакция',ts_l_title:'Лицензия',ts_l1:'Применить лицензию',ts_l2:'Проверить статус',ts_l3:'Расположение хранилища',ts_h_title:'hmg doctor',ts_h_desc:'Запустите hmg doctor для диагностики.',
 },
 };
 

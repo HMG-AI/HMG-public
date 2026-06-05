@@ -6,6 +6,20 @@ For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG/re
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.2.0] — 2026-06-05
+
+### Added
+
+- NERE model manifest support for GliNER ONNX model management
+- `hmg model` CLI command for model download, status, and removal
+- 6 new TUI screens: Agent, Export, Panorama, Query, Secrets, NERE Models
+- GliNER ONNX runtime integration with remote model loading
+
+### Changed
+
+- SDK versions updated to 1.2.0
+- Protocol version updated to 1.2.0
+
 ## [1.0.0] — 2026-05-28
 
 ### Added

@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-1.2.0-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/license-Apache--2.0%20%7C%20Community-green.svg" alt="License">
   <img src="https://img.shields.io/badge/rust-1.85%2B-orange.svg" alt="Rust">
   <img src="https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey.svg" alt="Platform">
@@ -12,43 +12,30 @@
 <h1 align="center">HMG — Agent Memory That Actually Works</h1>
 
 <p align="center">
-  <strong>Holographic Memory Graph</strong> — a long-term memory kernel for AI agents.<br>
+  <strong>Holographic Memory Graph</strong> — branch-aware, auditable, governable long-term memory kernel for coding agents.<br>
   Store decisions, trace corrections, govern knowledge. One tool call, complete answers.
 </p>
 
 <p align="center">
-  <a href="https://hmg-ai.github.io/HMG-public/">🌐 多语言站点 / Site</a> ·
+  <a href="https://hmg-ai.github.io/HMG-public/">🌐 Docs</a> ·
   <a href="https://github.com/HMG-AI/HMG-public/releases">📦 Releases</a> ·
-  <a href="docs/md/getting-started.md">📖 Docs</a> ·
-  <a href="#quick-start">🚀 Quick Start</a> ·
-  <a href="#sdks">SDKs</a>
+  <a href="https://hmg2ai.com/">🏠 Website</a> ·
+  <a href="#quick-start">🚀 Quick Start</a>
 </p>
 
 ---
 
 ## Quick Start
 
-### Linux
 ```bash
+# Install (Linux / macOS)
 curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
-```
 
-### macOS
-```bash
-curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
-```
+# Windows (PowerShell)
+# irm https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1 | iex
 
-### Windows (PowerShell)
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; iex ((New-Object Net.WebClient).DownloadString('https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1'))"
-```
-
-### First Run (all platforms)
-```bash
-# Initialize + install agent adapters
+# Initialize + start
 hmg init -g
-
-# Start memory service
 hmg daemon start
 
 # Store your first memory
@@ -56,86 +43,65 @@ curl -s -X POST http://127.0.0.1:3000/api/memorize \
   -H 'Content-Type: application/json' \
   -d '{"content": "My first HMG memory!"}'
 
-# Verify
+# Verify everything works
 hmg doctor
 ```
 
-## 🌐 Multilingual Site
+## Agent Memory Loop
 
-**[hmg-ai.github.io/HMG-public](https://hmg-ai.github.io/HMG-public/)** — bilingual (中文/English) with one-click toggle.
-
-## 📦 Platform Support
-
-| Platform | Status |
-|----------|--------|
-| Linux x86_64 (glibc 2.31+) | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
-| Linux ARM64 | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
-| macOS Intel | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
-| macOS Apple Silicon | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
-| Windows x86_64 | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
-| Windows ARM64 | ✅ [Download](https://github.com/HMG-AI/HMG-public/releases/latest) |
-
-One-command installer (auto-detects platform):
-```bash
-# Linux / macOS
-curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
-
-# Windows (PowerShell)
-powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; iex ((New-Object Net.WebClient).DownloadString('https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1'))"
+```
+capture → canonicalize → recall → correct → govern → consolidate → brief next session
 ```
 
-## Why HMG?
+Every coding agent session becomes context for the next. Decisions persist. Corrections leave history. Governance controls what gets remembered.
 
-AI agents forget everything between sessions. HMG gives agents durable, queryable, governable long-term memory:
+```python
+# Store a decision
+memory_memorize(content="Use Rust for performance-critical paths", source="ADR-001")
 
-- **Memorize** decisions, root causes, constraints, and validation outcomes
-- **Recall** the right context at the right time with branch-aware scope
-- **Correct** memories when they go stale — full correction history retained
-- **Govern** sensitive knowledge — quarantine, seal, or derive lessons
+# Next session: agent gets full context
+memory_agent_brief(domain_pack_id="software-engineering")
+# → scope, status, decisions, risks, next steps
 
-## Features
+# Correct stale knowledge
+memory_correct(target_atom="01ABC...", action="replace", new_content="Use Rust + WASM")
 
-| Feature | Description |
-|---------|-------------|
-| Advanced Recall | One MCP call for complete session context |
-| Branch-Aware Scope | tenant → workspace → repository → branch |
-| Governance Control Plane | Quarantine, seal, tombstone, derive lessons |
-| Local-First | Embedded storage, zero dependencies |
-| 8 MCP Tools | memorize, recall, correct, govern, history, handoff, agent_brief, stats |
-| Open Protocol | hmg-protocol (Apache-2.0) standalone crate |
+# Govern sensitive data
+memory_govern(target_atom="01DEF...", action="seal", reason="contains API key")
+```
 
 ## Editions
 
-| | Community (Free) | Developer ($12/mo) | Enterprise |
+<!-- MANIFEST:START -->
+| | Community (Free) | Developer ($19/mo) | Enterprise |
 |---|---|---|---|
-| Memory atoms | 50,000 | Unlimited | Unlimited |
-| Agents / instance | 5 | Unlimited | Unlimited |
-| MCP tools | 8 core | 8 + observation | All |
-| One-Shot Recall | ✅ | ✅ | ✅ |
-| Semantic search | ✅ | ✅ | ✅ |
+| Memory atoms | 100,000 | Unlimited | Unlimited |
+| Semantic search | ✓ | ✓ | ✓ |
+| One-Shot Recall | ✓ | ✓ | ✓ |
+| Correction + Governance | ✓ | ✓ | ✓ |
+| Observation capture | ✓ | ✓ | ✓ |
+| Domain pack | software-engineering | software-engineering | All |
+| Consolidation | — | ✓ (auto) | ✓ (full) |
+| Intelligent lifecycle | — | ✓ | ✓ |
 | SSO / RBAC | — | — | ✓ |
-| Domain packs | — | software-engineering | All |
+<!-- MANIFEST:END -->
 
-Single binary, runtime edition detection. Upgrade with `hmg license apply`.
+Single binary, runtime edition detection. No reinstall needed. Upgrade with `hmg license apply <key>`.
 
 ## Agent Adapters
 
-HMG works with **any** MCP-capable agent. Built-in adapters:
-
-| Agent | Install Command |
-|-------|---------------|
+| Agent | Command |
+|-------|---------|
 | pi (Codex) | `hmg init --agent pi` |
 | Cursor | `hmg init --agent cursor` |
 | Claude Code | `hmg init --agent claude` |
 | Codex CLI | `hmg init --agent codex` |
-| Generic MCP | `hmg init --agent generic-mcp` |
-
-Building for a new agent? See [`examples/agent-adapter/`](examples/agent-adapter/) for templates and guides.
+| Any MCP client | `hmg init --agent generic-mcp` |
 
 ## SDKs
 
-### Python
 ```bash
+# Python
 pip install hmg-sdk
 ```
 ```python
@@ -144,8 +110,8 @@ client = hmg.HmgClient()
 client.memorize("key decision: use Rust for perf")
 ```
 
-### TypeScript
 ```bash
+# TypeScript
 npm install @hmg_ai/sdk-ts
 ```
 ```typescript
@@ -154,51 +120,40 @@ const client = new HmgClient();
 await client.memorize({ content: "decision noted" });
 ```
 
+## Open Standard + Free Community Binary + Proprietary Memory Intelligence Engine
+
+This repository contains the **public artifacts** for HMG:
+
+- **Protocol**: [`protocol/`](protocol/) — hmg-protocol (Apache-2.0) standalone crate
+- **MCP Schemas**: [`mcp/schemas/`](mcp/schemas/) — tool definitions
+- **OpenAPI**: [`openapi/`](openapi/) — HTTP API spec
+- **SDKs**: [`sdk-python/`](sdk-python/), [`sdk-ts/`](sdk-ts/)
+- **Certification**: [`certification/`](certification/) — conformance tests
+- **Docs**: [`docs/`](docs/) — multilingual documentation
+- **Installers**: [`scripts/`](scripts/) — install.sh, install.ps1
+
+The core memory engine is proprietary. This repository exists so developers can **install, integrate, verify, and implement compatible protocols**.
+
 ## Documentation
 
-| Document | Description |
-|----------|-------------|
+| | |
+|---|---|
 | [Getting Started](docs/md/getting-started.md) | Install → first memory in 5 minutes |
 | [Concepts](docs/md/concepts.md) | Memory atoms, correction, governance, scope |
-| [Architecture](docs/md/architecture.md) | High-level system overview |
 | [API Reference](docs/md/api-reference.md) | MCP tools and HTTP endpoints |
+| [Architecture](docs/md/architecture.md) | System overview |
 | [FAQ](docs/md/faq.md) | Common questions |
-| [Upgrade Guide](docs/md/upgrade.md) | Upgrading to Developer/Enterprise |
 
-## Repository Structure
+## Links
 
-```
-├── docs/              # GitHub Pages site + documentation
-│   ├── index.html     # Multilingual landing page
-│   ├── img/           # Screenshots and assets
-│   └── md/            # Documentation (Markdown, 11 languages)
-├── scripts/
-│   └── install.sh     # One-command installer
-├── mcp/schemas/       # MCP tool definitions
-├── openapi/           # OpenAPI (Community Edition surface)
-├── protocol/          # hmg-protocol crate (Apache-2.0)
-├── sdk-python/        # Python SDK
-├── sdk-ts/            # TypeScript SDK
-├── certification/     # Conformance tests
-├── examples/          # Quickstart examples
-└── pi-agent/          # pi (Codex) integration
-```
-
-## Community
-
-- **Issues**: [github.com/HMG-AI/HMG-public/issues](https://github.com/HMG-AI/HMG-public/issues)
-- **Discussions**: [github.com/HMG-AI/HMG-public/discussions](https://github.com/HMG-AI/HMG-public/discussions)
-- **Security**: [github.com/HMG-AI/HMG-public/security](https://github.com/HMG-AI/HMG-public/security)
+- **Website**: [hmg2ai.com](https://hmg2ai.com/)
+- **Docs**: [hmg-ai.github.io/HMG-public](https://hmg-ai.github.io/HMG-public/)
+- **Releases**: [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases)
+- **Issues**: [GitHub Issues](https://github.com/HMG-AI/HMG-public/issues)
+- **Security**: [GitHub Security](https://github.com/HMG-AI/HMG-public/security)
+- **Contributing**: [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
 
 - **Protocol & SDK artifacts**: [Apache-2.0](LICENSE)
 - **Community Edition binary**: [LICENSE-COMMUNITY](LICENSE-COMMUNITY) (free use, no redistribution)
-
----
-
-<p align="center">
-  <a href="https://hmg-ai.github.io/HMG-public/">🌐 Site</a> ·
-  <a href="https://hmg2ai.com/">🏠 Website</a> ·
-  <a href="https://github.com/HMG-AI/HMG-public/releases">📦 Releases</a>
-</p>

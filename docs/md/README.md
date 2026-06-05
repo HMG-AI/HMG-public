@@ -20,6 +20,7 @@
 
 | Document | Description |
 |---|---|
+| [Contributing an Agent Adapter](contributing-agent-adapter.md) | How to integrate a new AI coding agent into HMG |
 | [Upgrade Guide](upgrade.md) | Upgrading from Community to Developer/Enterprise |
 | [Security](security.md) | Security model and vulnerability reporting |
 | [Trademark Policy](trademark-policy.md) | Brand and logo usage |

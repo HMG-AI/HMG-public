@@ -1,0 +1,185 @@
+{
+  "$schema": "./schemas/public-manifest.schema.json",
+  "product": {
+    "name": "HMG",
+    "full_name": "Holographic Memory Graph",
+    "version": "1.0.0",
+    "release_channel": "stable",
+    "tagline": "Agent memory that actually works"
+  },
+  "urls": {
+    "website": "https://hmg2ai.com/",
+    "docs": "https://hmg-ai.github.io/HMG-public/",
+    "repository": "https://github.com/HMG-AI/HMG-public",
+    "releases": "https://github.com/HMG-AI/HMG-public/releases",
+    "pricing": "https://hmg2ai.com/pricing",
+    "install_script": "https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh",
+    "install_ps1": "https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1"
+  },
+  "platforms": [
+    "linux-x86_64",
+    "linux-aarch64",
+    "macos-aarch64",
+    "macos-x86_64",
+    "windows-x86_64",
+    "windows-aarch64"
+  ],
+  "languages": {
+    "runtime": ["zh-CN", "zh-TW", "en", "ja", "ko", "fr", "de", "es", "pt-BR", "ru", "ar", "hi", "th", "vi", "id"],
+    "docs_site": ["zh-CN", "zh-TW", "en", "ja", "ko", "fr", "de", "es", "pt-BR", "ru"],
+    "website": ["zh-CN", "en", "zh-TW", "ja", "ko"]
+  },
+  "editions": {
+    "community": {
+      "price": 0,
+      "currency": "USD",
+      "price_display": "Free",
+      "limits": {
+        "atoms": 100000,
+        "vectors": 5000,
+        "agents_per_instance": 5,
+        "instances": 3,
+        "tenants": 1,
+        "recall_results": 20
+      },
+      "features": {
+        "one_shot_recall": true,
+        "semantic_search": true,
+        "keyword_search": true,
+        "observation_capture": true,
+        "observation_promotion": false,
+        "correction": true,
+        "governance": true,
+        "agent_brief": true,
+        "domain_pack_software_engineering": true,
+        "consolidation_auto": false,
+        "memoryql": false,
+        "domain_lens": false,
+        "graph_learning_advanced": false,
+        "intelligent_lifecycle": false,
+        "sso": false,
+        "audit_export": false,
+        "connectors": false
+      }
+    },
+    "developer": {
+      "price": 19,
+      "currency": "USD",
+      "billing": "monthly",
+      "price_display": "$19/mo",
+      "limits": {
+        "atoms": null,
+        "vectors": null,
+        "agents_per_instance": null,
+        "instances": null,
+        "tenants": 1,
+        "recall_results": 50
+      },
+      "features": {
+        "one_shot_recall": true,
+        "semantic_search": true,
+        "keyword_search": true,
+        "observation_capture": true,
+        "observation_promotion": true,
+        "correction": true,
+        "governance": true,
+        "agent_brief": true,
+        "domain_pack_software_engineering": true,
+        "consolidation_auto": true,
+        "memoryql": true,
+        "domain_lens": true,
+        "graph_learning_advanced": true,
+        "intelligent_lifecycle": true,
+        "sso": false,
+        "audit_export": false,
+        "connectors": false
+      }
+    },
+    "enterprise": {
+      "price": null,
+      "currency": "USD",
+      "price_display": "Contact Us",
+      "limits": {
+        "atoms": null,
+        "vectors": null,
+        "agents_per_instance": null,
+        "instances": null,
+        "tenants": null,
+        "recall_results": 50
+      },
+      "features": {
+        "one_shot_recall": true,
+        "semantic_search": true,
+        "keyword_search": true,
+        "observation_capture": true,
+        "observation_promotion": true,
+        "correction": true,
+        "governance": true,
+        "agent_brief": true,
+        "domain_pack_software_engineering": true,
+        "consolidation_auto": true,
+        "memoryql": true,
+        "domain_lens": true,
+        "graph_learning_advanced": true,
+        "intelligent_lifecycle": true,
+        "sso": true,
+        "audit_export": true,
+        "connectors": true
+      }
+    }
+  },
+  "public_tools": {
+    "mcp": [
+      "memory_recall",
+      "memory_memorize",
+      "memory_correct",
+      "memory_govern",
+      "memory_history",
+      "memory_handoff",
+      "memory_agent_brief",
+      "memory_stats"
+    ],
+    "http": [
+      "GET /api/health",
+      "GET /api/capabilities",
+      "POST /api/memorize",
+      "POST /api/recall",
+      "POST /api/correct",
+      "POST /api/govern"
+    ],
+    "cli": [
+      "hmg init",
+      "hmg daemon start",
+      "hmg daemon stop",
+      "hmg doctor",
+      "hmg license status",
+      "hmg license apply",
+      "hmg version"
+    ]
+  },
+  "sdk": {
+    "python": {
+      "package": "hmg-sdk",
+      "version": "1.0.0",
+      "registry": "https://pypi.org/project/hmg-sdk/"
+    },
+    "typescript": {
+      "package": "@hmg_ai/sdk-ts",
+      "version": "1.0.0",
+      "registry": "https://www.npmjs.com/package/@hmg_ai/sdk-ts"
+    }
+  },
+  "docs_nav": [
+    "Start",
+    "Concepts",
+    "Workflows",
+    "API",
+    "Editions",
+    "Troubleshooting"
+  ],
+  "deprecated_urls": [
+    "funcode.xin",
+    "funcode.xin/HMG",
+    "funcode.xin/HMG/#pricing"
+  ]
+}

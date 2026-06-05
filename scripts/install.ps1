@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Stop"
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 $ReleaseBaseUrl = if ($env:HMG_RELEASE_BASE_URL) { $env:HMG_RELEASE_BASE_URL } else { "" }
@@ -64,7 +64,7 @@ function Add-Hmg-To-Path {
   }
 
   # Always ensure the current process PATH has the bin dir
-  # This is critical -- without it hmg init -g in the same script will fail
+  # This is critical — without it hmg init -g in the same script will fail
   if (-not (Path-Contains $env:Path $NormalizedBinDir)) {
     $env:Path = if ([string]::IsNullOrWhiteSpace($env:Path)) {
       $NormalizedBinDir
@@ -215,7 +215,7 @@ exit 1
     $LogPath
   ) | Out-Null
 
-  Log "  Binaries are in use -- update will finish in the background."
+  Log "  Binaries are in use — update will finish in the background."
   Log "  Deferred update log: $LogPath"
   return $true
 }
@@ -266,10 +266,38 @@ function Install-From-Release-Url([string] $Asset, [string] $BaseUrl) {
   return Install-Hmg-Binaries $PackageDir $BinDir $RequiredBins
 }
 
+function Release-Base-Urls {
+  $BaseUrls = @($ReleaseBaseUrl, $PublicReleaseBaseUrl, $OfficialReleaseBaseUrl, $MirrorBaseUrl)
+  $BaseUrls = $BaseUrls | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Select-Object -Unique
+  Write-Output $BaseUrls
+}
+
+function Resolve-Version-From-Release-Json([string] $BaseUrl) {
+  if ([string]::IsNullOrWhiteSpace($BaseUrl)) {
+    return $null
+  }
+
+  $VersionUrl = $BaseUrl.TrimEnd("/") + "/version.json"
+  try {
+    $Resp = Invoke-RestMethod -Uri $VersionUrl -TimeoutSec 10
+    if ($Resp -and $Resp.version) {
+      return [string] $Resp.version
+    }
+  } catch {}
+  return $null
+}
+
 function Resolve-Latest-Version {
+  foreach ($BaseUrl in (Release-Base-Urls)) {
+    $Version = Resolve-Version-From-Release-Json $BaseUrl
+    if ($Version) {
+      return $Version
+    }
+  }
+
   try {
     $ApiUrl = "https://api.github.com/repos/HMG-AI/HMG-public/releases/latest"
-    $Resp = Invoke-RestMethod -Uri $ApiUrl -UseBasicParsing -TimeoutSec 10
+    $Resp = Invoke-RestMethod -Uri $ApiUrl -TimeoutSec 10
     if ($Resp.tag_name -match '^v?(.+)$') {
       return $Matches[1]
     }
@@ -281,7 +309,9 @@ function Install-From-Release {
   $Version = Resolve-Latest-Version
 
   # Try MSVC first (preferred), then fall back to GNU toolchain
-  $Targets = @(Target-Triple, (Target-Triple-GNU)) | Where-Object { $_ -ne "" } | Select-Object -Unique
+  $MsvcTarget = Target-Triple
+  $GnuTarget = Target-Triple-GNU
+  $Targets = @($MsvcTarget, $GnuTarget) | Where-Object { $_ -ne "" } | Select-Object -Unique
 
   if ($Targets.Count -eq 0) {
     Log "Unsupported Windows architecture: $env:PROCESSOR_ARCHITECTURE"
@@ -301,7 +331,7 @@ function Install-From-Release {
     $Assets += "hmg-$Target.zip"
 
     foreach ($Asset in $Assets) {
-      foreach ($BaseUrl in @($PublicReleaseBaseUrl, $OfficialReleaseBaseUrl, $MirrorBaseUrl)) {
+      foreach ($BaseUrl in (Release-Base-Urls)) {
         if ($BaseUrl -and (Install-From-Release-Url $Asset $BaseUrl)) {
           return $true
         }
@@ -314,18 +344,18 @@ function Install-From-Release {
   return $false
 }
 
-# ----------------------------------------------------------------
+# ═══════════════════════════════════════════════════════════════
 # Main
-# ----------------------------------------------------------------
+# ═══════════════════════════════════════════════════════════════
 
 try {
   Log ""
-  Log "========================================"
-  Log "       HMG Installer for Windows      "
-  Log "========================================"
+  Log "╔══════════════════════════════════════╗"
+  Log "║       HMG Installer for Windows      ║"
+  Log "╚══════════════════════════════════════╝"
   Log ""
 
-  # -- Step 1: Download & install binaries ------------------
+  # ── Step 1: Download & install binaries ──────────────────
   Log "[1/3] Downloading HMG..."
   New-Item -ItemType Directory -Force $TempDir | Out-Null
   if (-not (Install-From-Release)) {
@@ -333,7 +363,7 @@ try {
   }
   Log "  Binaries installed."
 
-  # -- Step 2: Configure PATH -------------------------------
+  # ── Step 2: Configure PATH ───────────────────────────────
   Log ""
   Log "[2/3] Configuring PATH..."
   Add-Hmg-To-Path
@@ -344,7 +374,7 @@ try {
     Log "  WARNING: hmg.exe not found at $HmgExe"
   }
 
-  # -- Step 3: Run hmg init -g ------------------------------
+  # ── Step 3: Run hmg init -g ──────────────────────────────
   Log ""
   Log "[3/3] Initializing HMG (hmg init -g)..."
   try {
@@ -365,9 +395,9 @@ try {
   }
 
   Log ""
-  Log "========================================"
-  Log "          Installation complete!       "
-  Log "========================================"
+  Log "╔══════════════════════════════════════╗"
+  Log "║          Installation complete!       ║"
+  Log "╚══════════════════════════════════════╝"
   Log ""
   Log "  Install dir: $BinDir"
   Log ""

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HMG Public Manifest",
+  "description": "Single source of truth for HMG public-facing product facts. All websites, docs, README, SDKs, and installers must derive from or validate against this manifest.",
+  "type": "object",
+  "required": ["product", "urls", "platforms", "languages", "editions", "public_tools", "sdk", "docs_nav", "deprecated_urls"],
+  "properties": {
+    "product": {
+      "type": "object",
+      "required": ["name", "version", "release_channel", "tagline"],
+      "properties": {
+        "name": { "type": "string" },
+        "full_name": { "type": "string" },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+" },
+        "release_channel": { "type": "string", "enum": ["stable", "beta", "alpha"] },
+        "tagline": { "type": "string" }
+      }
+    },
+    "urls": {
+      "type": "object",
+      "required": ["website", "docs", "repository", "releases"],
+      "properties": {
+        "website": { "type": "string", "format": "uri" },
+        "docs": { "type": "string", "format": "uri" },
+        "repository": { "type": "string", "format": "uri" },
+        "releases": { "type": "string", "format": "uri" },
+        "pricing": { "type": "string", "format": "uri" },
+        "install_script": { "type": "string", "format": "uri" },
+        "install_ps1": { "type": "string", "format": "uri" }
+      }
+    },
+    "platforms": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "languages": {
+      "type": "object",
+      "properties": {
+        "runtime": { "type": "array", "items": { "type": "string" } },
+        "docs_site": { "type": "array", "items": { "type": "string" } },
+        "website": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "editions": {
+      "type": "object",
+      "required": ["community", "developer", "enterprise"],
+      "patternProperties": {
+        "^(community|developer|enterprise)$": {
+          "type": "object",
+          "required": ["price_display", "limits", "features"],
+          "properties": {
+            "price": { "type": ["number", "null"] },
+            "currency": { "type": "string" },
+            "billing": { "type": "string" },
+            "price_display": { "type": "string" },
+            "limits": {
+              "type": "object",
+              "properties": {
+                "atoms": { "type": ["number", "null"] },
+                "vectors": { "type": ["number", "null"] },
+                "agents_per_instance": { "type": ["number", "null"] },
+                "instances": { "type": ["number", "null"] },
+                "tenants": { "type": ["number", "null"] },
+                "recall_results": { "type": ["number", "null"] }
+              }
+            },
+            "features": {
+              "type": "object",
+              "additionalProperties": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    "public_tools": {
+      "type": "object",
+      "properties": {
+        "mcp": { "type": "array", "items": { "type": "string" } },
+        "http": { "type": "array", "items": { "type": "string" } },
+        "cli": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "sdk": {
+      "type": "object",
+      "properties": {
+        "python": { "type": "object" },
+        "typescript": { "type": "object" }
+      }
+    },
+    "docs_nav": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "deprecated_urls": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "URLs that must NOT appear in any public surface"
+    }
+  }
+}

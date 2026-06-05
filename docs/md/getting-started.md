@@ -14,7 +14,7 @@ curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install
 
 ### Windows (PowerShell)
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; iex ((New-Object Net.WebClient).DownloadString('https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1'))"
+irm https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1 | iex
 ```
 
 Or download directly from [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases):
