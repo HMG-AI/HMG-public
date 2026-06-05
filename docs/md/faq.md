@@ -46,7 +46,7 @@ Vector databases store and retrieve embeddings. HMG manages knowledge lifecycle.
 curl -L https://hmg2ai.com/install.sh | sh
 ```
 
-Or download from [GitHub Releases](https://github.com/HMG-AI/HMG/releases).
+Or download from [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases).
 
 ### What platforms are supported?
 
@@ -56,7 +56,8 @@ Or download from [GitHub Releases](https://github.com/HMG-AI/HMG/releases).
 | Linux | ARM64 | ✅ Supported |
 | macOS | Intel | ✅ Supported |
 | macOS | Apple Silicon | ✅ Primary |
-| Windows | x86_64 | 🔜 Planned |
+| Windows | x86_64 | ✅ Supported |
+| Windows | ARM64 | ✅ Supported |
 
 ### How do I start HMG?
 

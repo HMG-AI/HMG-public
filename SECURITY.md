@@ -4,7 +4,9 @@
 
 | Version | Supported |
 |---|---|
-| 0.9.x | ✅ |
+| 1.2.x | ✅ |
+| 1.0.x – 1.1.x | ✅ |
+| 0.9.x | ⚠️ Security fixes only |
 | < 0.9 | ❌ |
 
 ## Security Model
@@ -93,4 +95,4 @@ HMG stores data in `~/.local/share/hmg/stores/default/` by default. Ensure this 
 
 - **Security email:** monkseekee@gmail.com
 - **General inquiries:** monkseekee@gmail.com
-- **Website:** https://funcode.xin/HMG/
+- **Website:** https://hmg2ai.com/

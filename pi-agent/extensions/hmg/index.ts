@@ -35,7 +35,7 @@ const HMG_CLI = process.env.HMG_CLI ?? "hmg";
 const HMG_SERVER = process.env.HMG_SERVER ?? "hmg-server";
 const HMG_DATA_DIR = process.env.HMG_PI_DATA_DIR ?? process.env.HMG_DATA_DIR ?? defaultHmgDataDir();
 const HMG_TIMEOUT_MS = Number(process.env.HMG_PI_MCP_TIMEOUT_MS ?? "30000");
-const HMG_UPDATE_MANIFEST_URL = process.env.HMG_UPDATE_MANIFEST_URL ?? "https://github.com/HMG-AI/HMG/releases/latest/download/version.json";
+const HMG_UPDATE_MANIFEST_URL = process.env.HMG_UPDATE_MANIFEST_URL ?? "https://hmg2ai.com/releases/latest/download/version.json";
 const HMG_UPDATE_CHECK_TIMEOUT_MS = Number(process.env.HMG_UPDATE_CHECK_TIMEOUT_MS ?? "2000");
 
 let updateNoticeShown = false;

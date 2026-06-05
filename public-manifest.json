@@ -3,7 +3,7 @@
   "product": {
     "name": "HMG",
     "full_name": "Holographic Memory Graph",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "release_channel": "stable",
     "tagline": "Agent memory that actually works"
   },
@@ -25,9 +25,42 @@
     "windows-aarch64"
   ],
   "languages": {
-    "runtime": ["zh-CN", "zh-TW", "en", "ja", "ko", "fr", "de", "es", "pt-BR", "ru", "ar", "hi", "th", "vi", "id"],
-    "docs_site": ["zh-CN", "zh-TW", "en", "ja", "ko", "fr", "de", "es", "pt-BR", "ru"],
-    "website": ["zh-CN", "en", "zh-TW", "ja", "ko"]
+    "runtime": [
+      "zh-CN",
+      "zh-TW",
+      "en",
+      "ja",
+      "ko",
+      "fr",
+      "de",
+      "es",
+      "pt-BR",
+      "ru",
+      "ar",
+      "hi",
+      "th",
+      "vi",
+      "id"
+    ],
+    "docs_site": [
+      "zh-CN",
+      "zh-TW",
+      "en",
+      "ja",
+      "ko",
+      "fr",
+      "de",
+      "es",
+      "pt-BR",
+      "ru"
+    ],
+    "website": [
+      "zh-CN",
+      "en",
+      "zh-TW",
+      "ja",
+      "ko"
+    ]
   },
   "editions": {
     "community": {
@@ -178,8 +211,8 @@
     "Troubleshooting"
   ],
   "deprecated_urls": [
-    "funcode.xin",
-    "funcode.xin/HMG",
-    "funcode.xin/HMG/#pricing"
+    "example.com-placeholder",
+    "example.com-placeholder/HMG",
+    "example.com-placeholder/HMG/#pricing"
   ]
 }

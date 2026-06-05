@@ -8,24 +8,31 @@
 ## Install
 
 ```bash
-curl -L https://funcode.xin/HMG/install.sh | sh
+curl -L https://hmg2ai.com/releases/latest/download/install.sh | sh
 ```
 
-Or download directly from [GitHub Releases](https://github.com/HMG-AI/HMG/releases):
+Or download directly from [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases):
 
 ```bash
 # Linux x86_64
-curl -L https://github.com/HMG-AI/HMG/releases/latest/download/hmg-latest-x86_64-unknown-linux-gnu.tar.gz | tar -xzf - -C /usr/local/bin/
+curl -L https://github.com/HMG-AI/HMG-public/releases/latest/download/hmg-$(curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/version.json | jq -r '.tag')-x86_64-unknown-linux-gnu.tar.gz | tar -xzf - -C /usr/local/bin/
 
 # macOS Apple Silicon
-curl -L https://github.com/HMG-AI/HMG/releases/latest/download/hmg-latest-aarch64-apple-darwin.tar.gz | tar -xzf - -C /usr/local/bin/
+curl -L https://github.com/HMG-AI/HMG-public/releases/latest/download/hmg-$(curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/version.json | jq -r '.tag')-aarch64-apple-darwin.tar.gz | tar -xzf - -C /usr/local/bin/
+```
+
+Or use the website mirror (no `jq` required):
+
+```bash
+# One-command install from website mirror
+curl -fsSL https://hmg2ai.com/releases/latest/download/install.sh | sh
 ```
 
 ## Verify
 
 ```bash
 hmg --version
-# hmg 1.0.0-community
+# hmg 1.2.0-community
 ```
 
 
