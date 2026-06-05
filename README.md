@@ -31,8 +31,14 @@
 # Install (Linux / macOS)
 curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
 
-# Windows (PowerShell)
-# irm https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1 | iex
+# Initialize + start
+hmg init -g
+hmg daemon start
+```
+
+```powershell
+# Install (Windows PowerShell)
+irm https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1 | iex
 
 # Initialize + start
 hmg init -g
