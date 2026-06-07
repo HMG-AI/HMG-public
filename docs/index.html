@@ -38,6 +38,16 @@
     pre{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.2em;overflow-x:auto;font-family:var(--mono);font-size:.84em;line-height:1.6}
     pre code{background:none;padding:0;font-size:1em;color:var(--text)}
     img{max-width:100%}
+    svg{display:inline-block;vertical-align:middle;flex-shrink:0}
+
+    /* ─── Icons ─── */
+    .logo-icon{width:28px;height:28px;display:block;flex-shrink:0}
+    .icon-svg{width:36px;height:36px;margin-bottom:.75em;color:var(--accent2);fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+    .icon-svg [fill="currentColor"],.icon-svg[fill="currentColor"]{fill:currentColor;stroke:none}
+    .icon-svg [fill="none"],.icon-svg[fill="none"]{fill:none}
+    .icon-svg [stroke="none"],.icon-svg[stroke="none"]{stroke:none}
+    .card > .icon-svg{display:block}
+    .card:hover .icon-svg{color:var(--accent3)}
 
     /* ─── Utility ─── */
     .container{max-width:1080px;margin:0 auto;padding:0 1.5em}
@@ -46,7 +56,7 @@
     /* ─── Nav ─── */
     nav{background:rgba(10,10,10,.85);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
     nav .container{display:flex;align-items:center;justify-content:space-between;height:56px}
-    .brand{font-weight:800;font-size:1.15em;color:var(--text);display:flex;align-items:center;gap:.4em}
+    .brand{font-weight:800;font-size:1.15em;color:var(--text);display:flex;align-items:center;gap:.45em;line-height:1}
     .brand .logo{font-size:1.3em}
     .nav-links{display:flex;gap:1.8em;align-items:center}
     .nav-links a{color:var(--text2);font-size:.88em;font-weight:500}
@@ -115,7 +125,9 @@
     /* ─── Feature items (icon + text side by side) ─── */
     .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5em}
     .feature-item{display:flex;gap:1em;align-items:flex-start}
-    .feature-item .ficon{flex-shrink:0;width:42px;height:42px;background:linear-gradient(135deg,var(--bg3),var(--bg4));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2em;border:1px solid var(--border)}
+    .feature-item .ficon{flex-shrink:0;width:42px;height:42px;background:linear-gradient(135deg,var(--bg3),var(--bg4));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2em;border:1px solid var(--border);color:var(--accent2)}
+    .feature-item .ficon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .feature-item .ficon svg [fill="currentColor"]{fill:currentColor;stroke:none}
     .feature-item h4{font-size:.95em;margin-bottom:.15em;font-weight:600}
     .feature-item p{color:var(--text2);font-size:.84em}
 
@@ -266,12 +278,12 @@
       <div class="section-divider"></div>
     </div>
     <div class="grid grid-3">
-      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24" style="width:32px;height:32px;color:var(--accent)"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/><line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/></svg><h3 data-i18n="new_1t">Windows Support</h3><p data-i18n="new_1d">Full Windows x86_64 & ARM64 support with Named Pipe daemon IPC and PowerShell installer. Now 6 platforms total.</p></div>
-      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24" style="width:32px;height:32px;color:var(--accent)"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5V12h3a3 3 0 0 1 3 3v1.5a2.5 2.5 0 0 1-2.5 2.5H17v2H7v-2H6.5A2.5 2.5 0 0 1 4 16.5V15a3 3 0 0 1 3-3h3V9.5A4 4 0 0 1 8 6a4 4 0 0 1 4-2z" fill="currentColor" stroke="none"/></svg><h3 data-i18n="new_2t">NERE Intelligence</h3><p data-i18n="new_2d">GliNER ONNX neural entity recognition, Markdown-aware chunking, semantic clustering, and multi-level entity tagging.</p></div>
-      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24" style="width:32px;height:32px;color:var(--accent)"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4" fill="none" stroke="currentColor" stroke-width="2"/></svg><h3 data-i18n="new_3t">Encrypted Vault</h3><p data-i18n="new_3d">AES-256-GCM credential storage — securely store API keys, tokens, and secrets. Governed metadata, never exposed in recall.</p></div>
-      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24" style="width:32px;height:32px;color:var(--accent)"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg><h3 data-i18n="new_4t">Knowledge Panorama</h3><p data-i18n="new_4d">Graph panorama analysis — explore knowledge clusters, discover surprising connections, and assess blast radius of changes.</p></div>
-      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24" style="width:32px;height:32px;color:var(--accent)"><rect x="2" y="3" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/><line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/></svg><h3 data-i18n="new_5t">6 New TUI Screens</h3><p data-i18n="new_5d">Agent, Export, Panorama, Query, Secrets, and NERE Models screens for the TUI dashboard.</p></div>
-      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24" style="width:32px;height:32px;color:var(--accent)"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor" stroke="none"/></svg><h3 data-i18n="new_6t">20+ MCP Tools</h3><p data-i18n="new_6d">Expanded from 8 to 20+ tools: query_intent, panorama, capture, secret_store, noise_feedback, observation_promote, and more.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/><line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/></svg><h3 data-i18n="new_1t">Windows Support</h3><p data-i18n="new_1d">Full Windows x86_64 & ARM64 support with Named Pipe daemon IPC and PowerShell installer. Now 6 platforms total.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5V12h3a3 3 0 0 1 3 3v1.5a2.5 2.5 0 0 1-2.5 2.5H17v2H7v-2H6.5A2.5 2.5 0 0 1 4 16.5V15a3 3 0 0 1 3-3h3V9.5A4 4 0 0 1 8 6a4 4 0 0 1 4-2z" fill="currentColor" stroke="none"/></svg><h3 data-i18n="new_2t">NERE Intelligence</h3><p data-i18n="new_2d">GliNER ONNX neural entity recognition, Markdown-aware chunking, semantic clustering, and multi-level entity tagging.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4" fill="none" stroke="currentColor" stroke-width="2"/></svg><h3 data-i18n="new_3t">Encrypted Vault</h3><p data-i18n="new_3d">AES-256-GCM credential storage — securely store API keys, tokens, and secrets. Governed metadata, never exposed in recall.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg><h3 data-i18n="new_4t">Knowledge Panorama</h3><p data-i18n="new_4d">Graph panorama analysis — explore knowledge clusters, discover surprising connections, and assess blast radius of changes.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/><line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/></svg><h3 data-i18n="new_5t">6 New TUI Screens</h3><p data-i18n="new_5d">Agent, Export, Panorama, Query, Secrets, and NERE Models screens for the TUI dashboard.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor" stroke="none"/></svg><h3 data-i18n="new_6t">20+ MCP Tools</h3><p data-i18n="new_6d">Expanded from 8 to 20+ tools: query_intent, panorama, capture, secret_store, noise_feedback, observation_promote, and more.</p></div>
     </div>
   </section>
 
@@ -766,13 +778,13 @@ const LANGS = {
 // ─── Translations ───
 const T = {
 en: {
-  nav_new:'What's New',nav_quickstart:'Quick Start',nav_editions:'Editions',nav_loop:'Memory Loop',nav_workflows:'Workflows',nav_ts:'Troubleshooting',nav_docs:'Docs',
+  nav_new:"What's New",nav_quickstart:'Quick Start',nav_editions:'Editions',nav_loop:'Memory Loop',nav_workflows:'Workflows',nav_ts:'Troubleshooting',nav_docs:'Docs',
   hero_tag1:'Latest Release',hero_tag2:'Community Free',
   hero_title:'Agent Memory<br>That Actually Works',
   hero_subtitle:'Holographic Memory Graph — a long-term memory kernel for AI agents.<br>Store decisions, trace corrections, govern knowledge. One call, complete context.',
   hero_cta1:'Get Started →',hero_cta2:'Official Website',copy:'Copy',
   stat_tools:'MCP Tools',stat_atoms:'Free Atoms',stat_platforms:'Platforms',stat_langs:'Languages',
-  new_title:'What's New in v1.2',
+  new_title:"What's New in v1.2",
   new_sub:'Major upgrades since the initial release: Windows support, NERE intelligence, encrypted vault, and much more.',
   new_1t:'Windows Support',
   new_1d:'Full Windows x86_64 & ARM64 support with Named Pipe daemon IPC and PowerShell installer. Now 6 platforms total.',
@@ -822,7 +834,7 @@ en: {
   wf3_title:'3. Correct Stale Memory — Fix Wrong Answers',wf3_desc:'When a memory is wrong or outdated, replace it. The old version is retained in correction history.',wf3_hist_title:'Correction History',
   wf4_title:'4. Govern Sensitive Memory — Control What Gets Remembered',wf4_desc:'Seal, quarantine, tombstone, or derive lessons. Governed memories are invisible in normal recall but retained for audit.',wf4_seal:'Hide content but keep metadata. Normal recall skips it.',wf4_tomb:'Mark as deleted. Payload destroyed or retained based on policy.',wf4_lesson:'Extract a safe lesson from sensitive content. Original sealed.',
   ts_title:'Troubleshooting',ts_sub:'Common issues and how to fix them.',ts_d_title:'Daemon Issues',ts_d1:'<strong>Port conflict:</strong> <code>hmg daemon stop && hmg daemon start --port 3001</code>',ts_d2:'<strong>Permission denied:</strong> Check <code>~/.local/share/hmg/</code> ownership',ts_d3:'<strong>Not starting:</strong> Run <code>hmg doctor</code> for diagnostics',ts_d4:'<strong>Stale lock:</strong> Remove lock file from store directory',
-  ts_m_title:'MCP Connection',ts_m1:'<strong>Tool not found:</strong> Verify <code>hmg --mcp</code> runs in terminal',ts_m2:'<strong>Timeout:</strong> Increase startup_timeout_sec in MCP config',ts_m3:'<strong>Can't connect:</strong> Check daemon is running: <code>hmg daemon status</code>',ts_m4:'<strong>Wrong edition:</strong> <code>hmg license status</code> shows active edition',
+  ts_m_title:'MCP Connection',ts_m1:'<strong>Tool not found:</strong> Verify <code>hmg --mcp</code> runs in terminal',ts_m2:'<strong>Timeout:</strong> Increase startup_timeout_sec in MCP config',ts_m3:"<strong>Can't connect:</strong> Check daemon is running: <code>hmg daemon status</code>",ts_m4:'<strong>Wrong edition:</strong> <code>hmg license status</code> shows active edition',
   ts_l_title:'License & Edition',ts_l1:'<strong>Apply license:</strong> <code>hmg license apply &lt;key&gt;</code>',ts_l2:'<strong>Check status:</strong> <code>hmg license status</code>',ts_l3:'<strong>Store location:</strong> <code>~/.local/share/hmg/stores/</code>',
   ts_h_title:'hmg doctor',ts_h_desc:'Run <code>hmg doctor</code> to check: edition, store path, daemon, MCP readiness, agent adapters, and disk usage.',
 },
@@ -1043,7 +1055,7 @@ ko: {
   foot_d1:'빠른 시작',foot_d2:'개념',foot_d3:'API 참조',foot_d4:'FAQ',
   foot_contrib:'기여',foot_sec:'보안',foot_tm:'상표',
   loop_title:'메모리 루프',loop_sub:'모든 세션이 다음 세션의 컨텍스트가 됩니다.',loop_flow_title:'메모리 라이프사이클',wf_title:'핵심 워크플로',wf_sub:'4개의 워크플로.',wf1_title:'1. 태스크 브리프',wf1_desc:'이전 세션의 결정, 위험, 제약을 검색합니다.',wf1_out_title:'출력',wf2_title:'2. 결정 추적',wf2_desc:'결정과 이유를 저장합니다.',wf3_title:'3. 오래된 메모리 수정',wf3_desc:'메모리가 잘못되었을 때 교체합니다.',wf3_hist_title:'수정 이력',wf4_title:'4. 민감 메모리 거버넌스',wf4_desc:'봉인, 격리, 폐기 또는 교훈 도출.',wf4_seal:'콘텐츠 숨김.',wf4_tomb:'삭제로 표시.',wf4_lesson:'안전한 교훈 추출.',ts_title:'문제 해결',ts_sub:'일반적인 문제와 해결 방법.',ts_d_title:'데몬 문제',ts_d1:'포트 충돌',ts_d2:'권한 거부',ts_d3:'시작 안됨',ts_d4:'잠금 파일 잔류',ts_m_title:'MCP 연결',ts_m1:'도구 없음',ts_m2:'타임아웃',ts_m3:'연결 불가',ts_m4:'에디션 불일치',ts_l_title:'라이선스',ts_l1:'라이선스 적용',ts_l2:'상태 확인',ts_l3:'스토어 위치',ts_h_title:'hmg doctor',ts_h_desc:'hmg doctor로 시스템 상태 확인.',
-  loop_title:'메모리 루프',loop_sub:'모든 세션이 다음 세션의 컨텍스트가 됩니다.',loop_flow_title:'메모리 라이프사이클',wf_title:'핵심 워크플로',wf_sub:'HMG가 벡터 DB가 아닌 이유를 보여주는 4개의 워크플로.',wf1_title:'1. 태스크 브리프',wf1_desc:'코드를 작성하기 전에 이전 세션의 결정, 위험, 제약을 검색합니다.',wf1_out_title:'출력 (compact YAML)',wf2_title:'2. 결정 추적',wf2_desc:'결정과 이유를 저장합니다.',wf3_title:'3. 오래된 메모리 수정',wf3_desc:'메모리가 잘못되었을 때 교체합니다.',wf3_hist_title:'수정 이력',wf4_title:'4. 민감 메모리 거버넌스',wf4_desc:'봉인, 격리, 폐기 또는 교훈 도출.',wf4_seal:'콘텐츠 숨김, 메타데이터 유지.',wf4_tomb:'삭제로 표시.',wf4_lesson:'민감 콘텐츠에서 안전한 교훈 추출.',ts_title:'문제 해결',ts_sub:'일반적인 문제와 해결 방법.',ts_d_title:'데몬 문제',ts_d1:'포트 충돌',ts_d2:'권한 거부',ts_d3:'시작 안됨',ts_d4:'잠금 파일 잔류',ts_m_title:'MCP 연결',ts_m1:'도구 없음',ts_m2:'타임아웃',ts_m3:'연결 불가',ts_m4:'에디션 불일치',ts_l_title:'라이선스 foot_tm:'상표', 에디션',ts_l1:'라이선스 적용',ts_l2:'상태 확인',ts_l3:'스토어 위치',ts_h_title:'hmg doctor',ts_h_desc:'hmg doctor로 시스템 상태 확인.',
+  loop_title:'메모리 루프',loop_sub:'모든 세션이 다음 세션의 컨텍스트가 됩니다.',loop_flow_title:'메모리 라이프사이클',wf_title:'핵심 워크플로',wf_sub:'HMG가 벡터 DB가 아닌 이유를 보여주는 4개의 워크플로.',wf1_title:'1. 태스크 브리프',wf1_desc:'코드를 작성하기 전에 이전 세션의 결정, 위험, 제약을 검색합니다.',wf1_out_title:'출력 (compact YAML)',wf2_title:'2. 결정 추적',wf2_desc:'결정과 이유를 저장합니다.',wf3_title:'3. 오래된 메모리 수정',wf3_desc:'메모리가 잘못되었을 때 교체합니다.',wf3_hist_title:'수정 이력',wf4_title:'4. 민감 메모리 거버넌스',wf4_desc:'봉인, 격리, 폐기 또는 교훈 도출.',wf4_seal:'콘텐츠 숨김, 메타데이터 유지.',wf4_tomb:'삭제로 표시.',wf4_lesson:'민감 콘텐츠에서 안전한 교훈 추출.',ts_title:'문제 해결',ts_sub:'일반적인 문제와 해결 방법.',ts_d_title:'데몬 문제',ts_d1:'포트 충돌',ts_d2:'권한 거부',ts_d3:'시작 안됨',ts_d4:'잠금 파일 잔류',ts_m_title:'MCP 연결',ts_m1:'도구 없음',ts_m2:'타임아웃',ts_m3:'연결 불가',ts_m4:'에디션 불일치',ts_l_title:'라이선스와 에디션',ts_l1:'라이선스 적용',ts_l2:'상태 확인',ts_l3:'스토어 위치',ts_h_title:'hmg doctor',ts_h_desc:'hmg doctor로 시스템 상태 확인.',
 },
 fr: {
   nav_new:'Nouveautés',nav_quickstart:'Démarrage rapide',nav_editions:'Éditions',nav_loop:'Boucle mémoire',nav_workflows:'Workflows',nav_ts:'Dépannage',nav_docs:'Docs',
@@ -1057,7 +1069,7 @@ fr: {
   new_1t:'Support Windows',
   new_1d:'Support complet Windows x86_64 & ARM64 avec IPC Named Pipe et installateur PowerShell. 6 plateformes au total.',
   new_2t:'Intelligence NERE',
-  new_2d:'Reconnaissance d'entités neuronale GliNER ONNX, découpage Markdown, clustering sémantique.',
+  new_2d:"Reconnaissance d'entités neuronale GliNER ONNX, découpage Markdown, clustering sémantique.",
   new_3t:'Coffre chiffré',
   new_3d:'Stockage de credentials AES-256-GCM — clés API, jetons et secrets en toute sécurité.',
   new_4t:'Panorama des connaissances',
@@ -1095,7 +1107,7 @@ fr: {
   foot_f:'Fonctionnalités',foot_e:'Éditions',foot_w:'Site officiel',
   foot_d1:'Démarrage rapide',foot_d2:'Concepts',foot_d3:'Référence API',foot_d4:'FAQ',
   foot_contrib:'Contribuer',foot_sec:'Sécurité',foot_tm:'Marque',
-  loop_title:'Boucle mémoire',loop_sub:'Chaque session devient le contexte de la suivante.',loop_flow_title:'Cycle de vie mémoire',wf_title:'Workflows principaux',wf_sub:'Quatre workflows qui montrent pourquoi HMG n'est pas une base vectorielle.',wf1_title:'1. Brief de tâche',wf1_desc:'Avant d'écrire du code, l'agent récupère les décisions précédentes.',wf1_out_title:'Sortie',wf2_title:'2. Trace de décision',wf2_desc:'Stockez les décisions avec leurs raisons.',wf3_title:'3. Corriger la mémoire obsolète',wf3_desc:'Remplacez les mémoires incorrectes. L'historique est conservé.',wf3_hist_title:'Historique de correction',wf4_title:'4. Gouverner la mémoire sensible',wf4_desc:'Scellez, mettez en quarantaine, ou extrayez des leçons.',wf4_seal:'Masquer le contenu, garder les métadonnées.',wf4_tomb:'Marquer comme supprimé.',wf4_lesson:'Extraire une leçon sûre.',ts_title:'Dépannage',ts_sub:'Problèmes courants et solutions.',ts_d_title:'Problèmes de daemon',ts_d1:'Conflit de port',ts_d2:'Permission refusée',ts_d3:'Ne démarre pas',ts_d4:'Fichier verrou résiduel',ts_m_title:'Connexion MCP',ts_m1:'Outil introuvable',ts_m2:'Délai expiré',ts_m3:'Connexion impossible',ts_m4:'Mauvaise édition',ts_l_title:'Licence',ts_l1:'Appliquer la licence',ts_l2:'Vérifier le statut',ts_l3:'Emplacement du stockage',ts_h_title:'hmg doctor',ts_h_desc:'Exécutez hmg doctor pour diagnostiquer.',
+  loop_title:'Boucle mémoire',loop_sub:'Chaque session devient le contexte de la suivante.',loop_flow_title:'Cycle de vie mémoire',wf_title:'Workflows principaux',wf_sub:"Quatre workflows qui montrent pourquoi HMG n'est pas une base vectorielle.",wf1_title:'1. Brief de tâche',wf1_desc:"Avant d'écrire du code, l'agent récupère les décisions précédentes.",wf1_out_title:'Sortie',wf2_title:'2. Trace de décision',wf2_desc:'Stockez les décisions avec leurs raisons.',wf3_title:'3. Corriger la mémoire obsolète',wf3_desc:"Remplacez les mémoires incorrectes. L'historique est conservé.",wf3_hist_title:'Historique de correction',wf4_title:'4. Gouverner la mémoire sensible',wf4_desc:'Scellez, mettez en quarantaine, ou extrayez des leçons.',wf4_seal:'Masquer le contenu, garder les métadonnées.',wf4_tomb:'Marquer comme supprimé.',wf4_lesson:'Extraire une leçon sûre.',ts_title:'Dépannage',ts_sub:'Problèmes courants et solutions.',ts_d_title:'Problèmes de daemon',ts_d1:'Conflit de port',ts_d2:'Permission refusée',ts_d3:'Ne démarre pas',ts_d4:'Fichier verrou résiduel',ts_m_title:'Connexion MCP',ts_m1:'Outil introuvable',ts_m2:'Délai expiré',ts_m3:'Connexion impossible',ts_m4:'Mauvaise édition',ts_l_title:'Licence',ts_l1:'Appliquer la licence',ts_l2:'Vérifier le statut',ts_l3:'Emplacement du stockage',ts_h_title:'hmg doctor',ts_h_desc:'Exécutez hmg doctor pour diagnostiquer.',
 },
 de: {
   nav_new:'Neu',nav_quickstart:'Schnellstart',nav_editions:'Editionen',nav_loop:'Speicher-Schleife',nav_workflows:'Workflows',nav_ts:'Fehlerbehebung',nav_docs:'Doku',
