@@ -1,217 +1,428 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "HMG MCP Tool Definitions",
-  "description": "MCP (Model Context Protocol) tool schemas for HMG agent memory operations. Community Edition surface.",
+  "description": "MCP (Model Context Protocol) tool schemas for HMG agent memory operations. 37 tools across Community, Developer, and Enterprise editions.",
   "tools": [
     {
       "name": "memory_memorize",
       "description": "Store a new memory atom with content, source, modality, and optional context.",
+      "edition": "community",
       "inputSchema": {
         "type": "object",
         "required": ["content"],
         "properties": {
-          "content": {
-            "type": "string",
-            "description": "The memory content to store."
-          },
-          "source": {
-            "type": "string",
-            "description": "Optional source attribution (e.g., 'agent', 'user', 'system')."
-          },
-          "modality": {
-            "type": "string",
-            "enum": ["text", "code", "dialogue", "observation"],
-            "default": "text",
-            "description": "The modality of the memory content."
-          },
-          "context": {
-            "$ref": "#/$defs/MemoryContextInput"
-          },
-          "domain_pack_id": {
-            "type": "string",
-            "description": "Domain pack for context interpretation (e.g., 'software-engineering')."
-          }
+          "content": { "type": "string", "description": "The memory content to store." },
+          "source": { "type": "string", "description": "Optional source attribution (e.g., 'agent', 'user', 'system')." },
+          "modality": { "type": "string", "enum": ["text", "code", "dialogue", "observation"], "default": "text" },
+          "context": { "$ref": "#/$defs/MemoryContextInput" },
+          "domain_pack_id": { "type": "string", "description": "Domain pack (auto-routed if omitted)." }
         }
-      },
-      "outputDescription": "Returns a memorize acknowledgment with created atom IDs."
+      }
     },
     {
       "name": "memory_recall",
       "description": "Recall relevant memories based on a query. Returns ranked atoms with relevance scores.",
+      "edition": "community",
       "inputSchema": {
         "type": "object",
         "required": ["query"],
         "properties": {
-          "query": {
-            "type": "string",
-            "description": "The search query for memory recall."
-          },
-          "max_results": {
-            "type": "integer",
-            "default": 20,
-            "description": "Maximum number of results to return."
-          },
-          "include_negated": {
-            "type": "boolean",
-            "default": false,
-            "description": "Include negated (corrected-to-false) atoms."
-          },
-          "context": {
-            "$ref": "#/$defs/MemoryContextInput"
-          },
-          "domain_pack_id": {
-            "type": "string",
-            "description": "Domain pack for context interpretation."
-          },
-          "output_format": {
-            "type": "string",
-            "enum": ["compact_yaml", "json", "markdown", "summary"],
-            "default": "compact_yaml",
-            "description": "Output format for the recall response."
-          }
+          "query": { "type": "string", "description": "The search query for memory recall." },
+          "max_results": { "type": "integer", "default": 20 },
+          "include_negated": { "type": "boolean", "default": false },
+          "output_format": { "type": "string", "enum": ["compact_yaml", "json", "markdown", "summary"], "default": "compact_yaml" },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
         }
-      },
-      "outputDescription": "Returns recalled atoms ranked by relevance, with optional narrative."
+      }
     },
     {
       "name": "memory_correct",
       "description": "Correct an existing memory atom. Supports negate, confirm, demote, and replace actions.",
+      "edition": "community",
       "inputSchema": {
         "type": "object",
         "required": ["target_atom", "action", "reason"],
         "properties": {
-          "target_atom": {
-            "type": "string",
-            "description": "The atom ULID to correct."
-          },
-          "action": {
-            "type": "string",
-            "enum": ["negate", "confirm_actual", "confirm_necessary", "demote", "replace"],
-            "description": "The correction action to apply."
-          },
-          "reason": {
-            "type": "string",
-            "description": "Reason for the correction."
-          },
-          "new_content": {
-            "type": "string",
-            "description": "Replacement content (required when action is 'replace')."
-          },
-          "context": {
-            "$ref": "#/$defs/MemoryContextInput"
-          }
+          "target_atom": { "type": "string", "description": "The atom ULID to correct." },
+          "action": { "type": "string", "enum": ["negate", "confirm_actual", "confirm_necessary", "demote", "replace"] },
+          "reason": { "type": "string" },
+          "new_content": { "type": "string", "description": "Replacement content (for 'replace' action)." },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
         }
-      },
-      "outputDescription": "Returns correction result with optional replacement atom ID."
+      }
     },
     {
       "name": "memory_govern",
       "description": "Apply governance actions to sensitive, unsafe, or stale memory atoms.",
+      "edition": "community",
       "inputSchema": {
         "type": "object",
         "required": ["target_atom", "action", "reason"],
         "properties": {
-          "target_atom": {
-            "type": "string",
-            "description": "The atom ULID to govern."
-          },
-          "action": {
-            "type": "string",
-            "enum": ["quarantine", "seal", "tombstone", "derive_lesson"],
-            "description": "The governance action to apply."
-          },
-          "reason": {
-            "type": "string",
-            "description": "Reason for the governance action."
-          },
-          "actor": {
-            "type": "string",
-            "description": "Actor label performing the governance."
-          },
-          "lesson_content": {
-            "type": "string",
-            "description": "Optional safe lesson content (for derive_lesson)."
-          },
-          "destroy_payload": {
-            "type": "boolean",
-            "description": "Destroy tombstoned payload content."
-          }
+          "target_atom": { "type": "string" },
+          "action": { "type": "string", "enum": ["quarantine", "seal", "tombstone", "derive_lesson"] },
+          "reason": { "type": "string" },
+          "actor": { "type": "string" },
+          "lesson_content": { "type": "string", "description": "Safe lesson (for derive_lesson)." },
+          "destroy_payload": { "type": "boolean" }
         }
-      },
-      "outputDescription": "Returns governance result with optional lesson atom ID."
+      }
     },
     {
       "name": "memory_history",
       "description": "Inspect correction, governance, and relationship history for a memory atom.",
+      "edition": "community",
       "inputSchema": {
         "type": "object",
         "required": ["atom_id"],
-        "properties": {
-          "atom_id": {
-            "type": "string",
-            "description": "The atom ULID to inspect."
-          }
-        }
-      },
-      "outputDescription": "Returns atom history with polarity, epistemic, and exposure transitions."
-    },
-    {
-      "name": "memory_handoff",
-      "description": "Write a durable cross-session handoff summary for future agent sessions.",
-      "inputSchema": {
-        "type": "object",
-        "required": ["summary"],
-        "properties": {
-          "summary": {
-            "type": "string",
-            "description": "Handoff summary: what changed, why, validation, risks, next steps."
-          },
-          "source": {
-            "type": "string",
-            "description": "Optional source attribution."
-          },
-          "context": {
-            "$ref": "#/$defs/MemoryContextInput"
-          }
-        }
-      },
-      "outputDescription": "Returns handoff confirmation with stored atom count."
-    },
-    {
-      "name": "memory_agent_brief",
-      "description": "Get a compact session-start context brief from branch-aware memory.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "query": {
-            "type": "string",
-            "description": "Task or question shaping the brief."
-          },
-          "max_results": {
-            "type": "integer",
-            "description": "Maximum memories to include."
-          },
-          "output_format": {
-            "type": "string",
-            "enum": ["compact_yaml", "yaml", "full"],
-            "default": "compact_yaml",
-            "description": "Brief output format."
-          },
-          "context": {
-            "$ref": "#/$defs/MemoryContextInput"
-          }
-        }
-      },
-      "outputDescription": "Returns compact agent-readable brief with decisions, risks, and next steps."
+        "properties": { "atom_id": { "type": "string", "description": "The atom ULID to inspect." } }
+      }
     },
     {
       "name": "memory_stats",
       "description": "Get HMG memory graph statistics (atom count, edge count, snapshot version).",
+      "edition": "community",
+      "inputSchema": { "type": "object", "properties": {} }
+    },
+    {
+      "name": "memory_agent_brief",
+      "description": "Get a compact session-start context brief from branch-aware memory.",
+      "edition": "community",
       "inputSchema": {
         "type": "object",
-        "properties": {}
-      },
-      "outputDescription": "Returns current graph statistics."
+        "properties": {
+          "query": { "type": "string", "description": "Task or question shaping the brief." },
+          "max_results": { "type": "integer" },
+          "output_format": { "type": "string", "enum": ["compact_yaml", "yaml", "full"], "default": "compact_yaml" },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
+        }
+      }
+    },
+    {
+      "name": "memory_handoff",
+      "description": "Write a durable cross-session handoff summary for future agent sessions.",
+      "edition": "community",
+      "inputSchema": {
+        "type": "object",
+        "required": ["summary"],
+        "properties": {
+          "summary": { "type": "string", "description": "What changed, why, validation, risks, next steps." },
+          "source": { "type": "string" },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
+        }
+      }
+    },
+    {
+      "name": "memory_schema",
+      "description": "Inspect the governed MemoryQL logical schema.",
+      "edition": "developer",
+      "inputSchema": { "type": "object", "properties": { "context": { "$ref": "#/$defs/MemoryContextInput" } } }
+    },
+    {
+      "name": "memory_query_templates",
+      "description": "List safe MemoryQL intent templates for common coding-agent tasks.",
+      "edition": "developer",
+      "inputSchema": { "type": "object", "properties": { "context": { "$ref": "#/$defs/MemoryContextInput" } } }
+    },
+    {
+      "name": "memory_query_intent",
+      "description": "Structured intent-driven query: DecisionTrace, CorrectionLineage, UnresolvedRisks, etc.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "required": ["query"],
+        "properties": {
+          "query": { "type": "string" },
+          "intent": { "type": "string", "description": "Query intent for routing." },
+          "max_results": { "type": "integer" },
+          "output_format": { "type": "string", "enum": ["yaml", "markdown", "json"] },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
+        }
+      }
+    },
+    {
+      "name": "memory_query",
+      "description": "Advanced read-only MemoryQL SELECT query. Prefer query_intent for agents.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "required": ["query"],
+        "properties": {
+          "query": { "type": "string" },
+          "limit": { "type": "integer" },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
+        }
+      }
+    },
+    {
+      "name": "memory_explain_query",
+      "description": "Explain how a query would be executed, including plan and estimated results.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "required": ["query"],
+        "properties": { "query": { "type": "string" }, "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
+    },
+    {
+      "name": "memory_suggest_query",
+      "description": "Suggest queries the user might want to ask based on graph analysis.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "required": ["query"],
+        "properties": {
+          "query": { "type": "string" },
+          "max_results": { "type": "integer" },
+          "output_format": { "type": "string", "enum": ["yaml", "markdown", "json"] },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
+        }
+      }
+    },
+    {
+      "name": "memory_export_snapshot",
+      "description": "Export a snapshot of the memory graph for backup or migration.",
+      "edition": "developer",
+      "inputSchema": { "type": "object", "properties": { "context": { "$ref": "#/$defs/MemoryContextInput" } } }
+    },
+    {
+      "name": "memory_noise_feedback",
+      "description": "Register a phrase as an embedding noise prototype for retrieval gating.",
+      "edition": "community",
+      "inputSchema": {
+        "type": "object",
+        "required": ["phrase"],
+        "properties": { "phrase": { "type": "string" }, "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
+    },
+    {
+      "name": "panorama_query",
+      "description": "Run unified panorama query: God Nodes, Surprising Connections, Suggested Questions.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "required": ["query"],
+        "properties": {
+          "query": { "type": "string" },
+          "max_results": { "type": "integer" },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
+        }
+      }
+    },
+    {
+      "name": "panorama_impact",
+      "description": "Assess blast radius of a change from recalled graph context.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "required": ["target"],
+        "properties": {
+          "target": { "type": "string", "description": "Target symbol or concept." },
+          "direction": { "type": "string", "enum": ["upstream", "downstream"] },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
+        }
+      }
+    },
+    {
+      "name": "secret_store",
+      "description": "Store a credential in the encrypted Credential Vault.",
+      "edition": "community",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name", "payload"],
+        "properties": {
+          "name": { "type": "string", "description": "Credential name." },
+          "payload": { "type": "string", "description": "Credential value." },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
+        }
+      }
+    },
+    {
+      "name": "secret_lookup",
+      "description": "Lookup credential metadata from the encrypted vault.",
+      "edition": "community",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" }, "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
+    },
+    {
+      "name": "secret_use",
+      "description": "Authorize server-side use of a credential without revealing the payload.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" }, "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
+    },
+    {
+      "name": "secret_reveal",
+      "description": "Reveal the plaintext payload of a stored credential. Handle with care.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" }, "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
+    },
+    {
+      "name": "secret_rotate",
+      "description": "Rotate a credential: replace the payload while preserving metadata.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name", "payload"],
+        "properties": {
+          "name": { "type": "string" },
+          "payload": { "type": "string", "description": "New credential value." },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
+        }
+      }
+    },
+    {
+      "name": "secret_revoke",
+      "description": "Revoke (delete) a stored credential.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" }, "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
+    },
+    {
+      "name": "observation_capture",
+      "description": "Capture a governed observation summary or explicit remember instruction.",
+      "edition": "community",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "content": { "type": "string", "description": "Raw or explicit remember text." },
+          "summary": { "type": "string", "description": "Concise summary to capture." },
+          "source": { "type": "string", "enum": ["session-lifecycle", "command-summary", "test-result-summary", "git-event", "explicit-memory-instruction", "assistant-summary", "tool-call-summary"] },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
+        }
+      }
+    },
+    {
+      "name": "observation_promote_dry_run",
+      "description": "Dry-run promotion report for active observations without creating durable memory.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "required": ["summary"],
+        "properties": {
+          "summary": { "type": "string" },
+          "content": { "type": "string" },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
+        }
+      }
+    },
+    {
+      "name": "observation_promote",
+      "description": "Execute an approved promotion plan through existing HMG memory APIs.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "required": ["summary"],
+        "properties": {
+          "summary": { "type": "string" },
+          "content": { "type": "string" },
+          "source": { "type": "string" },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
+        }
+      }
+    },
+    {
+      "name": "observation_forget",
+      "description": "Tombstone scoped raw observations on user request.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string", "description": "Query to match observations." },
+          "context": { "$ref": "#/$defs/MemoryContextInput" }
+        }
+      }
+    },
+    {
+      "name": "observation_maintain",
+      "description": "Run maintenance operations on the observation store.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
+    },
+    {
+      "name": "observation_review_queue",
+      "description": "List observations pending review.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
+    },
+    {
+      "name": "observation_review_resolve",
+      "description": "Resolve an observation from the review queue.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
+    },
+    {
+      "name": "observation_config",
+      "description": "Return current observation capture and promotion mode configuration.",
+      "edition": "community",
+      "inputSchema": { "type": "object", "properties": { "context": { "$ref": "#/$defs/MemoryContextInput" } } }
+    },
+    {
+      "name": "memory_analyze_counterfactuals",
+      "description": "Analyze counterfactual paths in memory — what-if analysis for decisions.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
+    },
+    {
+      "name": "memory_antifragile_analyze",
+      "description": "Analyze memory graph for antifragile properties — resilience and adaptation patterns.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
+    },
+    {
+      "name": "memory_intent_evolution",
+      "description": "Track how query intents evolve over time across sessions.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
+    },
+    {
+      "name": "memory_knowledge_health",
+      "description": "Assess overall health of the knowledge graph — staleness, coverage, contradictions.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
+    },
+    {
+      "name": "memory_communities",
+      "description": "Detect and report knowledge communities (clusters) in the memory graph.",
+      "edition": "developer",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "context": { "$ref": "#/$defs/MemoryContextInput" } }
+      }
     }
   ],
   "$defs": {
@@ -219,34 +430,13 @@
       "type": "object",
       "description": "Unified context for memory operations.",
       "properties": {
-        "tenant_id": {
-          "type": "string",
-          "description": "Tenant identifier."
-        },
-        "workspace": {
-          "type": "string",
-          "description": "Workspace within the tenant."
-        },
-        "repository": {
-          "type": "string",
-          "description": "Repository context."
-        },
-        "branch": {
-          "type": "string",
-          "description": "Branch context."
-        },
-        "task_id": {
-          "type": "string",
-          "description": "Optional task context."
-        },
-        "actor_id": {
-          "type": "string",
-          "description": "Actor performing the operation."
-        },
-        "domain_pack_id": {
-          "type": "string",
-          "description": "Domain pack for context interpretation."
-        }
+        "tenant_id": { "type": "string", "description": "Tenant identifier." },
+        "workspace": { "type": "string", "description": "Workspace within the tenant." },
+        "repository": { "type": "string", "description": "Repository context." },
+        "branch": { "type": "string", "description": "Branch context." },
+        "task_id": { "type": "string", "description": "Optional task context." },
+        "actor_id": { "type": "string", "description": "Actor performing the operation." },
+        "domain_pack_id": { "type": "string", "description": "Domain pack (auto-routed if omitted)." }
       }
     }
   }
