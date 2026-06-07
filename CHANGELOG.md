@@ -83,10 +83,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 | Version | Date | Highlights |
 |---|---|---|
+| 1.2.1 | 2026-06-05 | Windows support, NERE intelligence, encrypted vault, knowledge panorama, 20+ MCP tools |
 | 1.0.0 | 2026-05-28 | Three-tier editions, Community elevation, security hardening, license system |
 | 0.9.2 | 2026-05-24 | Agent Tool Output Contract v2, Mechanical Adoption Protocol, full spec, SDKs, certification |
 | 0.6.2 | 2026-05-17 | Initial public protocol and SDK artifacts |
 
+[1.2.1]: https://github.com/HMG-AI/HMG/releases/tag/v1.2.1
 [1.0.0]: https://github.com/HMG-AI/HMG/releases/tag/v1.0.0
 [0.9.2]: https://github.com/HMG-AI/HMG/releases/tag/v0.9.2
 [0.6.2]: https://github.com/HMG-AI/HMG/releases/tag/v0.6.2
