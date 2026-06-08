@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.2.1-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-1.3.0-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/license-Apache--2.0%20%7C%20Community-green.svg" alt="License">
   <img src="https://img.shields.io/badge/rust-1.85%2B-orange.svg" alt="Rust">
   <img src="https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey.svg" alt="Platform">
@@ -54,7 +54,7 @@ curl -s -X POST http://127.0.0.1:3000/api/memorize \
 
 hmg doctor
 hmg --version
-# hmg 1.2.1-community
+# hmg 1.3.0-community
 ```
 
 ## Agent Memory Loop
@@ -86,8 +86,8 @@ memory_govern(target_atom="01DEF...", action="seal", reason="contains API key")
 - **19 Agent Adapters**: hook-first ecosystem with doctor-verifiable lifecycle support. See the full list below.
 - **General-Memory + Auto Domain Router**: automatic routing between `software-engineering` and `general-memory` domains. NERE/GliNER entity labels provide routing evidence. Users no longer need to manually specify `domain_pack_id`.
 - **Secret Vault**: AES-256-GCM credential storage with server-side use authorization.
-- **193K LoC Rust**: production-grade codebase with comprehensive test coverage.
-- **Stable release v1.2.1**: Windows Named Pipe daemon IPC, NERE intelligence, 6 new TUI screens, knowledge panorama, encrypted vault.
+- **199K+ LoC Rust**: production-grade codebase with comprehensive test coverage.
+- **Stable release v1.3.0**: hook-first 19-adapter ecosystem, General Memory Domain Router, Secret Service SRV-002, GliNER alignment, and 1,837-test validation baseline.
 
 ## Editions
 
@@ -133,7 +133,7 @@ Single binary, runtime edition detection. No reinstall needed. Use `hmg license 
 | OpenCode | `hmg init --agent opencode` | Hook-first |
 | Any MCP client | `hmg init --agent generic-mcp` | MCP-compatible |
 
-**Framework recipes planned**: AutoGen, CrewAI, Semantic Kernel, LlamaIndex.
+**Framework recipes**: AutoGen, CrewAI, Semantic Kernel, LlamaIndex.
 
 ## SDKs
 

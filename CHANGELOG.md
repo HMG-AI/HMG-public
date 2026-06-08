@@ -6,26 +6,23 @@ For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG-pu
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Unreleased]
+## [1.3.0] — 2026-06-07
 
 ### Added
 
 - Hook-first agent ecosystem expansion: 19 declared adapters with doctor-verifiable lifecycle support (pi, Cursor, Claude Code, Codex, VS Code, OpenClaw, Hermes, Windsurf, Continue, Cline, Roo Code, Zed, Aider, OpenHands, Goose, Gemini CLI, Qwen Code, OpenCode, generic MCP).
-- General-memory domain pack: 16 object kinds, 9 recall views, workspace/subject/thread scope for non-coding durable memory.
-- Automatic domain router: heuristic-based routing between `software-engineering` and `general-memory` — users no longer need to manually specify `domain_pack_id`.
-- NERE/GliNER-assisted routing: 17 entity labels feed into routing decisions for higher accuracy.
-- 37 MCP tools total (up from 20+), including: `query_intent`, `panorama_query`, `panorama_impact`, `observation_capture/promote/forget/config`, `secret_store/use/reveal/rotate/revoke`, `noise_feedback`, `export_snapshot`, `knowledge_health`, `communities`, `intent_evolution`, `antifragile_analyze`, `counterfactuals`, and more.
-- Secret vault service (SRV-002): AES-256-GCM credential storage with server-side use authorization without revealing payloads.
-- Framework recipes planned for AutoGen, CrewAI, Semantic Kernel, and LlamaIndex using HMG HTTP/SDK surfaces.
-- 193K LoC Rust codebase.
-- Adapter lifecycle eval module with cross-session scenarios.
-- HMG Desktop source-boundary decision documented.
+- General-memory domain pack and automatic domain router: heuristic + NERE/GliNER-assisted routing between `software-engineering` and `general-memory`; users no longer need to manually specify `domain_pack_id`.
+- 37 MCP tools total, including: `query_intent`, `panorama_query`, `panorama_impact`, `observation_capture/promote/forget/config`, `secret_store/use/reveal/rotate/revoke`, `noise_feedback`, `export_snapshot`, `knowledge_health`, `communities`, `intent_evolution`, `antifragile_analyze`, `counterfactuals`, and more.
+- Secret Service (SRV-002): AES-256-GCM credential storage with server-side use authorization without revealing payloads.
+- GliNER entity extraction alignment: word-level ONNX output alignment and L4 cascade strategy.
+- Framework recipes for AutoGen, CrewAI, Semantic Kernel, and LlamaIndex using HMG HTTP/SDK surfaces.
+- 199K+ LoC Rust codebase and 1,837-test validation baseline with 99.89% pass rate.
 
 ### Changed
 
-- MCP tool schemas expanded to 37 tools in `mcp/schemas/tools.json`.
-- `public-manifest.json` updated with all 37 public MCP tools, expanded HTTP and CLI surfaces, SDK version bumps.
-- Public documentation separates stable release facts from development-branch progress.
+- MCP tool schemas document all 37 public tools in `mcp/schemas/tools.json`.
+- `public-manifest.json` updated for HMG 1.3.0, all 37 public MCP tools, expanded HTTP/CLI surfaces, and SDK version bumps.
+- Public documentation now treats the 19-adapter ecosystem and General Memory Domain Router as stable v1.3.0 progress.
 
 ## [1.2.1] — 2026-06-05
 
@@ -104,13 +101,13 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 | Version | Date | Highlights |
 |---|---|---|
-| Unreleased | 2026-06-07 | 37 MCP tools, 19-adapter ecosystem, general-memory + auto domain router, 193K LoC Rust |
-| 1.2.1 | 2026-06-05 | Windows support, NERE intelligence, encrypted vault, knowledge panorama, 20+ MCP tools |
+| 1.3.0 | 2026-06-07 | 37 MCP tools, 19-adapter ecosystem, general-memory + auto domain router, Secret Service, 1,837 tests |
+| 1.2.1 | 2026-06-05 | Windows support, NERE intelligence, encrypted vault, knowledge panorama |
 | 1.0.0 | 2026-05-28 | Three-tier editions, Community elevation, security hardening, license system |
 | 0.9.2 | 2026-05-24 | Agent Tool Output Contract v2, Mechanical Adoption Protocol, full spec, SDKs, certification |
 | 0.6.2 | 2026-05-17 | Initial public protocol and SDK artifacts |
 
-[Unreleased]: https://github.com/HMG-AI/HMG-public/compare/v1.2.1...HEAD
+[1.3.0]: https://github.com/HMG-AI/HMG-public/releases/tag/v1.3.0
 [1.2.1]: https://github.com/HMG-AI/HMG-public/releases/tag/v1.2.1
 [1.0.0]: https://github.com/HMG-AI/HMG-public/releases/tag/v1.0.0
 [0.9.2]: https://github.com/HMG-AI/HMG-public/releases/tag/v0.9.2

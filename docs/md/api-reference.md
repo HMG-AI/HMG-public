@@ -4,7 +4,7 @@ Base URL for HTTP: `http://localhost:3000` (default).
 
 ## MCP Tools
 
-HMG exposes 8 MCP tools in Community Edition. All tools accept an optional
+HMG exposes 37 MCP tools in Community Edition. All tools accept an optional
 `context` object with scope fields for branch-aware memory.
 
 ### `memory_memorize`

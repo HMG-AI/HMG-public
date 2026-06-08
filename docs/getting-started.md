@@ -32,7 +32,7 @@ curl -fsSL https://hmg2ai.com/releases/latest/download/install.sh | sh
 
 ```bash
 hmg --version
-# hmg 1.2.0-community
+# hmg 1.3.0-community
 ```
 
 
