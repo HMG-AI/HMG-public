@@ -3,16 +3,16 @@
   "product": {
     "name": "HMG",
     "full_name": "Holographic Memory Graph",
-    "version": "1.3.0",
+    "version": "1.4.5",
     "release_channel": "stable",
     "tagline": "Agent memory that actually works"
   },
   "urls": {
-    "website": "https://hmg2ai.com/",
+    "website": "https://hmg1ai.com/",
     "docs": "https://hmg-ai.github.io/HMG-public/",
     "repository": "https://github.com/HMG-AI/HMG-public",
     "releases": "https://github.com/HMG-AI/HMG-public/releases",
-    "pricing": "https://hmg2ai.com/pricing",
+    "pricing": "https://hmg1ai.com/pricing",
     "install_script": "https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh",
     "install_ps1": "https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1"
   },
