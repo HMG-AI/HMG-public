@@ -24,4 +24,4 @@ Marcas de 武汉凡尘合创科技有限公司: **HMG**, **Holographic Memory Gr
 ### "HMG Certified": Solo tras el proceso de certificación oficial
 
 ## Contacto
-[security@hmg2ai.com](mailto:security@hmg2ai.com)
+[security@hmg1ai.com](mailto:security@hmg1ai.com)

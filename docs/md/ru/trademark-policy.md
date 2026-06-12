@@ -21,4 +21,4 @@
 ### «HMG Certified»: Только после официального процесса сертификации
 
 ## Контакты
-[security@hmg2ai.com](mailto:security@hmg2ai.com)
+[security@hmg1ai.com](mailto:security@hmg1ai.com)

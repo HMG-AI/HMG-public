@@ -6,6 +6,18 @@ For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG-pu
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## Site & Docs — 2026-06-12 (binary v1.4.5)
+
+### Updated
+- Public site, README, and docs synced to reflect HMG binary **v1.4.5**.
+- **World-Class Recall (v1.4)**: de-over-fitted ranking — hardcoded evaluation fixtures removed from the recall path; principled features (exact-entity hits, recall-intent classification, recency, lexical/semantic overlap). Held-out Top-1 95.4% / Top-3 100% / 0 false attribution; real-decision corpus Top-1 85%. Unified CJK tokenization across index + reranker.
+- **6-platform builds**: Linux x86_64/ARM64, macOS Intel/Apple Silicon, Windows x86_64/ARM64 (first successful multi-platform release build).
+- Version references refreshed to **1.4.5**; MCP tool surface documented at **37**, adapters at **19**.
+- International site branding (**hmg1ai.com**) applied across site, docs, and contact addresses; 10-language translations refreshed for the new "What's New in v1.4" section.
+- Fixed duplicate (Portuguese-leftover) translation keys in the Spanish (es) locale block of the landing page.
+
+> Protocol artifacts (`hmg-protocol`, SDKs) remain at their versioned API below; this entry documents the public site/docs sync only. For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases).
+
 ## [1.3.0] — 2026-06-07
 
 ### Added

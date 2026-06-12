@@ -26,7 +26,7 @@ reinstallation or data migration — you enter a license key and restart.
 
 ### 1. Obtain a License Key
 
-- **Developer Local**: Purchase at [HMG pricing page](https://hmg2ai.com/pricing)
+- **Developer Local**: Purchase at [HMG pricing page](https://hmg1ai.com/pricing)
 - **Developer Cloud**: Sign up for a cloud subscription
 - **Enterprise**: Contact [monkseekee@gmail.com](mailto:monkseekee@gmail.com)
 
@@ -51,7 +51,7 @@ hmg daemon restart
 
 ```bash
 hmg --version
-# hmg 1.3.0-developer
+# hmg 1.4.5-developer
 
 hmg doctor
 # ✓ License: Developer (valid)

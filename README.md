@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.3.0-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-1.4.5-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/license-Apache--2.0%20%7C%20Community-green.svg" alt="License">
   <img src="https://img.shields.io/badge/rust-1.85%2B-orange.svg" alt="Rust">
   <img src="https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey.svg" alt="Platform">
@@ -21,7 +21,7 @@
 <p align="center">
   <a href="https://hmg-ai.github.io/HMG-public/">🌐 Docs</a> ·
   <a href="https://github.com/HMG-AI/HMG-public/releases">📦 Releases</a> ·
-  <a href="https://hmg2ai.com/">🏠 Website</a> ·
+  <a href="https://hmg1ai.com/">🏠 Website</a> ·
   <a href="#quick-start">🚀 Quick Start</a>
 </p>
 
@@ -54,7 +54,7 @@ curl -s -X POST http://127.0.0.1:3000/api/memorize \
 
 hmg doctor
 hmg --version
-# hmg 1.3.0-community
+# hmg 1.4.5-community
 ```
 
 ## Agent Memory Loop
@@ -82,12 +82,13 @@ memory_govern(target_atom="01DEF...", action="seal", reason="contains API key")
 
 ## Latest Progress
 
+- **World-Class Recall (v1.4)**: de-over-fitted ranking — hardcoded evaluation fixtures removed. Held-out Top-1 95.4%, real-decision corpus Top-1 85%, zero false attribution. Unified CJK tokenization, evidence-first reranking.
 - **37 MCP Tools**: expanded from 8 tools to 37 — `query_intent`, `panorama`, `secret_store`, `observation_capture/promote`, `noise_feedback`, `export_snapshot`, `knowledge_health`, `communities`, `intent_evolution`, `antifragile_analyze`, `counterfactuals`, and more.
 - **19 Agent Adapters**: hook-first ecosystem with doctor-verifiable lifecycle support. See the full list below.
 - **General-Memory + Auto Domain Router**: automatic routing between `software-engineering` and `general-memory` domains. NERE/GliNER entity labels provide routing evidence. Users no longer need to manually specify `domain_pack_id`.
 - **Secret Vault**: AES-256-GCM credential storage with server-side use authorization.
 - **199K+ LoC Rust**: production-grade codebase with comprehensive test coverage.
-- **Stable release v1.3.0**: hook-first 19-adapter ecosystem, General Memory Domain Router, Secret Service SRV-002, GliNER alignment, and 1,837-test validation baseline.
+- **Stable release v1.4.5**: world-class recall de-over-fitting, 6-platform builds (Linux x86_64/ARM64, macOS Intel/Apple Silicon, Windows x86_64/ARM64), hook-first 19-adapter ecosystem, General Memory Domain Router, Secret Service, and a 1,837+ test baseline.
 
 ## Editions
 
@@ -183,7 +184,7 @@ The core memory engine is proprietary. This repository exists so developers can 
 
 ## Links
 
-- **Website**: [hmg2ai.com](https://hmg2ai.com/)
+- **Website**: [hmg1ai.com](https://hmg1ai.com/)
 - **Docs**: [hmg-ai.github.io/HMG-public](https://hmg-ai.github.io/HMG-public/)
 - **Releases**: [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases)
 - **Issues**: [GitHub Issues](https://github.com/HMG-AI/HMG-public/issues)

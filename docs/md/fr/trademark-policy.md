@@ -46,4 +46,4 @@ Seules les implémentations passant le processus de certification officiel peuve
 
 ## Contact
 
-Contact : [security@hmg2ai.com](mailto:security@hmg2ai.com)
+Contact : [security@hmg1ai.com](mailto:security@hmg1ai.com)

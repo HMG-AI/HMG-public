@@ -46,4 +46,4 @@
 
 ## お問い合わせ
 
-連絡先：[security@hmg2ai.com](mailto:security@hmg2ai.com)
+連絡先：[security@hmg1ai.com](mailto:security@hmg1ai.com)

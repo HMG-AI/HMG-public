@@ -8,7 +8,7 @@
 ## Install
 
 ```bash
-curl -L https://hmg2ai.com/releases/latest/download/install.sh | sh
+curl -L https://hmg1ai.com/releases/latest/download/install.sh | sh
 ```
 
 Or download directly from [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases):
@@ -25,14 +25,14 @@ Or use the website mirror (no `jq` required):
 
 ```bash
 # One-command install from website mirror
-curl -fsSL https://hmg2ai.com/releases/latest/download/install.sh | sh
+curl -fsSL https://hmg1ai.com/releases/latest/download/install.sh | sh
 ```
 
 ## Verify
 
 ```bash
 hmg --version
-# hmg 1.3.0-community
+# hmg 1.4.5-community
 ```
 
 
