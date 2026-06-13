@@ -22,6 +22,5 @@
 | Document | Description |
 |---|---|
 | [Upgrade Guide](upgrade.md) | Upgrading from Community to Developer/Enterprise |
-| [Public Release SOP](md/standard-release-sop.md) | Public-safe release, documentation, and contribution checklist |
 | [Security](security.md) | Security model and vulnerability reporting |
 | [Trademark Policy](trademark-policy.md) | Brand and logo usage |

@@ -1,0 +1,18 @@
+[adapter]
+name = "vscode"
+display_name = "VS Code"
+support_level = "HookFirstSupported"
+canonical_id = "vscode"
+
+[adapter.detection]
+binary = "code"
+marker_dir = ".vscode"
+
+[adapter.config]
+format = "json"
+path = ".vscode/mcp.json"
+
+[adapter.hooks]
+format = "json"
+hooks_path = ".vscode/hooks.json"
+script_path = ".vscode/hooks/hmg-lifecycle.sh"

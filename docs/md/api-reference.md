@@ -4,8 +4,10 @@ Base URL for HTTP: `http://localhost:3000` (default).
 
 ## MCP Tools
 
-HMG exposes 37 MCP tools in Community Edition. All tools accept an optional
-`context` object with scope fields for branch-aware memory.
+HMG exposes 37 MCP tools across core memory, governance, MemoryQL,
+observation, secret-vault, panorama, and graph-health workflows. The core
+tools below accept an optional `context` object with scope fields for
+branch-aware memory.
 
 ### `memory_memorize`
 

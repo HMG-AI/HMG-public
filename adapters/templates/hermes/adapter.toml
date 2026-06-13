@@ -1,0 +1,18 @@
+[adapter]
+name = "hermes"
+display_name = "Hermes Agent"
+support_level = "HookFirstSupported"
+canonical_id = "hermes"
+
+[adapter.detection]
+binary = "hermes"
+marker_dir = ".hermes"
+
+[adapter.config]
+format = "json"
+path = "hmg-mcp.json"
+
+[adapter.hooks]
+format = "json"
+hooks_path = ".hermes/hooks.json"
+script_path = ".hermes/hooks/hmg-lifecycle.sh"

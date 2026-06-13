@@ -5,6 +5,7 @@ $ReleaseBaseUrl = if ($env:HMG_RELEASE_BASE_URL) { $env:HMG_RELEASE_BASE_URL } e
 $PublicReleaseBaseUrl = if ($env:HMG_PUBLIC_RELEASE_BASE_URL) { $env:HMG_PUBLIC_RELEASE_BASE_URL } else { "" }
 $OfficialReleaseBaseUrl = "https://github.com/HMG-AI/HMG-public/releases/latest/download"
 $MirrorBaseUrl = "https://hmg1ai.com/releases/latest/download"
+$MirrorBaseUrl2 = "https://hmg2ai.com/releases/latest/download"
 $BinDir = if ($env:HMG_INSTALL_DIR) {
   $env:HMG_INSTALL_DIR
 } elseif ($env:LOCALAPPDATA) {
@@ -267,7 +268,7 @@ function Install-From-Release-Url([string] $Asset, [string] $BaseUrl) {
 }
 
 function Release-Base-Urls {
-  $BaseUrls = @($ReleaseBaseUrl, $PublicReleaseBaseUrl, $OfficialReleaseBaseUrl, $MirrorBaseUrl)
+  $BaseUrls = @($ReleaseBaseUrl, $PublicReleaseBaseUrl, $OfficialReleaseBaseUrl, $MirrorBaseUrl, $MirrorBaseUrl2)
   $BaseUrls = $BaseUrls | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Select-Object -Unique
   Write-Output $BaseUrls
 }

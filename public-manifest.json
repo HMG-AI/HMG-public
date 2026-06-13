@@ -3,7 +3,7 @@
   "product": {
     "name": "HMG",
     "full_name": "Holographic Memory Graph",
-    "version": "1.4.5",
+    "version": "1.4.7",
     "release_channel": "stable",
     "tagline": "Agent memory that actually works"
   },
@@ -15,6 +15,14 @@
     "pricing": "https://hmg1ai.com/pricing",
     "install_script": "https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh",
     "install_ps1": "https://github.com/HMG-AI/HMG-public/releases/latest/download/install.ps1"
+  },
+  "download": {
+    "release_primary": "https://github.com/HMG-AI/HMG-public/releases/latest/download",
+    "mirrors": [
+      "https://hmg1ai.com/releases/latest/download",
+      "https://hmg2ai.com/releases/latest/download"
+    ],
+    "sha256sums_url": "https://github.com/HMG-AI/HMG-public/releases/latest/download/SHA256SUMS.txt"
   },
   "platforms": [
     "linux-x86_64",
@@ -168,38 +176,9 @@
       "memory_correct",
       "memory_govern",
       "memory_history",
-      "memory_stats",
-      "memory_schema",
-      "memory_query_templates",
-      "memory_query_intent",
-      "memory_query",
-      "memory_explain_query",
-      "memory_suggest_query",
-      "memory_agent_brief",
       "memory_handoff",
-      "memory_noise_feedback",
-      "memory_export_snapshot",
-      "panorama_query",
-      "panorama_impact",
-      "secret_store",
-      "secret_lookup",
-      "secret_use",
-      "secret_reveal",
-      "secret_rotate",
-      "secret_revoke",
-      "observation_capture",
-      "observation_promote_dry_run",
-      "observation_promote",
-      "observation_forget",
-      "observation_maintain",
-      "observation_review_queue",
-      "observation_review_resolve",
-      "observation_config",
-      "memory_analyze_counterfactuals",
-      "memory_antifragile_analyze",
-      "memory_intent_evolution",
-      "memory_knowledge_health",
-      "memory_communities"
+      "memory_agent_brief",
+      "memory_stats"
     ],
     "http": [
       "GET /api/health",
@@ -207,55 +186,27 @@
       "POST /api/memorize",
       "POST /api/recall",
       "POST /api/correct",
-      "POST /api/govern",
-      "POST /api/handoff",
-      "POST /api/agent-brief",
-      "GET /api/stats",
-      "POST /api/history",
-      "POST /api/query",
-      "POST /api/query-intent",
-      "POST /api/explain-query",
-      "POST /api/suggest-query",
-      "POST /api/panorama",
-      "POST /api/panorama-impact",
-      "POST /api/observation/capture",
-      "POST /api/observation/promote",
-      "POST /api/observation/forget",
-      "GET /api/observation/config",
-      "POST /api/secret/store",
-      "GET /api/secret/lookup",
-      "POST /api/secret/use",
-      "POST /api/secret/reveal",
-      "POST /api/secret/rotate",
-      "DELETE /api/secret/revoke",
-      "GET /api/export/snapshot"
+      "POST /api/govern"
     ],
     "cli": [
       "hmg init",
-      "hmg init --agent <id>",
       "hmg daemon start",
       "hmg daemon stop",
-      "hmg daemon status",
       "hmg doctor",
-      "hmg model download",
-      "hmg model status",
-      "hmg model remove",
       "hmg license status",
       "hmg license apply",
-      "hmg license request",
-      "hmg --mcp",
-      "hmg --version"
+      "hmg version"
     ]
   },
   "sdk": {
     "python": {
       "package": "hmg-sdk",
-      "version": "1.3.0",
+      "version": "1.4.7",
       "registry": "https://pypi.org/project/hmg-sdk/"
     },
     "typescript": {
       "package": "@hmg_ai/sdk-ts",
-      "version": "1.3.0",
+      "version": "1.4.7",
       "registry": "https://www.npmjs.com/package/@hmg_ai/sdk-ts"
     }
   },

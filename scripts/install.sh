@@ -9,13 +9,19 @@
 #
 # Download sources (tried in order):
 #   1. GitHub Releases (default, canonical)
-#   2. Official website mirror (hmg1ai.com)
+#   2. Official website mirror — hmg1ai.com (international CDN)
+#   3. Official website mirror — hmg2ai.com (domestic fallback)
 # ─────────────────────────────────────────────────────────────────────────────
 set -eu
 
 HMG_REPO="HMG-AI/HMG-public"
 HMG_GITHUB="https://github.com/${HMG_REPO}"
-WEBSITE_BASE="https://hmg1ai.com/releases/latest/download"
+# Official mirrors tried after GitHub. hmg1ai.com first (international CDN),
+# hmg2ai.com last (domestic fallback). See ADR 2026-06-13 (international site
+# download service). Each mirror that returns HTML instead of a tarball is
+# rejected by install_from_url, so the chain stays robust even before the
+# hmg1ai.com download service (R2) is live.
+MIRROR_BASES="https://hmg1ai.com/releases/latest/download https://hmg2ai.com/releases/latest/download"
 BIN_DIR="${HMG_INSTALL_DIR:-$HOME/.local/bin}"
 TMP_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t hmg-install)"
 REQUESTED_VERSION=""
@@ -139,11 +145,12 @@ do_install() {
     return 0
   fi
 
-  # Source 2: Official website mirror (hmg1ai.com)
-  local web_url="${WEBSITE_BASE}/${archive}"
-  if install_from_url "$web_url" "$archive"; then
-    return 0
-  fi
+  # Source 2..N: Official website mirrors (hmg1ai.com CDN, then hmg2ai.com fallback)
+  for base in $MIRROR_BASES; do
+    if install_from_url "${base}/${archive}" "$archive"; then
+      return 0
+    fi
+  done
 
   err "Download failed from all sources.
 

@@ -1,0 +1,18 @@
+[adapter]
+name = "openclaw"
+display_name = "OpenClaw"
+support_level = "HookFirstSupported"
+canonical_id = "openclaw"
+
+[adapter.detection]
+binary = "openclaw"
+marker_dir = ".openclaw"
+
+[adapter.config]
+format = "json"
+path = "hmg-mcp.json"
+
+[adapter.hooks]
+format = "json"
+hooks_path = ".openclaw/hooks.json"
+script_path = ".openclaw/hooks/hmg-lifecycle.sh"

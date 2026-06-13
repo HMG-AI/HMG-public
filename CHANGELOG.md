@@ -2,39 +2,126 @@
 
 All notable changes to the HMG public protocol, SDKs, and documentation are documented here.
 
-For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases).
+For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG/releases).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## Site & Docs — 2026-06-12 (binary v1.4.5)
+## [1.4.7] — 2026-06-13
 
-### Updated
-- Public site, README, and docs synced to reflect HMG binary **v1.4.5**.
-- **World-Class Recall (v1.4)**: de-over-fitted ranking — hardcoded evaluation fixtures removed from the recall path; principled features (exact-entity hits, recall-intent classification, recency, lexical/semantic overlap). Held-out Top-1 95.4% / Top-3 100% / 0 false attribution; real-decision corpus Top-1 85%. Unified CJK tokenization across index + reranker.
-- **6-platform builds**: Linux x86_64/ARM64, macOS Intel/Apple Silicon, Windows x86_64/ARM64 (first successful multi-platform release build).
-- Version references refreshed to **1.4.5**; MCP tool surface documented at **37**, adapters at **19**.
-- International site branding (**hmg1ai.com**) applied across site, docs, and contact addresses; 10-language translations refreshed for the new "What's New in v1.4" section.
-- Fixed duplicate (Portuguese-leftover) translation keys in the Spanish (es) locale block of the landing page.
+Open-source release-readiness hardening: ordered multi-mirror download fallback, manifest-driven download URLs, and export leak-gate false-positive fix.
 
-> Protocol artifacts (`hmg-protocol`, SDKs) remain at their versioned API below; this entry documents the public site/docs sync only. For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG-public/releases).
+### Fixed
+
+- **Version drift**: every public export surface (badges, SDK manifests, protocol/certification crates, package lockfiles, manifest) now tracks the workspace version. The version-drift gate went from 3/19 failing to 19/19 passing.
+- **Export leak-gate false positives**: the leak check no longer flags the public security-contact email or the `root@hmg1ai.com` infra host as customer data.
+
+### Changed
+
+- **Ordered download-mirror fallback** (ADR 2026-06-13 D4): install scripts now try `GitHub → hmg1ai.com → hmg2ai.com` in order. A mirror that returns HTML (e.g. the SPA catch-all before R2 is live) is rejected by archive extraction, so the fallback chain is robust today.
+- **Manifest-driven download URLs** (ADR 2026-06-13 D5): `public-manifest.json` gained a `download` block (`release_primary`, ordered `mirrors`, `sha256sums_url`) as the single source of truth, with a drift test asserting install scripts match it.
+- **CI**: build-release gained a `mirror-to-hmg1ai` (Cloudflare R2) job that activates once R2 secrets are configured, and a `sync-public` job that mirrors `export/` to HMG-public on every release.
+
+## [1.4.6] — 2026-06-13
+
+Windows install robustness and public installer URL canonicalization.
+
+### Fixed
+
+- Windows post-install reliability: `install.ps1` configures PATH and runs `hmg init -g` with the full binary path; daemon autostart timeout raised from 5s to 30s (`HMG_DAEMON_AUTOSTART_TIMEOUT_SECS`); fastembed lazy-initialized.
+- Public installer URLs point at the HMG-public GitHub Release (canonical).
+
+## [1.4.5] — 2026-06-12
+
+Simplified Windows smoke test. See CHANGELOG.
+
+## [1.4.4] — 2026-06-12
+
+First successful multi-platform release build (6 platforms). Fixes feature unification leak, adds hmg-cli to release package, and increases Windows smoke test timeout.
+
+### Fixed
+
+- Feature unification leak in hmg-connectors, hmg-consolidation, and hmg-query.
+- hmg-cli binary added to release package build.
+- Windows daemon smoke test timeout increased to 120s.
+
+### Added
+
+- ADR for embedding model tiered strategy.
+
+## [1.4.3] — 2026-06-12 (build failed)
+
+See 1.4.4.
+
+## [1.4.1] — 2026-06-12 (build failed — no binary release)
+
+Documentation patch whose release build did not succeed; no public assets were published. See 1.4.2.
+
+## [1.4.0] — 2026-06-11
+
+Milestone release completing the world-class technical-assessment upgrade. The
+public protocol, SDK shapes, and MCP/HTTP/gRPC surface are **unchanged**; this
+is not a breaking release.
+
+### Changed
+
+- **Recall ranking de-over-fitted.** Hardcoded evaluation-fixture proper nouns
+  and scenario detectors were removed from the ranking path; the final-evidence
+  reranker now uses principled features (exact-entity hits, intent
+  classification, recency, lexical/semantic overlap). A held-out generalization
+  gate (all identifiers renamed to unseen strings) confirms the ranking
+  generalizes: Top-1 98.5%, Top-3 100%, 0 false attribution.
+- Default `cargo build` now enables `fastembed-local` (real multilingual
+  embeddings). Release packages still build deterministic via explicit
+  `--no-default-features` for portability.
+- Internal crate architecture: `hmg-cli`, `hmg-licensing`, `hmg-consolidation`
+  extracted from `hmg-server`; `hmg-query` and `hmg-vault` monoliths split.
+  Public `hmg_query::*` API is unchanged.
+
+### Added
+
+- Held-out generalization gate integrated into the release gate.
+- Property, fuzz, and snapshot test infrastructure plus per-crate coverage
+  floors (CI-enforced).
+- Environment-variable reference catalog (`docs/2026-06-11-hmg-env-var-reference.md`).
+
+## [1.3.3] — 2026-06-11
+
+### Fixed
+
+- Windows release package smoke now allows slower daemon readiness on GitHub runners while still requiring daemon status to become healthy.
+- Public package metadata updated for v1.3.3 after the v1.3.2 tag workflow exposed a Windows smoke-test timeout.
+
+## [1.3.2] — 2026-06-10
+
+### Fixed
+
+- Release package builds now use portable default features and keep `fastembed-local` as an explicit opt-in feature.
+- Public package metadata updated for v1.3.2 after the v1.3.1 tag workflow exposed non-portable ONNX Runtime release builds.
+
+## [1.3.1] — 2026-06-10
+
+### Added
+
+- Formal Recall Precision v2 MCP release gate for release-quality memory evaluation.
+- Public package and SDK metadata updated for v1.3.1.
+
+### Changed
+
+- Improved bilingual recall precision, evidence ranking, and no-evidence abstention for coding-agent memory workflows.
+- Release packaging now validates MCP recall precision using the current release binaries to avoid daemon drift.
+
+### Fixed
+
+- Scope-aware direct memory behavior and CLI quality-of-life fixes for correction, governance, graph export, verification, and UTF-8-safe output.
 
 ## [1.3.0] — 2026-06-07
 
 ### Added
 
-- Hook-first agent ecosystem expansion: 19 declared adapters with doctor-verifiable lifecycle support (pi, Cursor, Claude Code, Codex, VS Code, OpenClaw, Hermes, Windsurf, Continue, Cline, Roo Code, Zed, Aider, OpenHands, Goose, Gemini CLI, Qwen Code, OpenCode, generic MCP).
-- General-memory domain pack and automatic domain router: heuristic + NERE/GliNER-assisted routing between `software-engineering` and `general-memory`; users no longer need to manually specify `domain_pack_id`.
-- 37 MCP tools total, including: `query_intent`, `panorama_query`, `panorama_impact`, `observation_capture/promote/forget/config`, `secret_store/use/reveal/rotate/revoke`, `noise_feedback`, `export_snapshot`, `knowledge_health`, `communities`, `intent_evolution`, `antifragile_analyze`, `counterfactuals`, and more.
-- Secret Service (SRV-002): AES-256-GCM credential storage with server-side use authorization without revealing payloads.
-- GliNER entity extraction alignment: word-level ONNX output alignment and L4 cascade strategy.
-- Framework recipes for AutoGen, CrewAI, Semantic Kernel, and LlamaIndex using HMG HTTP/SDK surfaces.
-- 199K+ LoC Rust codebase and 1,837-test validation baseline with 99.89% pass rate.
+- Agent adapter ecosystem expanded to 19 adapters (VS Code, OpenClaw, Hermes, Windsurf, Continue, Cline, Roo Code, Zed, Aider, OpenHands, Goose, Gemini CLI, Qwen Code, OpenCode)
+- Community adapter templates for hermes, openclaw, vscode in `export/adapters/templates/`
+- Framework integration recipes (AutoGen, CrewAI, Semantic Kernel, LlamaIndex)
 
-### Changed
-
-- MCP tool schemas document all 37 public tools in `mcp/schemas/tools.json`.
-- `public-manifest.json` updated for HMG 1.3.0, all 37 public MCP tools, expanded HTTP/CLI surfaces, and SDK version bumps.
-- Public documentation now treats the 19-adapter ecosystem and General Memory Domain Router as stable v1.3.0 progress.
 
 ## [1.2.1] — 2026-06-05
 
@@ -113,14 +200,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 | Version | Date | Highlights |
 |---|---|---|
-| 1.3.0 | 2026-06-07 | 37 MCP tools, 19-adapter ecosystem, general-memory + auto domain router, Secret Service, 1,837 tests |
-| 1.2.1 | 2026-06-05 | Windows support, NERE intelligence, encrypted vault, knowledge panorama |
 | 1.0.0 | 2026-05-28 | Three-tier editions, Community elevation, security hardening, license system |
 | 0.9.2 | 2026-05-24 | Agent Tool Output Contract v2, Mechanical Adoption Protocol, full spec, SDKs, certification |
 | 0.6.2 | 2026-05-17 | Initial public protocol and SDK artifacts |
 
-[1.3.0]: https://github.com/HMG-AI/HMG-public/releases/tag/v1.3.0
-[1.2.1]: https://github.com/HMG-AI/HMG-public/releases/tag/v1.2.1
-[1.0.0]: https://github.com/HMG-AI/HMG-public/releases/tag/v1.0.0
-[0.9.2]: https://github.com/HMG-AI/HMG-public/releases/tag/v0.9.2
-[0.6.2]: https://github.com/HMG-AI/HMG-public/releases/tag/v0.6.2
+[1.0.0]: https://github.com/HMG-AI/HMG/releases/tag/v1.0.0
+[0.9.2]: https://github.com/HMG-AI/HMG/releases/tag/v0.9.2
+[0.6.2]: https://github.com/HMG-AI/HMG/releases/tag/v0.6.2

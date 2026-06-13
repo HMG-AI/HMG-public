@@ -29,6 +29,15 @@
         "install_ps1": { "type": "string", "format": "uri" }
       }
     },
+    "download": {
+      "type": "object",
+      "description": "Canonical download sources (ADR 2026-06-13). Install scripts and docs must derive from or validate against this.",
+      "properties": {
+        "release_primary": { "type": "string", "format": "uri" },
+        "mirrors": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "sha256sums_url": { "type": "string", "format": "uri" }
+      }
+    },
     "platforms": {
       "type": "array",
       "items": { "type": "string" }
