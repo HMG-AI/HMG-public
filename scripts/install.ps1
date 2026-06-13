@@ -4,7 +4,7 @@ $ErrorActionPreference = "Stop"
 $ReleaseBaseUrl = if ($env:HMG_RELEASE_BASE_URL) { $env:HMG_RELEASE_BASE_URL } else { "" }
 $PublicReleaseBaseUrl = if ($env:HMG_PUBLIC_RELEASE_BASE_URL) { $env:HMG_PUBLIC_RELEASE_BASE_URL } else { "" }
 $OfficialReleaseBaseUrl = "https://github.com/HMG-AI/HMG-public/releases/latest/download"
-$MirrorBaseUrl = "https://hmg2ai.com/releases/latest/download"
+$MirrorBaseUrl = "https://hmg1ai.com/releases/latest/download"
 $BinDir = if ($env:HMG_INSTALL_DIR) {
   $env:HMG_INSTALL_DIR
 } elseif ($env:LOCALAPPDATA) {

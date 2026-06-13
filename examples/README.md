@@ -17,7 +17,7 @@ Start a local HMG daemon:
 
 ```bash
 # Install HMG
-curl -L https://hmg2ai.com/releases/latest/download/install.sh | sh
+curl -L https://hmg1ai.com/releases/latest/download/install.sh | sh
 
 # Start the daemon
 hmg daemon start

@@ -95,4 +95,4 @@ HMG stores data in `~/.local/share/hmg/stores/default/` by default. Ensure this 
 
 - **Security email:** monkseekee@gmail.com
 - **General inquiries:** monkseekee@gmail.com
-- **Website:** https://hmg2ai.com/
+- **Website:** https://hmg1ai.com/

@@ -243,4 +243,4 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for the full contribution guide.
 
 - 💬 [GitHub Discussions](https://github.com/HMG-AI/HMG-public/discussions) — integration questions
 - 🐛 [GitHub Issues](https://github.com/HMG-AI/HMG-public/issues) — bugs and feature requests
-- 📧 security@hmg2ai.com — security issues
+- 📧 security@hmg1ai.com — security issues

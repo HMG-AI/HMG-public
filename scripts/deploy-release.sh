@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 # ─────────────────────────────────────────────────────────────────────────────
-# deploy-release.sh — Deploy release binaries to hmg2ai.com mirror
+# deploy-release.sh — Deploy release binaries to hmg1ai.com mirror
 #
 # Usage: ./scripts/deploy-release.sh [version]
 # Example: ./scripts/deploy-release.sh 0.9.2
 #
-# Downloads binaries from GitHub Release and deploys to hmg2ai.com mirror.
+# Downloads binaries from GitHub Release and deploys to hmg1ai.com mirror.
 # ─────────────────────────────────────────────────────────────────────────────
 set -euo pipefail
 
-REMOTE="root@hmg2ai.com"
+REMOTE="root@hmg1ai.com"
 MIRROR_DIR="/opt/funcode/hmg-site/releases/latest/download"
 REPO="HMG-AI/HMG-public"
 
@@ -20,7 +20,7 @@ if [ -z "$VERSION" ]; then
     [ -z "$VERSION" ] && { echo "ERROR: Cannot detect version. Pass as argument."; exit 1; }
 fi
 
-echo "=== Deploying HMG v${VERSION} to hmg2ai.com mirror ==="
+echo "=== Deploying HMG v${VERSION} to hmg1ai.com mirror ==="
 
 STAGING="/tmp/hmg-release-mirror"
 rm -rf "$STAGING"
@@ -45,4 +45,4 @@ ssh "$REMOTE" "mkdir -p $MIRROR_DIR"
 rsync -avz "$STAGING/" "$REMOTE:$MIRROR_DIR/"
 
 echo ""
-echo "✅ Release v${VERSION} deployed to https://hmg2ai.com/releases/latest/download/"
+echo "✅ Release v${VERSION} deployed to https://hmg1ai.com/releases/latest/download/"

@@ -41,7 +41,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - Windows Named Pipe daemon IPC — `hmg daemon start/status/stop` now works on Windows
-- Replace all `funcode.xin` URLs with `hmg2ai.com`
+- Replace all `funcode.xin` URLs with `hmg1ai.com`
 - Fix private repo links in documentation
 - Replace truncated LICENSE with full Apache-2.0 text for proper GitHub license detection
 

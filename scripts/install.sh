@@ -9,13 +9,13 @@
 #
 # Download sources (tried in order):
 #   1. GitHub Releases (default, canonical)
-#   2. Official website mirror (hmg2ai.com)
+#   2. Official website mirror (hmg1ai.com)
 # ─────────────────────────────────────────────────────────────────────────────
 set -eu
 
 HMG_REPO="HMG-AI/HMG-public"
 HMG_GITHUB="https://github.com/${HMG_REPO}"
-WEBSITE_BASE="https://hmg2ai.com/releases/latest/download"
+WEBSITE_BASE="https://hmg1ai.com/releases/latest/download"
 BIN_DIR="${HMG_INSTALL_DIR:-$HOME/.local/bin}"
 TMP_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t hmg-install)"
 REQUESTED_VERSION=""
@@ -139,7 +139,7 @@ do_install() {
     return 0
   fi
 
-  # Source 2: Official website mirror (hmg2ai.com)
+  # Source 2: Official website mirror (hmg1ai.com)
   local web_url="${WEBSITE_BASE}/${archive}"
   if install_from_url "$web_url" "$archive"; then
     return 0
@@ -237,7 +237,7 @@ main() {
   log ""
   log "Update: hmg update"
   log "Docs:   https://hmg-ai.github.io/HMG-public/"
-  log "Web:    https://hmg2ai.com/"
+  log "Web:    https://hmg1ai.com/"
   log "GitHub: ${HMG_GITHUB}"
 }
 

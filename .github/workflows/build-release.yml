@@ -112,8 +112,8 @@ jobs:
             --repo ${{ github.repository }} \
             --dir /tmp/mirror
       - name: Upload to website mirror
-        # Deploy binaries to hmg2ai.com/releases/
+        # Deploy binaries to hmg1ai.com/releases/
         # Requires SSH key or API key for the web server
         run: |
-          echo "TODO: rsync /tmp/mirror/*.tar.gz to hmg2ai.com:/opt/funcode/hmg-site/releases/"
-          # rsync -avz /tmp/mirror/*.tar.gz deploy@hmg2ai.com:/opt/funcode/hmg-site/releases/latest/download/
+          echo "TODO: rsync /tmp/mirror/*.tar.gz to hmg1ai.com:/opt/funcode/hmg-site/releases/"
+          # rsync -avz /tmp/mirror/*.tar.gz deploy@hmg1ai.com:/opt/funcode/hmg-site/releases/latest/download/
