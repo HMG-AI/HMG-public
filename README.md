@@ -180,6 +180,7 @@ The core memory engine is proprietary. This repository exists so developers can 
 | [Concepts](docs/md/concepts.md) | Memory atoms, correction, governance, scope |
 | [API Reference](docs/md/api-reference.md) | MCP tools and HTTP endpoints |
 | [Architecture](docs/md/architecture.md) | System overview |
+| [Public Release SOP](docs/md/standard-release-sop.md) | Public release and documentation checklist |
 | [FAQ](docs/md/faq.md) | Common questions |
 
 ## Links

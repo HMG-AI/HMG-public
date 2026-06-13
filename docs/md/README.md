@@ -22,5 +22,6 @@
 |---|---|
 | [Contributing an Agent Adapter](contributing-agent-adapter.md) | How to integrate a new AI coding agent into HMG |
 | [Upgrade Guide](upgrade.md) | Upgrading from Community to Developer/Enterprise |
+| [Public Release SOP](standard-release-sop.md) | Public-safe release, documentation, and contribution checklist |
 | [Security](security.md) | Security model and vulnerability reporting |
 | [Trademark Policy](trademark-policy.md) | Brand and logo usage |
