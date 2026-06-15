@@ -221,19 +221,19 @@ main() {
   log ""
   log "✅ HMG v${VERSION} installed to ${BIN_DIR}"
 
-  # Auto-run hmg init -g
+  # Auto-run hmg setup so the default store exists and the local daemon is ready.
   log ""
-  log "Running hmg init -g..."
+  log "Running hmg setup..."
   if command -v hmg >/dev/null 2>&1; then
-    if hmg init -g; then
-      log "✅ hmg init -g completed."
+    if hmg setup; then
+      log "✅ hmg setup completed."
     else
-      log "⚠ hmg init -g exited with error (non-fatal). Run manually: hmg init -g"
+      log "⚠ hmg setup exited with error (non-fatal). Run manually: hmg setup"
     fi
   else
     log "⚠ hmg not on PATH yet. Run manually after adding to PATH:"
     log "  export PATH=\"${BIN_DIR}:\$PATH\""
-    log "  hmg init -g"
+    log "  hmg setup"
   fi
 
   log ""

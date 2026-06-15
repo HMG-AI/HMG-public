@@ -16,6 +16,7 @@ $BinDir = if ($env:HMG_INSTALL_DIR) {
   Join-Path $HOME ".local\bin"
 }
 $TempDir = Join-Path ([IO.Path]::GetTempPath()) ("hmg-install-" + [Guid]::NewGuid().ToString("N"))
+$script:HmgInstallDeferred = $false
 
 function Log([string] $Message) {
   Write-Host $Message
@@ -65,7 +66,7 @@ function Add-Hmg-To-Path {
   }
 
   # Always ensure the current process PATH has the bin dir
-  # This is critical — without it hmg init -g in the same script will fail
+  # This is critical — without it hmg setup in the same script will fail
   if (-not (Path-Contains $env:Path $NormalizedBinDir)) {
     $env:Path = if ([string]::IsNullOrWhiteSpace($env:Path)) {
       $NormalizedBinDir
@@ -130,6 +131,31 @@ function PowerShell-Command {
   return "powershell"
 }
 
+function Quote-ProcessArgument([string] $Value) {
+  return '"' + ($Value -replace '"', '\"') + '"'
+}
+
+function Stop-Hmg-Daemon-Before-Install([string] $TargetDir) {
+  $ExistingHmg = Join-Path $TargetDir "hmg.exe"
+  if (-not (Test-Path $ExistingHmg)) {
+    return
+  }
+
+  Log "  Stopping existing HMG daemon (if running)..."
+  try {
+    $StopOutput = & $ExistingHmg daemon stop 2>&1
+    $StopExit = $LASTEXITCODE
+    if ($StopExit -eq 0) {
+      Log "  Existing HMG daemon stopped."
+    } else {
+      Log "  No running HMG daemon stopped (exit $StopExit; non-fatal)."
+      $StopOutput | ForEach-Object { Log "  $_" }
+    }
+  } catch {
+    Log "  Could not stop existing HMG daemon before install (non-fatal): $($_.Exception.Message)"
+  }
+}
+
 function Try-Copy-Hmg-Binaries([string] $SourceDir, [string] $TargetDir, [string[]] $Bins) {
   try {
     foreach ($Bin in $Bins) {
@@ -187,6 +213,22 @@ Append-Log "Waiting for HMG binaries to be released before finishing update."
 while ((Get-Date) -lt $Deadline) {
   if (Try-Copy-Bins) {
     Append-Log "HMG deferred update completed successfully."
+    $HmgExe = Join-Path $BinDir "hmg.exe"
+    if (Test-Path $HmgExe) {
+      Append-Log "Running hmg setup after deferred update."
+      try {
+        $SetupOutput = & $HmgExe setup 2>&1
+        $SetupExit = $LASTEXITCODE
+        $SetupOutput | ForEach-Object { Append-Log "setup: $_" }
+        if ($SetupExit -eq 0) {
+          Append-Log "hmg setup completed successfully after deferred update."
+        } else {
+          Append-Log "hmg setup exited with code $SetupExit after deferred update."
+        }
+      } catch {
+        Append-Log "hmg setup failed after deferred update: $($_.Exception.Message)"
+      }
+    }
     try { Remove-Item -Recurse -Force $PackageDir } catch {}
     exit 0
   }
@@ -205,17 +247,18 @@ exit 1
     "-ExecutionPolicy",
     "Bypass",
     "-File",
-    $HelperPath,
+    (Quote-ProcessArgument $HelperPath),
     "-PackageDir",
-    $DeferredPackageDir,
+    (Quote-ProcessArgument $DeferredPackageDir),
     "-BinDir",
-    $TargetDir,
+    (Quote-ProcessArgument $TargetDir),
     "-BinsCsv",
-    ($Bins -join "|"),
+    (Quote-ProcessArgument ($Bins -join "|")),
     "-LogPath",
-    $LogPath
+    (Quote-ProcessArgument $LogPath)
   ) | Out-Null
 
+  $script:HmgInstallDeferred = $true
   Log "  Binaries are in use — update will finish in the background."
   Log "  Deferred update log: $LogPath"
   return $true
@@ -223,6 +266,7 @@ exit 1
 
 function Install-Hmg-Binaries([string] $SourceDir, [string] $TargetDir, [string[]] $Bins) {
   New-Item -ItemType Directory -Force $TargetDir | Out-Null
+  Stop-Hmg-Daemon-Before-Install $TargetDir
   if (Try-Copy-Hmg-Binaries $SourceDir $TargetDir $Bins) {
     return $true
   }
@@ -375,24 +419,30 @@ try {
     Log "  WARNING: hmg.exe not found at $HmgExe"
   }
 
-  # ── Step 3: Run hmg init -g ──────────────────────────────
+  # ── Step 3: Run hmg setup ───────────────────────────────
   Log ""
-  Log "[3/3] Initializing HMG (hmg init -g)..."
-  try {
-    # Use the full path to avoid any PATH resolution issues
-    $InitOutput = & $HmgExe init -g 2>&1
-    $InitExit = $LASTEXITCODE
-    if ($InitExit -eq 0) {
-      Log "  hmg init -g completed successfully."
-      # Show init output (may contain agent adapter info)
-      $InitOutput | ForEach-Object { Log "  $_" }
-    } else {
-      Log "  hmg init -g exited with code $InitExit (non-fatal)."
-      $InitOutput | ForEach-Object { Log "  $_" }
+  if ($script:HmgInstallDeferred) {
+    Log "[3/3] Initializing HMG (deferred)..."
+    Log "  HMG binaries are still being replaced in the background."
+    Log "  The deferred update helper will run hmg setup after the new binaries are installed."
+  } else {
+    Log "[3/3] Initializing HMG (hmg setup)..."
+    try {
+      # Use the full path to avoid any PATH resolution issues. `hmg setup` creates
+      # the default store, configures agent adapters, and starts the local daemon.
+      $SetupOutput = & $HmgExe setup 2>&1
+      $SetupExit = $LASTEXITCODE
+      if ($SetupExit -eq 0) {
+        Log "  hmg setup completed successfully."
+        $SetupOutput | ForEach-Object { Log "  $_" }
+      } else {
+        Log "  hmg setup exited with code $SetupExit (non-fatal)."
+        $SetupOutput | ForEach-Object { Log "  $_" }
+      }
+    } catch {
+      Log "  hmg setup failed: $($_.Exception.Message)"
+      Log "  You can run it manually later: hmg setup"
     }
-  } catch {
-    Log "  hmg init -g failed: $($_.Exception.Message)"
-    Log "  You can run it manually later: hmg init -g"
   }
 
   Log ""
@@ -410,8 +460,8 @@ try {
   Log "  Slow/blocked model downloads (mainland China)?"
   Log "    HMG downloads a small embedding model from HuggingFace on first use."
   Log "    If that is slow or blocked, set a mirror before starting the daemon:"
-  Log "      $env:HF_ENDPOINT = 'https://hf-mirror.com'"
-  Log "      $env:HMG_EMBEDDING_ENDPOINT = 'https://hf-mirror.com'"
+  Log "      `$env:HF_ENDPOINT = 'https://hf-mirror.com'"
+  Log "      `$env:HMG_EMBEDDING_ENDPOINT = 'https://hf-mirror.com'"
   Log "      hmg model embedding download"
   Log ""
   Log "  Update later:"

@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: hmg-sdk
-Version: 1.4.8
+Version: 1.4.9
 Summary: HMG Agent Memory SDK — Community Edition
 License-Expression: Apache-2.0
 Project-URL: Repository, https://github.com/HMG-AI/HMG-public
@@ -15,7 +15,7 @@ Description-Content-Type: text/markdown
 # hmg
 
 <p>
-  <img src="https://img.shields.io/badge/version-1.4.8-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-1.4.9-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/license-Apache--2.0-green.svg" alt="License">
   <img src="https://img.shields.io/badge/python-3.9%2B-blue.svg" alt="Python">
 </p>

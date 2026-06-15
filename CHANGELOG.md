@@ -6,6 +6,16 @@ For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG/re
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.4.9] — 2026-06-15
+
+Windows daemon install and upgrade reliability patch.
+
+### Fixed
+
+- Windows post-install now runs `hmg setup` instead of only `hmg init -g`, so new installs create the default store and start the local daemon automatically.
+- Windows upgrades now try to stop the existing daemon before replacing binaries, and deferred updates run `hmg setup` after the new binaries land.
+- Daemon startup/readiness waits now use one shared configurable window (`HMG_DAEMON_AUTOSTART_TIMEOUT_SECS`, default 30s) across MCP autostart, `hmg daemon start`, `hmg setup`, and TUI daemon start.
+
 ## [1.4.8] — 2026-06-14
 
 CLI/TUI usability and installed-evaluation reliability patch.
