@@ -6,6 +6,15 @@ For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG/re
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.4.10] — 2026-06-15
+
+Windows stale/zombie daemon lock recovery.
+
+### Fixed
+
+- Windows installs/upgrades no longer get stuck when a previous `hmg-server` process still holds the store lock but no longer responds on its named pipe (the "daemon status says not running yet store.lock is held" zombie). The store lock now records the holder PID, `hmg daemon status` detects a stale/zombie holder, and `hmg daemon stop --force` terminates it and waits for the OS to release the lock.
+- `install.ps1` now runs a force-stop sweep plus a `Stop-Process` fallback for `hmg-server.exe`/`hmg.exe` before copying binaries, and the deferred-update helper force-stops before running `hmg setup`, so interrupted Windows upgrades recover automatically.
+
 ## [1.4.9] — 2026-06-15
 
 Windows daemon install and upgrade reliability patch.

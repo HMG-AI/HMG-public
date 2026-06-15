@@ -142,18 +142,55 @@ function Stop-Hmg-Daemon-Before-Install([string] $TargetDir) {
   }
 
   Log "  Stopping existing HMG daemon (if running)..."
+  # 1. Graceful stop via the daemon named pipe.
   try {
     $StopOutput = & $ExistingHmg daemon stop 2>&1
     $StopExit = $LASTEXITCODE
     if ($StopExit -eq 0) {
       Log "  Existing HMG daemon stopped."
     } else {
-      Log "  No running HMG daemon stopped (exit $StopExit; non-fatal)."
+      Log "  No running HMG daemon stopped gracefully (exit $StopExit; non-fatal)."
       $StopOutput | ForEach-Object { Log "  $_" }
     }
   } catch {
     Log "  Could not stop existing HMG daemon before install (non-fatal): $($_.Exception.Message)"
   }
+
+  # 2. Forceful recovery for stale/zombie hmg-server.exe that still holds the
+  #    store lock but no longer responds on its named pipe. This is the common
+  #    Windows failure when a previous install/update was interrupted: the
+  #    daemon holds store.lock while `hmg daemon status` reports "not running",
+  #    and Windows refuses to overwrite the locked binaries. `daemon stop --force`
+  #    terminates the holder PID and waits for the OS to release store.lock.
+  try {
+    $ForceOutput = & $ExistingHmg daemon stop --force 2>&1
+    $ForceExit = $LASTEXITCODE
+    if ($ForceExit -eq 0) {
+      Log "  Force-stop sweep completed."
+    } else {
+      Log "  Force-stop sweep exited $ForceExit (non-fatal)."
+      $ForceOutput | ForEach-Object { Log "  $_" }
+    }
+  } catch {
+    Log "  Force-stop sweep failed (non-fatal): $($_.Exception.Message)"
+  }
+
+  # 3. Last-resort: terminate any lingering hmg-server.exe / hmg.exe processes so
+  #    Windows will release the store lock and let us overwrite the binaries.
+  foreach ($ProcName in @("hmg-server", "hmg")) {
+    try {
+      $Procs = Get-Process -Name $ProcName -ErrorAction SilentlyContinue
+      if ($Procs) {
+        Log "  Terminating lingering $ProcName process(es)..."
+        $Procs | Stop-Process -Force -ErrorAction SilentlyContinue
+      }
+    } catch {
+      Log "  Could not terminate $ProcName (non-fatal): $($_.Exception.Message)"
+    }
+  }
+
+  # 4. Give the OS a moment to release the file handles / store lock before copy.
+  Start-Sleep -Milliseconds 500
 }
 
 function Try-Copy-Hmg-Binaries([string] $SourceDir, [string] $TargetDir, [string[]] $Bins) {
@@ -215,6 +252,13 @@ while ((Get-Date) -lt $Deadline) {
     Append-Log "HMG deferred update completed successfully."
     $HmgExe = Join-Path $BinDir "hmg.exe"
     if (Test-Path $HmgExe) {
+      Append-Log "Stopping any stale daemon before setup."
+      try {
+        $PreSetupStop = & $HmgExe daemon stop --force 2>&1
+        $PreSetupStop | ForEach-Object { Append-Log "pre-setup stop: $_" }
+      } catch {
+        Append-Log "pre-setup force-stop failed (non-fatal): $($_.Exception.Message)"
+      }
       Append-Log "Running hmg setup after deferred update."
       try {
         $SetupOutput = & $HmgExe setup 2>&1
