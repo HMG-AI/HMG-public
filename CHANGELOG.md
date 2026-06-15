@@ -6,6 +6,18 @@ For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG/re
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.4.8] — 2026-06-14
+
+CLI/TUI usability and installed-evaluation reliability patch.
+
+### Fixed
+
+- Noisy multilingual recall now prioritizes exact high-signal project/sentinel anchors over broad old handoff atoms.
+- MCP memory context now accepts shorthand `context.scope` objects with tenant/workspace/repository/branch fields.
+- CLI output formats now fail explicitly for unsupported values instead of silently falling back to text.
+- `hmg doctor --format json|yaml` emits structured summaries for ordinary doctor runs.
+- TUI splash, scope editing, command palette, context help, and single-line input editing are improved.
+
 ## [1.4.7] — 2026-06-13
 
 Open-source release-readiness hardening: ordered multi-mirror download fallback, manifest-driven download URLs, and export leak-gate false-positive fix.
