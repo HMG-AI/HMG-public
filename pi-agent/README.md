@@ -1,16 +1,18 @@
 # @hmg_ai/pi-agent
 
 <p>
-  <img src="https://img.shields.io/badge/version-1.4.10-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-1.4.12-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/license-MIT%20%7C%20Apache--2.0-green.svg" alt="License">
 </p>
 
 Pi Package that exposes HMG memory tools to pi (Codex fork) as native custom tools.
 
+If npm publication is temporarily delayed by npm account policy, the matching release tarball is also published on the HMG-public GitHub release for the same tag.
+
 ## Install
 
 ```bash
-pi install npm:@hmg_ai/pi-agent@0.8.0
+pi install npm:@hmg_ai/pi-agent@1.4.12
 ```
 
 HMG's installer and `hmg init -g` use the same package route when pi is detected.

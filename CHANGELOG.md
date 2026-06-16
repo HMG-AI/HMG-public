@@ -6,6 +6,28 @@ For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG/re
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.4.12] — 2026-06-16
+
+Full-platform refresh with Pi/NERE onboarding alignment.
+
+### Changed
+
+- Pi agent package metadata, README examples, and public export surfaces now track `1.4.12` for a clean full-platform release cut from current `main`.
+- NERE onboarding, model status, and TUI diagnostics updates from `main` are included in the tagged release.
+
+### Fixed
+
+- The release flow now includes the dedicated Pi Agent npm publish workflow so `@hmg_ai/pi-agent` publication is no longer blocked by binary release smoke jobs.
+
+## [1.4.11] — 2026-06-15
+
+Windows installer non-blocking setup hotfix.
+
+### Fixed
+
+- Windows installer no longer blocks indefinitely at `Initializing HMG (hmg setup)`. It now runs `hmg setup --no-daemon` with a 90s PowerShell timeout, then starts the daemon as a bounded best-effort 45s step.
+- CLI daemon readiness probes now run `hmg-server --daemon-status` through a timeout wrapper, so broken Windows named-pipe reads cannot wedge `hmg setup`, `hmg daemon start`, or `hmg daemon status` forever.
+
 ## [1.4.10] — 2026-06-15
 
 Windows stale/zombie daemon lock recovery.

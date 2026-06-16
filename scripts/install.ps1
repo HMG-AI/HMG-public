@@ -22,6 +22,29 @@ function Log([string] $Message) {
   Write-Host $Message
 }
 
+function Invoke-Hmg-Command-With-Timeout([string] $FilePath, [string[]] $Arguments, [int] $TimeoutSeconds) {
+  $StdoutPath = [IO.Path]::GetTempFileName()
+  $StderrPath = [IO.Path]::GetTempFileName()
+  $Output = @()
+  try {
+    $Process = Start-Process -FilePath $FilePath -ArgumentList $Arguments -NoNewWindow -PassThru -RedirectStandardOutput $StdoutPath -RedirectStandardError $StderrPath
+    $Completed = $Process.WaitForExit($TimeoutSeconds * 1000)
+    if (-not $Completed) {
+      try { Stop-Process -Id $Process.Id -Force -ErrorAction SilentlyContinue } catch {}
+      try { $Process.WaitForExit(5000) | Out-Null } catch {}
+    }
+    if (Test-Path $StdoutPath) { $Output += Get-Content -Path $StdoutPath -ErrorAction SilentlyContinue }
+    if (Test-Path $StderrPath) { $Output += Get-Content -Path $StderrPath -ErrorAction SilentlyContinue }
+    return [PSCustomObject]@{
+      TimedOut = (-not $Completed)
+      ExitCode = if ($Completed) { $Process.ExitCode } else { $null }
+      Output = $Output
+    }
+  } finally {
+    try { Remove-Item -Force $StdoutPath, $StderrPath -ErrorAction SilentlyContinue } catch {}
+  }
+}
+
 function Need-Cmd([string] $Name) {
   return [bool] (Get-Command $Name -ErrorAction SilentlyContinue)
 }
@@ -234,6 +257,29 @@ function Append-Log([string] $Message) {
   Add-Content -Path $LogPath -Value "[$Timestamp] $Message"
 }
 
+function Invoke-Hmg-Command-With-Timeout([string] $FilePath, [string[]] $Arguments, [int] $TimeoutSeconds) {
+  $StdoutPath = [IO.Path]::GetTempFileName()
+  $StderrPath = [IO.Path]::GetTempFileName()
+  $Output = @()
+  try {
+    $Process = Start-Process -FilePath $FilePath -ArgumentList $Arguments -NoNewWindow -PassThru -RedirectStandardOutput $StdoutPath -RedirectStandardError $StderrPath
+    $Completed = $Process.WaitForExit($TimeoutSeconds * 1000)
+    if (-not $Completed) {
+      try { Stop-Process -Id $Process.Id -Force -ErrorAction SilentlyContinue } catch {}
+      try { $Process.WaitForExit(5000) | Out-Null } catch {}
+    }
+    if (Test-Path $StdoutPath) { $Output += Get-Content -Path $StdoutPath -ErrorAction SilentlyContinue }
+    if (Test-Path $StderrPath) { $Output += Get-Content -Path $StderrPath -ErrorAction SilentlyContinue }
+    return [PSCustomObject]@{
+      TimedOut = (-not $Completed)
+      ExitCode = if ($Completed) { $Process.ExitCode } else { $null }
+      Output = $Output
+    }
+  } finally {
+    try { Remove-Item -Force $StdoutPath, $StderrPath -ErrorAction SilentlyContinue } catch {}
+  }
+}
+
 function Try-Copy-Bins {
   try {
     foreach ($Bin in $RequiredBins) {
@@ -259,18 +305,29 @@ while ((Get-Date) -lt $Deadline) {
       } catch {
         Append-Log "pre-setup force-stop failed (non-fatal): $($_.Exception.Message)"
       }
-      Append-Log "Running hmg setup after deferred update."
+      Append-Log "Running hmg setup --no-daemon after deferred update."
       try {
-        $SetupOutput = & $HmgExe setup 2>&1
-        $SetupExit = $LASTEXITCODE
-        $SetupOutput | ForEach-Object { Append-Log "setup: $_" }
-        if ($SetupExit -eq 0) {
-          Append-Log "hmg setup completed successfully after deferred update."
+        $Setup = Invoke-Hmg-Command-With-Timeout $HmgExe @("setup", "--no-daemon") 90
+        $Setup.Output | ForEach-Object { Append-Log "setup: $_" }
+        if ($Setup.TimedOut) {
+          Append-Log "hmg setup --no-daemon timed out after deferred update."
+        } elseif ($Setup.ExitCode -eq 0) {
+          Append-Log "hmg setup --no-daemon completed successfully after deferred update."
         } else {
-          Append-Log "hmg setup exited with code $SetupExit after deferred update."
+          Append-Log "hmg setup --no-daemon exited with code $($Setup.ExitCode) after deferred update."
+        }
+        Append-Log "Starting HMG daemon after deferred update (best effort)."
+        $DaemonStart = Invoke-Hmg-Command-With-Timeout $HmgExe @("daemon", "start") 45
+        $DaemonStart.Output | ForEach-Object { Append-Log "daemon-start: $_" }
+        if ($DaemonStart.TimedOut) {
+          Append-Log "hmg daemon start timed out after deferred update."
+        } elseif ($DaemonStart.ExitCode -eq 0) {
+          Append-Log "hmg daemon start completed successfully after deferred update."
+        } else {
+          Append-Log "hmg daemon start exited with code $($DaemonStart.ExitCode) after deferred update."
         }
       } catch {
-        Append-Log "hmg setup failed after deferred update: $($_.Exception.Message)"
+        Append-Log "hmg initialization failed after deferred update: $($_.Exception.Message)"
       }
     }
     try { Remove-Item -Recurse -Force $PackageDir } catch {}
@@ -470,22 +527,37 @@ try {
     Log "  HMG binaries are still being replaced in the background."
     Log "  The deferred update helper will run hmg setup after the new binaries are installed."
   } else {
-    Log "[3/3] Initializing HMG (hmg setup)..."
+    Log "[3/3] Initializing HMG (hmg setup --no-daemon)..."
     try {
-      # Use the full path to avoid any PATH resolution issues. `hmg setup` creates
-      # the default store, configures agent adapters, and starts the local daemon.
-      $SetupOutput = & $HmgExe setup 2>&1
-      $SetupExit = $LASTEXITCODE
-      if ($SetupExit -eq 0) {
-        Log "  hmg setup completed successfully."
-        $SetupOutput | ForEach-Object { Log "  $_" }
+      # Keep installer setup non-blocking: create the store and configure agents first,
+      # then start the daemon as a bounded best-effort step. A broken Windows named
+      # pipe can otherwise make `hmg setup` wait forever while probing daemon status.
+      $Setup = Invoke-Hmg-Command-With-Timeout $HmgExe @("setup", "--no-daemon") 90
+      if ($Setup.TimedOut) {
+        Log "  hmg setup --no-daemon timed out after 90s (non-fatal)."
+        Log "  You can run it manually later: hmg setup --no-daemon"
+      } elseif ($Setup.ExitCode -eq 0) {
+        Log "  hmg setup --no-daemon completed successfully."
       } else {
-        Log "  hmg setup exited with code $SetupExit (non-fatal)."
-        $SetupOutput | ForEach-Object { Log "  $_" }
+        Log "  hmg setup --no-daemon exited with code $($Setup.ExitCode) (non-fatal)."
       }
+      $Setup.Output | ForEach-Object { Log "  $_" }
+
+      Log "  Starting HMG daemon (best effort, 45s timeout)..."
+      $DaemonStart = Invoke-Hmg-Command-With-Timeout $HmgExe @("daemon", "start") 45
+      if ($DaemonStart.TimedOut) {
+        Log "  hmg daemon start timed out after 45s (non-fatal)."
+        Log "  Installation is complete; run later: hmg daemon stop --force; hmg daemon start"
+      } elseif ($DaemonStart.ExitCode -eq 0) {
+        Log "  hmg daemon start completed successfully."
+      } else {
+        Log "  hmg daemon start exited with code $($DaemonStart.ExitCode) (non-fatal)."
+        Log "  You can start it later: hmg daemon start"
+      }
+      $DaemonStart.Output | ForEach-Object { Log "  $_" }
     } catch {
-      Log "  hmg setup failed: $($_.Exception.Message)"
-      Log "  You can run it manually later: hmg setup"
+      Log "  hmg initialization failed: $($_.Exception.Message)"
+      Log "  You can run it manually later: hmg setup --no-daemon; hmg daemon start"
     }
   }
 
