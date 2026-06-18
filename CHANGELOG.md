@@ -6,6 +6,19 @@ For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG/re
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.4.13] — 2026-06-18
+
+Public surfaces (protocol, SDKs, Pi agent) now track `1.4.13` for consistency with the
+binary release. No protocol/SDK breaking changes in this release.
+
+### Changed
+
+- Protocol, certification, Python SDK, TypeScript SDK, and Pi agent package versions and
+  README/badge examples bumped to `1.4.13` to match the binary release.
+- `export/public-manifest.json` release entries now reference `1.4.13`.
+
+See the root `CHANGELOG.md` for binary release notes (Wave 1 hardening).
+
 ## [1.4.12] — 2026-06-16
 
 Full-platform refresh with Pi/NERE onboarding alignment.
