@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.4.13-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-1.6.0-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/license-Apache--2.0%20%7C%20Community-green.svg" alt="License">
   <img src="https://img.shields.io/badge/rust-1.85%2B-orange.svg" alt="Rust">
   <img src="https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey.svg" alt="Platform">
@@ -45,7 +45,7 @@ hmg init -g
 hmg daemon start
 
 # Store your first memory
-curl -s -X POST http://127.0.0.1:3000/api/memorize \
+curl -s -X POST http://127.0.0.1:7654/api/memorize \
   -H 'Content-Type: application/json' \
   -d '{"content": "My first HMG memory!"}'
 

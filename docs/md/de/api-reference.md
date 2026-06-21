@@ -1,6 +1,6 @@
 # HMG API-Referenz — Community Edition
 
-HTTP-Basis-URL: `http://localhost:3000` (Standard).
+HTTP-Basis-URL: `http://localhost:7654` (Standard).
 
 ## MCP-Werkzeuge
 

@@ -116,7 +116,7 @@ hmg daemon restart
 
 ### `hmg daemon start` 失敗
 
-1. 檢查連接埠是否被佔用：`lsof -i :3000`
+1. 檢查連接埠是否被佔用：`lsof -i :7654`
 2. 檢查儲存路徑權限
 3. 執行 `hmg doctor` 進行診斷
 

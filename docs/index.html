@@ -325,7 +325,7 @@
 
 <span style="color:var(--green)">$</span> hmg init -g
 <span style="color:var(--green)">$</span> hmg daemon start
-<span style="color:var(--text2)">  Daemon started on http://127.0.0.1:3000</span>
+<span style="color:var(--text2)">  Daemon started on http://127.0.0.1:7654</span>
 
 <span style="color:var(--green)">$</span> hmg license status
 <span style="color:var(--text2)">  Edition: Community (free)
@@ -333,12 +333,12 @@
         </div>
         <div class="tab-panel" id="tab-api">
           <pre><code><span style="color:var(--text2)"># Store a decision</span>
-<span style="color:var(--green)">$</span> curl -s -X POST http://127.0.0.1:3000/api/memorize \
+<span style="color:var(--green)">$</span> curl -s -X POST http://127.0.0.1:7654/api/memorize \
   -H 'Content-Type: application/json' \
   -d '{"content": "Decision: use Rust for performance-critical paths"}'
 
 <span style="color:var(--text2)"># Recall</span>
-<span style="color:var(--green)">$</span> curl -s http://127.0.0.1:3000/api/recall \
+<span style="color:var(--green)">$</span> curl -s http://127.0.0.1:7654/api/recall \
   -d '{"query": "what language did we choose?"}'</code></pre>
         </div>
         <div class="tab-panel" id="tab-mcp">
@@ -540,13 +540,13 @@ memory_recall(query="Why did we choose PostgreSQL?")
 memory_correct(
   target_atom="01PORT...",
   action="replace",
-  new_content="API runs on port 3000",
+  new_content="API runs on port 7654",
   reason="changed in config.rs v0.9.2"
 )
 
 <span style="color:var(--accent2)"># Subsequent recall returns:</span>
 memory_recall(query="what port does the API use?")
-  → "API runs on port 3000" <span style="color:var(--text3)"># canonical</span></code></pre>
+  → "API runs on port 7654" <span style="color:var(--text3)"># canonical</span></code></pre>
       </div>
       <div class="card">
         <h3 data-i18n="wf3_hist_title">Correction History</h3>
@@ -554,7 +554,7 @@ memory_recall(query="what port does the API use?")
 
   <span style="color:var(--text3)"># Returns full lineage:</span>
   v1: "API runs on port 8080"        <span style="color:var(--text3)"># original</span>
-  v2: "API runs on port 3000"       <span style="color:var(--green)"># canonical ✓</span>
+  v2: "API runs on port 7654"       <span style="color:var(--green)"># canonical ✓</span>
   correction_reason: "changed in config.rs"
   correction_timestamp: 2026-05-29T...
   superseded: v1 → v2</code></pre>
@@ -633,7 +633,7 @@ memory_recall(query="customer incident", mode="audit")
         <pre><code>$ hmg doctor
   Edition: Community
   Store: ~/.local/share/hmg/stores/default
-  Daemon: running on :3000
+  Daemon: running on :7654
   MCP: ready
   Agents: pi, cursor
   Disk: 12MB / 100K atom limit

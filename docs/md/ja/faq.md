@@ -116,7 +116,7 @@ hmg daemon restart
 
 ### `hmg daemon start` が失敗する
 
-1. ポートが使用されていないか確認：`lsof -i :3000`
+1. ポートが使用されていないか確認：`lsof -i :7654`
 2. ストレージパスの権限を確認
 3. `hmg doctor` を実行して診断
 

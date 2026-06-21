@@ -1,6 +1,6 @@
 # Справочник API HMG — Community Edition
 
-Базовый URL HTTP: `http://localhost:3000`
+Базовый URL HTTP: `http://localhost:7654`
 
 ## Инструменты MCP
 

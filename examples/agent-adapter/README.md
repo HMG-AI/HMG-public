@@ -74,13 +74,13 @@ If your agent doesn't support MCP, call HMG directly over HTTP.
 
 ```bash
 hmg daemon start
-# Server listens on http://127.0.0.1:3000
+# Server listens on http://127.0.0.1:7654
 ```
 
 ### Example: Memorize
 
 ```bash
-curl -s -X POST http://127.0.0.1:3000/api/memorize \
+curl -s -X POST http://127.0.0.1:7654/api/memorize \
   -H 'Content-Type: application/json' \
   -d '{
     "content": "Key decision: use event-sourcing for audit log",
@@ -93,7 +93,7 @@ curl -s -X POST http://127.0.0.1:3000/api/memorize \
 ### Example: Recall
 
 ```bash
-curl -s -X POST http://127.0.0.1:3000/api/recall \
+curl -s -X POST http://127.0.0.1:7654/api/recall \
   -H 'Content-Type: application/json' \
   -d '{
     "query": "audit log architecture decision",
@@ -105,7 +105,7 @@ curl -s -X POST http://127.0.0.1:3000/api/recall \
 ### Example: Agent Brief (session context)
 
 ```bash
-curl -s -X POST http://127.0.0.1:3000/api/agent_brief \
+curl -s -X POST http://127.0.0.1:7654/api/agent_brief \
   -H 'Content-Type: application/json' \
   -d '{
     "query": "current task status and risks",
@@ -124,7 +124,7 @@ Full API spec: [`openapi/hmg-server.yaml`](../../openapi/hmg-server.yaml)
 ```python
 from hmg import HMGClient, codingAgentScope
 
-client = HMGClient(base_url="http://localhost:3000")
+client = HMGClient(base_url="http://localhost:7654")
 
 # Store a decision
 client.memorize(
@@ -144,7 +144,7 @@ for atom in result.atoms:
 ```typescript
 import { HMGClient, codingAgentScope } from "@hmg_ai/sdk-ts";
 
-const client = new HMGClient({ baseUrl: "http://localhost:3000" });
+const client = new HMGClient({ baseUrl: "http://localhost:7654" });
 
 await client.memorize({
   content: "Chose Redis for session caching",
@@ -189,7 +189,7 @@ Here's the recommended integration pattern for any agent:
                       ▼
               ┌──────────────┐
               │  hmg-server  │
-              │  (port 3000) │
+              │  (port 7654) │
               └──────────────┘
 ```
 

@@ -60,5 +60,5 @@ hmg daemon restart
 ## Fehlerbehebung
 
 - Agent findet HMG nicht: `hmg doctor` ausführen
-- Daemon startet nicht: Port prüfen (`lsof -i :3000`)
+- Daemon startet nicht: Port prüfen (`lsof -i :7654`)
 - Falsche Ergebnisse: Scope-Felder prüfen, `debug`-Profil verwenden

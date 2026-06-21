@@ -8,7 +8,7 @@ For the full security policy and vulnerability reporting, see [`SECURITY.md`](..
 |---|---|
 | **Data locality** | Community/Developer Local: all data stays on your machine |
 | **Network** | Community Edition: zero outbound connections, no telemetry |
-| **Binding** | Binds to `localhost:3000` by default |
+| **Binding** | Binds to `localhost:7654` by default |
 | **Storage** | `~/.local/share/hmg/` with user-only permissions |
 | **Vulnerability reporting** | security@hmg1ai.com |
 

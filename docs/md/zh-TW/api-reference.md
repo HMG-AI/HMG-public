@@ -1,6 +1,6 @@
 # HMG API 參考 — Community Edition
 
-HTTP 基礎 URL：`http://localhost:3000`（預設）。
+HTTP 基礎 URL：`http://localhost:7654`（預設）。
 
 ## MCP 工具
 

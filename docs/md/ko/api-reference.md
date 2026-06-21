@@ -1,6 +1,6 @@
 # HMG API 참조 — Community Edition
 
-HTTP 기본 URL：`http://localhost:3000`（기본값）.
+HTTP 기본 URL：`http://localhost:7654`（기본값）.
 
 ## MCP 도구
 

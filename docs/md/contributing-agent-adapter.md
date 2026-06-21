@@ -256,7 +256,7 @@ If your agent has a plugin/extension system and doesn't support MCP natively, yo
 ```python
 from hmg import HmgClient, software_engineering_context
 
-client = HmgClient(base_url="http://localhost:3000")
+client = HmgClient(base_url="http://localhost:7654")
 
 # Session start
 brief = client.recall({"query": "current task", "domain_pack_id": "software-engineering"})
@@ -274,7 +274,7 @@ client.memorize({
 ```typescript
 import { HmgClient } from "@hmg_ai/sdk-ts";
 
-const client = new HmgClient({ baseUrl: "http://localhost:3000" });
+const client = new HmgClient({ baseUrl: "http://localhost:7654" });
 
 // Session start
 await client.recall({ query: "current task", domainPackId: "software-engineering" });
@@ -335,7 +335,7 @@ git push origin add-<agent-name>-adapter
                       ▼
               ┌──────────────┐
               │  hmg-server  │
-              │  (port 3000) │
+              │  (port 7654) │
               └──────────────┘
 ```
 

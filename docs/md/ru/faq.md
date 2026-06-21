@@ -27,4 +27,4 @@ curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install
 
 ## Устранение неполадок
 - Агент не находит HMG: `hmg doctor`
-- Демон не запускается: проверить порт (`lsof -i :3000`)
+- Демон не запускается: проверить порт (`lsof -i :7654`)

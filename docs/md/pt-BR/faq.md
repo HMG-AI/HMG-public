@@ -27,4 +27,4 @@ Upgrade: `hmg license apply <your-key> && hmg daemon restart`
 
 ## Problemas
 - Agente não encontra HMG: `hmg doctor`
-- Daemon não inicia: verificar porta (`lsof -i :3000`)
+- Daemon não inicia: verificar porta (`lsof -i :7654`)

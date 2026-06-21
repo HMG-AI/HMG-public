@@ -116,7 +116,7 @@ Voir [Guide de mise à niveau](upgrade.md).
 
 ### `hmg daemon start` échoue
 
-1. Vérifiez si le port est utilisé : `lsof -i :3000`
+1. Vérifiez si le port est utilisé : `lsof -i :7654`
 2. Vérifiez les permissions du chemin de stockage
 3. Exécutez `hmg doctor` pour diagnostiquer
 

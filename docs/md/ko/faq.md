@@ -116,7 +116,7 @@ hmg daemon restart
 
 ### `hmg daemon start` 실패
 
-1. 포트 사용 여부 확인：`lsof -i :3000`
+1. 포트 사용 여부 확인：`lsof -i :7654`
 2. 스토리지 경로 권한 확인
 3. `hmg doctor` 실행하여 진단
 

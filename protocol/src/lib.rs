@@ -10,6 +10,7 @@
 //! wire-visible fields will result in a major version bump.
 
 pub mod atom;
+pub mod bulk;
 pub mod correction;
 pub mod governance;
 pub mod scope;
@@ -21,6 +22,7 @@ pub mod scope_parsers;
 mod tests;
 
 pub use atom::*;
+pub use bulk::*;
 pub use correction::*;
 pub use governance::*;
 pub use scope::{ScopeRef, ScopeSegment};

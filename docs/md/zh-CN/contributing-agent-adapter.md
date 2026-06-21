@@ -246,7 +246,7 @@ hmg doctor
 ```python
 from hmg import HmgClient, software_engineering_context
 
-client = HmgClient(base_url="http://localhost:3000")
+client = HmgClient(base_url="http://localhost:7654")
 
 # 会话开始
 brief = client.recall({"query": "current task", "domain_pack_id": "software-engineering"})
@@ -264,7 +264,7 @@ client.memorize({
 ```typescript
 import { HmgClient } from "@hmg_ai/sdk-ts";
 
-const client = new HmgClient({ baseUrl: "http://localhost:3000" });
+const client = new HmgClient({ baseUrl: "http://localhost:7654" });
 
 // 会话开始
 await client.recall({ query: "current task", domainPackId: "software-engineering" });
@@ -325,7 +325,7 @@ git push origin add-<agent名称>-adapter
                       ▼
               ┌──────────────┐
               │  hmg-server  │
-              │  (端口 3000) │
+              │  (端口 7654) │
               └──────────────┘
 ```
 

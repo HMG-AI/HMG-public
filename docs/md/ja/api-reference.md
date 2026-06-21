@@ -1,6 +1,6 @@
 # HMG API リファレンス — Community Edition
 
-HTTP ベース URL：`http://localhost:3000`（デフォルト）。
+HTTP ベース URL：`http://localhost:7654`（デフォルト）。
 
 ## MCP ツール
 

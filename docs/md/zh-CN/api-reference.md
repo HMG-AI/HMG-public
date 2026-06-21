@@ -1,6 +1,6 @@
 # HMG API 参考 — Community Edition
 
-HTTP 基础 URL：`http://localhost:3000`（默认）。
+HTTP 基础 URL：`http://localhost:7654`（默认）。
 
 ## MCP 工具
 

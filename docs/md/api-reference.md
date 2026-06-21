@@ -1,6 +1,6 @@
 # HMG API Reference — Community Edition
 
-Base URL for HTTP: `http://localhost:3000` (default).
+Base URL for HTTP: `http://localhost:7654` (default).
 
 ## MCP Tools
 

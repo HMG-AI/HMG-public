@@ -217,7 +217,7 @@ This means:
                ▼
 ┌─────────────────────────────────┐
 │         HMG Process              │
-│   (binds to localhost:3000)      │
+│   (binds to localhost:7654)      │
 │                                  │
 │   Memory data: user-only access  │
 │   No outbound connections (CE)   │
