@@ -6,14 +6,95 @@ For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG/re
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [1.6.1] — 2026-06-22
+## [1.6.6] — 2026-06-22
 
-Windows installer/package hotfix.
+Windows package publication hotfix.
 
 ### Fixed
 
-- Windows release packages are published again with the daemon named-pipe
-  readiness fix included in the `v1.6.1` binary release.
+- Windows daemon status probes now retry transient named-pipe disconnects across
+  the whole status path instead of turning one short `ERROR_BROKEN_PIPE` /
+  closed-without-response window into `store.busy_or_unhealthy`.
+- The Windows daemon pre-creates the next named-pipe listener before handing the
+  accepted client to a request thread, keeping a listener available while smoke
+  tests run rapid `daemon status`, `setup --no-daemon`, and `daemon start`
+  sequences.
+- Windows named-pipe responses are explicitly flushed before the server
+  disconnects each pipe instance.
+- Protocol, SDKs, Pi agent, public manifest, badges, and package metadata now
+  track `1.6.6`.
+
+## [1.6.5] — 2026-06-22
+
+Attempted Windows package publication hotfix.
+
+### Fixed
+
+- Windows `hmg daemon start` is idempotent when an installer-started daemon
+  already owns the store: duplicate daemon launches now exit successfully after
+  detecting the healthy owner, and the CLI recovery path reuses the same
+  socket-gated self-heal instead of force-clearing a live daemon.
+- Windows named-pipe clients retry the short `ERROR_FILE_NOT_FOUND` /
+  `ERROR_PATH_NOT_FOUND` window that can occur between accepted pipe instances,
+  without shortening the normal daemon response timeout. GitHub Windows smoke
+  still failed on transient pipe response/metadata recovery races; the final
+  package publication fix is completed in `1.6.6`.
+- Protocol, SDKs, Pi agent, public manifest, badges, and package metadata now
+  track `1.6.5`.
+
+## [1.6.4] — 2026-06-22
+
+Attempted Windows package publication hotfix.
+
+### Fixed
+
+- Windows release packages include the final daemon named-pipe readiness fix:
+  accepted pipe clients are handled concurrently, Windows readiness probes get a
+  larger per-probe budget, and named-pipe clients use explicit
+  `WaitNamedPipeW`/`CreateFileW` retry for busy pipe instances. GitHub Windows
+  ARM64 smoke passed, but x86_64 still failed when the smoke invoked
+  `hmg daemon start` after the installer had already started a healthy daemon;
+  the remaining Windows package publication fix is completed in `1.6.6`.
+- Protocol, SDKs, Pi agent, public manifest, badges, and package metadata now
+  track `1.6.4`.
+
+## [1.6.3] — 2026-06-22
+
+Attempted Windows package publication hotfix.
+
+### Fixed
+
+- Windows release packages include the named-pipe readiness handoff fix required
+  for installer smoke tests to run repeated `daemon status` probes without
+  misclassifying the live daemon as a stale/zombie lock holder, but GitHub
+  Windows package publication still failed and is completed in `1.6.6`.
+- Release automation no longer lets npm OTP/2FA policy block GitHub binary
+  release and public mirror publication.
+- Protocol, SDKs, Pi agent, public manifest, badges, and package metadata now
+  track `1.6.3`.
+
+## [1.6.2] — 2026-06-22
+
+Attempted Windows installer/package IPC hotfix.
+
+### Fixed
+
+- Windows release packages include the named-pipe client/server compatibility
+  fix required for installer smoke tests to observe the first daemon health
+  response, but package publication still failed on the immediately following
+  status probe. The next readiness attempt landed in `1.6.3`; the remaining
+  Windows package publication failure is completed in `1.6.6`.
+- Protocol, SDKs, Pi agent, public manifest, badges, and package metadata now
+  track `1.6.2`.
+
+## [1.6.1] — 2026-06-22
+
+Attempted Windows installer/package hotfix.
+
+### Fixed
+
+- The daemon named-pipe accept loop moved to synchronous connection handling, but
+  Windows package publication still failed and is completed in `1.6.6`.
 - Protocol, SDKs, Pi agent, public manifest, badges, and package metadata now
   track `1.6.1`.
 
