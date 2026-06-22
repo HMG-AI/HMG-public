@@ -191,6 +191,7 @@
   <div class="container">
     <a href="." class="brand"><svg class="logo-icon" viewBox="0 0 32 32"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs><circle cx="16" cy="16" r="15" fill="url(#lg)"/><path d="M16 7c-1.8 0-3.2.9-4.1 2.2S10.5 12.2 10.5 14c0 2.7 1.4 4.5 2.7 5.8V22.5h5.6v-2.7c1.3-1.3 2.7-3.1 2.7-5.8 0-1.8-.6-3.5-1.4-4.8S17.8 7 16 7zm-1.8 16.5h3.6v1.2c0 .7-.5 1.3-1.2 1.3h-1.2c-.7 0-1.2-.6-1.2-1.3v-1.2z" fill="white"/></svg> HMG</a>
     <div class="nav-links" id="navLinks">
+      <a href="#whats-new" data-i18n="nav_new">What's New</a>
       <a href="#quickstart" data-i18n="nav_quickstart">Quick Start</a>
       <a href="#editions" data-i18n="nav_editions">Editions</a>
       <a href="#memory-loop" data-i18n="nav_loop">Memory Loop</a>
@@ -225,7 +226,7 @@
   <!-- ═══ Hero ═══ -->
   <div class="hero">
     <div class="eyebrow">
-      <span>v1.0.0</span>
+      <span>v1.6.1</span>
       <span data-i18n="hero_tag1">First Public Release</span>
       <span data-i18n="hero_tag2">Community Free</span>
     </div>
@@ -255,6 +256,20 @@
     <div class="stat"><div class="num">4</div><div class="label" data-i18n="stat_platforms">Platforms</div></div>
     <div class="stat"><div class="num">10</div><div class="label" data-i18n="stat_langs">Languages</div></div>
   </div>
+
+  <!-- ═══ What's New ═══ -->
+  <section id="whats-new">
+    <div class="section-header">
+      <h2 data-i18n="new_title">What's New in v1.6</h2>
+      <p class="section-sub" data-i18n="new_sub">Cross-client reliability, agent-native extraction, and recall that separates the answer from supporting context.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="grid grid-3">
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><h3 data-i18n="new_1t">Cross-Client Reliability</h3><p data-i18n="new_1d">Spec-correct MCP ping + capability probes and a daemon-proxy fallback on store-lock collisions. Works smoothly with strict clients like opencode and the Hermes gateway.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><h3 data-i18n="new_2t">Agent-Native Extraction</h3><p data-i18n="new_2d">A dedicated DomainLens registry lets recall and anchoring lenses evolve independently, with caller-supplied entities and relations threaded through memorize.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><h3 data-i18n="new_3t">Answer vs Context</h3><p data-i18n="new_3d">Recall now flags the top-ranked answer cluster as primary, distinct from same-scope supporting context — surface the answer first.</p></div>
+    </div>
+  </section>
 
   <!-- ═══ Why ═══ -->
   <section id="why">
@@ -320,8 +335,8 @@
         </div>
         <div class="tab-panel active" id="tab-cli">
           <pre><code><span style="color:var(--green)">$</span> curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh
-<span style="color:var(--text2)">  Installing HMG v1.0.0 for x86_64-unknown-linux-gnu...</span>
-<span style="color:var(--green)">  <svg style="width:14px;height:14px;vertical-align:middle;margin-right:.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>HMG v1.0.0 installed to ~/.local/bin</span>
+<span style="color:var(--text2)">  Installing HMG v1.6.1 for x86_64-unknown-linux-gnu...</span>
+<span style="color:var(--green)">  <svg style="width:14px;height:14px;vertical-align:middle;margin-right:.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>HMG v1.6.1 installed to ~/.local/bin</span>
 
 <span style="color:var(--green)">$</span> hmg init -g
 <span style="color:var(--green)">$</span> hmg daemon start
@@ -753,6 +768,11 @@ en: {
   hero_subtitle:'Holographic Memory Graph — a long-term memory kernel for AI agents.<br>Store decisions, trace corrections, govern knowledge. One call, complete context.',
   hero_cta1:'Get Started →',hero_cta2:'Official Website',copy:'Copy',
   stat_tools:'MCP Tools',stat_atoms:'Free Atoms',stat_platforms:'Platforms',stat_langs:'Languages',
+  nav_new:'What\'s New',
+  new_title:'What\'s New in v1.6',new_sub:'Cross-client reliability, agent-native extraction, and recall that separates the answer from supporting context.',
+  new_1t:'Cross-Client Reliability',new_1d:'Spec-correct MCP ping + capability probes and a daemon-proxy fallback on store-lock collisions. Works smoothly with strict clients like opencode and the Hermes gateway.',
+  new_2t:'Agent-Native Extraction',new_2d:'A dedicated DomainLens registry lets recall and anchoring lenses evolve independently, with caller-supplied entities and relations threaded through memorize.',
+  new_3t:'Answer vs Context',new_3d:'Recall now flags the top-ranked answer cluster as primary, distinct from same-scope supporting context — surface the answer first.',
   why_title:'Why HMG?',why_sub:'AI agents forget everything between sessions. HMG gives them durable, queryable, governable long-term memory.',
   why_f1t:'Memorize',why_f1d:'Decisions, root causes, constraints — persisted as typed graph atoms with polarity, epistemic state, and governance tags',
   why_f2t:'Recall',why_f2d:'Semantic + keyword hybrid retrieval, graph diffusion projection, branch-aware scope — the right context at the right time',
@@ -789,7 +809,7 @@ en: {
   wf3_title:'3. Correct Stale Memory — Fix Wrong Answers',wf3_desc:'When a memory is wrong or outdated, replace it. The old version is retained in correction history.',wf3_hist_title:'Correction History',
   wf4_title:'4. Govern Sensitive Memory — Control What Gets Remembered',wf4_desc:'Seal, quarantine, tombstone, or derive lessons. Governed memories are invisible in normal recall but retained for audit.',wf4_seal:'Hide content but keep metadata. Normal recall skips it.',wf4_tomb:'Mark as deleted. Payload destroyed or retained based on policy.',wf4_lesson:'Extract a safe lesson from sensitive content. Original sealed.',
   ts_title:'Troubleshooting',ts_sub:'Common issues and how to fix them.',ts_d_title:'Daemon Issues',ts_d1:'<strong>Port conflict:</strong> <code>hmg daemon stop && hmg daemon start --port 3001</code>',ts_d2:'<strong>Permission denied:</strong> Check <code>~/.local/share/hmg/</code> ownership',ts_d3:'<strong>Not starting:</strong> Run <code>hmg doctor</code> for diagnostics',ts_d4:'<strong>Stale lock:</strong> Remove lock file from store directory',
-  ts_m_title:'MCP Connection',ts_m1:'<strong>Tool not found:</strong> Verify <code>hmg --mcp</code> runs in terminal',ts_m2:'<strong>Timeout:</strong> Increase startup_timeout_sec in MCP config',ts_m3:'<strong>Can't connect:</strong> Check daemon is running: <code>hmg daemon status</code>',ts_m4:'<strong>Wrong edition:</strong> <code>hmg license status</code> shows active edition',
+  ts_m_title:'MCP Connection',ts_m1:'<strong>Tool not found:</strong> Verify <code>hmg --mcp</code> runs in terminal',ts_m2:'<strong>Timeout:</strong> Increase startup_timeout_sec in MCP config',ts_m3:'<strong>Can\'t connect:</strong> Check daemon is running: <code>hmg daemon status</code>',ts_m4:'<strong>Wrong edition:</strong> <code>hmg license status</code> shows active edition',
   ts_l_title:'License & Edition',ts_l1:'<strong>Apply license:</strong> <code>hmg license apply &lt;key&gt;</code>',ts_l2:'<strong>Check status:</strong> <code>hmg license status</code>',ts_l3:'<strong>Store location:</strong> <code>~/.local/share/hmg/stores/</code>',
   ts_h_title:'hmg doctor',ts_h_desc:'Run <code>hmg doctor</code> to check: edition, store path, daemon, MCP readiness, agent adapters, and disk usage.',
 },
@@ -800,6 +820,11 @@ en: {
   hero_subtitle:'Holographic Memory Graph — AI Agent 的长期记忆内核。<br>存储决策、追溯修正、治理知识。一个调用，完整上下文。',
   hero_cta1:'5 分钟上手 →',hero_cta2:'官方网站',copy:'复制',
   stat_tools:'MCP 工具',stat_atoms:'免费原子',stat_platforms:'平台',stat_langs:'语言',
+  nav_new:'最新动态',
+  new_title:'v1.6 最新动态',new_sub:'跨客户端可靠性、Agent 原生抽取，以及将「答案」与「支撑上下文」分离的召回。',
+  new_1t:'跨客户端可靠性',new_1d:'符合规范的 MCP ping 与能力探测，加存储锁冲突时的守护进程代理回退。与 opencode 等严格客户端和 Hermes 网关顺畅协作。',
+  new_2t:'Agent 原生抽取',new_2d:'独立的 DomainLens 注册表让召回与锚定透镜独立演进，调用方提供的实体与关系贯穿 memorize 流程。',
+  new_3t:'答案 vs 上下文',new_3d:'召回现在会把得分最高的答案簇标记为 primary，与同作用域的支撑上下文区分——优先呈现答案。',
   why_title:'为什么需要 HMG？',why_sub:'AI Agent 每次重启都会忘记一切。HMG 让 Agent 拥有持久的、可查询的、可治理的长期记忆。',
   why_f1t:'存储 (Memorize)',why_f1d:'决策、根因、约束——以类型化图谱原子持久化，带极性、认知状态和治理标记',
   why_f2t:'回忆 (Recall)',why_f2d:'语义+关键词混合检索，图谱扩散投影，分支感知范围——在正确时间给出正确上下文',
@@ -847,6 +872,11 @@ en: {
   hero_subtitle:'Holographic Memory Graph — AI Agent 的長期記憶核心。<br>儲存決策、追溯修正、治理知識。一個呼叫，完整上下文。',
   hero_cta1:'5 分鐘上手 →',hero_cta2:'官方網站',copy:'複製',
   stat_tools:'MCP 工具',stat_atoms:'免費原子',stat_platforms:'平台',stat_langs:'語言',
+  nav_new:'最新動態',
+  new_title:'v1.6 最新動態',new_sub:'跨用戶端可靠性、Agent 原生擷取，以及將「答案」與「支撐上下文」分離的召回。',
+  new_1t:'跨用戶端可靠性',new_1d:'符合規範的 MCP ping 與能力探測，加儲存鎖衝突時的常駐程式代理回退。與 opencode 等嚴格用戶端和 Hermes 閘道順暢協作。',
+  new_2t:'Agent 原生擷取',new_2d:'獨立的 DomainLens 登錄讓召回與錨定透鏡獨立演進，呼叫端提供的實體與關係貫穿 memorize 流程。',
+  new_3t:'答案 vs 上下文',new_3d:'召回現在會把得分最高的答案叢集標記為 primary，與同作用域的支撐上下文區分——優先呈現答案。',
   why_title:'為什麼需要 HMG？',why_sub:'AI Agent 每次重啟都會忘記一切。HMG 讓 Agent 擁有持久的、可查詢的、可治理的長期記憶。',
   why_f1t:'儲存 (Memorize)',why_f1d:'決策、根因、約束——以類型化圖譜原子持久化，帶極性、認知狀態和治理標記',
   why_f2t:'回憶 (Recall)',why_f2d:'語義+關鍵詞混合檢索，圖譜擴散投影，分支感知範圍——在正確時間給出正確上下文',
@@ -885,6 +915,11 @@ ja: {
   hero_subtitle:'Holographic Memory Graph — AI エージェントの長期メモリカーネル。<br>意思決定の保存、修正の追跡、知識のガバナンス。1回のコールで完全なコンテキスト。',
   hero_cta1:'5分で始める →',hero_cta2:'公式サイト',copy:'コピー',
   stat_tools:'MCPツール',stat_atoms:'無料アトム',stat_platforms:'プラットフォーム',stat_langs:'言語',
+  nav_new:'新着情報',
+  new_title:'v1.6 の新機能',new_sub:'クロスクライアントの信頼性、エージェントネイティブな抽出、そして「答え」と「補足コンテキスト」を分離するリコール。',
+  new_1t:'クロスクライアント信頼性',new_1d:'仕様準拠の MCP ping と機能プローブ、ストアロック衝突時のデーモンプロキシフォールバック。opencode のような厳格なクライアントや Hermes ゲートウェイと円滑に動作。',
+  new_2t:'エージェントネイティブ抽出',new_2d:'専用の DomainLens レジストリにより、リコールとアンカリングのレンズを独立して進化させ、呼び出し元提供のエンティティとリレーションを memorize に通します。',
+  new_3t:'答え vs コンテキスト',new_3d:'リコールは最もスコアの高い回答クラスタを primary としてフラグし、同スコープの補足コンテキストと区別——答えを先に提示します。',
   why_title:'なぜ HMG が必要？',why_sub:'AIエージェントはセッション間で全てを忘れます。HMGは永続的で照会可能、ガバナンス可能な長期メモリを提供します。',
   why_f1t:'記憶 (Memorize)',why_f1d:'意思決定、根本原因、制約 — 極性、認識状態、ガバナンスタグ付きの型付きグラフ原子として永続化',
   why_f2t:'想起 (Recall)',why_f2d:'セマンティック+キーワードハイブリッド検索、グラフ拡散投影、ブランチ認識スコープ — 正しい時に正しいコンテキスト',
@@ -924,6 +959,11 @@ ko: {
   hero_subtitle:'Holographic Memory Graph — AI 에이전트의 장기 메모리 커널.<br>의사결정 저장, 수정 추적, 지식 거버넌스. 한 번의 호출로 완전한 컨텍스트.',
   hero_cta1:'5분 시작 →',hero_cta2:'공식 웹사이트',copy:'복사',
   stat_tools:'MCP 도구',stat_atoms:'무료 원자',stat_platforms:'플랫폼',stat_langs:'언어',
+  nav_new:'새소식',
+  new_title:'v1.6 새 기능',new_sub:'크로스 클라이언트 신뢰성, 에이전트 네이티브 추출, 그리고 "답"과 "지원 컨텍스트"를 분리하는 리콜.',
+  new_1t:'크로스 클라이언트 신뢰성',new_1d:'사양 준수 MCP ping과 기능 프로브, 스토어 잠금 충돌 시 데몬 프록시 폴백. opencode 같은 엄격한 클라이언트와 Hermes 게이트웨이에서 원활하게 동작.',
+  new_2t:'에이전트 네이티브 추출',new_2d:'전용 DomainLens 레지스트리로 리콜과 앵커링 렌즈를 독립적으로 발전시키고, 호출자 제공 엔티티와 관계를 memorize에 전달.',
+  new_3t:'답 vs 컨텍스트',new_3d:'리콜이 가장 점수가 높은 답 클러스터를 primary로 표시해 같은 스코프의 지원 컨텍스트와 구분——답을 먼저 보여줍니다.',
   why_title:'왜 HMG가 필요한가?',why_sub:'AI 에이전트는 세션 사이에 모든 것을 잊습니다. HMG는 지속 가능하고, 조회 가능하며, 거버넌스 가능한 장기 메모리를 제공합니다.',
   why_f1t:'저장 (Memorize)',why_f1d:'의사결정, 근본 원인, 제약 — 극성, 인식 상태, 거버넌스 태그가 있는 타입화된 그래프 원자로 영속화',
   why_f2t:'회상 (Recall)',why_f2d:'시맨틱+키워드 하이브리드 검색, 그래프 확산 프로젝션, 브랜치 인식 범위 — 올바른 시간에 올바른 컨텍스트',
@@ -954,7 +994,7 @@ ko: {
   foot_d1:'빠른 시작',foot_d2:'개념',foot_d3:'API 참조',foot_d4:'FAQ',
   foot_contrib:'기여',foot_sec:'보안',foot_tm:'상표',
   loop_title:'메모리 루프',loop_sub:'모든 세션이 다음 세션의 컨텍스트가 됩니다.',loop_flow_title:'메모리 라이프사이클',wf_title:'핵심 워크플로',wf_sub:'4개의 워크플로.',wf1_title:'1. 태스크 브리프',wf1_desc:'이전 세션의 결정, 위험, 제약을 검색합니다.',wf1_out_title:'출력',wf2_title:'2. 결정 추적',wf2_desc:'결정과 이유를 저장합니다.',wf3_title:'3. 오래된 메모리 수정',wf3_desc:'메모리가 잘못되었을 때 교체합니다.',wf3_hist_title:'수정 이력',wf4_title:'4. 민감 메모리 거버넌스',wf4_desc:'봉인, 격리, 폐기 또는 교훈 도출.',wf4_seal:'콘텐츠 숨김.',wf4_tomb:'삭제로 표시.',wf4_lesson:'안전한 교훈 추출.',ts_title:'문제 해결',ts_sub:'일반적인 문제와 해결 방법.',ts_d_title:'데몬 문제',ts_d1:'포트 충돌',ts_d2:'권한 거부',ts_d3:'시작 안됨',ts_d4:'잠금 파일 잔류',ts_m_title:'MCP 연결',ts_m1:'도구 없음',ts_m2:'타임아웃',ts_m3:'연결 불가',ts_m4:'에디션 불일치',ts_l_title:'라이선스',ts_l1:'라이선스 적용',ts_l2:'상태 확인',ts_l3:'스토어 위치',ts_h_title:'hmg doctor',ts_h_desc:'hmg doctor로 시스템 상태 확인.',
-  loop_title:'메모리 루프',loop_sub:'모든 세션이 다음 세션의 컨텍스트가 됩니다.',loop_flow_title:'메모리 라이프사이클',wf_title:'핵심 워크플로',wf_sub:'HMG가 벡터 DB가 아닌 이유를 보여주는 4개의 워크플로.',wf1_title:'1. 태스크 브리프',wf1_desc:'코드를 작성하기 전에 이전 세션의 결정, 위험, 제약을 검색합니다.',wf1_out_title:'출력 (compact YAML)',wf2_title:'2. 결정 추적',wf2_desc:'결정과 이유를 저장합니다.',wf3_title:'3. 오래된 메모리 수정',wf3_desc:'메모리가 잘못되었을 때 교체합니다.',wf3_hist_title:'수정 이력',wf4_title:'4. 민감 메모리 거버넌스',wf4_desc:'봉인, 격리, 폐기 또는 교훈 도출.',wf4_seal:'콘텐츠 숨김, 메타데이터 유지.',wf4_tomb:'삭제로 표시.',wf4_lesson:'민감 콘텐츠에서 안전한 교훈 추출.',ts_title:'문제 해결',ts_sub:'일반적인 문제와 해결 방법.',ts_d_title:'데몬 문제',ts_d1:'포트 충돌',ts_d2:'권한 거부',ts_d3:'시작 안됨',ts_d4:'잠금 파일 잔류',ts_m_title:'MCP 연결',ts_m1:'도구 없음',ts_m2:'타임아웃',ts_m3:'연결 불가',ts_m4:'에디션 불일치',ts_l_title:'라이선스 foot_tm:'상표', 에디션',ts_l1:'라이선스 적용',ts_l2:'상태 확인',ts_l3:'스토어 위치',ts_h_title:'hmg doctor',ts_h_desc:'hmg doctor로 시스템 상태 확인.',
+  loop_title:'메모리 루프',loop_sub:'모든 세션이 다음 세션의 컨텍스트가 됩니다.',loop_flow_title:'메모리 라이프사이클',wf_title:'핵심 워크플로',wf_sub:'HMG가 벡터 DB가 아닌 이유를 보여주는 4개의 워크플로.',wf1_title:'1. 태스크 브리프',wf1_desc:'코드를 작성하기 전에 이전 세션의 결정, 위험, 제약을 검색합니다.',wf1_out_title:'출력 (compact YAML)',wf2_title:'2. 결정 추적',wf2_desc:'결정과 이유를 저장합니다.',wf3_title:'3. 오래된 메모리 수정',wf3_desc:'메모리가 잘못되었을 때 교체합니다.',wf3_hist_title:'수정 이력',wf4_title:'4. 민감 메모리 거버넌스',wf4_desc:'봉인, 격리, 폐기 또는 교훈 도출.',wf4_seal:'콘텐츠 숨김, 메타데이터 유지.',wf4_tomb:'삭제로 표시.',wf4_lesson:'민감 콘텐츠에서 안전한 교훈 추출.',ts_title:'문제 해결',ts_sub:'일반적인 문제와 해결 방법.',ts_d_title:'데몬 문제',ts_d1:'포트 충돌',ts_d2:'권한 거부',ts_d3:'시작 안됨',ts_d4:'잠금 파일 잔류',ts_m_title:'MCP 연결',ts_m1:'도구 없음',ts_m2:'타임아웃',ts_m3:'연결 불가',ts_m4:'에디션 불일치',ts_l_title:'라이선스 및 에디션',ts_l1:'라이선스 적용',ts_l2:'상태 확인',ts_l3:'스토어 위치',ts_h_title:'hmg doctor',ts_h_desc:'hmg doctor로 시스템 상태 확인.',
 },
 fr: {
   nav_quickstart:'Démarrage rapide',nav_editions:'Éditions',nav_loop:'Boucle mémoire',nav_workflows:'Workflows',nav_ts:'Dépannage',nav_docs:'Docs',
@@ -963,6 +1003,11 @@ fr: {
   hero_subtitle:'Holographic Memory Graph — un noyau de mémoire à long terme pour les agents IA.<br>Stockez les décisions, tracez les corrections, gouvernez les connaissances.',
   hero_cta1:'Commencer →',hero_cta2:'Site officiel',copy:'Copier',
   stat_tools:'Outils MCP',stat_atoms:'Atomes gratuits',stat_platforms:'Plateformes',stat_langs:'Langues',
+  nav_new:'Nouveautés',
+  new_title:'Nouveautés v1.6',new_sub:'Fiabilité multi-clients, extraction agent-native, et un rappel qui sépare la réponse du contexte de support.',
+  new_1t:'Fiabilité multi-clients',new_1d:'MCP ping conforme à la spécification et probes de capacité, plus repli sur proxy daemon lors de collisions de verrou du store. Fonctionne avec les clients stricts comme opencode et la passerelle Hermes.',
+  new_2t:'Extraction agent-native',new_2d:'Un registre DomainLens dédié permet aux lentilles de rappel et d\'ancrage d\'évoluer indépendamment, avec entités et relations fournies par l\'appelant injectées dans memorize.',
+  new_3t:'Réponse vs contexte',new_3d:'Le rappel marque désormais le cluster de réponse le mieux classé comme primary, distinct du contexte de support de même portée — affichez la réponse en premier.',
   why_title:'Pourquoi HMG ?',why_sub:'Les agents IA oublient tout entre les sessions. HMG leur donne une mémoire à long terme durable, interrogeable et gouvernable.',
   why_f1t:'Mémoriser',why_f1d:'Décisions, causes racines, contraintes — persistées comme atomes de graphe typés avec polarité, état épistémique et tags de gouvernance',
   why_f2t:'Rappeler',why_f2d:'Récupération hybride sémantique + mots-clés, projection de diffusion de graphe, portée sensible aux branches',
@@ -992,7 +1037,7 @@ fr: {
   foot_f:'Fonctionnalités',foot_e:'Éditions',foot_w:'Site officiel',
   foot_d1:'Démarrage rapide',foot_d2:'Concepts',foot_d3:'Référence API',foot_d4:'FAQ',
   foot_contrib:'Contribuer',foot_sec:'Sécurité',foot_tm:'Marque',
-  loop_title:'Boucle mémoire',loop_sub:'Chaque session devient le contexte de la suivante.',loop_flow_title:'Cycle de vie mémoire',wf_title:'Workflows principaux',wf_sub:'Quatre workflows qui montrent pourquoi HMG n'est pas une base vectorielle.',wf1_title:'1. Brief de tâche',wf1_desc:'Avant d'écrire du code, l'agent récupère les décisions précédentes.',wf1_out_title:'Sortie',wf2_title:'2. Trace de décision',wf2_desc:'Stockez les décisions avec leurs raisons.',wf3_title:'3. Corriger la mémoire obsolète',wf3_desc:'Remplacez les mémoires incorrectes. L'historique est conservé.',wf3_hist_title:'Historique de correction',wf4_title:'4. Gouverner la mémoire sensible',wf4_desc:'Scellez, mettez en quarantaine, ou extrayez des leçons.',wf4_seal:'Masquer le contenu, garder les métadonnées.',wf4_tomb:'Marquer comme supprimé.',wf4_lesson:'Extraire une leçon sûre.',ts_title:'Dépannage',ts_sub:'Problèmes courants et solutions.',ts_d_title:'Problèmes de daemon',ts_d1:'Conflit de port',ts_d2:'Permission refusée',ts_d3:'Ne démarre pas',ts_d4:'Fichier verrou résiduel',ts_m_title:'Connexion MCP',ts_m1:'Outil introuvable',ts_m2:'Délai expiré',ts_m3:'Connexion impossible',ts_m4:'Mauvaise édition',ts_l_title:'Licence',ts_l1:'Appliquer la licence',ts_l2:'Vérifier le statut',ts_l3:'Emplacement du stockage',ts_h_title:'hmg doctor',ts_h_desc:'Exécutez hmg doctor pour diagnostiquer.',
+  loop_title:'Boucle mémoire',loop_sub:'Chaque session devient le contexte de la suivante.',loop_flow_title:'Cycle de vie mémoire',wf_title:'Workflows principaux',wf_sub:'Quatre workflows qui montrent pourquoi HMG n\'est pas une base vectorielle.',wf1_title:'1. Brief de tâche',wf1_desc:'Avant d\'écrire du code, l\'agent récupère les décisions précédentes.',wf1_out_title:'Sortie',wf2_title:'2. Trace de décision',wf2_desc:'Stockez les décisions avec leurs raisons.',wf3_title:'3. Corriger la mémoire obsolète',wf3_desc:'Remplacez les mémoires incorrectes. L\'historique est conservé.',wf3_hist_title:'Historique de correction',wf4_title:'4. Gouverner la mémoire sensible',wf4_desc:'Scellez, mettez en quarantaine, ou extrayez des leçons.',wf4_seal:'Masquer le contenu, garder les métadonnées.',wf4_tomb:'Marquer comme supprimé.',wf4_lesson:'Extraire une leçon sûre.',ts_title:'Dépannage',ts_sub:'Problèmes courants et solutions.',ts_d_title:'Problèmes de daemon',ts_d1:'Conflit de port',ts_d2:'Permission refusée',ts_d3:'Ne démarre pas',ts_d4:'Fichier verrou résiduel',ts_m_title:'Connexion MCP',ts_m1:'Outil introuvable',ts_m2:'Délai expiré',ts_m3:'Connexion impossible',ts_m4:'Mauvaise édition',ts_l_title:'Licence',ts_l1:'Appliquer la licence',ts_l2:'Vérifier le statut',ts_l3:'Emplacement du stockage',ts_h_title:'hmg doctor',ts_h_desc:'Exécutez hmg doctor pour diagnostiquer.',
 },
 de: {
   nav_quickstart:'Schnellstart',nav_editions:'Editionen',nav_loop:'Speicher-Schleife',nav_workflows:'Workflows',nav_ts:'Fehlerbehebung',nav_docs:'Doku',
@@ -1001,6 +1046,11 @@ de: {
   hero_subtitle:'Holographic Memory Graph — ein Langzeit-Speicher-Kernel für KI-Agenten.<br>Entscheidungen speichern, Korrekturen verfolgen, Wissen steuern.',
   hero_cta1:'Loslegen →',hero_cta2:'Offizielle Website',copy:'Kopieren',
   stat_tools:'MCP-Tools',stat_atoms:'Kostenlose Atome',stat_platforms:'Plattformen',stat_langs:'Sprachen',
+  nav_new:'Neuigkeiten',
+  new_title:'Neu in v1.6',new_sub:'Clientübergreifende Zuverlässigkeit, agent-native Extraktion und ein Recall, der Antwort von Stützkontext trennt.',
+  new_1t:'Clientübergreifende Zuverlässigkeit',new_1d:'Spezifikationsgerechtes MCP-Ping + Capability-Probes und Daemon-Proxy-Fallback bei Store-Lock-Kollisionen. Funktioniert reibungslos mit strengen Clients wie opencode und dem Hermes-Gateway.',
+  new_2t:'Agent-native Extraktion',new_2d:'Eine eigene DomainLens-Registry lässt Recall- und Anker-Linsen unabhängig evolvieren; vom Aufrufer gelieferte Entitäten und Relationen durchlaufen memorize.',
+  new_3t:'Antwort vs Kontext',new_3d:'Recall markiert nun das am höchsten bewertete Antwort-Cluster als primary, getrennt vom gleichbereichigen Stützkontext — Antwort zuerst anzeigen.',
   why_title:'Warum HMG?',why_sub:'KI-Agenten vergessen alles zwischen Sessions. HMG gibt ihnen dauerhaften, abfragbaren, steuerbaren Langzeitspeicher.',
   why_f1t:'Merken',why_f1d:'Entscheidungen, Ursachen, Einschränkungen — als typisierte Graph-Atome mit Polarität, epistemischem Zustand und Governance-Tags',
   why_f2t:'Abrufen',why_f2d:'Semantische + Keyword-Hybrid-Retrieval, Graph-Diffusionsprojektion, Branch-fähige Scope',
@@ -1039,6 +1089,11 @@ es: {
   hero_subtitle:'Holographic Memory Graph — un núcleo de memoria a largo plazo para agentes de IA.<br>Almacena decisiones, rastrea correcciones, gobierna el conocimiento.',
   hero_cta1:'Empezar →',hero_cta2:'Sitio oficial',copy:'Copiar',
   stat_tools:'Herramientas MCP',stat_atoms:'Átomos gratis',stat_platforms:'Plataformas',stat_langs:'Idiomas',
+  nav_new:'Novedades',
+  new_title:'Novedades v1.6',new_sub:'Fiabilidad entre clientes, extracción agent-native y un recall que separa la respuesta del contexto de apoyo.',
+  new_1t:'Fiabilidad entre clientes',new_1d:'MCP ping conforme a la especificación y sondeos de capacidades, más respaldo al proxy del daemon en colisiones de bloqueo del store. Funciona con clientes estrictos como opencode y la pasarela Hermes.',
+  new_2t:'Extracción agent-native',new_2d:'Un registro DomainLens dedicado permite que las lentes de recall y anclado evolucionen de forma independiente, con entidades y relaciones del llamante pasadas por memorize.',
+  new_3t:'Respuesta vs contexto',new_3d:'Recall ahora marca el clúster de respuesta mejor clasificado como primary, distinto del contexto de apoyo del mismo ámbito — muestra la respuesta primero.',
   why_title:'¿Por qué HMG?',why_sub:'Los agentes de IA lo olvidan todo entre sesiones. HMG les da memoria a largo plazo duradera, consultable y gobernable.',
   why_f1t:'Memorizar',why_f1d:'Decisiones, causas raíz, restricciones — persistidas como átomos de grafo tipados con polaridad, estado epistémico y tags de gobernanza',
   why_f2t:'Recuperar',why_f2d:'Recuperación híbrida semántica + palabras clave, proyección de difusión de grafo, alcance por rama',
@@ -1078,6 +1133,11 @@ es: {
   hero_subtitle:'Holographic Memory Graph — um kernel de memória de longo prazo para agentes de IA.<br>Armazene decisões, rastreie correções, governe o conhecimento.',
   hero_cta1:'Começar →',hero_cta2:'Site oficial',copy:'Copiar',
   stat_tools:'Ferramentas MCP',stat_atoms:'Átomos grátis',stat_platforms:'Plataformas',stat_langs:'Idiomas',
+  nav_new:'Novidades',
+  new_title:'Novidades v1.6',new_sub:'Confiabilidade entre clientes, extração agent-native e um recall que separa a resposta do contexto de apoio.',
+  new_1t:'Confiabilidade entre clientes',new_1d:'MCP ping em conformidade com a especificação e probes de capacidade, mais fallback para proxy do daemon em colisões de lock do store. Funciona com clientes estritos como opencode e o gateway Hermes.',
+  new_2t:'Extração agent-native',new_2d:'Um registro DomainLens dedicado permite que as lentes de recall e ancoragem evoluam independentemente, com entidades e relações fornecidas pelo chamador passadas por memorize.',
+  new_3t:'Resposta vs contexto',new_3d:'Recall agora marca o cluster de resposta mais bem classificado como primary, distinto do contexto de apoio do mesmo escopo — mostre a resposta primeiro.',
   why_title:'Por que HMG?',why_sub:'Agentes de IA esquecem tudo entre sessões. HMG dá a eles memória de longo prazo durável, consultável e governável.',
   why_f1t:'Memorizar',why_f1d:'Decisões, causas raiz, restrições — persistidas como átomos de grafo tipados com polaridade, estado epistêmico e tags de governança',
   why_f2t:'Recuperar',why_f2d:'Recuperação híbrida semântica + palavras-chave, projeção de difusão de grafo, escopo por branch',
@@ -1117,6 +1177,11 @@ ru: {
   hero_subtitle:'Holographic Memory Graph — ядро долговременной памяти для ИИ-агентов.<br>Храните решения, отслеживайте исправления, управляйте знаниями.',
   hero_cta1:'Начать →',hero_cta2:'Официальный сайт',copy:'Копировать',
   stat_tools:'Инструментов MCP',stat_atoms:'Бесплатных атомов',stat_platforms:'Платформы',stat_langs:'Языки',
+  nav_new:'Новое',
+  new_title:'Новое в v1.6',new_sub:'Надёжность между клиентами, агент-нативное извлечение и recall, разделяющий ответ и поддерживающий контекст.',
+  new_1t:'Надёжность между клиентами',new_1d:'Соответствующий спецификации MCP ping и пробы возможностей, плюс откат к прокси демона при коллизиях блокировки хранилища. Плавно работает со строгими клиентами вроде opencode и шлюзом Hermes.',
+  new_2t:'Агент-нативное извлечение',new_2d:'Отдельный реестр DomainLens позволяет линзам recall и привязки развиваться независимо, а сущности и отношения от вызывающего проходят через memorize.',
+  new_3t:'Ответ vs контекст',new_3d:'Recall теперь помечает наиболее релевантный кластер ответов как primary, отдельно от поддерживающего контекста той же области — ответ выводится первым.',
   why_title:'Зачем HMG?',why_sub:'ИИ-агенты забывают всё между сессиями. HMG даёт им долговременную, запрашиваемую, управляемую память.',
   why_f1t:'Запомнить',why_f1d:'Решения, корневые причины, ограничения — сохраняются как типизированные графовые атомы с полярностью, эпистемическим состоянием и тегами управления',
   why_f2t:'Вспомнить',why_f2d:'Гибридный семантический + ключевой поиск, проекция диффузии графа, область видимости по веткам',

@@ -6,6 +6,17 @@ For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG/re
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.6.1] — 2026-06-22
+
+Windows installer/package hotfix.
+
+### Fixed
+
+- Windows release packages are published again with the daemon named-pipe
+  readiness fix included in the `v1.6.1` binary release.
+- Protocol, SDKs, Pi agent, public manifest, badges, and package metadata now
+  track `1.6.1`.
+
 ## [1.4.13] — 2026-06-18
 
 Public surfaces (protocol, SDKs, Pi agent) now track `1.4.13` for consistency with the
