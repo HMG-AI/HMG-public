@@ -7,7 +7,7 @@ reinstallation or data migration — you enter a license key and restart.
 
 | Feature | Community | Developer | Enterprise |
 |---|---|---|---|
-| Price | Free | $99/yr or $19/mo | Annual contract |
+| Price | Free | $92/yr or $9/mo | Annual contract |
 | Memory storage | ✅ | ✅ | ✅ |
 | Memory recall | One-Shot Recall (P1-P9) | **One-Shot Recall** | One-Shot + Domain Packs |
 | Semantic (vector) search | ✅ | ✅ | ✅ |

@@ -138,7 +138,7 @@ See [CHANGELOG.md](CHANGELOG.md) and [Releases](https://github.com/HMG-AI/HMG-pu
 ## Editions
 
 <!-- MANIFEST:START -->
-| | Community (Free) | Developer ($19/mo) | Enterprise |
+| | Community (Free) | Developer ($9/mo) | Enterprise |
 |---|---|---|---|
 | Memory atoms | 100,000 | Unlimited | Unlimited |
 | Semantic search | ✓ | ✓ | ✓ |
