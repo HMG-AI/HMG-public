@@ -6,6 +6,31 @@ For binary release notes, see [GitHub Releases](https://github.com/HMG-AI/HMG/re
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.6.7] — 2026-06-28
+
+Installer reliability and version-tracking release for the Community Edition
+protocol, SDKs, and installer.
+
+### Added
+
+- The `install.sh` installer now resolves the latest version by reading
+  `version.json` from the GitHub release and the official mirrors before falling
+  back to the GitHub Releases API, which keeps installs working under API rate
+  limits and behind mirrors.
+
+### Fixed
+
+- `install.sh` places downloaded binaries idempotently: a binary already located
+  at its target path is no longer `mv`'ed onto itself, which previously could
+  fail with "same file".
+- `install.sh --dry-run` no longer attempts PATH persistence or `hmg setup`, so
+  a dry run is now side-effect free.
+
+### Changed
+
+- Protocol, SDKs (Python + TypeScript), Pi agent, public manifest, badges, and
+  package metadata now track `1.6.7`.
+
 ## [1.6.6] — 2026-06-22
 
 Windows package publication hotfix.

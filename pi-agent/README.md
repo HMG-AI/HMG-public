@@ -1,7 +1,7 @@
 # @hmg_ai/pi-agent
 
 <p>
-  <img src="https://img.shields.io/badge/version-1.6.6-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-1.6.7-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/license-MIT%20%7C%20Apache--2.0-green.svg" alt="License">
 </p>
 

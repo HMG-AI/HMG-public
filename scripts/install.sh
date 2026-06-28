@@ -16,6 +16,7 @@ set -eu
 
 HMG_REPO="HMG-AI/HMG-public"
 HMG_GITHUB="https://github.com/${HMG_REPO}"
+RELEASE_BASE="${HMG_GITHUB}/releases/latest/download"
 # Official mirrors tried after GitHub. hmg1ai.com first (international CDN),
 # hmg2ai.com last (domestic fallback). See ADR 2026-06-13 (international site
 # download service). Each mirror that returns HTML instead of a tarball is
@@ -74,15 +75,33 @@ target_triple() {
 }
 
 # ── Resolve version ────────────────────────────────────────────────────────
+extract_json_version() {
+  sed -n 's/.*"\(tag\|version\)"[[:space:]]*:[[:space:]]*"v\{0,1\}\([^"]*\)".*/\2/p' | head -1
+}
+
+resolve_latest_version() {
+  for base in "$RELEASE_BASE" $MIRROR_BASES; do
+    latest="$(curl -fsSL "$base/version.json" 2>/dev/null | extract_json_version)" || true
+    if [ -n "$latest" ]; then
+      printf '%s\n' "$latest"
+      return 0
+    fi
+  done
+
+  curl -fsSL "https://api.github.com/repos/${HMG_REPO}/releases/latest" 2>/dev/null \
+    | grep '"tag_name"' \
+    | head -1 \
+    | sed 's/.*"v\([^"]*\)".*/\1/'
+}
+
 resolve_version() {
   if [ -n "$REQUESTED_VERSION" ]; then
     VERSION="$REQUESTED_VERSION"
   else
     log "Detecting latest version..."
-    latest=$(curl -fsSL "https://api.github.com/repos/${HMG_REPO}/releases/latest" \
-      2>/dev/null | grep '"tag_name"' | head -1 | sed 's/.*"v\([^"]*\)".*/\1/') || true
+    latest="$(resolve_latest_version)" || true
     if [ -z "$latest" ]; then
-      err "Cannot detect latest version. Specify explicitly: sh -s -- v0.9.2"
+      err "Cannot detect latest version. Specify explicitly: sh -s -- v1.6.6"
     fi
     VERSION="$latest"
   fi
@@ -114,7 +133,9 @@ install_from_url() {
       log "  Package missing binary: $bin"
       return 1
     fi
-    mv "$found" "$pkg_dir/$bin"
+    if [ "$found" != "$pkg_dir/$bin" ]; then
+      mv "$found" "$pkg_dir/$bin"
+    fi
   done
 
   if [ "$DRY_RUN" = true ]; then
@@ -208,6 +229,12 @@ persist_path_if_needed() {
 main() {
   resolve_version
   do_install
+
+  if [ "$DRY_RUN" = true ]; then
+    log ""
+    log "(dry-run) Skipping PATH persistence and hmg setup."
+    return 0
+  fi
 
   # Ensure hmg is on PATH for this script and the user
   case ":${PATH}:" in
