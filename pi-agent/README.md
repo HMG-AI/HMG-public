@@ -12,7 +12,7 @@ If npm publication is temporarily delayed by npm account policy, the matching re
 ## Install
 
 ```bash
-pi install npm:@hmg_ai/pi-agent@1.6.6
+pi install npm:@hmg_ai/pi-agent@1.6.7
 ```
 
 HMG's installer and `hmg init -g` use the same package route when pi is detected.

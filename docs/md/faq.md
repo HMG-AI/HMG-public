@@ -102,10 +102,10 @@ The old memory is NOT deleted — it's linked via a `Supersedes` edge. You can a
 
 ### What happens when I reach the atom limit?
 
-Community Edition supports 50,000 memory atoms. This is approximately:
-- **1 year** of medium use (coding agent working daily)
-- **6-8 months** of heavy use (active team with multiple agents)
-- **2.7 years** of light use (occasional use)
+Community Edition supports 100,000 memory atoms. This is approximately:
+- **2 years** of medium use (coding agent working daily)
+- **12-16 months** of heavy use (active team with multiple agents)
+- **5+ years** of light use (occasional use)
 
 When approaching the limit, HMG shows a warning. At the limit, new memories replace lowest-certainty existing ones (intelligent rotation, no data loss).
 
@@ -159,9 +159,9 @@ Local filesystem, user-only permissions. You own your data completely.
 ### Is Community Edition really free?
 
 Yes. Free for personal, academic, and commercial use within the volume limits:
-- Up to 5 instances per organization
+- Up to 3 instances per organization
 - Up to 5 agents per instance
-- Up to 50,000 memory atoms
+- Up to 100,000 memory atoms
 
 No time limits, no feature removal, no ads.
 

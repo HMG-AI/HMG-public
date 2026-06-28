@@ -35,7 +35,7 @@ Conectar agente: `hmg init --agent cursor|codex|pi|windsurf|aider`
 |---|---|---|---|
 | Memorizar y recuperar | ✅ | ✅ | ✅ |
 | Corrección y gobernanza | ✅ | ✅ | ✅ |
-| Átomos | 50.000 | Ilimitados | Ilimitados |
+| Átomos | 100.000 | Ilimitados | Ilimitados |
 | Búsqueda semántica | ❌ | ✅ | ✅ |
 | One-Shot Recall | ✅ | ✅ | ✅ |
 | SSO / RBAC | ❌ | ❌ | ✅ |

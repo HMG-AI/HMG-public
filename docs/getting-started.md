@@ -32,7 +32,7 @@ curl -fsSL https://hmg1ai.com/releases/latest/download/install.sh | sh
 
 ```bash
 hmg --version
-# hmg 1.2.0-community
+# hmg 1.6.7-community
 ```
 
 
@@ -150,7 +150,7 @@ hmg license status
 | Automated consolidation | ❌ Developer/Enterprise |
 | Domain Packs | ❌ Developer/Enterprise |
 
-**Quantitative limits** drive upgrading: 50,000 atoms, 5 agents, 5 instances.
+**Quantitative limits** drive upgrading: 100,000 atoms, 5 agents, 3 instances.
 No features are removed — Community Edition is genuinely useful.
 
 ## Next Steps

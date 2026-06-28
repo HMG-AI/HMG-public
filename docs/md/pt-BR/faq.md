@@ -18,7 +18,7 @@ curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install
 ## Edições
 | | Community | Developer | Enterprise |
 |---|---|---|---|
-| Átomos | 50.000 | Ilimitados | Ilimitados |
+| Átomos | 100.000 | Ilimitados | Ilimitados |
 | Busca semântica | ❌ | ✅ | ✅ |
 | One-Shot Recall | ✅ | ✅ | ✅ |
 | SSO/RBAC | ❌ | ❌ | ✅ |

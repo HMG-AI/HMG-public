@@ -16,8 +16,8 @@ reinstallation or data migration — you enter a license key and restart.
 | Agent integration | ✅ | ✅ | ✅ |
 | Consolidation | Manual only | Automated | Automated + policies |
 | Domain Packs | None | software-engineering | + customer-service, compliance |
-| Max atoms | 50,000 | Unlimited | Unlimited |
-| Max instances | 5 | Unlimited | Unlimited |
+| Max atoms | 100,000 | Unlimited | Unlimited |
+| Max instances | 3 | Unlimited | Unlimited |
 | SSO / RBAC | ❌ | ❌ | ✅ SAML/OIDC/SCIM |
 | Audit export | ❌ | Basic | Full + retention + legal hold |
 | Connectors | ❌ | ❌ | GitHub/GitLab/Jira/Slack/Feishu |
@@ -51,7 +51,7 @@ hmg daemon restart
 
 ```bash
 hmg --version
-# hmg 0.9.2-developer
+# hmg 1.6.7-developer
 
 hmg doctor
 # ✓ License: Developer (valid)

@@ -45,7 +45,7 @@ Schutz sensibler Erinnerungen: Quarantäne, Versiegelung, Tombstone, Lektion abl
 |---|---|---|---|
 | Speichern & Abrufen | ✅ | ✅ | ✅ |
 | Korrektur & Governance | ✅ | ✅ | ✅ |
-| Atomanzahl | 50.000 | Unbegrenzt | Unbegrenzt |
+| Atomanzahl | 100.000 | Unbegrenzt | Unbegrenzt |
 | Semantische Suche | ❌ | ✅ | ✅ |
 | One-Shot Recall | ✅ | ✅ | ✅ |
 | SSO / RBAC | ❌ | ❌ | ✅ |
