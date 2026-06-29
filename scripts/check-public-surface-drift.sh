@@ -95,6 +95,7 @@ REPO_URL=$(json_val '.urls.repository')
 RELEASES_URL=$(json_val '.urls.releases')
 COMMUNITY_ATOMS=$(json_val '.editions.community.limits.atoms')
 DEVELOPER_PRICE_DISPLAY=$(json_val '.editions.developer.price_display')
+DEVELOPER_PRICE_TOKEN=$(printf '%s\n' "$DEVELOPER_PRICE_DISPLAY" | grep -oE '\$[0-9]+' | head -1 || true)
 DEPRECATED_URLS=$(json_val '.deprecated_urls[]' 2>/dev/null || echo "")
 
 echo "━━━ 1. Deprecated URL Check ━━━"
@@ -211,10 +212,15 @@ for f in "$README_FILE" "$DOCS_HTML"; do
     # Find all price patterns
     PRICES=$(grep -oP '\$\d+' "$f" 2>/dev/null | sort -u || true)
     for p in $PRICES; do
-      if [[ "$p" != "\$19" ]] && [[ "$p" != "\$0" ]]; then
-        # Check if it's the developer price
+      if [[ "$p" != "\$0" ]]; then
+        # Check if it's the developer price, allowing pages to render "$9" with
+        # the billing cadence in a separate translated string.
         if grep -q "${p}.*mo\|${p}.*月\|${p}.*month" "$f" 2>/dev/null; then
-          drift_error "$f shows Developer price $p, manifest says $DEVELOPER_PRICE_DISPLAY"
+          if [[ -n "$DEVELOPER_PRICE_TOKEN" && "$p" == "$DEVELOPER_PRICE_TOKEN" ]]; then
+            ok "$f Developer price matches manifest ($DEVELOPER_PRICE_DISPLAY)"
+          else
+            drift_error "$f shows Developer price $p, manifest says $DEVELOPER_PRICE_DISPLAY"
+          fi
         fi
       fi
     done

@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HMG — Agent Memory That Actually Works</title>
-  <meta name="description" content="Holographic Memory Graph — long-term memory kernel for AI coding agents. Store decisions, trace corrections, govern knowledge. Open protocol, free Community Edition.">
-  <meta property="og:title" content="HMG — Agent Memory That Actually Works">
+  <title>HMG — Long-Term Memory for Coding Agents</title>
+  <meta name="description" content="Holographic Memory Graph — local-first long-term memory kernel for coding agents. Branch-aware recall, correction history, governed knowledge, MCP and HTTP access.">
+  <meta property="og:title" content="HMG — Long-Term Memory for Coding Agents">
   <meta property="og:image" content="https://hmg-ai.github.io/HMG-public/screenshots/hero-dark.png">
   <meta property="og:image:width" content="2880">
   <meta property="og:image:height" content="1800">
-  <meta property="og:description" content="Long-term memory kernel for AI agents. Store decisions, trace corrections, govern knowledge. One call, complete context.">
+  <meta property="og:description" content="Local-first long-term memory for coding agents: branch-aware context, correction history, governed recall, and one-shot task briefs.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hmg-ai.github.io/HMG-public/">
   <meta name="twitter:card" content="summary_large_image">
@@ -26,28 +26,31 @@
   <link rel="alternate" hreflang="x-default" href="https://hmg-ai.github.io/HMG-public/">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%233b82f6'/><stop offset='100%25' stop-color='%238b5cf6'/></linearGradient></defs><circle cx='16' cy='16' r='15' fill='url(%23g)'/><path d='M16 8c-1.5 0-2.8.7-3.5 1.8S11.2 12.3 11.2 14c0 2.2 1.1 3.7 2.2 4.8V21h5.2v-2.2c1.1-1.1 2.2-2.6 2.2-4.8 0-1.7-.4-3.2-1.1-4.2S17.5 8 16 8z' fill='white'/></svg>">
   <style>
-    :root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--bg4:#222;--text:#f0f0f0;--text2:#999;--text3:#666;--accent:#3b82f6;--accent2:#60a5fa;--accent3:#93c5fd;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--purple:#8b5cf6;--border:#262626;--border2:#333;--mono:'SF Mono','JetBrains Mono','Fira Code',monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.4)}
-    [data-theme="light"]{--bg:#ffffff;--bg2:#f5f5f7;--bg3:#e8e8ed;--bg4:#d8d8dd;--text:#1d1d1f;--text2:#6e6e73;--text3:#86868b;--accent:#0066cc;--accent2:#0071e3;--accent3:#003d7a;--green:#28a745;--red:#d73a49;--amber:#e36209;--purple:#6f42c1;--border:#d2d2d7;--border2:#b0b0b5;--shadow:0 4px 24px rgba(0,0,0,.08)}
-    @media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#ffffff;--bg2:#f5f5f7;--bg3:#e8e8ed;--bg4:#d8d8dd;--text:#1d1d1f;--text2:#6e6e73;--text3:#86868b;--accent:#0066cc;--accent2:#0071e3;--accent3:#003d7a;--green:#28a745;--red:#d73a49;--amber:#e36209;--purple:#6f42c1;--border:#d2d2d7;--border2:#b0b0b5;--shadow:0 4px 24px rgba(0,0,0,.08)}}
+    :root{--bg:#0b0f14;--bg2:#111821;--bg3:#17212c;--bg4:#203040;--text:#f4f7fb;--text2:#aeb9c7;--text3:#6f7d8f;--accent:#4ea1ff;--accent2:#55d6be;--accent3:#a7d4ff;--green:#2fd47a;--red:#ff6467;--amber:#f2b84b;--purple:#9b8cff;--border:#263443;--border2:#3a4a5d;--mono:'SF Mono','JetBrains Mono','Fira Code',monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--radius:8px;--shadow:0 18px 54px rgba(0,0,0,.32)}
+    [data-theme="light"]{--bg:#fbfcfe;--bg2:#f2f5f8;--bg3:#e8edf3;--bg4:#d8e1ea;--text:#18212d;--text2:#536171;--text3:#758294;--accent:#0b67c2;--accent2:#087f71;--accent3:#164b83;--green:#16834d;--red:#c93442;--amber:#a66400;--purple:#6857c8;--border:#d5dee8;--border2:#b9c6d5;--shadow:0 16px 44px rgba(27,39,55,.1)}
+    @media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#fbfcfe;--bg2:#f2f5f8;--bg3:#e8edf3;--bg4:#d8e1ea;--text:#18212d;--text2:#536171;--text3:#758294;--accent:#0b67c2;--accent2:#087f71;--accent3:#164b83;--green:#16834d;--red:#c93442;--amber:#a66400;--purple:#6857c8;--border:#d5dee8;--border2:#b9c6d5;--shadow:0 16px 44px rgba(27,39,55,.1)}}
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}
     a{color:var(--accent2);text-decoration:none;transition:color .15s}
-    a:hover{color:#fff;text-decoration:underline}
+    a:hover{color:var(--text);text-decoration:underline}
     code{font-family:var(--mono);background:var(--bg3);padding:.15em .4em;border-radius:4px;font-size:.88em;color:var(--accent3)}
     pre{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.2em;overflow-x:auto;font-family:var(--mono);font-size:.84em;line-height:1.6}
     pre code{background:none;padding:0;font-size:1em;color:var(--text)}
     img{max-width:100%}
 
     /* ─── Utility ─── */
-    .container{max-width:1080px;margin:0 auto;padding:0 1.5em}
+    .container{max-width:1160px;margin:0 auto;padding:0 1.5em}
     .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
 
     /* ─── Nav ─── */
-    nav{background:rgba(10,10,10,.85);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+    nav{background:rgba(11,15,20,.86);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+    [data-theme="light"] nav{background:rgba(251,252,254,.9)}
     nav .container{display:flex;align-items:center;justify-content:space-between;height:56px}
     .brand{font-weight:800;font-size:1.15em;color:var(--text);display:flex;align-items:center;gap:.4em}
     .brand .logo{font-size:1.3em}
+    .logo-icon{width:26px;height:26px;display:block;flex-shrink:0}
+    .theme-icon{display:block}
     .nav-links{display:flex;gap:1.8em;align-items:center}
     .nav-links a{color:var(--text2);font-size:.88em;font-weight:500}
     .nav-links a:hover{color:var(--text);text-decoration:none}
@@ -72,26 +75,36 @@
     }
 
     /* ─── Hero ─── */
-    .hero{padding:5em 0 3em;text-align:center;position:relative}
-    .hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(59,130,246,.08) 0%,transparent 70%);pointer-events:none}
-    .hero .eyebrow{font-size:.82em;color:var(--text2);margin-bottom:.8em;display:flex;gap:.4em;justify-content:center;flex-wrap:wrap}
-    .hero .eyebrow span{background:var(--bg3);border:1px solid var(--border);padding:.25em .7em;border-radius:20px;white-space:nowrap}
-    .hero h1{font-size:clamp(2em,5.5vw,3.2em);font-weight:800;letter-spacing:-.03em;margin-bottom:.3em;line-height:1.15}
-    .hero .gradient{background:linear-gradient(135deg,#3b82f6 0%,#8b5cf6 40%,#ec4899 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .hero .subtitle{font-size:clamp(1em,2vw,1.25em);color:var(--text2);max-width:640px;margin:.8em auto 2.2em;line-height:1.6}
-    .install-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1em 1.5em;display:inline-flex;align-items:center;gap:1em;text-align:left}
-    .install-box pre{border:none;padding:0;background:none;margin:0}
+    .hero{position:relative;margin-left:calc(50% - 50vw);width:100vw;min-height:clamp(540px,70vh,700px);padding:clamp(2.4em,6vh,4em) 0 2em;text-align:left;display:flex;align-items:flex-start;overflow:hidden;border-bottom:1px solid var(--border);background:linear-gradient(90deg,rgba(11,15,20,.96) 0%,rgba(11,15,20,.88) 42%,rgba(11,15,20,.68) 72%,rgba(11,15,20,.92) 100%),url('img/tui-dashboard.png') center/cover no-repeat}
+    [data-theme="light"] .hero{background:linear-gradient(90deg,rgba(251,252,254,.97) 0%,rgba(251,252,254,.9) 45%,rgba(251,252,254,.74) 78%,rgba(251,252,254,.94) 100%),url('img/tui-dashboard.png') center/cover no-repeat}
+    .hero-inner{width:100%;max-width:1160px;margin:0 auto;padding:0 1.5em}
+    .hero-content{max-width:720px}
+    .hero .eyebrow{font-size:.8em;color:var(--text2);margin-bottom:1em;display:flex;gap:.5em;justify-content:flex-start;flex-wrap:wrap}
+    .hero .eyebrow span{background:rgba(23,33,44,.78);border:1px solid var(--border);padding:.25em .7em;border-radius:999px;white-space:nowrap}
+    [data-theme="light"] .hero .eyebrow span{background:rgba(242,245,248,.86)}
+    .hero h1{font-size:clamp(2.35em,5.6vw,4.25em);font-weight:820;letter-spacing:0;margin-bottom:.35em;line-height:1.02}
+    .hero .gradient{color:var(--text);background:none;-webkit-text-fill-color:currentColor}
+    .hero .subtitle{font-size:clamp(1.02em,2vw,1.22em);color:var(--text2);max-width:720px;margin:.75em 0 1.25em;line-height:1.65}
+    .install-box{background:rgba(17,24,33,.86);border:1px solid var(--border2);border-radius:var(--radius);padding:1em 1.15em;display:inline-flex;align-items:center;gap:1em;text-align:left;box-shadow:var(--shadow);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);max-width:100%}
+    [data-theme="light"] .install-box{background:rgba(251,252,254,.9)}
+    .install-box pre{border:none;padding:0;background:none;margin:0;max-width:100%;font-size:.78em}
     .install-box .copy-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:.3em .6em;border-radius:6px;cursor:pointer;font-size:.8em;flex-shrink:0}
     .install-box .copy-btn:hover{border-color:var(--accent);color:var(--text)}
     .install-box .copy-btn.copied{border-color:var(--green);color:var(--green)}
-    .cta-row{margin-top:2em;display:flex;gap:.8em;justify-content:center;flex-wrap:wrap}
+    .cta-row{margin-top:1em;display:flex;gap:.8em;justify-content:flex-start;flex-wrap:wrap}
     .cta{display:inline-flex;align-items:center;gap:.4em;padding:.7em 1.6em;border-radius:8px;font-weight:600;font-size:.92em;transition:all .15s;cursor:pointer;border:none;font-family:var(--sans)}
     .cta-primary{background:var(--accent);color:#fff}
     .cta-primary:hover{background:#2563eb;text-decoration:none;color:#fff}
     .cta-secondary{background:transparent;color:var(--text);border:1px solid var(--border2)}
     .cta-secondary:hover{border-color:var(--accent);text-decoration:none}
-    .badges{display:flex;gap:.5em;justify-content:center;margin-top:2em;flex-wrap:wrap}
-    .badge{background:var(--bg3);border:1px solid var(--border);padding:.3em .7em;border-radius:20px;font-size:.78em;color:var(--text2);white-space:nowrap}
+    .badges{display:flex;gap:.5em;justify-content:flex-start;margin-top:1.05em;flex-wrap:wrap}
+    .badge{background:rgba(23,33,44,.76);border:1px solid var(--border);padding:.3em .7em;border-radius:999px;font-size:.78em;color:var(--text2);white-space:nowrap}
+    [data-theme="light"] .badge{background:rgba(242,245,248,.88)}
+    .hero-proof{position:absolute;right:max(1.5em,calc((100vw - 1160px)/2 + 1.5em));bottom:1.8em;width:min(430px,32vw);max-width:430px;background:rgba(8,12,17,.72);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+    [data-theme="light"] .hero-proof{background:rgba(255,255,255,.84)}
+    .hero-proof-head{display:flex;align-items:center;justify-content:space-between;gap:1em;padding:.55em .9em;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:.78em;color:var(--text3)}
+    .hero-proof-head strong{color:var(--accent2);font-weight:700}
+    .hero-proof pre{border:0;border-radius:0;background:transparent;margin:0;padding:.8em .9em;font-size:.74em;max-height:170px;overflow:auto}
 
     /* ─── Sections ─── */
     section{padding:4.5em 0}
@@ -99,23 +112,25 @@
     .section-header{text-align:center;margin-bottom:2.5em}
     section h2{font-size:clamp(1.5em,3vw,2em);font-weight:700;margin-bottom:.4em}
     .section-sub{color:var(--text2);font-size:1em;max-width:600px;margin:0 auto}
-    .section-divider{width:48px;height:3px;background:linear-gradient(90deg,var(--accent),var(--purple));border-radius:2px;margin:.8em auto 0}
+    .section-divider{width:48px;height:3px;background:var(--accent2);border-radius:2px;margin:.8em auto 0}
 
     /* ─── Grid / Cards ─── */
     .grid{display:grid;gap:1.5em}
     .grid-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
     .grid-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
     .grid-4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    .card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5em;transition:border-color .15s}
-    .card:hover{border-color:var(--border2)}
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5em;transition:border-color .15s,transform .15s}
+    .card:hover{border-color:var(--border2);transform:translateY(-1px)}
     .card .icon{font-size:1.6em;margin-bottom:.6em}
+    .icon-svg{width:30px;height:30px;color:var(--accent2);fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:.65em}
     .card h3{font-size:1.05em;margin-bottom:.4em;font-weight:600}
     .card p{color:var(--text2);font-size:.88em;line-height:1.6}
 
     /* ─── Feature items (icon + text side by side) ─── */
     .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5em}
     .feature-item{display:flex;gap:1em;align-items:flex-start}
-    .feature-item .ficon{flex-shrink:0;width:42px;height:42px;background:linear-gradient(135deg,var(--bg3),var(--bg4));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2em;border:1px solid var(--border)}
+    .feature-item .ficon{flex-shrink:0;width:42px;height:42px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2em;border:1px solid var(--border)}
+    .feature-item .ficon svg{width:21px;height:21px;fill:none;stroke:var(--accent2);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
     .feature-item h4{font-size:.95em;margin-bottom:.15em;font-weight:600}
     .feature-item p{color:var(--text2);font-size:.84em}
 
@@ -124,7 +139,7 @@
     .edition-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.8em 1.5em;text-align:center;position:relative;transition:transform .15s,border-color .15s}
     .edition-card:hover{transform:translateY(-2px)}
     .edition-card.popular{border-color:var(--accent);box-shadow:0 0 30px rgba(59,130,246,.1)}
-    .edition-card .popular-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.72em;font-weight:700;padding:.2em .8em;border-radius:10px;text-transform:uppercase;letter-spacing:.05em}
+    .edition-card .popular-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.72em;font-weight:700;padding:.2em .8em;border-radius:8px;text-transform:uppercase;letter-spacing:0}
     .edition-card h4{font-size:1.15em;font-weight:700}
     .edition-card .price{font-size:2em;font-weight:800;margin:.5em 0 .2em}
     .edition-card .price-note{color:var(--text3);font-size:.78em}
@@ -155,15 +170,15 @@
     .demo-body{padding:1.2em}
 
     /* ─── Stats ─── */
-    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1em;margin:2em 0}
-    .stat{text-align:center}
-    .stat .num{font-size:2.2em;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1em;margin:2em 0;padding:1.2em 0;border-bottom:1px solid var(--border)}
+    .stat{text-align:left}
+    .stat .num{font-size:2.05em;font-weight:800;color:var(--accent2)}
     .stat .label{color:var(--text2);font-size:.82em}
 
     /* ─── Footer ─── */
     footer{background:var(--bg2);border-top:1px solid var(--border);padding:3.5em 0 2em;margin-top:3em}
     footer .grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2em}
-    footer h5{font-size:.85em;margin-bottom:.8em;color:var(--text);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+    footer h5{font-size:.85em;margin-bottom:.8em;color:var(--text);font-weight:600;text-transform:uppercase;letter-spacing:0}
     footer a{color:var(--text2);font-size:.84em;display:block;padding:.2em 0}
     footer a:hover{color:var(--accent2);text-decoration:none}
     .footer-bottom{margin-top:2.5em;padding-top:1.5em;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1em}
@@ -172,8 +187,13 @@
     .footer-links a{color:var(--text3);font-size:.78em}
 
     /* ─── Responsive ─── */
+    @media(max-width:1100px){
+      .hero-proof{display:none}
+    }
     @media(max-width:768px){
       .hero{padding:3em 0 2em}
+      .hero{min-height:auto;background-position:center top}
+      .hero-proof pre{max-height:190px}
       .edition-grid{grid-template-columns:1fr}
       .feature-grid{grid-template-columns:1fr}
       .stat-grid{grid-template-columns:repeat(2,1fr)}
@@ -181,6 +201,11 @@
     }
     @media(max-width:480px){
       .install-box{flex-direction:column;align-items:stretch}
+      .install-box pre{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5}
+      .install-box code{word-break:break-all}
+      .install-box .copy-btn{width:100%;padding:.6em;text-align:center}
+      .hero h1{font-size:2.2em}
+      .hero-proof{display:none}
       .badges{gap:.3em}
     }
   </style>
@@ -214,86 +239,94 @@
   </div>
 </nav>
 
-<!-- ═══ Logo Video ═══ -->
-<div style="background:var(--bg);text-align:center;padding:2.5em 1em 0;">
-  <video autoplay loop muted playsinline style="max-width:420px;width:100%;border-radius:var(--radius);display:block;margin:0 auto;" aria-label="HMG Logo Animation">
-    <source src="img/logovideo.mp4" type="video/mp4">
-  </video>
-</div>
-
 <div class="container">
 
   <!-- ═══ Hero ═══ -->
   <div class="hero">
-    <div class="eyebrow">
-      <span>v1.6.7</span>
-      <span data-i18n="hero_tag1">First Public Release</span>
-      <span data-i18n="hero_tag2">Community Free</span>
-    </div>
-    <h1><span class="gradient" data-i18n="hero_title">Agent Memory<br>That Actually Works</span></h1>
-    <p class="subtitle" data-i18n="hero_subtitle">Holographic Memory Graph — a long-term memory kernel for AI agents.<br>Store decisions, trace corrections, govern knowledge. One call, complete context.</p>
-    <div class="install-box">
-      <pre><code id="installCmd">curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh</code></pre>
-      <button class="copy-btn" onclick="copyInstall()" data-i18n="copy">Copy</button>
-    </div>
-    <div class="cta-row">
-      <a href="#quickstart" class="cta cta-primary" data-i18n="hero_cta1">Get Started →</a>
-      <a href="https://hmg1ai.com/" class="cta cta-secondary" data-i18n="hero_cta2">Official Website</a>
-    </div>
-    <div class="badges">
-      <span class="badge">Apache-2.0 Protocol</span>
-      <span class="badge">Rust</span>
-      <span class="badge">Linux · macOS</span>
-      <span class="badge">MCP Compatible</span>
-      <span class="badge">10 Languages</span>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="eyebrow">
+          <span>v1.6.7</span>
+          <span data-i18n="hero_tag1">Public docs release</span>
+          <span data-i18n="hero_tag2">Free Community Edition</span>
+        </div>
+        <h1><span class="gradient" data-i18n="hero_title">Long-Term Memory<br>for Coding Agents</span></h1>
+        <p class="subtitle" data-i18n="hero_subtitle">HMG is a local-first memory kernel that gives coding agents branch-aware context, correction history, and governed recall across sessions.</p>
+        <div class="install-box">
+          <pre><code id="installCmd">curl -fsSL https://github.com/HMG-AI/HMG-public/releases/latest/download/install.sh | sh</code></pre>
+          <button class="copy-btn" onclick="copyInstall()" data-i18n="copy">Copy</button>
+        </div>
+        <div class="cta-row">
+          <a href="#quickstart" class="cta cta-primary" data-i18n="hero_cta1">Install HMG →</a>
+          <a href="https://hmg1ai.com/" class="cta cta-secondary" data-i18n="hero_cta2">Product Website</a>
+        </div>
+        <div class="badges">
+          <span class="badge" data-i18n="badge_protocol">Apache-2.0 Protocol</span>
+          <span class="badge" data-i18n="badge_runtime">Rust runtime</span>
+          <span class="badge" data-i18n="badge_os">Linux · macOS</span>
+          <span class="badge" data-i18n="badge_api">MCP / HTTP / SDK</span>
+          <span class="badge" data-i18n="badge_languages">10 languages</span>
+        </div>
+        <div class="hero-proof" aria-label="memory_agent_brief compact YAML example">
+          <div class="hero-proof-head"><strong>memory_agent_brief</strong><span>software-engineering · compact_yaml</span></div>
+          <pre><code>hmg_brief_v2:
+  scope: "tenant/platform/HMG/main"
+  status: "public docs synced to v1.6.7"
+  decisions:
+    - "generated from export/docs"
+    - "coding-agent memory is the wedge"
+  risks: ["verify branch scope"]
+  next_steps: ["run drift checks"]</code></pre>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- ═══ Stats ═══ -->
   <div class="stat-grid">
-    <div class="stat"><div class="num">47</div><div class="label" data-i18n="stat_tools">MCP Tools</div></div>
-    <div class="stat"><div class="num">100K</div><div class="label" data-i18n="stat_atoms">Free Atoms</div></div>
-    <div class="stat"><div class="num">4</div><div class="label" data-i18n="stat_platforms">Platforms</div></div>
-    <div class="stat"><div class="num">10</div><div class="label" data-i18n="stat_langs">Languages</div></div>
+    <div class="stat"><div class="num">47</div><div class="label" data-i18n="stat_tools">MCP surfaces</div></div>
+    <div class="stat"><div class="num">100K</div><div class="label" data-i18n="stat_atoms">Community atoms</div></div>
+    <div class="stat"><div class="num">4</div><div class="label" data-i18n="stat_platforms">Release platforms</div></div>
+    <div class="stat"><div class="num">10</div><div class="label" data-i18n="stat_langs">Site languages</div></div>
   </div>
 
   <!-- ═══ What's New ═══ -->
   <section id="whats-new">
     <div class="section-header">
-      <h2 data-i18n="new_title">What's New in v1.6</h2>
-      <p class="section-sub" data-i18n="new_sub">Cross-client reliability, agent-native extraction, and recall that separates the answer from supporting context.</p>
+      <h2 data-i18n="new_title">What changed in v1.6.7</h2>
+      <p class="section-sub" data-i18n="new_sub">A reliability-focused release for real coding-agent sessions: stricter MCP behavior, agent-native extraction, and clearer recall output.</p>
       <div class="section-divider"></div>
     </div>
     <div class="grid grid-3">
-      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><h3 data-i18n="new_1t">Cross-Client Reliability</h3><p data-i18n="new_1d">Spec-correct MCP ping + capability probes and a daemon-proxy fallback on store-lock collisions. Works smoothly with strict clients like opencode and the Hermes gateway.</p></div>
-      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><h3 data-i18n="new_2t">Agent-Native Extraction</h3><p data-i18n="new_2d">A dedicated DomainLens registry lets recall and anchoring lenses evolve independently, with caller-supplied entities and relations threaded through memorize.</p></div>
-      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><h3 data-i18n="new_3t">Answer vs Context</h3><p data-i18n="new_3d">Recall now flags the top-ranked answer cluster as primary, distinct from same-scope supporting context — surface the answer first.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><h3 data-i18n="new_1t">Stricter client compatibility</h3><p data-i18n="new_1d">Spec-correct MCP ping, capability probes, and daemon-proxy fallback keep HMG usable when strict clients or store locks would otherwise interrupt a session.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><h3 data-i18n="new_2t">Agent-native extraction</h3><p data-i18n="new_2d">DomainLens keeps software-engineering entities, relations, and recall views explicit, so branch, task, decision, and risk context survive between runs.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><h3 data-i18n="new_3t">Answer before context</h3><p data-i18n="new_3d">Recall marks the primary answer cluster separately from supporting same-scope context. Agents can act on the answer first and still audit the evidence.</p></div>
     </div>
   </section>
 
   <!-- ═══ Why ═══ -->
   <section id="why">
     <div class="section-header">
-      <h2 data-i18n="why_title">Why HMG?</h2>
-      <p class="section-sub" data-i18n="why_sub">AI agents forget everything between sessions. HMG gives them durable, queryable, governable long-term memory.</p>
+      <h2 data-i18n="why_title">The agent memory problem</h2>
+      <p class="section-sub" data-i18n="why_sub">Coding agents lose project decisions, branch assumptions, rejected approaches, and handoff notes between sessions. HMG turns that work history into governed recall.</p>
       <div class="section-divider"></div>
     </div>
     <div class="feature-grid">
       <div class="feature-item"><div class="ficon"><svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg></div><div>
-        <h4 data-i18n="why_f1t">Memorize</h4>
-        <p data-i18n="why_f1d">Decisions, root causes, constraints — persisted as typed graph atoms with polarity, epistemic state, and governance tags</p>
+        <h4 data-i18n="why_f1t">Memorize decisions</h4>
+        <p data-i18n="why_f1d">Persist decisions, root causes, constraints, validation results, and next steps as typed graph atoms with scope and provenance.</p>
       </div></div>
       <div class="feature-item"><div class="ficon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div>
-        <h4 data-i18n="why_f2t">Recall</h4>
-        <p data-i18n="why_f2d">Semantic + keyword hybrid retrieval, graph diffusion projection, branch-aware scope — the right context at the right time</p>
+        <h4 data-i18n="why_f2t">Recall the right scope</h4>
+        <p data-i18n="why_f2d">Hybrid semantic + keyword retrieval and graph projection return context for the current workspace, repository, branch, and task.</p>
       </div></div>
       <div class="feature-item"><div class="ficon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div><div>
-        <h4 data-i18n="why_f3t">Correct</h4>
-        <p data-i18n="why_f3d">Full correction when memories go stale — negate, confirm, demote, or replace. All correction history permanently retained</p>
+        <h4 data-i18n="why_f3t">Correct stale knowledge</h4>
+        <p data-i18n="why_f3d">Replace or demote wrong memories without erasing history. Future recalls prefer the canonical answer and retain lineage.</p>
       </div></div>
       <div class="feature-item"><div class="ficon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div>
-        <h4 data-i18n="why_f4t">Govern</h4>
-        <p data-i18n="why_f4d">Sensitive knowledge governance — quarantine, seal, or derive lessons. Control what gets remembered and what gets forgotten</p>
+        <h4 data-i18n="why_f4t">Govern sensitive facts</h4>
+        <p data-i18n="why_f4d">Quarantine, seal, tombstone, or derive safe lessons so ordinary recall stays useful without leaking governed payloads.</p>
       </div></div>
     </div>
   </section>
@@ -301,14 +334,14 @@
   <!-- ═══ Features ═══ -->
   <section id="features">
     <div class="section-header">
-      <h2 data-i18n="feat_title">Core Capabilities</h2>
-      <p class="section-sub" data-i18n="feat_sub">Not a vector database or key-value store. HMG models memory as a typed graph with polarity, epistemic state, governance, and correction lineage.</p>
+      <h2 data-i18n="feat_title">Memory primitives</h2>
+      <p class="section-sub" data-i18n="feat_sub">HMG is not a vector database wrapper. It combines typed memory atoms, branch-aware scope, correction lineage, governance state, and agent-readable output.</p>
       <div class="section-divider"></div>
     </div>
     <div class="grid grid-3">
-      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5V12h3a3 3 0 0 1 3 3v1.5a2.5 2.5 0 0 1-2.5 2.5H17v2H7v-2H6.5A2.5 2.5 0 0 1 4 16.5V15a3 3 0 0 1 3-3h3V9.5A4 4 0 0 1 8 6a4 4 0 0 1 4-4z" fill="currentColor" stroke="none"/></svg><h3 data-i18n="feat_1t">One-Shot Recall</h3><p data-i18n="feat_1d">One MCP call for complete context: current status, prior decisions, unresolved risks, next steps.</p></div>
-      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg><h3 data-i18n="feat_2t">Branch-Aware Scope</h3><p data-i18n="feat_2d">tenant → workspace → repository → branch. Memories isolated per branch, traceable on merge.</p></div>
-      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3 data-i18n="feat_3t">Governance Control Plane</h3><p data-i18n="feat_3d">Quarantine, seal, tombstone, derive lessons. Policy tags and audit context throughout.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5V12h3a3 3 0 0 1 3 3v1.5a2.5 2.5 0 0 1-2.5 2.5H17v2H7v-2H6.5A2.5 2.5 0 0 1 4 16.5V15a3 3 0 0 1 3-3h3V9.5A4 4 0 0 1 8 6a4 4 0 0 1 4-4z" fill="currentColor" stroke="none"/></svg><h3 data-i18n="feat_1t">One-shot task brief</h3><p data-i18n="feat_1d">One MCP call returns current status, prior decisions, unresolved risks, next steps, and knowledge gaps for the next agent turn.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg><h3 data-i18n="feat_2t">Branch-aware scope</h3><p data-i18n="feat_2d">tenant → workspace → repository → branch. Memories stay isolated where they should, and merge-time context remains traceable.</p></div>
+      <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3 data-i18n="feat_3t">Governance control plane</h3><p data-i18n="feat_3d">Quarantine, seal, tombstone, and derive lessons with policy tags and audit context carried through the recall path.</p></div>
       <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor" stroke="none"/></svg><h3 data-i18n="feat_4t">Local-First</h3><p data-i18n="feat_4d">Embedded storage, zero external dependencies. Data stays local, works offline.</p></div>
       <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M18 16l4-4-4-4"/><path d="M6 8l-4 4 4 4"/><path d="M14.5 4l-5 16"/></svg><h3 data-i18n="feat_5t">47 MCP Tools</h3><p data-i18n="feat_5d">Core memory, governance, MemoryQL, observation, vault, panorama, and graph-health workflows.</p></div>
       <div class="card"><svg class="icon-svg" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><h3 data-i18n="feat_6t">Open Protocol</h3><p data-i18n="feat_6d">hmg-protocol (Apache-2.0) standalone crate defines types and serialization for all memory operations.</p></div>
@@ -318,8 +351,8 @@
   <!-- ═══ Quick Start ═══ -->
   <section id="quickstart">
     <div class="section-header">
-      <h2 data-i18n="qs_title">Get Started in 5 Minutes</h2>
-      <p class="section-sub" data-i18n="qs_sub">Install → Initialize → Store → Query</p>
+      <h2 data-i18n="qs_title">Get a working memory loop in 5 minutes</h2>
+      <p class="section-sub" data-i18n="qs_sub">Install → initialize → start daemon → connect an agent</p>
       <div class="section-divider"></div>
     </div>
     <div class="demo-window">
@@ -439,14 +472,14 @@
   <!-- ═══ Agent Memory Loop ═══ -->
   <section id="memory-loop">
     <div class="section-header">
-      <h2 data-i18n="loop_title">Agent Memory Loop</h2>
-      <p class="section-sub" data-i18n="loop_sub">Every session becomes context for the next. Decisions persist. Corrections leave history. Governance controls what gets remembered.</p>
+      <h2 data-i18n="loop_title">Agent memory loop</h2>
+      <p class="section-sub" data-i18n="loop_sub">Each session writes usable context for the next. Decisions persist, corrections keep lineage, and governance defines what normal recall can see.</p>
       <div class="section-divider"></div>
     </div>
     <div class="demo-window">
       <div class="demo-titlebar">
         <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-        <span class="title" data-i18n="loop_flow_title">Memory Lifecycle</span>
+        <span class="title" data-i18n="loop_flow_title">Memory lifecycle</span>
       </div>
       <div class="demo-body">
         <pre><code>capture → canonicalize → recall → correct → govern → consolidate → brief next session
@@ -475,16 +508,16 @@ memory_govern(target_atom="01DEF...", action="seal",
   <!-- ═══ Workflows ═══ -->
   <section id="workflows">
     <div class="section-header">
-      <h2 data-i18n="wf_title">Core Workflows</h2>
-      <p class="section-sub" data-i18n="wf_sub">Four workflows that show why HMG is not a vector database.</p>
+      <h2 data-i18n="wf_title">Coding-agent workflows</h2>
+      <p class="section-sub" data-i18n="wf_sub">Four daily flows where HMG acts as memory infrastructure, not just retrieval.</p>
       <div class="section-divider"></div>
     </div>
 
     <!-- Workflow 1: Task Brief -->
     <div class="grid grid-2" style="margin-bottom:2em">
       <div class="card">
-        <h3 data-i18n="wf1_title">1. Task Brief — Wake Up With Context</h3>
-        <p data-i18n="wf1_desc">Before writing a single line of code, the agent retrieves decisions, risks, and constraints from prior sessions.</p>
+        <h3 data-i18n="wf1_title">1. Task brief — start with context</h3>
+        <p data-i18n="wf1_desc">Before editing code, the agent recalls prior decisions, constraints, risks, and next steps for the active scope.</p>
         <div class="tab-bar">
           <button class="tab-btn active" onclick="switchTab(this,'wf1-cli')">MCP</button>
           <button class="tab-btn" onclick="switchTab(this,'wf1-http')">HTTP</button>
@@ -509,7 +542,7 @@ Content-Type: application/json
         </div>
       </div>
       <div class="card">
-        <h3 data-i18n="wf1_out_title">Output (compact YAML)</h3>
+        <h3 data-i18n="wf1_out_title">Agent-readable output</h3>
         <pre><code>hmg_brief_v2:
   scope: "tenant/platform/repo/main"
   engine: one_shot_recall
@@ -527,8 +560,8 @@ Content-Type: application/json
 
     <!-- Workflow 2: Decision Trace -->
     <div class="card" style="margin-bottom:2em">
-      <h3 data-i18n="wf2_title">2. Decision Trace — Never Re-argue Settled Questions</h3>
-      <p data-i18n="wf2_desc">Store decisions with rationale. Next session, the agent knows why choices were made and what was rejected.</p>
+      <h3 data-i18n="wf2_title">2. Decision trace — stop re-arguing settled choices</h3>
+      <p data-i18n="wf2_desc">Store decisions with rationale and rejected alternatives, so later sessions know both the choice and why it was made.</p>
       <pre><code><span style="color:var(--green)"># Store a decision with rationale</span>
 memory_memorize(
   content="Decision: use PostgreSQL 16 over MongoDB for ACID compliance",
@@ -546,8 +579,8 @@ memory_recall(query="Why did we choose PostgreSQL?")
     <!-- Workflow 3: Correction -->
     <div class="grid grid-2" style="margin-bottom:2em">
       <div class="card">
-        <h3 data-i18n="wf3_title">3. Correct Stale Memory — Fix Wrong Answers</h3>
-        <p data-i18n="wf3_desc">When a memory is wrong or outdated, replace it. The old version is retained in correction history. Normal recall returns the new canonical answer.</p>
+        <h3 data-i18n="wf3_title">3. Correct stale memory — fix the canonical answer</h3>
+        <p data-i18n="wf3_desc">When a memory becomes wrong or outdated, replace it while preserving the old version in correction history.</p>
         <pre><code><span style="color:var(--red)"># Old (incorrect) memory:</span>
 "API runs on port 8080"
 
@@ -564,7 +597,7 @@ memory_recall(query="what port does the API use?")
   → "API runs on port 7654" <span style="color:var(--text3)"># canonical</span></code></pre>
       </div>
       <div class="card">
-        <h3 data-i18n="wf3_hist_title">Correction History</h3>
+        <h3 data-i18n="wf3_hist_title">Correction history</h3>
         <pre><code>memory_history(atom_id="01PORT...")
 
   <span style="color:var(--text3)"># Returns full lineage:</span>
@@ -578,17 +611,17 @@ memory_recall(query="what port does the API use?")
 
     <!-- Workflow 4: Governance -->
     <div class="card" style="margin-bottom:2em">
-      <h3 data-i18n="wf4_title">4. Govern Sensitive Memory — Control What Gets Remembered</h3>
-      <p data-i18n="wf4_desc">Seal, quarantine, tombstone, or derive lessons. Governed memories are invisible in normal recall but retained for audit.</p>
+      <h3 data-i18n="wf4_title">4. Govern sensitive memory — control recall visibility</h3>
+      <p data-i18n="wf4_desc">Seal, quarantine, tombstone, or derive lessons. Governed memories stay out of normal recall while audit can still explain what happened.</p>
       <div class="grid grid-3" style="margin-top:1em">
         <div style="padding:1em;border:1px solid var(--border);border-radius:var(--radius)">
-          <strong style="color:var(--amber)">seal</strong><br><span data-i18n="wf4_seal" style="font-size:.88em;color:var(--text2)">Hide content but keep metadata. Normal recall skips it. Audit can still see it.</span>
+          <strong style="color:var(--amber)">seal</strong><br><span data-i18n="wf4_seal" style="font-size:.88em;color:var(--text2)">Hide payload while keeping metadata. Normal recall skips it.</span>
         </div>
         <div style="padding:1em;border:1px solid var(--border);border-radius:var(--radius)">
-          <strong style="color:var(--red)">tombstone</strong><br><span data-i18n="wf4_tomb" style="font-size:.88em;color:var(--text2)">Mark as deleted. Payload destroyed or retained based on policy.</span>
+          <strong style="color:var(--red)">tombstone</strong><br><span data-i18n="wf4_tomb" style="font-size:.88em;color:var(--text2)">Mark as deleted. Payload handling follows policy.</span>
         </div>
         <div style="padding:1em;border:1px solid var(--border);border-radius:var(--radius)">
-          <strong style="color:var(--green)">derive_lesson</strong><br><span data-i18n="wf4_lesson" style="font-size:.88em;color:var(--text2)">Extract a safe lesson from sensitive content. Original sealed.</span>
+          <strong style="color:var(--green)">derive_lesson</strong><br><span data-i18n="wf4_lesson" style="font-size:.88em;color:var(--text2)">Extract a safe lesson and seal the sensitive original.</span>
         </div>
       </div>
       <pre style="margin-top:1em"><code>memory_govern(
@@ -763,29 +796,30 @@ const LANGS = {
 const T = {
 en: {
   nav_quickstart:'Quick Start',nav_editions:'Editions',nav_loop:'Memory Loop',nav_workflows:'Workflows',nav_ts:'Troubleshooting',nav_docs:'Docs',
-  hero_tag1:'First Public Release',hero_tag2:'Community Free',
-  hero_title:'Agent Memory<br>That Actually Works',
-  hero_subtitle:'Holographic Memory Graph — a long-term memory kernel for AI agents.<br>Store decisions, trace corrections, govern knowledge. One call, complete context.',
-  hero_cta1:'Get Started →',hero_cta2:'Official Website',copy:'Copy',
-  stat_tools:'MCP Tools',stat_atoms:'Free Atoms',stat_platforms:'Platforms',stat_langs:'Languages',
+  hero_tag1:'Public docs release',hero_tag2:'Free Community Edition',
+  hero_title:'Long-Term Memory<br>for Coding Agents',
+  hero_subtitle:'HMG is a local-first memory kernel that gives coding agents branch-aware context, correction history, and governed recall across sessions.',
+  hero_cta1:'Install HMG →',hero_cta2:'Product Website',copy:'Copy',
+  badge_protocol:'Apache-2.0 Protocol',badge_runtime:'Rust runtime',badge_os:'Linux · macOS',badge_api:'MCP / HTTP / SDK',badge_languages:'10 languages',
+  stat_tools:'MCP surfaces',stat_atoms:'Community atoms',stat_platforms:'Release platforms',stat_langs:'Site languages',
   nav_new:'What\'s New',
-  new_title:'What\'s New in v1.6',new_sub:'Cross-client reliability, agent-native extraction, and recall that separates the answer from supporting context.',
-  new_1t:'Cross-Client Reliability',new_1d:'Spec-correct MCP ping + capability probes and a daemon-proxy fallback on store-lock collisions. Works smoothly with strict clients like opencode and the Hermes gateway.',
-  new_2t:'Agent-Native Extraction',new_2d:'A dedicated DomainLens registry lets recall and anchoring lenses evolve independently, with caller-supplied entities and relations threaded through memorize.',
-  new_3t:'Answer vs Context',new_3d:'Recall now flags the top-ranked answer cluster as primary, distinct from same-scope supporting context — surface the answer first.',
-  why_title:'Why HMG?',why_sub:'AI agents forget everything between sessions. HMG gives them durable, queryable, governable long-term memory.',
-  why_f1t:'Memorize',why_f1d:'Decisions, root causes, constraints — persisted as typed graph atoms with polarity, epistemic state, and governance tags',
-  why_f2t:'Recall',why_f2d:'Semantic + keyword hybrid retrieval, graph diffusion projection, branch-aware scope — the right context at the right time',
-  why_f3t:'Correct',why_f3d:'Full correction when memories go stale — negate, confirm, demote, or replace. All correction history permanently retained',
-  why_f4t:'Govern',why_f4d:'Sensitive knowledge governance — quarantine, seal, or derive lessons. Control what gets remembered and what gets forgotten',
-  feat_title:'Core Capabilities',feat_sub:'Not a vector database or key-value store. HMG models memory as a typed graph with polarity, epistemic state, governance, and correction lineage.',
-  feat_1t:'One-Shot Recall',feat_1d:'One MCP call for complete context: current status, prior decisions, unresolved risks, next steps.',
-  feat_2t:'Branch-Aware Scope',feat_2d:'tenant → workspace → repository → branch. Memories isolated per branch, traceable on merge.',
-  feat_3t:'Governance Control Plane',feat_3d:'Quarantine, seal, tombstone, derive lessons. Policy tags and audit context throughout.',
+  new_title:'What changed in v1.6.7',new_sub:'A reliability-focused release for real coding-agent sessions: stricter MCP behavior, agent-native extraction, and clearer recall output.',
+  new_1t:'Stricter client compatibility',new_1d:'Spec-correct MCP ping, capability probes, and daemon-proxy fallback keep HMG usable when strict clients or store locks would otherwise interrupt a session.',
+  new_2t:'Agent-native extraction',new_2d:'DomainLens keeps software-engineering entities, relations, and recall views explicit, so branch, task, decision, and risk context survive between runs.',
+  new_3t:'Answer before context',new_3d:'Recall marks the primary answer cluster separately from supporting same-scope context. Agents can act on the answer first and still audit the evidence.',
+  why_title:'The agent memory problem',why_sub:'Coding agents lose project decisions, branch assumptions, rejected approaches, and handoff notes between sessions. HMG turns that work history into governed recall.',
+  why_f1t:'Memorize decisions',why_f1d:'Persist decisions, root causes, constraints, validation results, and next steps as typed graph atoms with scope and provenance.',
+  why_f2t:'Recall the right scope',why_f2d:'Hybrid semantic + keyword retrieval and graph projection return context for the current workspace, repository, branch, and task.',
+  why_f3t:'Correct stale knowledge',why_f3d:'Replace or demote wrong memories without erasing history. Future recalls prefer the canonical answer and retain lineage.',
+  why_f4t:'Govern sensitive facts',why_f4d:'Quarantine, seal, tombstone, or derive safe lessons so ordinary recall stays useful without leaking governed payloads.',
+  feat_title:'Memory primitives',feat_sub:'HMG is not a vector database wrapper. It combines typed memory atoms, branch-aware scope, correction lineage, governance state, and agent-readable output.',
+  feat_1t:'One-shot task brief',feat_1d:'One MCP call returns current status, prior decisions, unresolved risks, next steps, and knowledge gaps for the next agent turn.',
+  feat_2t:'Branch-aware scope',feat_2d:'tenant → workspace → repository → branch. Memories stay isolated where they should, and merge-time context remains traceable.',
+  feat_3t:'Governance control plane',feat_3d:'Quarantine, seal, tombstone, and derive lessons with policy tags and audit context carried through the recall path.',
   feat_4t:'Local-First',feat_4d:'Embedded storage, zero external dependencies. Data stays local, works offline.',
   feat_5t:'47 MCP Tools',feat_5d:'Core memory, governance, MemoryQL, observation, vault, panorama, and graph-health workflows.',
   feat_6t:'Open Protocol',feat_6d:'hmg-protocol (Apache-2.0) standalone crate defines types and serialization for all memory operations.',
-  qs_title:'Get Started in 5 Minutes',qs_sub:'Install → Initialize → Store → Query',
+  qs_title:'Get a working memory loop in 5 minutes',qs_sub:'Install → initialize → start daemon → connect an agent',
   qs_tab1:'CLI',qs_tab2:'HTTP API',qs_tab3:'MCP',
   ed_title:'Editions',ed_sub:'Single binary, runtime edition detection. No reinstall needed.',
   ed_free:'Free',ed_free_note:'Personal use, no license key needed',ed_mo:'/mo',
@@ -802,12 +836,12 @@ en: {
   foot_f:'Features',foot_e:'Editions',foot_w:'Official Website',
   foot_d1:'Getting Started',foot_d2:'Concepts',foot_d3:'API Reference',foot_d4:'FAQ',
   foot_contrib:'Contributing',foot_sec:'Security',foot_tm:'Trademark',
-  loop_title:'Agent Memory Loop',loop_sub:'Every session becomes context for the next. Decisions persist. Corrections leave history. Governance controls what gets remembered.',loop_flow_title:'Memory Lifecycle',
-  wf_title:'Core Workflows',wf_sub:'Four workflows that show why HMG is not a vector database.',
-  wf1_title:'1. Task Brief — Wake Up With Context',wf1_desc:'Before writing a single line of code, the agent retrieves decisions, risks, and constraints from prior sessions.',wf1_out_title:'Output (compact YAML)',
-  wf2_title:'2. Decision Trace — Never Re-argue Settled Questions',wf2_desc:'Store decisions with rationale. Next session, the agent knows why choices were made and what was rejected.',
-  wf3_title:'3. Correct Stale Memory — Fix Wrong Answers',wf3_desc:'When a memory is wrong or outdated, replace it. The old version is retained in correction history.',wf3_hist_title:'Correction History',
-  wf4_title:'4. Govern Sensitive Memory — Control What Gets Remembered',wf4_desc:'Seal, quarantine, tombstone, or derive lessons. Governed memories are invisible in normal recall but retained for audit.',wf4_seal:'Hide content but keep metadata. Normal recall skips it.',wf4_tomb:'Mark as deleted. Payload destroyed or retained based on policy.',wf4_lesson:'Extract a safe lesson from sensitive content. Original sealed.',
+  loop_title:'Agent memory loop',loop_sub:'Each session writes usable context for the next. Decisions persist, corrections keep lineage, and governance defines what normal recall can see.',loop_flow_title:'Memory lifecycle',
+  wf_title:'Coding-agent workflows',wf_sub:'Four daily flows where HMG acts as memory infrastructure, not just retrieval.',
+  wf1_title:'1. Task brief — start with context',wf1_desc:'Before editing code, the agent recalls prior decisions, constraints, risks, and next steps for the active scope.',wf1_out_title:'Agent-readable output',
+  wf2_title:'2. Decision trace — stop re-arguing settled choices',wf2_desc:'Store decisions with rationale and rejected alternatives, so later sessions know both the choice and why it was made.',
+  wf3_title:'3. Correct stale memory — fix the canonical answer',wf3_desc:'When a memory becomes wrong or outdated, replace it while preserving the old version in correction history.',wf3_hist_title:'Correction history',
+  wf4_title:'4. Govern sensitive memory — control recall visibility',wf4_desc:'Seal, quarantine, tombstone, or derive lessons. Governed memories stay out of normal recall while audit can still explain what happened.',wf4_seal:'Hide payload while keeping metadata. Normal recall skips it.',wf4_tomb:'Mark as deleted. Payload handling follows policy.',wf4_lesson:'Extract a safe lesson and seal the sensitive original.',
   ts_title:'Troubleshooting',ts_sub:'Common issues and how to fix them.',ts_d_title:'Daemon Issues',ts_d1:'<strong>Port conflict:</strong> <code>hmg daemon stop && hmg daemon start --port 3001</code>',ts_d2:'<strong>Permission denied:</strong> Check <code>~/.local/share/hmg/</code> ownership',ts_d3:'<strong>Not starting:</strong> Run <code>hmg doctor</code> for diagnostics',ts_d4:'<strong>Stale lock:</strong> Remove lock file from store directory',
   ts_m_title:'MCP Connection',ts_m1:'<strong>Tool not found:</strong> Verify <code>hmg --mcp</code> runs in terminal',ts_m2:'<strong>Timeout:</strong> Increase startup_timeout_sec in MCP config',ts_m3:'<strong>Can\'t connect:</strong> Check daemon is running: <code>hmg daemon status</code>',ts_m4:'<strong>Wrong edition:</strong> <code>hmg license status</code> shows active edition',
   ts_l_title:'License & Edition',ts_l1:'<strong>Apply license:</strong> <code>hmg license apply &lt;key&gt;</code>',ts_l2:'<strong>Check status:</strong> <code>hmg license status</code>',ts_l3:'<strong>Store location:</strong> <code>~/.local/share/hmg/stores/</code>',
@@ -815,29 +849,30 @@ en: {
 },
 'zh-CN': {
   nav_quickstart:'快速开始',nav_editions:'版本',nav_loop:'记忆循环',nav_workflows:'工作流',nav_ts:'故障排除',nav_docs:'文档',
-  hero_tag1:'首个公开发布',hero_tag2:'Community 免费',
-  hero_title:'Agent 记忆<br>真正能用',
-  hero_subtitle:'Holographic Memory Graph — AI Agent 的长期记忆内核。<br>存储决策、追溯修正、治理知识。一个调用，完整上下文。',
-  hero_cta1:'5 分钟上手 →',hero_cta2:'官方网站',copy:'复制',
-  stat_tools:'MCP 工具',stat_atoms:'免费原子',stat_platforms:'平台',stat_langs:'语言',
+  hero_tag1:'公共文档发布',hero_tag2:'Community 免费版',
+  hero_title:'给 Coding Agent 的<br>长期记忆内核',
+  hero_subtitle:'HMG 让 agent 跨会话记住分支上下文、设计决策、纠错历史和治理边界。本地优先，通过 MCP、HTTP 和 SDK 接入。',
+  hero_cta1:'安装 HMG →',hero_cta2:'产品官网',copy:'复制',
+  badge_protocol:'Apache-2.0 协议',badge_runtime:'Rust 运行时',badge_os:'Linux · macOS',badge_api:'MCP / HTTP / SDK',badge_languages:'10 种语言',
+  stat_tools:'MCP 接口',stat_atoms:'Community 原子额度',stat_platforms:'发布平台',stat_langs:'站点语言',
   nav_new:'最新动态',
-  new_title:'v1.6 最新动态',new_sub:'跨客户端可靠性、Agent 原生抽取，以及将「答案」与「支撑上下文」分离的召回。',
-  new_1t:'跨客户端可靠性',new_1d:'符合规范的 MCP ping 与能力探测，加存储锁冲突时的守护进程代理回退。与 opencode 等严格客户端和 Hermes 网关顺畅协作。',
-  new_2t:'Agent 原生抽取',new_2d:'独立的 DomainLens 注册表让召回与锚定透镜独立演进，调用方提供的实体与关系贯穿 memorize 流程。',
-  new_3t:'答案 vs 上下文',new_3d:'召回现在会把得分最高的答案簇标记为 primary，与同作用域的支撑上下文区分——优先呈现答案。',
-  why_title:'为什么需要 HMG？',why_sub:'AI Agent 每次重启都会忘记一切。HMG 让 Agent 拥有持久的、可查询的、可治理的长期记忆。',
-  why_f1t:'存储 (Memorize)',why_f1d:'决策、根因、约束——以类型化图谱原子持久化，带极性、认知状态和治理标记',
-  why_f2t:'回忆 (Recall)',why_f2d:'语义+关键词混合检索，图谱扩散投影，分支感知范围——在正确时间给出正确上下文',
-  why_f3t:'修正 (Correct)',why_f3d:'记忆过期时完整修正——否定、确认、降级或替换，所有修正历史永久保留',
-  why_f4t:'治理 (Govern)',why_f4d:'敏感知识治理——隔离、封存或提取教训。管控什么被记住，什么被遗忘',
-  feat_title:'核心能力',feat_sub:'不是向量数据库或键值存储。HMG 将记忆建模为带极性、认知状态、治理和修正谱系的有类型图谱。',
-  feat_1t:'One-Shot Recall',feat_1d:'一个 MCP 调用获取完整上下文：当前状态、先前决策、未解决风险、后续步骤。',
-  feat_2t:'分支感知范围',feat_2d:'tenant → workspace → repository → branch 四级范围。不同分支自然隔离，合并可追溯。',
-  feat_3t:'治理控制面',feat_3d:'隔离、封存、墓碑、提取教训。策略标签和审计上下文贯穿全链路。',
+  new_title:'v1.6.7 改进重点',new_sub:'面向真实 coding-agent 会话的可靠性版本：更严格的 MCP 行为、Agent 原生抽取，以及更清晰的召回输出。',
+  new_1t:'严格客户端兼容',new_1d:'符合规范的 MCP ping、能力探测和存储锁冲突时的 daemon-proxy 回退，减少严格客户端或锁冲突打断会话的概率。',
+  new_2t:'Agent 原生抽取',new_2d:'DomainLens 把软件工程实体、关系和召回视图显式化，让 branch、task、decision、risk 上下文能跨会话延续。',
+  new_3t:'答案优先，上下文可审计',new_3d:'召回会把 primary 答案簇与同作用域支撑上下文分开。Agent 先拿到可执行答案，同时保留证据链。',
+  why_title:'Coding Agent 的记忆问题',why_sub:'Coding agent 会在会话之间丢失项目决策、分支假设、被拒绝方案和交接信息。HMG 把这些工作历史变成可治理的召回。',
+  why_f1t:'记住决策',why_f1d:'把决策、根因、约束、验证结果和后续步骤持久化为带 scope 与 provenance 的类型化图谱原子。',
+  why_f2t:'召回正确作用域',why_f2d:'语义+关键词混合检索与图谱投影会围绕当前 workspace、repository、branch 和 task 返回上下文。',
+  why_f3t:'纠正过期知识',why_f3d:'替换或降级错误记忆，同时不抹掉历史。后续召回优先返回 canonical answer，并保留谱系。',
+  why_f4t:'治理敏感事实',why_f4d:'隔离、封存、墓碑或提取安全教训，让普通召回保持有用，同时不泄露被治理的原始载荷。',
+  feat_title:'记忆原语',feat_sub:'HMG 不是向量数据库外面包一层 API。它组合了类型化记忆原子、分支感知 scope、纠错谱系、治理状态和 agent 可读输出。',
+  feat_1t:'One-shot 任务简报',feat_1d:'一个 MCP 调用返回当前状态、先前决策、未解决风险、后续步骤和知识缺口，供下一轮 agent 直接使用。',
+  feat_2t:'分支感知 scope',feat_2d:'tenant → workspace → repository → branch。记忆在该隔离的地方隔离，合并时仍能追踪上下文。',
+  feat_3t:'治理控制面',feat_3d:'隔离、封存、墓碑、提取教训。策略标签和审计上下文贯穿召回路径。',
   feat_4t:'本地优先',feat_4d:'嵌入式存储，零外部依赖。数据完全本地，离线可用。',
   feat_5t:'47 个 MCP 工具',feat_5d:'覆盖核心记忆、治理、MemoryQL、观察、密钥库、panorama 和图健康工作流。',
   feat_6t:'开放协议',feat_6d:'hmg-protocol (Apache-2.0) 独立 crate 定义记忆原子、修正、治理、范围的类型和序列化。',
-  qs_title:'5 分钟上手',qs_sub:'安装 → 初始化 → 存储 → 查询',
+  qs_title:'5 分钟跑通记忆循环',qs_sub:'安装 → 初始化 → 启动 daemon → 连接 agent',
   qs_tab1:'命令行',qs_tab2:'HTTP API',qs_tab3:'MCP',
   ed_title:'版本对比',ed_sub:'单一二进制，运行时版本检测。无需重装。',
   ed_free:'免费',ed_free_note:'个人使用，无需 license',ed_mo:'/月',
@@ -854,12 +889,12 @@ en: {
   foot_f:'功能',foot_e:'版本',foot_w:'官方网站',
   foot_d1:'快速开始',foot_d2:'概念',foot_d3:'API 参考',foot_d4:'常见问题',
   foot_contrib:'贡献',foot_sec:'安全',foot_tm:'商标',
-  loop_title:'Agent 记忆循环',loop_sub:'每次会话都成为下次的上下文。决策持久化，修正留历史，治理管控记忆。',loop_flow_title:'记忆生命周期',
-  wf_title:'核心工作流',wf_sub:'四个工作流展示为什么 HMG 不是向量数据库。',
-  wf1_title:'1. 任务简报 — 带着上下文醒来',wf1_desc:'在写第一行代码之前，agent 就能获取之前会话的决策、风险和约束。',wf1_out_title:'输出 (compact YAML)',
-  wf2_title:'2. 决策追溯 — 不再重复争论已定的问题',wf2_desc:'存储决策及理由。下次会话，agent 知道为什么做了这些选择以及拒绝了什么。',
-  wf3_title:'3. 纠正过期记忆 — 修复错误答案',wf3_desc:'当记忆错误或过期时，替换它。旧版本保留在修正历史中。',wf3_hist_title:'修正历史',
-  wf4_title:'4. 治理敏感记忆 — 控制什么被记住',wf4_desc:'封存、隔离、墓碑或提取教训。被治理的记忆在普通召回中不可见但保留审计。',wf4_seal:'隐藏内容但保留元数据。普通召回跳过它。',wf4_tomb:'标记为已删除。载荷根据策略销毁或保留。',wf4_lesson:'从敏感内容中提取安全教训。原始内容封存。',
+  loop_title:'Agent 记忆循环',loop_sub:'每次会话都为下一次写入可用上下文。决策持久化，纠错保留谱系，治理决定普通召回能看到什么。',loop_flow_title:'记忆生命周期',
+  wf_title:'Coding-agent 工作流',wf_sub:'四个日常流程说明 HMG 是记忆基础设施，而不只是检索。',
+  wf1_title:'1. 任务简报 — 开始前先拿上下文',wf1_desc:'编辑代码之前，agent 会按当前作用域召回历史决策、约束、风险和后续步骤。',wf1_out_title:'Agent 可读输出',
+  wf2_title:'2. 决策追溯 — 不再重复争论已定选择',wf2_desc:'存储决策、理由和被拒绝方案。后续会话既知道选了什么，也知道为什么这么选。',
+  wf3_title:'3. 纠正过期记忆 — 修复 canonical answer',wf3_desc:'当记忆错误或过期时，替换它，同时旧版本继续保留在修正历史中。',wf3_hist_title:'修正历史',
+  wf4_title:'4. 治理敏感记忆 — 控制召回可见性',wf4_desc:'封存、隔离、墓碑或提取教训。被治理的记忆不进入普通召回，但审计仍能解释发生了什么。',wf4_seal:'隐藏原始载荷但保留元数据。普通召回会跳过它。',wf4_tomb:'标记为已删除，载荷处理遵循策略。',wf4_lesson:'提取安全教训，并封存敏感原文。',
   ts_title:'故障排除',ts_sub:'常见问题及解决方案。',ts_d_title:'守护进程问题',ts_d1:'<strong>端口冲突：</strong> <code>hmg daemon stop && hmg daemon start --port 3001</code>',ts_d2:'<strong>权限拒绝：</strong> 检查 <code>~/.local/share/hmg/</code> 目录权限',ts_d3:'<strong>无法启动：</strong> 运行 <code>hmg doctor</code> 诊断',ts_d4:'<strong>锁文件残留：</strong> 删除存储目录中的锁文件',
   ts_m_title:'MCP 连接',ts_m1:'<strong>工具未找到：</strong> 验证 <code>hmg --mcp</code> 能在终端运行',ts_m2:'<strong>超时：</strong> 增加 MCP 配置中的 startup_timeout_sec',ts_m3:'<strong>无法连接：</strong> 检查 daemon 是否运行：<code>hmg daemon status</code>',ts_m4:'<strong>版本不对：</strong> <code>hmg license status</code> 查看当前版本',
   ts_l_title:'许可证与版本',ts_l1:'<strong>应用许可证：</strong> <code>hmg license apply &lt;key&gt;</code>',ts_l2:'<strong>查看状态：</strong> <code>hmg license status</code>',ts_l3:'<strong>存储位置：</strong> <code>~/.local/share/hmg/stores/</code>',
@@ -871,6 +906,7 @@ en: {
   hero_title:'Agent 記憶<br>真正能用',
   hero_subtitle:'Holographic Memory Graph — AI Agent 的長期記憶核心。<br>儲存決策、追溯修正、治理知識。一個呼叫，完整上下文。',
   hero_cta1:'5 分鐘上手 →',hero_cta2:'官方網站',copy:'複製',
+  badge_protocol:'Apache-2.0 協議',badge_runtime:'Rust 執行時',badge_os:'Linux · macOS',badge_api:'MCP / HTTP / SDK',badge_languages:'10 種語言',
   stat_tools:'MCP 工具',stat_atoms:'免費原子',stat_platforms:'平台',stat_langs:'語言',
   nav_new:'最新動態',
   new_title:'v1.6 最新動態',new_sub:'跨用戶端可靠性、Agent 原生擷取，以及將「答案」與「支撐上下文」分離的召回。',
@@ -914,6 +950,7 @@ ja: {
   hero_title:'エージェントメモリ<br>本当に使えるもの',
   hero_subtitle:'Holographic Memory Graph — AI エージェントの長期メモリカーネル。<br>意思決定の保存、修正の追跡、知識のガバナンス。1回のコールで完全なコンテキスト。',
   hero_cta1:'5分で始める →',hero_cta2:'公式サイト',copy:'コピー',
+  badge_protocol:'Apache-2.0 プロトコル',badge_runtime:'Rust ランタイム',badge_os:'Linux · macOS',badge_api:'MCP / HTTP / SDK',badge_languages:'10言語',
   stat_tools:'MCPツール',stat_atoms:'無料アトム',stat_platforms:'プラットフォーム',stat_langs:'言語',
   nav_new:'新着情報',
   new_title:'v1.6 の新機能',new_sub:'クロスクライアントの信頼性、エージェントネイティブな抽出、そして「答え」と「補足コンテキスト」を分離するリコール。',
@@ -958,6 +995,7 @@ ko: {
   hero_title:'에이전트 메모리<br>실제로 작동하는',
   hero_subtitle:'Holographic Memory Graph — AI 에이전트의 장기 메모리 커널.<br>의사결정 저장, 수정 추적, 지식 거버넌스. 한 번의 호출로 완전한 컨텍스트.',
   hero_cta1:'5분 시작 →',hero_cta2:'공식 웹사이트',copy:'복사',
+  badge_protocol:'Apache-2.0 프로토콜',badge_runtime:'Rust 런타임',badge_os:'Linux · macOS',badge_api:'MCP / HTTP / SDK',badge_languages:'10개 언어',
   stat_tools:'MCP 도구',stat_atoms:'무료 원자',stat_platforms:'플랫폼',stat_langs:'언어',
   nav_new:'새소식',
   new_title:'v1.6 새 기능',new_sub:'크로스 클라이언트 신뢰성, 에이전트 네이티브 추출, 그리고 "답"과 "지원 컨텍스트"를 분리하는 리콜.',
@@ -1002,6 +1040,7 @@ fr: {
   hero_title:'Mémoire pour agents<br>qui fonctionne vraiment',
   hero_subtitle:'Holographic Memory Graph — un noyau de mémoire à long terme pour les agents IA.<br>Stockez les décisions, tracez les corrections, gouvernez les connaissances.',
   hero_cta1:'Commencer →',hero_cta2:'Site officiel',copy:'Copier',
+  badge_protocol:'Protocole Apache-2.0',badge_runtime:'Runtime Rust',badge_os:'Linux · macOS',badge_api:'MCP / HTTP / SDK',badge_languages:'10 langues',
   stat_tools:'Outils MCP',stat_atoms:'Atomes gratuits',stat_platforms:'Plateformes',stat_langs:'Langues',
   nav_new:'Nouveautés',
   new_title:'Nouveautés v1.6',new_sub:'Fiabilité multi-clients, extraction agent-native, et un rappel qui sépare la réponse du contexte de support.',
@@ -1045,6 +1084,7 @@ de: {
   hero_title:'Agenten-Speicher<br>der wirklich funktioniert',
   hero_subtitle:'Holographic Memory Graph — ein Langzeit-Speicher-Kernel für KI-Agenten.<br>Entscheidungen speichern, Korrekturen verfolgen, Wissen steuern.',
   hero_cta1:'Loslegen →',hero_cta2:'Offizielle Website',copy:'Kopieren',
+  badge_protocol:'Apache-2.0-Protokoll',badge_runtime:'Rust-Laufzeit',badge_os:'Linux · macOS',badge_api:'MCP / HTTP / SDK',badge_languages:'10 Sprachen',
   stat_tools:'MCP-Tools',stat_atoms:'Kostenlose Atome',stat_platforms:'Plattformen',stat_langs:'Sprachen',
   nav_new:'Neuigkeiten',
   new_title:'Neu in v1.6',new_sub:'Clientübergreifende Zuverlässigkeit, agent-native Extraktion und ein Recall, der Antwort von Stützkontext trennt.',
@@ -1088,6 +1128,7 @@ es: {
   hero_title:'Memoria para agentes<br>que realmente funciona',
   hero_subtitle:'Holographic Memory Graph — un núcleo de memoria a largo plazo para agentes de IA.<br>Almacena decisiones, rastrea correcciones, gobierna el conocimiento.',
   hero_cta1:'Empezar →',hero_cta2:'Sitio oficial',copy:'Copiar',
+  badge_protocol:'Protocolo Apache-2.0',badge_runtime:'Runtime Rust',badge_os:'Linux · macOS',badge_api:'MCP / HTTP / SDK',badge_languages:'10 idiomas',
   stat_tools:'Herramientas MCP',stat_atoms:'Átomos gratis',stat_platforms:'Plataformas',stat_langs:'Idiomas',
   nav_new:'Novedades',
   new_title:'Novedades v1.6',new_sub:'Fiabilidad entre clientes, extracción agent-native y un recall que separa la respuesta del contexto de apoyo.',
@@ -1132,6 +1173,7 @@ es: {
   hero_title:'Memória para agentes<br>que realmente funciona',
   hero_subtitle:'Holographic Memory Graph — um kernel de memória de longo prazo para agentes de IA.<br>Armazene decisões, rastreie correções, governe o conhecimento.',
   hero_cta1:'Começar →',hero_cta2:'Site oficial',copy:'Copiar',
+  badge_protocol:'Protocolo Apache-2.0',badge_runtime:'Runtime Rust',badge_os:'Linux · macOS',badge_api:'MCP / HTTP / SDK',badge_languages:'10 idiomas',
   stat_tools:'Ferramentas MCP',stat_atoms:'Átomos grátis',stat_platforms:'Plataformas',stat_langs:'Idiomas',
   nav_new:'Novidades',
   new_title:'Novidades v1.6',new_sub:'Confiabilidade entre clientes, extração agent-native e um recall que separa a resposta do contexto de apoio.',
@@ -1176,6 +1218,7 @@ ru: {
   hero_title:'Память агентов<br>которая реально работает',
   hero_subtitle:'Holographic Memory Graph — ядро долговременной памяти для ИИ-агентов.<br>Храните решения, отслеживайте исправления, управляйте знаниями.',
   hero_cta1:'Начать →',hero_cta2:'Официальный сайт',copy:'Копировать',
+  badge_protocol:'Протокол Apache-2.0',badge_runtime:'Среда Rust',badge_os:'Linux · macOS',badge_api:'MCP / HTTP / SDK',badge_languages:'10 языков',
   stat_tools:'Инструментов MCP',stat_atoms:'Бесплатных атомов',stat_platforms:'Платформы',stat_langs:'Языки',
   nav_new:'Новое',
   new_title:'Новое в v1.6',new_sub:'Надёжность между клиентами, агент-нативное извлечение и recall, разделяющий ответ и поддерживающий контекст.',
@@ -1245,6 +1288,7 @@ function applyLang() {
   });
   document.documentElement.lang = LANGS[lang]?.lc || 'en';
   document.getElementById('langLabel').textContent = LANGS[lang]?.name || 'EN';
+  document.querySelectorAll('#langDropdown a').forEach(a => a.classList.toggle('current', a.dataset.lang === lang));
   localStorage.setItem('hmg-lang', lang);
   // Update URL param without reload
   const url = new URL(location.href);
@@ -1258,6 +1302,7 @@ function buildLangMenu() {
   for (const [code, info] of Object.entries(LANGS)) {
     const a = document.createElement('a');
     a.href = '#';
+    a.dataset.lang = code;
     a.textContent = info.name;
     if (code === lang) a.className = 'current';
     a.onclick = (e) => { e.preventDefault(); lang = code; applyLang(); closeLangMenu(); };
@@ -1280,9 +1325,10 @@ function toggleMobileMenu() {
 }
 
 function switchTab(btn, id) {
+  const scope = btn.closest('.demo-body') || btn.closest('.card') || btn.closest('section') || document;
   btn.closest('.tab-bar').querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  btn.closest('.demo-body').querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  scope.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 

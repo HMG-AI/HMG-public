@@ -104,10 +104,10 @@
       }
     },
     "developer": {
-      "price": 19,
+      "price": 9,
       "currency": "USD",
       "billing": "monthly",
-      "price_display": "$19/mo",
+      "price_display": "$9/mo",
       "limits": {
         "atoms": null,
         "vectors": null,
