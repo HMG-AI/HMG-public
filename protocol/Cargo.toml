@@ -1,6 +1,6 @@
 [package]
 name = "hmg-protocol"
-version = "1.6.7"
+version = "1.7.3"
 edition = "2024"
 license = "Apache-2.0"
 description = "Wire-safe public DTO types for the HMG agent memory protocol"
